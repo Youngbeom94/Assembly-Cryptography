@@ -1,4 +1,5 @@
-﻿/*
+﻿
+/*
  * AES_header.h
  *
  * Created: 2020-03-25 오전 11:22:13
@@ -37,11 +38,19 @@ void RotWord(uint32_t *Word); // int 기준으로 값을 받고 1byte left Rotat
 void SubWord(uint32_t *Word,u8* sbox); // int 기준으로 값을 받고 int를 4개의 byte로 쪼개서 byte를 sbox의 값으로 치환
 
 void AddRoundKey(u8 *state, u8* rdkey);
-void AES_encrypt(u8* inp, u8* out, u8* usrkey,u8* sbox, u8* rcon);
-void keyScheduling(u8* roundkey,u8* Rcon, u8* sbox,u8 *round);
+void AES_set_encrypt_key(u8 *inp, uint8_t bits, u8* usrkey,u8* Rcon,u8* sbox); //키생성 함수
+void keyScheduling(u8* roundkey,u8* Rcon, u8* sbox,u8 round);
+
 
 void ShiftRow_asm(u8 *state);
 void MixColumns_asm(u8 *state);
-void AES_encrypt_asm(u8* inp, u8* out, u8* usrkey,u8* sbox, u8* rcon);
+
+
+
+
+
+
+
+
 
 #endif /* AES_HEADER_H_ */

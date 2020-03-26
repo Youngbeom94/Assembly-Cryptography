@@ -5,15 +5,15 @@
 *  Author: 김영범
 */
 #include "AES_header.h"
- 
- void SubByte(u8 *state, u8* sbox)
- {
-	 u8 cnt_i;
-	 for (cnt_i = 0; cnt_i < 16; cnt_i++)
-	 {
-		 *(state + cnt_i) = sbox[state[cnt_i]]; //sbox를 이용해 치환하기
-	 }
- }
+
+void SubByte(u8 *state, u8* sbox)
+{
+	u8 cnt_i;
+	for (cnt_i = 0; cnt_i < 16; cnt_i++)
+	{
+		*(state + cnt_i) = sbox[state[cnt_i]]; //sbox를 이용해 치환하기
+	}
+}
 
 void ShiftRow(u8 *state)
 {
@@ -121,27 +121,27 @@ void Byte_Int_Set(u8 *userKey, AES_KEY *key, u8 start) // byte 16개 배열을 i
 void AddRoundKey(u8 *state, u8* rdkey)
 {
 	int cnt_i;
-	for (cnt_i = 0; cnt_i < 16; cnt_i++)
+	for (cnt_i = 0; cnt_i < 4; cnt_i++)
 	{
 		state[cnt_i] ^= rdkey[cnt_i];
 	}
 }
 
 
-void keyScheduling(u8* roundkey,u8* Rcon, u8* sbox,u8* round)
+void keyScheduling(u8* roundkey,u8* Rcon, u8* sbox,u8 round)
 {
 	u8 cnt_i = 0x00;
 	u8 temp2[16] = {0x00};
 	cnt_i = roundkey[12];
-	temp2[12] = sbox[roundkey[13]];
-	temp2[13] = sbox[roundkey[14]];
-	temp2[14] = sbox[roundkey[15]];
-	temp2[15] = sbox[cnt_i];
+	roundkey[12] = sbox[roundkey[13]];
+	roundkey[13] = sbox[roundkey[14]];
+	roundkey[14] = sbox[roundkey[15]];
+	roundkey[15] = sbox[cnt_i];
 	
-	temp2[0] = temp2[12]^Rcon[*round]^roundkey[0];
-	temp2[1] = temp2[13]^roundkey[1];
-	temp2[2] = temp2[14]^roundkey[2];
-	temp2[3] = temp2[15]^roundkey[3];
+	temp2[0] = roundkey[12]^Rcon[round]^roundkey[0];
+	temp2[1] = roundkey[13]^roundkey[0];
+	temp2[2] = roundkey[14]^roundkey[0];
+	temp2[3] = roundkey[15]^roundkey[0];
 	
 	temp2[4] = temp2[0]^roundkey[4];
 	temp2[5] = temp2[1]^roundkey[5];
@@ -158,12 +158,11 @@ void keyScheduling(u8* roundkey,u8* Rcon, u8* sbox,u8* round)
 	temp2[14] = temp2[10]^roundkey[14];
 	temp2[15] = temp2[11]^roundkey[15];
 	
-	*round = *round + 1;
-	
 	for(cnt_i = 0 ; cnt_i <16; cnt_i++)
 	{
 		roundkey[cnt_i] = temp2[cnt_i];
-	}	
+	}
+	
 }
 
 void AES_encrypt(u8* inp, u8* out, u8* usrkey,u8* sbox, u8* rcon)
@@ -173,14 +172,17 @@ void AES_encrypt(u8* inp, u8* out, u8* usrkey,u8* sbox, u8* rcon)
 	u8 round = 0;
 	u8 roundkey[16] = {0x00};
 
+	
 	for (cnt_i = 0; cnt_i < 16; cnt_i++)
 	{
 		state[cnt_i] = inp[cnt_i];
 		roundkey[cnt_i] = usrkey[cnt_i];
 	}
 
+
 	AddRoundKey(state, roundkey);
-	keyScheduling(roundkey,rcon, sbox,&round);
+	keyScheduling(roundkey,rcon, sbox,round);
+
 
 	for (cnt_i = 1; cnt_i < AES_MAXNR; cnt_i++)
 	{
@@ -188,43 +190,7 @@ void AES_encrypt(u8* inp, u8* out, u8* usrkey,u8* sbox, u8* rcon)
 		ShiftRow(state);
 		MixColumns(state);
 		AddRoundKey(state, roundkey);
-		keyScheduling(roundkey,rcon, sbox,&round);
-
-	}
-	
-	SubByte(state,sbox);
-	ShiftRow(state);
-	AddRoundKey(state, roundkey);
-
-	for (cnt_i = 0; cnt_i < 4 * Nb; cnt_i++)
-	{
-		out[cnt_i] = state[cnt_i];
-	}
-}
-
-void AES_encrypt_asm(u8* inp, u8* out, u8* usrkey,u8* sbox, u8* rcon)
-{
-	u8 state[16];
-	u8 cnt_i = 0;
-	u8 round = 0;
-	u8 roundkey[16] = {0x00};
-
-	for (cnt_i = 0; cnt_i < 16; cnt_i++)
-	{
-		state[cnt_i] = inp[cnt_i];
-		roundkey[cnt_i] = usrkey[cnt_i];
-	}
-
-	AddRoundKey(state, roundkey);
-	keyScheduling(roundkey,rcon, sbox,&round);
-
-	for (cnt_i = 1; cnt_i < AES_MAXNR; cnt_i++)
-	{
-		SubByte(state,sbox);
-		ShiftRow(state);
-		MixColumns_asm(state);
-		AddRoundKey(state, roundkey);
-		keyScheduling(roundkey,rcon, sbox,&round);
+		keyScheduling(roundkey,rcon, sbox,round);
 
 	}
 	
