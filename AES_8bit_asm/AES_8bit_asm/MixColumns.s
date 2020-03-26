@@ -19,10 +19,6 @@
  .endm
 
  .global MixColumns_asm
-
- ;void MixColumns_asm(u8 *state);
- ;operend state <- r24 ; r25
-
 MixColumns_asm:
 
 	regBackupAdd

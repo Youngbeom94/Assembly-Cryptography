@@ -5,7 +5,6 @@
  * Created: 2020-03-25 오전 11:38:18
  *  Author: 김영범
  */ 
-
  .macro regBackupAdd
 	.irp i,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14, 28, 29
 		push	\i
@@ -17,11 +16,7 @@
 		pop	\i
 	.endr
  .endm
-
  .global ShiftRow_asm
-
- ;void ShiftRow_asm(u8 *state);
- ;operend state <- r24 ; r25
 
 ShiftRow_asm:
 

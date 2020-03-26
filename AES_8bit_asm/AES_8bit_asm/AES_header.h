@@ -24,18 +24,9 @@ typedef uint8_t u8;
 typedef int8_t  s8;
 typedef uint32_t k8;
 
-typedef struct aes_key_st
-{
-	k8 rd_key[4 * (AES_MAXNR + 1)];
-	k8 rounds;
-} AES_KEY;
-
 void SubByte(u8 *state,u8 *sbox);
 void ShiftRow(u8 *state);
 void MixColumns(u8 *state);
-void RotWord(uint32_t *Word); // int 기준으로 값을 받고 1byte left Rotation
-void SubWord(uint32_t *Word,u8* sbox); // int 기준으로 값을 받고 int를 4개의 byte로 쪼개서 byte를 sbox의 값으로 치환
-
 void AddRoundKey(u8 *state, u8* rdkey);
 void AES_encrypt(u8* inp, u8* out, u8* usrkey,u8* sbox, u8* rcon);
 void keyScheduling(u8* roundkey,u8* Rcon, u8* sbox,u8 *round);

@@ -12,10 +12,6 @@ Discarded input sections
  .text          0x00000000        0x0 AES_fun.o
  .data          0x00000000        0x0 AES_fun.o
  .bss           0x00000000        0x0 AES_fun.o
- .text.RotWord  0x00000000       0x20 AES_fun.o
- .text.SubWord  0x00000000       0xd8 AES_fun.o
- .text.Byte_Int_Set
-                0x00000000       0x8e AES_fun.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
@@ -420,56 +416,56 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xa8
+.debug_aranges  0x00000000       0x90
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x68 AES_fun.o
+                0x00000000       0x50 AES_fun.o
  .debug_aranges
-                0x00000068       0x20 main.o
+                0x00000050       0x20 main.o
  .debug_aranges
-                0x00000088       0x20 MixColumns.o
+                0x00000070       0x20 MixColumns.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1056
+.debug_info     0x00000000      0xed1
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_info    0x000005f4      0x82a AES_fun.o
- .debug_info    0x00000e1e      0x1ce main.o
- .debug_info    0x00000fec       0x6a MixColumns.o
+ .debug_info    0x000005f4      0x6a5 AES_fun.o
+ .debug_info    0x00000c99      0x1ce main.o
+ .debug_info    0x00000e67       0x6a MixColumns.o
 
-.debug_abbrev   0x00000000      0x7e0
+.debug_abbrev   0x00000000      0x7b3
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x5a2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_abbrev  0x000005a2      0x15b AES_fun.o
- .debug_abbrev  0x000006fd       0xcf main.o
- .debug_abbrev  0x000007cc       0x14 MixColumns.o
+ .debug_abbrev  0x000005a2      0x12e AES_fun.o
+ .debug_abbrev  0x000006d0       0xcf main.o
+ .debug_abbrev  0x0000079f       0x14 MixColumns.o
 
-.debug_line     0x00000000      0x894
+.debug_line     0x00000000      0x7d1
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x133 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_line    0x00000133      0x4af AES_fun.o
- .debug_line    0x000005e2       0xdb main.o
- .debug_line    0x000006bd      0x1d7 MixColumns.o
+ .debug_line    0x00000133      0x3ec AES_fun.o
+ .debug_line    0x0000051f       0xdb main.o
+ .debug_line    0x000005fa      0x1d7 MixColumns.o
 
-.debug_frame    0x00000000      0x248
+.debug_frame    0x00000000      0x1c8
  *(.debug_frame)
- .debug_frame   0x00000000      0x1fc AES_fun.o
- .debug_frame   0x000001fc       0x4c main.o
+ .debug_frame   0x00000000      0x17c AES_fun.o
+ .debug_frame   0x0000017c       0x4c main.o
 
-.debug_str      0x00000000      0x457
+.debug_str      0x00000000      0x402
  *(.debug_str)
  .debug_str     0x00000000      0x208 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_str     0x00000208      0x236 AES_fun.o
-                                0x274 (size before relaxing)
- .debug_str     0x0000043e       0x19 main.o
+ .debug_str     0x00000208      0x1e1 AES_fun.o
+                                0x21a (size before relaxing)
+ .debug_str     0x000003e9       0x19 main.o
                                 0x1a1 (size before relaxing)
 
-.debug_loc      0x00000000      0xd89
+.debug_loc      0x00000000      0xaa7
  *(.debug_loc)
- .debug_loc     0x00000000      0xd0d AES_fun.o
- .debug_loc     0x00000d0d       0x7c main.o
+ .debug_loc     0x00000000      0xa2b AES_fun.o
+ .debug_loc     0x00000a2b       0x7c main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -489,10 +485,10 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0x68
+.debug_ranges   0x00000000       0x50
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x58 AES_fun.o
- .debug_ranges  0x00000058       0x10 main.o
+ .debug_ranges  0x00000000       0x40 AES_fun.o
+ .debug_ranges  0x00000040       0x10 main.o
 
 .debug_macro
  *(.debug_macro)

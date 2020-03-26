@@ -11,21 +11,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000008dc  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 000000a8  00000000  00000000  00000920  2**3
+  4 .debug_aranges 00000090  00000000  00000000  00000920  2**3
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00001056  00000000  00000000  000009c8  2**0
+  5 .debug_info   00000ed1  00000000  00000000  000009b0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000007e0  00000000  00000000  00001a1e  2**0
+  6 .debug_abbrev 000007b3  00000000  00000000  00001881  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000894  00000000  00000000  000021fe  2**0
+  7 .debug_line   000007d1  00000000  00000000  00002034  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000248  00000000  00000000  00002a94  2**2
+  8 .debug_frame  000001c8  00000000  00000000  00002808  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000457  00000000  00000000  00002cdc  2**0
+  9 .debug_str    00000402  00000000  00000000  000029d0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000d89  00000000  00000000  00003133  2**0
+ 10 .debug_loc    00000aa7  00000000  00000000  00002dd2  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000068  00000000  00000000  00003ebc  2**0
+ 11 .debug_ranges 00000050  00000000  00000000  00003879  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -111,9 +111,9 @@ Disassembly of section .text:
   8e:	b8 cf       	rjmp	.-144    	; 0x0 <__vectors>
 
 00000090 <MixColumns_asm>:
- ;void MixColumns_asm(u8 *state);
- ;operend state <- r24 ; r25
+ .endm
 
+ .global MixColumns_asm
 MixColumns_asm:
 
 	regBackupAdd
@@ -294,56 +294,96 @@ loop:
  148:	08 95       	ret
 
 0000014a <SubByte>:
-			temp = userKey[cnt_j + (cnt_i * 4)] << ((3 - cnt_j) * 8);
-			key->rd_key[start + cnt_i] += temp;
-			temp = 0;
-		}
-	}
-}
+*  Author: 김영범
+*/
+#include "AES_header.h"
+ 
+ void SubByte(u8 *state, u8* sbox)
+ {
  14a:	fc 01       	movw	r30, r24
  14c:	9c 01       	movw	r18, r24
  14e:	20 5f       	subi	r18, 0xF0	; 240
  150:	3f 4f       	sbci	r19, 0xFF	; 255
+	 u8 cnt_i;
+	 for (cnt_i = 0; cnt_i < 16; cnt_i++)
+	 {
+		 *(state + cnt_i) = sbox[state[cnt_i]]; //sbox를 이용해 치환하기
  152:	90 81       	ld	r25, Z
  154:	db 01       	movw	r26, r22
  156:	a9 0f       	add	r26, r25
  158:	b1 1d       	adc	r27, r1
  15a:	9c 91       	ld	r25, X
  15c:	91 93       	st	Z+, r25
+#include "AES_header.h"
+ 
+ void SubByte(u8 *state, u8* sbox)
+ {
+	 u8 cnt_i;
+	 for (cnt_i = 0; cnt_i < 16; cnt_i++)
  15e:	e2 17       	cp	r30, r18
  160:	f3 07       	cpc	r31, r19
  162:	b9 f7       	brne	.-18     	; 0x152 <SubByte+0x8>
+	 {
+		 *(state + cnt_i) = sbox[state[cnt_i]]; //sbox를 이용해 치환하기
+	 }
+ }
  164:	08 95       	ret
 
 00000166 <ShiftRow>:
+
+void ShiftRow(u8 *state)
+{
  166:	fc 01       	movw	r30, r24
+	u8 temp, temp2;
+	temp = state[13]; //2번째 행 1칸 Left shift
  168:	85 85       	ldd	r24, Z+13	; 0x0d
+	state[13] = state[1];
  16a:	91 81       	ldd	r25, Z+1	; 0x01
  16c:	95 87       	std	Z+13, r25	; 0x0d
+	state[1] = state[5];
  16e:	95 81       	ldd	r25, Z+5	; 0x05
  170:	91 83       	std	Z+1, r25	; 0x01
+	state[5] = state[9];
  172:	91 85       	ldd	r25, Z+9	; 0x09
  174:	95 83       	std	Z+5, r25	; 0x05
+	state[9] = temp;
  176:	81 87       	std	Z+9, r24	; 0x09
+
+	temp = state[10]; //3번째 행 2칸 Left shift
  178:	92 85       	ldd	r25, Z+10	; 0x0a
+	temp2 = state[14];
  17a:	86 85       	ldd	r24, Z+14	; 0x0e
+	state[10] = state[2];
  17c:	22 81       	ldd	r18, Z+2	; 0x02
  17e:	22 87       	std	Z+10, r18	; 0x0a
+	state[14] = state[6];
  180:	26 81       	ldd	r18, Z+6	; 0x06
  182:	26 87       	std	Z+14, r18	; 0x0e
+	state[2] = temp;
  184:	92 83       	std	Z+2, r25	; 0x02
+	state[6] = temp2;
  186:	86 83       	std	Z+6, r24	; 0x06
+
+	temp = state[7]; // 4번째 행 3칸 Left shift
  188:	87 81       	ldd	r24, Z+7	; 0x07
+	state[7] = state[3];
  18a:	93 81       	ldd	r25, Z+3	; 0x03
  18c:	97 83       	std	Z+7, r25	; 0x07
+	state[3] = state[15];
  18e:	97 85       	ldd	r25, Z+15	; 0x0f
  190:	93 83       	std	Z+3, r25	; 0x03
+	state[15] = state[11];
  192:	93 85       	ldd	r25, Z+11	; 0x0b
  194:	97 87       	std	Z+15, r25	; 0x0f
+	state[11] = temp;
  196:	83 87       	std	Z+11, r24	; 0x0b
  198:	08 95       	ret
 
 0000019a <MixColumns>:
+}
+
+void MixColumns(u8 *state)
+{
  19a:	ff 92       	push	r15
  19c:	0f 93       	push	r16
  19e:	1f 93       	push	r17
@@ -357,6 +397,12 @@ loop:
  1ae:	8c 01       	movw	r16, r24
  1b0:	00 5f       	subi	r16, 0xF0	; 240
  1b2:	1f 4f       	sbci	r17, 0xFF	; 255
+	{
+		//? 02 03 01 01
+		temp[0] = state[4 * cnt_i] ^ state[4 * cnt_i + 1]; // 02 03 에해당하는 xtime
+		temp[0] = xtime(temp[0]);
+		temp[1] = state[4 * cnt_i + 1] ^ state[4 * cnt_i + 2] ^ state[4 * cnt_i + 3]; // 1 에 해당하는 plain_txt
+		src[0] = temp[0] ^ temp[1];                                                   // 최종 src
  1b4:	0f 2e       	mov	r0, r31
  1b6:	fb e1       	ldi	r31, 0x1B	; 27
  1b8:	ff 2e       	mov	r15, r31
@@ -364,6 +410,12 @@ loop:
  1bc:	be 01       	movw	r22, r28
  1be:	6b 5f       	subi	r22, 0xFB	; 251
  1c0:	7f 4f       	sbci	r23, 0xFF	; 255
+	u8 temp[4];
+	u8 src[4];
+	for (int cnt_i = 0; cnt_i < 4; cnt_i++)
+	{
+		//? 02 03 01 01
+		temp[0] = state[4 * cnt_i] ^ state[4 * cnt_i + 1]; // 02 03 에해당하는 xtime
  1c2:	da 01       	movw	r26, r20
  1c4:	fc 91       	ld	r31, X
  1c6:	11 96       	adiw	r26, 0x01	; 1
@@ -371,12 +423,15 @@ loop:
  1ca:	11 97       	sbiw	r26, 0x01	; 1
  1cc:	ef 2f       	mov	r30, r31
  1ce:	e3 27       	eor	r30, r19
+		temp[0] = xtime(temp[0]);
+		temp[1] = state[4 * cnt_i + 1] ^ state[4 * cnt_i + 2] ^ state[4 * cnt_i + 3]; // 1 에 해당하는 plain_txt
  1d0:	12 96       	adiw	r26, 0x02	; 2
  1d2:	2c 91       	ld	r18, X
  1d4:	12 97       	sbiw	r26, 0x02	; 2
  1d6:	32 27       	eor	r19, r18
  1d8:	13 96       	adiw	r26, 0x03	; 3
  1da:	9c 91       	ld	r25, X
+		src[0] = temp[0] ^ temp[1];                                                   // 최종 src
  1dc:	8e 2f       	mov	r24, r30
  1de:	88 1f       	adc	r24, r24
  1e0:	88 27       	eor	r24, r24
@@ -391,6 +446,11 @@ loop:
  1f2:	a9 27       	eor	r26, r25
  1f4:	8a 27       	eor	r24, r26
  1f6:	89 83       	std	Y+1, r24	; 0x01
+		//? 01 02 03 01
+		temp[0] = state[4 * cnt_i + 1] ^ state[4 * cnt_i + 2]; // 02 03 에해당하는 xtime
+		temp[0] = xtime(temp[0]);
+		temp[1] = state[4 * cnt_i] ^ state[4 * cnt_i + 2] ^ state[4 * cnt_i + 3]; // 1 에 해당하는 plain_txt
+		src[1] = temp[0] ^ temp[1];                                               // 최종 src
  1f8:	83 2f       	mov	r24, r19
  1fa:	88 1f       	adc	r24, r24
  1fc:	88 27       	eor	r24, r24
@@ -405,8 +465,13 @@ loop:
  20e:	89 27       	eor	r24, r25
  210:	38 27       	eor	r19, r24
  212:	3a 83       	std	Y+2, r19	; 0x02
+		//? 01 01 02 03
+		temp[0] = state[4 * cnt_i + 2] ^ state[4 * cnt_i + 3]; // 02 03 에해당하는 xtime
  214:	82 2f       	mov	r24, r18
  216:	89 27       	eor	r24, r25
+		temp[0] = xtime(temp[0]);
+		temp[1] = state[4 * cnt_i] ^ state[4 * cnt_i + 1] ^ state[4 * cnt_i + 3]; // 1 에 해당하는 plain_txt
+		src[2] = temp[0] ^ temp[1];                                               // 최종 src
  218:	38 2f       	mov	r19, r24
  21a:	33 1f       	adc	r19, r19
  21c:	33 27       	eor	r19, r19
@@ -420,7 +485,12 @@ loop:
  22c:	39 27       	eor	r19, r25
  22e:	83 27       	eor	r24, r19
  230:	8b 83       	std	Y+3, r24	; 0x03
+		//? 03 01 01 03
+		temp[0] = state[4 * cnt_i] ^ state[4 * cnt_i + 3]; // 02 03 에해당하는 xtime
  232:	9f 27       	eor	r25, r31
+		temp[0] = xtime(temp[0]);
+		temp[1] = state[4 * cnt_i] ^ state[4 * cnt_i + 1] ^ state[4 * cnt_i + 2];
+		src[3] = temp[0] ^ temp[1]; // 최종 src
  234:	89 2f       	mov	r24, r25
  236:	88 1f       	adc	r24, r24
  238:	88 27       	eor	r24, r24
@@ -436,17 +506,39 @@ loop:
  24c:	fe 01       	movw	r30, r28
  24e:	31 96       	adiw	r30, 0x01	; 1
  250:	da 01       	movw	r26, r20
+
+		for (int cnt_j = 0; cnt_j < 4; cnt_j++)
+		{
+			state[4 * cnt_i + cnt_j] = src[cnt_j];
  252:	81 91       	ld	r24, Z+
  254:	8d 93       	st	X+, r24
+		temp[0] = state[4 * cnt_i] ^ state[4 * cnt_i + 3]; // 02 03 에해당하는 xtime
+		temp[0] = xtime(temp[0]);
+		temp[1] = state[4 * cnt_i] ^ state[4 * cnt_i + 1] ^ state[4 * cnt_i + 2];
+		src[3] = temp[0] ^ temp[1]; // 최종 src
+
+		for (int cnt_j = 0; cnt_j < 4; cnt_j++)
  256:	e6 17       	cp	r30, r22
  258:	f7 07       	cpc	r31, r23
  25a:	d9 f7       	brne	.-10     	; 0x252 <MixColumns+0xb8>
  25c:	4c 5f       	subi	r20, 0xFC	; 252
  25e:	5f 4f       	sbci	r21, 0xFF	; 255
+
+void MixColumns(u8 *state)
+{
+	u8 temp[4];
+	u8 src[4];
+	for (int cnt_i = 0; cnt_i < 4; cnt_i++)
  260:	40 17       	cp	r20, r16
  262:	51 07       	cpc	r21, r17
  264:	09 f0       	breq	.+2      	; 0x268 <MixColumns+0xce>
  266:	ad cf       	rjmp	.-166    	; 0x1c2 <MixColumns+0x28>
+		for (int cnt_j = 0; cnt_j < 4; cnt_j++)
+		{
+			state[4 * cnt_i + cnt_j] = src[cnt_j];
+		}
+	}
+}
  268:	0f 90       	pop	r0
  26a:	0f 90       	pop	r0
  26c:	0f 90       	pop	r0
@@ -677,7 +769,6 @@ void keyScheduling(u8* roundkey,u8* Rcon, u8* sbox,u8* round)
 	temp2[15] = temp2[11]^roundkey[15];
  3b2:	8d 25       	eor	r24, r13
  3b4:	88 8b       	std	Y+16, r24	; 0x10
-	
 	*round = *round + 1;
  3b6:	2f 5f       	subi	r18, 0xFF	; 255
  3b8:	f8 01       	movw	r30, r16
@@ -686,17 +777,16 @@ void keyScheduling(u8* roundkey,u8* Rcon, u8* sbox,u8* round)
  3be:	9e 01       	movw	r18, r28
  3c0:	2f 5e       	subi	r18, 0xEF	; 239
  3c2:	3f 4f       	sbci	r19, 0xFF	; 255
-	
 	for(cnt_i = 0 ; cnt_i <16; cnt_i++)
 	{
 		roundkey[cnt_i] = temp2[cnt_i];
  3c4:	81 91       	ld	r24, Z+
  3c6:	8d 93       	st	X+, r24
+	temp2[12] = temp2[8]^roundkey[12];
+	temp2[13] = temp2[9]^roundkey[13];
 	temp2[14] = temp2[10]^roundkey[14];
 	temp2[15] = temp2[11]^roundkey[15];
-	
 	*round = *round + 1;
-	
 	for(cnt_i = 0 ; cnt_i <16; cnt_i++)
  3c8:	e2 17       	cp	r30, r18
  3ca:	f3 07       	cpc	r31, r19
@@ -1013,7 +1103,6 @@ void AES_encrypt_asm(u8* inp, u8* out, u8* usrkey,u8* sbox, u8* rcon)
 		state[cnt_i] = inp[cnt_i];
 		roundkey[cnt_i] = usrkey[cnt_i];
 	}
-
 	AddRoundKey(state, roundkey);
  588:	be 01       	movw	r22, r28
  58a:	6e 5e       	subi	r22, 0xEE	; 238
@@ -1067,8 +1156,8 @@ void AES_encrypt_asm(u8* inp, u8* out, u8* usrkey,u8* sbox, u8* rcon)
  5d8:	42 96       	adiw	r24, 0x12	; 18
  5da:	5d de       	rcall	.-838    	; 0x296 <keyScheduling>
  5dc:	7a 94       	dec	r7
+		roundkey[cnt_i] = usrkey[cnt_i];
 	}
-
 	AddRoundKey(state, roundkey);
 	keyScheduling(roundkey,rcon, sbox,&round);
 
@@ -1219,10 +1308,6 @@ int main(void)
  6ae:	11 92       	st	Z+, r1
  6b0:	8a 95       	dec	r24
  6b2:	e9 f7       	brne	.-6      	; 0x6ae <main+0x78>
-	
-	//MixColumns(plain_txt);
-	//MixColumns_asm(plain_txt);
-
 		
 	AES_encrypt(inp,out,userkey,sbox,Rcon);
  6b4:	8e 01       	movw	r16, r28
