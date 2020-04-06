@@ -309,7 +309,7 @@ void Count_Add_for_FACE_LIGHT(u8* count)
 		count[cnt_i] = out[cnt_i];
 	}
 }
-void Make_LUT_Face_Light(volatile u8 LUT_FL[4][4][256],u8* userkey,volatile u8* count,u8* sbox, u8* rcon)//! LUK Table of FACE_Light
+void Make_LUT_Face_Light(u8 LUT_FL[4][4][256],u8* userkey,u8* count,u8* sbox, u8* rcon)//! LUK Table of FACE_Light
 {
 	u8 state[16] = { 0x00 };
 	u8 roundkey[16] = {0x00};
@@ -460,4 +460,93 @@ void CRYPTO_ctr128_encrypt_FACE_Light(u8* inp, u8* out, u8 LUT_FL[4][4][256],u8 
 			out[cnt_i * 16 + cnt_j] = CT[cnt_i][cnt_j];
 		}
 	}
+}
+
+void Count_Addition(u8 *count) //Count 배열에서 값을 1증가시키는 함수
+{
+	int cnt_i, carry = 0;           //맨처음 Carry 값은 0
+	u8 out[16] = {0x00}; // 최종배열
+	u8 one[16] = {0x00}; // 0x01을 의미하는 배열
+	one[15] = 0x01;
+
+	for (cnt_i = 15; cnt_i >= 0; cnt_i--)
+	{
+		out[cnt_i] = count[cnt_i] + one[cnt_i] + carry; // 마지막 배열 끼리 순차적으로 더해주면서 carry를 계산한다.
+		//만약 out의 결과값의 count값보다 작은 경우 carry가 발생했다. 만약 0xffffffff..인 경우 1을 더해주면 자동적으로 0x00상태로 돌아간다
+		if (out[cnt_i] < count[cnt_i])
+		carry = 1;
+		else
+		{
+			carry = 0;
+		}
+	}
+	for (cnt_i = 0; cnt_i < 16; cnt_i++)
+	{
+		count[cnt_i] = out[cnt_i];
+	}
+}
+
+void CRYPTO_ctr128_encrypt(u8* inp, u8* out, u8 len, u8* usrkey, u8* count, u8* sbox, u8* rcon)//AES CTR Mode of FACE_Light ver
+{
+	u8 cnt_i, cnt_j;
+	u8 paddingcnt = len % 16;
+	u8 PT[BLOCKSIZE][16] = { {0x00} };
+	u8 CT[BLOCKSIZE][16] = { {0x00} };
+	u8 iparray[16];
+	u8 oparray[16];
+	
+	reset_count(count);
+
+	for (cnt_i = 0; cnt_i < BLOCKSIZE - 1; cnt_i++)
+	{
+		for (cnt_j = 0; cnt_j < 16; cnt_j++)
+		{
+			PT[cnt_i][cnt_j] = inp[cnt_i * 16 + cnt_j];
+		}
+	}
+	if (paddingcnt == 0)
+	{
+		for (cnt_j = 0; cnt_j < 16; cnt_j++)
+		{
+			PT[BLOCKSIZE - 1][cnt_j] = inp[(BLOCKSIZE - 1) * 16 + cnt_j];
+		}
+	}
+
+	if (paddingcnt != 0) // 패딩 함수.
+	{
+		for (cnt_j = 0; cnt_j < paddingcnt; cnt_j++)
+		{
+			PT[BLOCKSIZE - 1][cnt_j] = inp[(BLOCKSIZE - 1) * 16 + cnt_j];
+		}
+		for (cnt_j = paddingcnt; cnt_j < 16; cnt_j++)
+		{
+			PT[BLOCKSIZE - 1][cnt_j] = (0x10 - paddingcnt);
+		}
+	}
+
+	for (cnt_i = 0; cnt_i < BLOCKSIZE; cnt_i++) //각각의 count마다 1더하기 해주고, 암호화 시킨다음에 PT와 XoR 해준다. CORE
+	{
+		if (cnt_i != 0)
+		Count_Addition(count);
+
+		for (cnt_j = 0; cnt_j < 16; cnt_j++)
+		{
+			iparray[cnt_j] = count[cnt_j];
+		}
+			AES_encrypt_asm(iparray, oparray,usrkey,sbox,rcon);
+		for (cnt_j = 0; cnt_j < 16; cnt_j++)
+		{
+			CT[cnt_i][cnt_j] = oparray[cnt_j] ^ PT[cnt_i][cnt_j];
+		}
+	}
+
+	for (cnt_i = 0; cnt_i < BLOCKSIZE; cnt_i++)
+	{
+		for (cnt_j = 0; cnt_j < 16; cnt_j++)
+		{
+			out[cnt_i * 16 + cnt_j] = CT[cnt_i][cnt_j];
+		}
+	}
+	
+	
 }

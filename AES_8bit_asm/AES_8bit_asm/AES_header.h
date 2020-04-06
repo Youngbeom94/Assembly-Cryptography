@@ -43,11 +43,13 @@ void reset_count(u8* count);
 void state_copy(u8* dst, u8* src);
 void Count_Add_for_LUT(u8* count, u8* cnt_k);
 void Count_Add_for_FACE_LIGHT(u8* count);
-void Make_LUT_Face_Light(volatile u8 LUT_FL[4][4][256],u8* userkey,volatile u8* count,u8* sbox, u8* rcon);//! LUK Table of FACE_Light
+void Make_LUT_Face_Light(u8 LUT_FL[4][4][256],u8* userkey, u8* count,u8* sbox, u8* rcon);//! LUK Table of FACE_Light
 void AES_encrypt_FACE_Light(u8 *inp,u8 LUT_FL[4][4][256], u8 *out, u8 *userkey,u8* sbox, u8* rcon);//AES encryption of FACE mode
 void CRYPTO_ctr128_encrypt_FACE_Light(u8* inp, u8* out, u8 LUT_FL[4][4][256], u8 len, u8* usrkey, u8* count, u8* sbox, u8* rcon); //AES CTR Mode of FACE_Light ver
 
-
+// AES-CTR (Origin)
+void Count_Addition(u8 *count); //Count 배열에서 값을 1증가시키는 함수
+void CRYPTO_ctr128_encrypt(u8* inp, u8* out, u8 len, u8* usrkey, u8* count, u8* sbox, u8* rcon); //AES CTR Mode of origin
 
 
 #endif /* AES_HEADER_H_ */

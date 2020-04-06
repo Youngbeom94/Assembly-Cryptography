@@ -1,14 +1,14 @@
 Archive member included to satisfy reference by file (symbol)
 
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
-                              C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o (exit)
+                              C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_copy_data.o)
                               main.o (__do_copy_data)
 
 Discarded input sections
 
- .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
- .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
+ .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
  .text          0x00000000        0x0 AES_fun.o
  .data          0x00000000        0x0 AES_fun.o
  .bss           0x00000000        0x0 AES_fun.o
@@ -16,6 +16,10 @@ Discarded input sections
                 0x00000000      0x18a AES_fun.o
  .text.AES_encrypt_asm
                 0x00000000      0x18c AES_fun.o
+ .text.Count_Addition
+                0x00000000      0x11e AES_fun.o
+ .text.CRYPTO_ctr128_encrypt
+                0x00000000      0x32a AES_fun.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
@@ -69,7 +73,7 @@ user_signatures  0x00850000         0x00000400         rw !x
 Linker script and memory map
 
 Address of section .data set to 0x800100
-LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
+LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
 LOAD AES_fun.o
 LOAD main.o
 LOAD MixColumns.o
@@ -80,7 +84,7 @@ START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a
-LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51\libatmega1284.a
+LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51\libatmega128.a
 END GROUP
                 0x00000000                __TEXT_REGION_ORIGIN__ = DEFINED (__TEXT_REGION_ORIGIN__)?__TEXT_REGION_ORIGIN__:0x0
                 0x00800100                __DATA_REGION_ORIGIN__ = DEFINED (__DATA_REGION_ORIGIN__)?__DATA_REGION_ORIGIN__:0x800100
@@ -184,7 +188,7 @@ END GROUP
 
 .text           0x00000000     0x176a
  *(.vectors)
- .vectors       0x00000000       0x8c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .vectors       0x00000000       0x8c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
                 0x00000000                __vector_default
                 0x00000000                __vectors
  *(.vectors)
@@ -212,13 +216,13 @@ END GROUP
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x0000008c        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .init0         0x0000008c        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
                 0x0000008c                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x0000008c        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .init2         0x0000008c        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
  *(.init2)
  *(.init3)
  *(.init3)
@@ -235,10 +239,10 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x000000b2        0x8 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .init9         0x000000b2        0x8 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
  *(.init9)
  *(.text)
- .text          0x000000ba        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .text          0x000000ba        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
                 0x000000ba                __vector_22
                 0x000000ba                __vector_28
                 0x000000ba                __vector_1
@@ -416,9 +420,9 @@ END GROUP
  .comment       0x00000030       0x31 main.o
 
 .note.gnu.avr.deviceinfo
-                0x00000000       0x40
+                0x00000000       0x3c
  .note.gnu.avr.deviceinfo
-                0x00000000       0x40 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
+                0x00000000       0x3c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
 
 .note.gnu.build-id
  *(.note.gnu.build-id)
@@ -435,56 +439,56 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xc8
+.debug_aranges  0x00000000       0xd8
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x88 AES_fun.o
+                0x00000000       0x98 AES_fun.o
  .debug_aranges
-                0x00000088       0x20 main.o
+                0x00000098       0x20 main.o
  .debug_aranges
-                0x000000a8       0x20 MixColumns.o
+                0x000000b8       0x20 MixColumns.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x11c0
+.debug_info     0x00000000     0x12d7
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x792 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
- .debug_info    0x00000792      0x862 AES_fun.o
- .debug_info    0x00000ff4      0x162 main.o
- .debug_info    0x00001156       0x6a MixColumns.o
+ .debug_info    0x00000000      0x780 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
+ .debug_info    0x00000780      0x99a AES_fun.o
+ .debug_info    0x0000111a      0x153 main.o
+ .debug_info    0x0000126d       0x6a MixColumns.o
 
-.debug_abbrev   0x00000000      0x940
+.debug_abbrev   0x00000000      0x939
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x729 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
- .debug_abbrev  0x00000729      0x163 AES_fun.o
- .debug_abbrev  0x0000088c       0xa0 main.o
- .debug_abbrev  0x0000092c       0x14 MixColumns.o
+ .debug_abbrev  0x00000000      0x718 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
+ .debug_abbrev  0x00000718      0x174 AES_fun.o
+ .debug_abbrev  0x0000088c       0x99 main.o
+ .debug_abbrev  0x00000925       0x14 MixColumns.o
 
-.debug_line     0x00000000      0xf06
+.debug_line     0x00000000     0x10fe
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000      0x169 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
- .debug_line    0x00000169      0xadf AES_fun.o
- .debug_line    0x00000c48       0xe7 main.o
- .debug_line    0x00000d2f      0x1d7 MixColumns.o
+ .debug_line    0x00000000      0x169 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
+ .debug_line    0x00000169      0xcd7 AES_fun.o
+ .debug_line    0x00000e40       0xe7 main.o
+ .debug_line    0x00000f27      0x1d7 MixColumns.o
 
-.debug_frame    0x00000000      0x294
+.debug_frame    0x00000000      0x2f4
  *(.debug_frame)
- .debug_frame   0x00000000      0x234 AES_fun.o
- .debug_frame   0x00000234       0x60 main.o
+ .debug_frame   0x00000000      0x294 AES_fun.o
+ .debug_frame   0x00000294       0x60 main.o
 
-.debug_str      0x00000000      0x54d
+.debug_str      0x00000000      0x559
  *(.debug_str)
- .debug_str     0x00000000      0x296 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
- .debug_str     0x00000296      0x2a6 AES_fun.o
-                                0x2ec (size before relaxing)
- .debug_str     0x0000053c       0x11 main.o
+ .debug_str     0x00000000      0x27d C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
+ .debug_str     0x0000027d      0x2cb AES_fun.o
+                                0x311 (size before relaxing)
+ .debug_str     0x00000548       0x11 main.o
                                 0x193 (size before relaxing)
 
-.debug_loc      0x00000000      0x582
+.debug_loc      0x00000000      0x65f
  *(.debug_loc)
- .debug_loc     0x00000000      0x4d2 AES_fun.o
- .debug_loc     0x000004d2       0xb0 main.o
+ .debug_loc     0x00000000      0x5af AES_fun.o
+ .debug_loc     0x000005af       0xb0 main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -504,10 +508,10 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0x88
+.debug_ranges   0x00000000       0x98
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x78 AES_fun.o
- .debug_ranges  0x00000078       0x10 main.o
+ .debug_ranges  0x00000000       0x88 AES_fun.o
+ .debug_ranges  0x00000088       0x10 main.o
 
 .debug_macro
  *(.debug_macro)
