@@ -19,7 +19,7 @@
 #define Nk 4 //Number of 32-bit words comprising the Cipher Key
 #define AES_MAXNR 10 //10 round
 #define AES_KEY_BIT 128 // 128 bit
-#define BLOCKSIZE 3
+#define BLOCKSIZE 1
 
 typedef uint8_t u8;
 typedef int8_t  s8;
