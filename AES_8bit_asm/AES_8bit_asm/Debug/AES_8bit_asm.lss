@@ -3,29 +3,29 @@ AES_8bit_asm.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         0000011e  00800100  0000176a  000017de  2**0
+  0 .data         0000011e  00800100  0000173c  000017b0  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000176a  00000000  00000000  00000074  2**1
+  1 .text         0000173c  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  000018fc  2**0
+  2 .comment      00000030  00000000  00000000  000018ce  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000192c  2**2
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001900  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 000000d8  00000000  00000000  00001968  2**3
+  4 .debug_aranges 000000d8  00000000  00000000  00001940  2**3
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   000012d7  00000000  00000000  00001a40  2**0
+  5 .debug_info   000012ee  00000000  00000000  00001a18  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000939  00000000  00000000  00002d17  2**0
+  6 .debug_abbrev 0000094a  00000000  00000000  00002d06  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000010fe  00000000  00000000  00003650  2**0
+  7 .debug_line   000010f2  00000000  00000000  00003650  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  000002f4  00000000  00000000  00004750  2**2
+  8 .debug_frame  000002f4  00000000  00000000  00004744  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000559  00000000  00000000  00004a44  2**0
+  9 .debug_str    00000559  00000000  00000000  00004a38  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    0000065f  00000000  00000000  00004f9d  2**0
+ 10 .debug_loc    0000065f  00000000  00000000  00004f91  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000098  00000000  00000000  000055fc  2**0
+ 11 .debug_ranges 00000098  00000000  00000000  000055f0  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -114,7 +114,7 @@ Disassembly of section .text:
       98:	12 e0       	ldi	r17, 0x02	; 2
       9a:	a0 e0       	ldi	r26, 0x00	; 0
       9c:	b1 e0       	ldi	r27, 0x01	; 1
-      9e:	ea e6       	ldi	r30, 0x6A	; 106
+      9e:	ec e3       	ldi	r30, 0x3C	; 60
       a0:	f7 e1       	ldi	r31, 0x17	; 23
       a2:	00 e0       	ldi	r16, 0x00	; 0
       a4:	0b bf       	out	0x3b, r16	; 59
@@ -125,7 +125,7 @@ Disassembly of section .text:
       ae:	b1 07       	cpc	r27, r17
       b0:	d9 f7       	brne	.-10     	; 0xa8 <__do_copy_data+0x10>
       b2:	0e 94 1e 0b 	call	0x163c	; 0x163c <main>
-      b6:	0c 94 b3 0b 	jmp	0x1766	; 0x1766 <_exit>
+      b6:	0c 94 9c 0b 	jmp	0x1738	; 0x1738 <_exit>
 
 000000ba <__bad_interrupt>:
       ba:	a2 cf       	rjmp	.-188    	; 0x0 <__vectors>
@@ -3462,9 +3462,9 @@ void CRYPTO_ctr128_encrypt_FACE_Light(u8* inp, u8* out, u8 LUT_FL[4][4][256],u8 
     163a:	08 95       	ret
 
 0000163c <main>:
+	0xe1, 0xf8, 0x98, 0x11, 0x69, 0xd9, 0x8e, 0x94, 0x9b, 0x1e, 0x87, 0xe9, 0xce, 0x55, 0x28, 0xdf,
+0x8c, 0xa1, 0x89, 0x0d, 0xbf, 0xe6, 0x42, 0x68, 0x41, 0x99, 0x2d, 0x0f, 0xb0, 0x54, 0xbb, 0x16};
 
-#include <avr/io.h>
-#include "AES_header.h"
 
 int main(void)
 {
@@ -3480,167 +3480,141 @@ int main(void)
     164e:	df 93       	push	r29
     1650:	cd b7       	in	r28, 0x3d	; 61
     1652:	de b7       	in	r29, 0x3e	; 62
-    1654:	cd 54       	subi	r28, 0x4D	; 77
-    1656:	d1 41       	sbci	r29, 0x11	; 17
+    1654:	c0 54       	subi	r28, 0x40	; 64
+    1656:	d0 41       	sbci	r29, 0x10	; 16
     1658:	0f b6       	in	r0, 0x3f	; 63
     165a:	f8 94       	cli
     165c:	de bf       	out	0x3e, r29	; 62
     165e:	0f be       	out	0x3f, r0	; 63
     1660:	cd bf       	out	0x3d, r28	; 61
-	u8 Rcon[13] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36, 0x6c, 0xd8, 0xab};
-    1662:	2d e0       	ldi	r18, 0x0D	; 13
-    1664:	e0 e0       	ldi	r30, 0x00	; 0
-    1666:	f1 e0       	ldi	r31, 0x01	; 1
-    1668:	ce 01       	movw	r24, r28
-    166a:	01 96       	adiw	r24, 0x01	; 1
-    166c:	dc 01       	movw	r26, r24
-    166e:	01 90       	ld	r0, Z+
-    1670:	0d 92       	st	X+, r0
-    1672:	2a 95       	dec	r18
-    1674:	e1 f7       	brne	.-8      	; 0x166e <main+0x32>
-	u8 sbox[256] = {
-    1676:	80 e0       	ldi	r24, 0x00	; 0
-    1678:	ed e0       	ldi	r30, 0x0D	; 13
-    167a:	f1 e0       	ldi	r31, 0x01	; 1
-    167c:	de 01       	movw	r26, r28
-    167e:	1e 96       	adiw	r26, 0x0e	; 14
-    1680:	01 90       	ld	r0, Z+
-    1682:	0d 92       	st	X+, r0
-    1684:	8a 95       	dec	r24
-    1686:	e1 f7       	brne	.-8      	; 0x1680 <main+0x44>
-	0x8c, 0xa1, 0x89, 0x0d, 0xbf, 0xe6, 0x42, 0x68, 0x41, 0x99, 0x2d, 0x0f, 0xb0, 0x54, 0xbb, 0x16};
 	
 // 	 u8 inp[16] = {0x32,0x43,0xf6,0xa8,0x88,0x5a,0x30,0x8d,0x31,0x31,0x98,0xa2,0xe0,0x37,0x07,0x34};
 // 	 u8 userkey[16] = {0x2b,0x7e,0x15,0x16,0x28,0xae,0xd2,0xa6,0xab,0xf7,0x15,0x88,0x09,0xcf,0x4f,0x3c};
 
 	 u8 inp[16 * BLOCKSIZE] ={0x00};
-    1688:	ce 01       	movw	r24, r28
-    168a:	82 5f       	subi	r24, 0xF2	; 242
-    168c:	9e 4f       	sbci	r25, 0xFE	; 254
-    168e:	20 e1       	ldi	r18, 0x10	; 16
-    1690:	fc 01       	movw	r30, r24
-    1692:	32 2f       	mov	r19, r18
-    1694:	11 92       	st	Z+, r1
-    1696:	3a 95       	dec	r19
-    1698:	e9 f7       	brne	.-6      	; 0x1694 <main+0x58>
+    1662:	20 e1       	ldi	r18, 0x10	; 16
+    1664:	ce 01       	movw	r24, r28
+    1666:	01 96       	adiw	r24, 0x01	; 1
+    1668:	fc 01       	movw	r30, r24
+    166a:	32 2f       	mov	r19, r18
+    166c:	11 92       	st	Z+, r1
+    166e:	3a 95       	dec	r19
+    1670:	e9 f7       	brne	.-6      	; 0x166c <main+0x30>
 	 u8 out[16 * BLOCKSIZE] = {0x00};
-    169a:	ce 01       	movw	r24, r28
-    169c:	82 5e       	subi	r24, 0xE2	; 226
-    169e:	9e 4f       	sbci	r25, 0xFE	; 254
-    16a0:	20 e1       	ldi	r18, 0x10	; 16
-    16a2:	fc 01       	movw	r30, r24
-    16a4:	32 2f       	mov	r19, r18
-    16a6:	11 92       	st	Z+, r1
-    16a8:	3a 95       	dec	r19
-    16aa:	e9 f7       	brne	.-6      	; 0x16a6 <main+0x6a>
+    1672:	20 e1       	ldi	r18, 0x10	; 16
+    1674:	ce 01       	movw	r24, r28
+    1676:	41 96       	adiw	r24, 0x11	; 17
+    1678:	fc 01       	movw	r30, r24
+    167a:	32 2f       	mov	r19, r18
+    167c:	11 92       	st	Z+, r1
+    167e:	3a 95       	dec	r19
+    1680:	e9 f7       	brne	.-6      	; 0x167c <main+0x40>
 	 u8 userkey[16] = {0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0a,0x0b,0x0c,0x0d,0x0e,0x0f};
-    16ac:	ce 01       	movw	r24, r28
-    16ae:	82 5d       	subi	r24, 0xD2	; 210
-    16b0:	9e 4f       	sbci	r25, 0xFE	; 254
-    16b2:	20 e1       	ldi	r18, 0x10	; 16
-    16b4:	ed e0       	ldi	r30, 0x0D	; 13
-    16b6:	f2 e0       	ldi	r31, 0x02	; 2
-    16b8:	dc 01       	movw	r26, r24
-    16ba:	01 90       	ld	r0, Z+
-    16bc:	0d 92       	st	X+, r0
-    16be:	2a 95       	dec	r18
-    16c0:	e1 f7       	brne	.-8      	; 0x16ba <main+0x7e>
-	 u8 LUT_FL[4][4][256] = {{{0x00}}};
-    16c2:	9e 01       	movw	r18, r28
-    16c4:	22 5c       	subi	r18, 0xC2	; 194
-    16c6:	3e 4f       	sbci	r19, 0xFE	; 254
-    16c8:	80 e0       	ldi	r24, 0x00	; 0
-    16ca:	90 e1       	ldi	r25, 0x10	; 16
-    16cc:	f9 01       	movw	r30, r18
-    16ce:	ac 01       	movw	r20, r24
-    16d0:	11 92       	st	Z+, r1
-    16d2:	41 50       	subi	r20, 0x01	; 1
-    16d4:	50 40       	sbci	r21, 0x00	; 0
-    16d6:	e1 f7       	brne	.-8      	; 0x16d0 <main+0x94>
+    1682:	80 e1       	ldi	r24, 0x10	; 16
+    1684:	e0 e0       	ldi	r30, 0x00	; 0
+    1686:	f1 e0       	ldi	r31, 0x01	; 1
+    1688:	de 01       	movw	r26, r28
+    168a:	91 96       	adiw	r26, 0x21	; 33
+    168c:	01 90       	ld	r0, Z+
+    168e:	0d 92       	st	X+, r0
+    1690:	8a 95       	dec	r24
+    1692:	e1 f7       	brne	.-8      	; 0x168c <main+0x50>
+	 u8 LUT_FL[4][4][256]PROGMEM = {{{0x00}}};
+    1694:	20 e0       	ldi	r18, 0x00	; 0
+    1696:	30 e1       	ldi	r19, 0x10	; 16
+    1698:	ce 01       	movw	r24, r28
+    169a:	c1 96       	adiw	r24, 0x31	; 49
+    169c:	fc 01       	movw	r30, r24
+    169e:	a9 01       	movw	r20, r18
+    16a0:	11 92       	st	Z+, r1
+    16a2:	41 50       	subi	r20, 0x01	; 1
+    16a4:	50 40       	sbci	r21, 0x00	; 0
+    16a6:	e1 f7       	brne	.-8      	; 0x16a0 <main+0x64>
 	 u8 count[16] = {0x00};
-    16d8:	ce 01       	movw	r24, r28
-    16da:	82 5c       	subi	r24, 0xC2	; 194
-    16dc:	9e 4e       	sbci	r25, 0xEE	; 238
-    16de:	20 e1       	ldi	r18, 0x10	; 16
-    16e0:	fc 01       	movw	r30, r24
-    16e2:	32 2f       	mov	r19, r18
-    16e4:	11 92       	st	Z+, r1
-    16e6:	3a 95       	dec	r19
-    16e8:	e9 f7       	brne	.-6      	; 0x16e4 <main+0xa8>
+    16a8:	ce 01       	movw	r24, r28
+    16aa:	8f 5c       	subi	r24, 0xCF	; 207
+    16ac:	9f 4e       	sbci	r25, 0xEF	; 239
+    16ae:	20 e1       	ldi	r18, 0x10	; 16
+    16b0:	fc 01       	movw	r30, r24
+    16b2:	32 2f       	mov	r19, r18
+    16b4:	11 92       	st	Z+, r1
+    16b6:	3a 95       	dec	r19
+    16b8:	e9 f7       	brne	.-6      	; 0x16b4 <main+0x78>
 		 
 	Make_LUT_Face_Light(LUT_FL,userkey,count,sbox,Rcon);
-    16ea:	9e 01       	movw	r18, r28
-    16ec:	22 5f       	subi	r18, 0xF2	; 242
-    16ee:	3f 4f       	sbci	r19, 0xFF	; 255
-    16f0:	ae 01       	movw	r20, r28
-    16f2:	42 5c       	subi	r20, 0xC2	; 194
-    16f4:	5e 4e       	sbci	r21, 0xEE	; 238
-    16f6:	be 01       	movw	r22, r28
-    16f8:	62 5d       	subi	r22, 0xD2	; 210
-    16fa:	7e 4f       	sbci	r23, 0xFE	; 254
-    16fc:	ce 01       	movw	r24, r28
-    16fe:	82 5c       	subi	r24, 0xC2	; 194
-    1700:	9e 4f       	sbci	r25, 0xFE	; 254
-    1702:	fe 01       	movw	r30, r28
-    1704:	31 96       	adiw	r30, 0x01	; 1
-    1706:	8f 01       	movw	r16, r30
-    1708:	52 db       	rcall	.-2396   	; 0xdae <Make_LUT_Face_Light>
+    16ba:	ae 01       	movw	r20, r28
+    16bc:	4f 5c       	subi	r20, 0xCF	; 207
+    16be:	5f 4e       	sbci	r21, 0xEF	; 239
+    16c0:	be 01       	movw	r22, r28
+    16c2:	6f 5d       	subi	r22, 0xDF	; 223
+    16c4:	7f 4f       	sbci	r23, 0xFF	; 255
+    16c6:	ce 01       	movw	r24, r28
+    16c8:	c1 96       	adiw	r24, 0x31	; 49
+    16ca:	00 e1       	ldi	r16, 0x10	; 16
+    16cc:	11 e0       	ldi	r17, 0x01	; 1
+    16ce:	2d e1       	ldi	r18, 0x1D	; 29
+    16d0:	31 e0       	ldi	r19, 0x01	; 1
+    16d2:	6d db       	rcall	.-2342   	; 0xdae <Make_LUT_Face_Light>
 	CRYPTO_ctr128_encrypt_FACE_Light(inp,out,LUT_FL,AES_KEY_BIT,userkey,count,sbox,Rcon);
-    170a:	de 01       	movw	r26, r28
-    170c:	1e 96       	adiw	r26, 0x0e	; 14
-    170e:	fe 01       	movw	r30, r28
-    1710:	e2 5c       	subi	r30, 0xC2	; 194
-    1712:	fe 4e       	sbci	r31, 0xEE	; 238
-    1714:	9e 01       	movw	r18, r28
-    1716:	22 5d       	subi	r18, 0xD2	; 210
-    1718:	3e 4f       	sbci	r19, 0xFE	; 254
-    171a:	ae 01       	movw	r20, r28
-    171c:	42 5c       	subi	r20, 0xC2	; 194
-    171e:	5e 4f       	sbci	r21, 0xFE	; 254
-    1720:	be 01       	movw	r22, r28
-    1722:	62 5e       	subi	r22, 0xE2	; 226
-    1724:	7e 4f       	sbci	r23, 0xFE	; 254
-    1726:	ce 01       	movw	r24, r28
-    1728:	82 5f       	subi	r24, 0xF2	; 242
-    172a:	9e 4f       	sbci	r25, 0xFE	; 254
-    172c:	8e 01       	movw	r16, r28
-    172e:	0f 5f       	subi	r16, 0xFF	; 255
-    1730:	1f 4f       	sbci	r17, 0xFF	; 255
-    1732:	58 01       	movw	r10, r16
-    1734:	6d 01       	movw	r12, r26
-    1736:	7f 01       	movw	r14, r30
-    1738:	89 01       	movw	r16, r18
-    173a:	20 e8       	ldi	r18, 0x80	; 128
-    173c:	d4 dd       	rcall	.-1112   	; 0x12e6 <CRYPTO_ctr128_encrypt_FACE_Light>
-    173e:	80 e0       	ldi	r24, 0x00	; 0
-    1740:	90 e0       	ldi	r25, 0x00	; 0
+    16d4:	be 01       	movw	r22, r28
+    16d6:	6f 5c       	subi	r22, 0xCF	; 207
+    16d8:	7f 4e       	sbci	r23, 0xEF	; 239
+    16da:	9e 01       	movw	r18, r28
+    16dc:	2f 5d       	subi	r18, 0xDF	; 223
+    16de:	3f 4f       	sbci	r19, 0xFF	; 255
+    16e0:	ae 01       	movw	r20, r28
+    16e2:	4f 5c       	subi	r20, 0xCF	; 207
+    16e4:	5f 4f       	sbci	r21, 0xFF	; 255
+    16e6:	ce 01       	movw	r24, r28
+    16e8:	41 96       	adiw	r24, 0x11	; 17
+    16ea:	0f 2e       	mov	r0, r31
+    16ec:	f0 e1       	ldi	r31, 0x10	; 16
+    16ee:	af 2e       	mov	r10, r31
+    16f0:	f1 e0       	ldi	r31, 0x01	; 1
+    16f2:	bf 2e       	mov	r11, r31
+    16f4:	f0 2d       	mov	r31, r0
+    16f6:	0f 2e       	mov	r0, r31
+    16f8:	fd e1       	ldi	r31, 0x1D	; 29
+    16fa:	cf 2e       	mov	r12, r31
+    16fc:	f1 e0       	ldi	r31, 0x01	; 1
+    16fe:	df 2e       	mov	r13, r31
+    1700:	f0 2d       	mov	r31, r0
+    1702:	7b 01       	movw	r14, r22
+    1704:	89 01       	movw	r16, r18
+    1706:	20 e8       	ldi	r18, 0x80	; 128
+    1708:	bc 01       	movw	r22, r24
+    170a:	ce 01       	movw	r24, r28
+    170c:	01 96       	adiw	r24, 0x01	; 1
+    170e:	eb dd       	rcall	.-1066   	; 0x12e6 <CRYPTO_ctr128_encrypt_FACE_Light>
+    1710:	80 e0       	ldi	r24, 0x00	; 0
+    1712:	90 e0       	ldi	r25, 0x00	; 0
 	//AES_encrypt(inp,out,userkey,sbox,Rcon);
 	//AES_encrypt_asm(inp,out,userkey,sbox,Rcon);
 
 
 	
 }
-    1742:	c3 5b       	subi	r28, 0xB3	; 179
-    1744:	de 4e       	sbci	r29, 0xEE	; 238
-    1746:	0f b6       	in	r0, 0x3f	; 63
-    1748:	f8 94       	cli
-    174a:	de bf       	out	0x3e, r29	; 62
-    174c:	0f be       	out	0x3f, r0	; 63
-    174e:	cd bf       	out	0x3d, r28	; 61
-    1750:	df 91       	pop	r29
-    1752:	cf 91       	pop	r28
-    1754:	1f 91       	pop	r17
-    1756:	0f 91       	pop	r16
-    1758:	ff 90       	pop	r15
-    175a:	ef 90       	pop	r14
-    175c:	df 90       	pop	r13
-    175e:	cf 90       	pop	r12
-    1760:	bf 90       	pop	r11
-    1762:	af 90       	pop	r10
-    1764:	08 95       	ret
+    1714:	c0 5c       	subi	r28, 0xC0	; 192
+    1716:	df 4e       	sbci	r29, 0xEF	; 239
+    1718:	0f b6       	in	r0, 0x3f	; 63
+    171a:	f8 94       	cli
+    171c:	de bf       	out	0x3e, r29	; 62
+    171e:	0f be       	out	0x3f, r0	; 63
+    1720:	cd bf       	out	0x3d, r28	; 61
+    1722:	df 91       	pop	r29
+    1724:	cf 91       	pop	r28
+    1726:	1f 91       	pop	r17
+    1728:	0f 91       	pop	r16
+    172a:	ff 90       	pop	r15
+    172c:	ef 90       	pop	r14
+    172e:	df 90       	pop	r13
+    1730:	cf 90       	pop	r12
+    1732:	bf 90       	pop	r11
+    1734:	af 90       	pop	r10
+    1736:	08 95       	ret
 
-00001766 <_exit>:
-    1766:	f8 94       	cli
+00001738 <_exit>:
+    1738:	f8 94       	cli
 
-00001768 <__stop_program>:
-    1768:	ff cf       	rjmp	.-2      	; 0x1768 <__stop_program>
+0000173a <__stop_program>:
+    173a:	ff cf       	rjmp	.-2      	; 0x173a <__stop_program>

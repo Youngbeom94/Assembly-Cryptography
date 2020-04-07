@@ -1,0 +1,998 @@
+
+Test_Assembly in AVR.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000020  00800100  0000079e  0000089e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000079e  00000000  00000000  00000100  2**8
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000008be  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000008f0  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 000000b8  00000000  00000000  0000092c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00001b70  00000000  00000000  000009e4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000009fa  00000000  00000000  00002554  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000b82  00000000  00000000  00002f4e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000428  00000000  00000000  00003ad0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000588  00000000  00000000  00003ef8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00001d3d  00000000  00000000  00004480  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 000000c8  00000000  00000000  000061bd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	7f c1       	rjmp	.+766    	; 0x300 <__ctors_end>
+   2:	00 00       	nop
+   4:	92 c1       	rjmp	.+804    	; 0x32a <__bad_interrupt>
+   6:	00 00       	nop
+   8:	90 c1       	rjmp	.+800    	; 0x32a <__bad_interrupt>
+   a:	00 00       	nop
+   c:	8e c1       	rjmp	.+796    	; 0x32a <__bad_interrupt>
+   e:	00 00       	nop
+  10:	8c c1       	rjmp	.+792    	; 0x32a <__bad_interrupt>
+  12:	00 00       	nop
+  14:	8a c1       	rjmp	.+788    	; 0x32a <__bad_interrupt>
+  16:	00 00       	nop
+  18:	88 c1       	rjmp	.+784    	; 0x32a <__bad_interrupt>
+  1a:	00 00       	nop
+  1c:	86 c1       	rjmp	.+780    	; 0x32a <__bad_interrupt>
+  1e:	00 00       	nop
+  20:	84 c1       	rjmp	.+776    	; 0x32a <__bad_interrupt>
+  22:	00 00       	nop
+  24:	82 c1       	rjmp	.+772    	; 0x32a <__bad_interrupt>
+  26:	00 00       	nop
+  28:	80 c1       	rjmp	.+768    	; 0x32a <__bad_interrupt>
+  2a:	00 00       	nop
+  2c:	7e c1       	rjmp	.+764    	; 0x32a <__bad_interrupt>
+  2e:	00 00       	nop
+  30:	7c c1       	rjmp	.+760    	; 0x32a <__bad_interrupt>
+  32:	00 00       	nop
+  34:	7a c1       	rjmp	.+756    	; 0x32a <__bad_interrupt>
+  36:	00 00       	nop
+  38:	78 c1       	rjmp	.+752    	; 0x32a <__bad_interrupt>
+  3a:	00 00       	nop
+  3c:	76 c1       	rjmp	.+748    	; 0x32a <__bad_interrupt>
+  3e:	00 00       	nop
+  40:	74 c1       	rjmp	.+744    	; 0x32a <__bad_interrupt>
+  42:	00 00       	nop
+  44:	72 c1       	rjmp	.+740    	; 0x32a <__bad_interrupt>
+  46:	00 00       	nop
+  48:	70 c1       	rjmp	.+736    	; 0x32a <__bad_interrupt>
+  4a:	00 00       	nop
+  4c:	6e c1       	rjmp	.+732    	; 0x32a <__bad_interrupt>
+  4e:	00 00       	nop
+  50:	6c c1       	rjmp	.+728    	; 0x32a <__bad_interrupt>
+  52:	00 00       	nop
+  54:	6a c1       	rjmp	.+724    	; 0x32a <__bad_interrupt>
+  56:	00 00       	nop
+  58:	68 c1       	rjmp	.+720    	; 0x32a <__bad_interrupt>
+  5a:	00 00       	nop
+  5c:	66 c1       	rjmp	.+716    	; 0x32a <__bad_interrupt>
+  5e:	00 00       	nop
+  60:	64 c1       	rjmp	.+712    	; 0x32a <__bad_interrupt>
+  62:	00 00       	nop
+  64:	62 c1       	rjmp	.+708    	; 0x32a <__bad_interrupt>
+  66:	00 00       	nop
+  68:	60 c1       	rjmp	.+704    	; 0x32a <__bad_interrupt>
+  6a:	00 00       	nop
+  6c:	5e c1       	rjmp	.+700    	; 0x32a <__bad_interrupt>
+  6e:	00 00       	nop
+  70:	5c c1       	rjmp	.+696    	; 0x32a <__bad_interrupt>
+  72:	00 00       	nop
+  74:	5a c1       	rjmp	.+692    	; 0x32a <__bad_interrupt>
+  76:	00 00       	nop
+  78:	58 c1       	rjmp	.+688    	; 0x32a <__bad_interrupt>
+  7a:	00 00       	nop
+  7c:	56 c1       	rjmp	.+684    	; 0x32a <__bad_interrupt>
+  7e:	00 00       	nop
+  80:	54 c1       	rjmp	.+680    	; 0x32a <__bad_interrupt>
+  82:	00 00       	nop
+  84:	52 c1       	rjmp	.+676    	; 0x32a <__bad_interrupt>
+  86:	00 00       	nop
+  88:	50 c1       	rjmp	.+672    	; 0x32a <__bad_interrupt>
+	...
+
+0000008c <__trampolines_end>:
+	...
+
+00000100 <sbox>:
+ 100:	63 7c 77 7b f2 6b 6f c5 30 01 67 2b fe d7 ab 76     c|w{.ko.0.g+...v
+ 110:	ca 82 c9 7d fa 59 47 f0 ad d4 a2 af 9c a4 72 c0     ...}.YG.......r.
+ 120:	b7 fd 93 26 36 3f f7 cc 34 a5 e5 f1 71 d8 31 15     ...&6?..4...q.1.
+ 130:	04 c7 23 c3 18 96 05 9a 07 12 80 e2 eb 27 b2 75     ..#..........'.u
+ 140:	09 83 2c 1a 1b 6e 5a a0 52 3b d6 b3 29 e3 2f 84     ..,..nZ.R;..)./.
+ 150:	53 d1 00 ed 20 fc b1 5b 6a cb be 39 4a 4c 58 cf     S... ..[j..9JLX.
+ 160:	d0 ef aa fb 43 4d 33 85 45 f9 02 7f 50 3c 9f a8     ....CM3.E...P<..
+ 170:	51 a3 40 8f 92 9d 38 f5 bc b6 da 21 10 ff f3 d2     Q.@...8....!....
+ 180:	cd 0c 13 ec 5f 97 44 17 c4 a7 7e 3d 64 5d 19 73     ...._.D...~=d].s
+ 190:	60 81 4f dc 22 2a 90 88 46 ee b8 14 de 5e 0b db     `.O."*..F....^..
+ 1a0:	e0 32 3a 0a 49 06 24 5c c2 d3 ac 62 91 95 e4 79     .2:.I.$\...b...y
+ 1b0:	e7 c8 37 6d 8d d5 4e a9 6c 56 f4 ea 65 7a ae 08     ..7m..N.lV..ez..
+ 1c0:	ba 78 25 2e 1c a6 b4 c6 e8 dd 74 1f 4b bd 8b 8a     .x%.......t.K...
+ 1d0:	70 3e b5 66 48 03 f6 0e 61 35 57 b9 86 c1 1d 9e     p>.fH...a5W.....
+ 1e0:	e1 f8 98 11 69 d9 8e 94 9b 1e 87 e9 ce 55 28 df     ....i........U(.
+ 1f0:	8c a1 89 0d bf e6 42 68 41 99 2d 0f b0 54 bb 16     ......BhA.-..T..
+
+00000200 <Rcon>:
+ 200:	01 02 04 08 10 20 40 80 1b 36 6c d8 ab 00 00 00     ..... @..6l.....
+	...
+
+00000300 <__ctors_end>:
+ 300:	11 24       	eor	r1, r1
+ 302:	1f be       	out	0x3f, r1	; 63
+ 304:	cf ef       	ldi	r28, 0xFF	; 255
+ 306:	d0 e1       	ldi	r29, 0x10	; 16
+ 308:	de bf       	out	0x3e, r29	; 62
+ 30a:	cd bf       	out	0x3d, r28	; 61
+
+0000030c <__do_copy_data>:
+ 30c:	11 e0       	ldi	r17, 0x01	; 1
+ 30e:	a0 e0       	ldi	r26, 0x00	; 0
+ 310:	b1 e0       	ldi	r27, 0x01	; 1
+ 312:	ee e9       	ldi	r30, 0x9E	; 158
+ 314:	f7 e0       	ldi	r31, 0x07	; 7
+ 316:	00 e0       	ldi	r16, 0x00	; 0
+ 318:	0b bf       	out	0x3b, r16	; 59
+ 31a:	02 c0       	rjmp	.+4      	; 0x320 <__do_copy_data+0x14>
+ 31c:	07 90       	elpm	r0, Z+
+ 31e:	0d 92       	st	X+, r0
+ 320:	a0 32       	cpi	r26, 0x20	; 32
+ 322:	b1 07       	cpc	r27, r17
+ 324:	d9 f7       	brne	.-10     	; 0x31c <__do_copy_data+0x10>
+ 326:	fc d1       	rcall	.+1016   	; 0x720 <main>
+ 328:	38 c2       	rjmp	.+1136   	; 0x79a <_exit>
+
+0000032a <__bad_interrupt>:
+ 32a:	6a ce       	rjmp	.-812    	; 0x0 <__vectors>
+
+0000032c <SubByte>:
+*  Author: 김영범
+*/
+#include "header.h"
+
+void SubByte(u8 *state, u8* sbox)
+{
+ 32c:	dc 01       	movw	r26, r24
+ 32e:	9c 01       	movw	r18, r24
+ 330:	20 5f       	subi	r18, 0xF0	; 240
+ 332:	3f 4f       	sbci	r19, 0xFF	; 255
+	u8 cnt_i;
+	u8 temp = 0;
+	for (cnt_i = 0; cnt_i < 16; cnt_i++)
+	{
+		temp = state[cnt_i];
+		state[cnt_i] = pgm_read_byte(sbox+temp); //sbox를 이용해 치환하기
+ 334:	9c 91       	ld	r25, X
+ 336:	fb 01       	movw	r30, r22
+ 338:	e9 0f       	add	r30, r25
+ 33a:	f1 1d       	adc	r31, r1
+ 33c:	e4 91       	lpm	r30, Z
+ 33e:	ed 93       	st	X+, r30
+
+void SubByte(u8 *state, u8* sbox)
+{
+	u8 cnt_i;
+	u8 temp = 0;
+	for (cnt_i = 0; cnt_i < 16; cnt_i++)
+ 340:	a2 17       	cp	r26, r18
+ 342:	b3 07       	cpc	r27, r19
+ 344:	b9 f7       	brne	.-18     	; 0x334 <SubByte+0x8>
+	{
+		temp = state[cnt_i];
+		state[cnt_i] = pgm_read_byte(sbox+temp); //sbox를 이용해 치환하기
+	}
+}
+ 346:	08 95       	ret
+
+00000348 <ShiftRow>:
+
+void ShiftRow(u8 *state)
+{
+ 348:	fc 01       	movw	r30, r24
+	u8 temp, temp2;
+	temp = state[13]; //2번째 행 1칸 Left shift
+ 34a:	85 85       	ldd	r24, Z+13	; 0x0d
+	state[13] = state[1];
+ 34c:	91 81       	ldd	r25, Z+1	; 0x01
+ 34e:	95 87       	std	Z+13, r25	; 0x0d
+	state[1] = state[5];
+ 350:	95 81       	ldd	r25, Z+5	; 0x05
+ 352:	91 83       	std	Z+1, r25	; 0x01
+	state[5] = state[9];
+ 354:	91 85       	ldd	r25, Z+9	; 0x09
+ 356:	95 83       	std	Z+5, r25	; 0x05
+	state[9] = temp;
+ 358:	81 87       	std	Z+9, r24	; 0x09
+
+	temp = state[10]; //3번째 행 2칸 Left shift
+ 35a:	92 85       	ldd	r25, Z+10	; 0x0a
+	temp2 = state[14];
+ 35c:	86 85       	ldd	r24, Z+14	; 0x0e
+	state[10] = state[2];
+ 35e:	22 81       	ldd	r18, Z+2	; 0x02
+ 360:	22 87       	std	Z+10, r18	; 0x0a
+	state[14] = state[6];
+ 362:	26 81       	ldd	r18, Z+6	; 0x06
+ 364:	26 87       	std	Z+14, r18	; 0x0e
+	state[2] = temp;
+ 366:	92 83       	std	Z+2, r25	; 0x02
+	state[6] = temp2;
+ 368:	86 83       	std	Z+6, r24	; 0x06
+
+	temp = state[7]; // 4번째 행 3칸 Left shift
+ 36a:	87 81       	ldd	r24, Z+7	; 0x07
+	state[7] = state[3];
+ 36c:	93 81       	ldd	r25, Z+3	; 0x03
+ 36e:	97 83       	std	Z+7, r25	; 0x07
+	state[3] = state[15];
+ 370:	97 85       	ldd	r25, Z+15	; 0x0f
+ 372:	93 83       	std	Z+3, r25	; 0x03
+	state[15] = state[11];
+ 374:	93 85       	ldd	r25, Z+11	; 0x0b
+ 376:	97 87       	std	Z+15, r25	; 0x0f
+	state[11] = temp;
+ 378:	83 87       	std	Z+11, r24	; 0x0b
+ 37a:	08 95       	ret
+
+0000037c <MixColumns>:
+}
+
+void MixColumns(u8 *state)
+{
+ 37c:	ff 92       	push	r15
+ 37e:	0f 93       	push	r16
+ 380:	1f 93       	push	r17
+ 382:	cf 93       	push	r28
+ 384:	df 93       	push	r29
+ 386:	00 d0       	rcall	.+0      	; 0x388 <MixColumns+0xc>
+ 388:	00 d0       	rcall	.+0      	; 0x38a <MixColumns+0xe>
+ 38a:	cd b7       	in	r28, 0x3d	; 61
+ 38c:	de b7       	in	r29, 0x3e	; 62
+ 38e:	ac 01       	movw	r20, r24
+ 390:	8c 01       	movw	r16, r24
+ 392:	00 5f       	subi	r16, 0xF0	; 240
+ 394:	1f 4f       	sbci	r17, 0xFF	; 255
+	{
+		//? 02 03 01 01
+		temp[0] = state[4 * cnt_i] ^ state[4 * cnt_i + 1]; // 02 03 에해당하는 xtime
+		temp[0] = xtime(temp[0]);
+		temp[1] = state[4 * cnt_i + 1] ^ state[4 * cnt_i + 2] ^ state[4 * cnt_i + 3]; // 1 에 해당하는 plain_txt
+		src[0] = temp[0] ^ temp[1];                                                   // 최종 src
+ 396:	0f 2e       	mov	r0, r31
+ 398:	fb e1       	ldi	r31, 0x1B	; 27
+ 39a:	ff 2e       	mov	r15, r31
+ 39c:	f0 2d       	mov	r31, r0
+ 39e:	be 01       	movw	r22, r28
+ 3a0:	6b 5f       	subi	r22, 0xFB	; 251
+ 3a2:	7f 4f       	sbci	r23, 0xFF	; 255
+	u8 temp[4];
+	u8 src[4];
+	for (int cnt_i = 0; cnt_i < 4; cnt_i++)
+	{
+		//? 02 03 01 01
+		temp[0] = state[4 * cnt_i] ^ state[4 * cnt_i + 1]; // 02 03 에해당하는 xtime
+ 3a4:	da 01       	movw	r26, r20
+ 3a6:	fc 91       	ld	r31, X
+ 3a8:	11 96       	adiw	r26, 0x01	; 1
+ 3aa:	3c 91       	ld	r19, X
+ 3ac:	11 97       	sbiw	r26, 0x01	; 1
+ 3ae:	ef 2f       	mov	r30, r31
+ 3b0:	e3 27       	eor	r30, r19
+		temp[0] = xtime(temp[0]);
+		temp[1] = state[4 * cnt_i + 1] ^ state[4 * cnt_i + 2] ^ state[4 * cnt_i + 3]; // 1 에 해당하는 plain_txt
+ 3b2:	12 96       	adiw	r26, 0x02	; 2
+ 3b4:	2c 91       	ld	r18, X
+ 3b6:	12 97       	sbiw	r26, 0x02	; 2
+ 3b8:	32 27       	eor	r19, r18
+ 3ba:	13 96       	adiw	r26, 0x03	; 3
+ 3bc:	9c 91       	ld	r25, X
+		src[0] = temp[0] ^ temp[1];                                                   // 최종 src
+ 3be:	8e 2f       	mov	r24, r30
+ 3c0:	88 1f       	adc	r24, r24
+ 3c2:	88 27       	eor	r24, r24
+ 3c4:	88 1f       	adc	r24, r24
+ 3c6:	8f 9d       	mul	r24, r15
+ 3c8:	80 2d       	mov	r24, r0
+ 3ca:	11 24       	eor	r1, r1
+ 3cc:	ae 2f       	mov	r26, r30
+ 3ce:	aa 0f       	add	r26, r26
+ 3d0:	8a 27       	eor	r24, r26
+ 3d2:	a3 2f       	mov	r26, r19
+ 3d4:	a9 27       	eor	r26, r25
+ 3d6:	8a 27       	eor	r24, r26
+ 3d8:	89 83       	std	Y+1, r24	; 0x01
+		//? 01 02 03 01
+		temp[0] = state[4 * cnt_i + 1] ^ state[4 * cnt_i + 2]; // 02 03 에해당하는 xtime
+		temp[0] = xtime(temp[0]);
+		temp[1] = state[4 * cnt_i] ^ state[4 * cnt_i + 2] ^ state[4 * cnt_i + 3]; // 1 에 해당하는 plain_txt
+		src[1] = temp[0] ^ temp[1];                                               // 최종 src
+ 3da:	83 2f       	mov	r24, r19
+ 3dc:	88 1f       	adc	r24, r24
+ 3de:	88 27       	eor	r24, r24
+ 3e0:	88 1f       	adc	r24, r24
+ 3e2:	8f 9d       	mul	r24, r15
+ 3e4:	80 2d       	mov	r24, r0
+ 3e6:	11 24       	eor	r1, r1
+ 3e8:	33 0f       	add	r19, r19
+ 3ea:	38 27       	eor	r19, r24
+ 3ec:	8f 2f       	mov	r24, r31
+ 3ee:	82 27       	eor	r24, r18
+ 3f0:	89 27       	eor	r24, r25
+ 3f2:	38 27       	eor	r19, r24
+ 3f4:	3a 83       	std	Y+2, r19	; 0x02
+		//? 01 01 02 03
+		temp[0] = state[4 * cnt_i + 2] ^ state[4 * cnt_i + 3]; // 02 03 에해당하는 xtime
+ 3f6:	82 2f       	mov	r24, r18
+ 3f8:	89 27       	eor	r24, r25
+		temp[0] = xtime(temp[0]);
+		temp[1] = state[4 * cnt_i] ^ state[4 * cnt_i + 1] ^ state[4 * cnt_i + 3]; // 1 에 해당하는 plain_txt
+		src[2] = temp[0] ^ temp[1];                                               // 최종 src
+ 3fa:	38 2f       	mov	r19, r24
+ 3fc:	33 1f       	adc	r19, r19
+ 3fe:	33 27       	eor	r19, r19
+ 400:	33 1f       	adc	r19, r19
+ 402:	3f 9d       	mul	r19, r15
+ 404:	30 2d       	mov	r19, r0
+ 406:	11 24       	eor	r1, r1
+ 408:	88 0f       	add	r24, r24
+ 40a:	83 27       	eor	r24, r19
+ 40c:	3e 2f       	mov	r19, r30
+ 40e:	39 27       	eor	r19, r25
+ 410:	83 27       	eor	r24, r19
+ 412:	8b 83       	std	Y+3, r24	; 0x03
+		//? 03 01 01 03
+		temp[0] = state[4 * cnt_i] ^ state[4 * cnt_i + 3]; // 02 03 에해당하는 xtime
+ 414:	9f 27       	eor	r25, r31
+		temp[0] = xtime(temp[0]);
+		temp[1] = state[4 * cnt_i] ^ state[4 * cnt_i + 1] ^ state[4 * cnt_i + 2];
+		src[3] = temp[0] ^ temp[1]; // 최종 src
+ 416:	89 2f       	mov	r24, r25
+ 418:	88 1f       	adc	r24, r24
+ 41a:	88 27       	eor	r24, r24
+ 41c:	88 1f       	adc	r24, r24
+ 41e:	8f 9d       	mul	r24, r15
+ 420:	80 2d       	mov	r24, r0
+ 422:	11 24       	eor	r1, r1
+ 424:	99 0f       	add	r25, r25
+ 426:	98 27       	eor	r25, r24
+ 428:	2e 27       	eor	r18, r30
+ 42a:	92 27       	eor	r25, r18
+ 42c:	9c 83       	std	Y+4, r25	; 0x04
+ 42e:	fe 01       	movw	r30, r28
+ 430:	31 96       	adiw	r30, 0x01	; 1
+ 432:	da 01       	movw	r26, r20
+
+		for (int cnt_j = 0; cnt_j < 4; cnt_j++)
+		{
+			state[4 * cnt_i + cnt_j] = src[cnt_j];
+ 434:	81 91       	ld	r24, Z+
+ 436:	8d 93       	st	X+, r24
+		temp[0] = state[4 * cnt_i] ^ state[4 * cnt_i + 3]; // 02 03 에해당하는 xtime
+		temp[0] = xtime(temp[0]);
+		temp[1] = state[4 * cnt_i] ^ state[4 * cnt_i + 1] ^ state[4 * cnt_i + 2];
+		src[3] = temp[0] ^ temp[1]; // 최종 src
+
+		for (int cnt_j = 0; cnt_j < 4; cnt_j++)
+ 438:	e6 17       	cp	r30, r22
+ 43a:	f7 07       	cpc	r31, r23
+ 43c:	d9 f7       	brne	.-10     	; 0x434 <__LOCK_REGION_LENGTH__+0x34>
+ 43e:	4c 5f       	subi	r20, 0xFC	; 252
+ 440:	5f 4f       	sbci	r21, 0xFF	; 255
+
+void MixColumns(u8 *state)
+{
+	u8 temp[4];
+	u8 src[4];
+	for (int cnt_i = 0; cnt_i < 4; cnt_i++)
+ 442:	40 17       	cp	r20, r16
+ 444:	51 07       	cpc	r21, r17
+ 446:	09 f0       	breq	.+2      	; 0x44a <__LOCK_REGION_LENGTH__+0x4a>
+ 448:	ad cf       	rjmp	.-166    	; 0x3a4 <MixColumns+0x28>
+		for (int cnt_j = 0; cnt_j < 4; cnt_j++)
+		{
+			state[4 * cnt_i + cnt_j] = src[cnt_j];
+		}
+	}
+}
+ 44a:	0f 90       	pop	r0
+ 44c:	0f 90       	pop	r0
+ 44e:	0f 90       	pop	r0
+ 450:	0f 90       	pop	r0
+ 452:	df 91       	pop	r29
+ 454:	cf 91       	pop	r28
+ 456:	1f 91       	pop	r17
+ 458:	0f 91       	pop	r16
+ 45a:	ff 90       	pop	r15
+ 45c:	08 95       	ret
+
+0000045e <AddRoundKey>:
+
+void AddRoundKey(u8 *state, u8* rdkey)
+{
+ 45e:	db 01       	movw	r26, r22
+ 460:	fc 01       	movw	r30, r24
+ 462:	ac 01       	movw	r20, r24
+ 464:	40 5f       	subi	r20, 0xF0	; 240
+ 466:	5f 4f       	sbci	r21, 0xFF	; 255
+	int cnt_i;
+	for (cnt_i = 0; cnt_i < 16; cnt_i++)
+	{
+		state[cnt_i] ^= rdkey[cnt_i];
+ 468:	9d 91       	ld	r25, X+
+ 46a:	20 81       	ld	r18, Z
+ 46c:	92 27       	eor	r25, r18
+ 46e:	91 93       	st	Z+, r25
+}
+
+void AddRoundKey(u8 *state, u8* rdkey)
+{
+	int cnt_i;
+	for (cnt_i = 0; cnt_i < 16; cnt_i++)
+ 470:	e4 17       	cp	r30, r20
+ 472:	f5 07       	cpc	r31, r21
+ 474:	c9 f7       	brne	.-14     	; 0x468 <AddRoundKey+0xa>
+	{
+		state[cnt_i] ^= rdkey[cnt_i];
+	}
+}
+ 476:	08 95       	ret
+
+00000478 <keyScheduling>:
+
+
+void keyScheduling(u8* roundkey,u8* Rcon, u8* sbox,u8* round)
+{
+ 478:	ef 92       	push	r14
+ 47a:	ff 92       	push	r15
+ 47c:	0f 93       	push	r16
+ 47e:	1f 93       	push	r17
+ 480:	cf 93       	push	r28
+ 482:	df 93       	push	r29
+ 484:	cd b7       	in	r28, 0x3d	; 61
+ 486:	de b7       	in	r29, 0x3e	; 62
+ 488:	64 97       	sbiw	r28, 0x14	; 20
+ 48a:	0f b6       	in	r0, 0x3f	; 63
+ 48c:	f8 94       	cli
+ 48e:	de bf       	out	0x3e, r29	; 62
+ 490:	0f be       	out	0x3f, r0	; 63
+ 492:	cd bf       	out	0x3d, r28	; 61
+ 494:	dc 01       	movw	r26, r24
+	volatile u8 cnt_i = 0x00;
+ 496:	19 82       	std	Y+1, r1	; 0x01
+	volatile u8 temp2[16] = {0x00};
+ 498:	8e 01       	movw	r16, r28
+ 49a:	0e 5f       	subi	r16, 0xFE	; 254
+ 49c:	1f 4f       	sbci	r17, 0xFF	; 255
+ 49e:	80 e1       	ldi	r24, 0x10	; 16
+ 4a0:	f8 01       	movw	r30, r16
+ 4a2:	11 92       	st	Z+, r1
+ 4a4:	8a 95       	dec	r24
+ 4a6:	e9 f7       	brne	.-6      	; 0x4a2 <keyScheduling+0x2a>
+	volatile u8 a,b,c,d;
+		
+	cnt_i = roundkey[12];
+ 4a8:	1c 96       	adiw	r26, 0x0c	; 12
+ 4aa:	ec 90       	ld	r14, X
+ 4ac:	1c 97       	sbiw	r26, 0x0c	; 12
+ 4ae:	e9 82       	std	Y+1, r14	; 0x01
+	a = roundkey[13];
+ 4b0:	1d 96       	adiw	r26, 0x0d	; 13
+ 4b2:	fc 90       	ld	r15, X
+ 4b4:	1d 97       	sbiw	r26, 0x0d	; 13
+ 4b6:	fa 8a       	std	Y+18, r15	; 0x12
+	b = roundkey[14];
+ 4b8:	1e 96       	adiw	r26, 0x0e	; 14
+ 4ba:	0c 91       	ld	r16, X
+ 4bc:	1e 97       	sbiw	r26, 0x0e	; 14
+ 4be:	0b 8b       	std	Y+19, r16	; 0x13
+	c = roundkey[15];
+ 4c0:	1f 96       	adiw	r26, 0x0f	; 15
+ 4c2:	1c 91       	ld	r17, X
+ 4c4:	1f 97       	sbiw	r26, 0x0f	; 15
+ 4c6:	1c 8b       	std	Y+20, r17	; 0x14
+	
+	temp2[12] = pgm_read_byte(sbox+a);
+ 4c8:	8a 89       	ldd	r24, Y+18	; 0x12
+ 4ca:	fa 01       	movw	r30, r20
+ 4cc:	e8 0f       	add	r30, r24
+ 4ce:	f1 1d       	adc	r31, r1
+ 4d0:	e4 91       	lpm	r30, Z
+ 4d2:	ee 87       	std	Y+14, r30	; 0x0e
+	temp2[13] = pgm_read_byte(sbox+b);
+ 4d4:	8b 89       	ldd	r24, Y+19	; 0x13
+ 4d6:	fa 01       	movw	r30, r20
+ 4d8:	e8 0f       	add	r30, r24
+ 4da:	f1 1d       	adc	r31, r1
+ 4dc:	e4 91       	lpm	r30, Z
+ 4de:	ef 87       	std	Y+15, r30	; 0x0f
+	temp2[14] = pgm_read_byte(sbox+c);
+ 4e0:	8c 89       	ldd	r24, Y+20	; 0x14
+ 4e2:	fa 01       	movw	r30, r20
+ 4e4:	e8 0f       	add	r30, r24
+ 4e6:	f1 1d       	adc	r31, r1
+ 4e8:	e4 91       	lpm	r30, Z
+ 4ea:	e8 8b       	std	Y+16, r30	; 0x10
+	temp2[15] = pgm_read_byte(sbox+ cnt_i);
+ 4ec:	89 81       	ldd	r24, Y+1	; 0x01
+ 4ee:	fa 01       	movw	r30, r20
+ 4f0:	e8 0f       	add	r30, r24
+ 4f2:	f1 1d       	adc	r31, r1
+ 4f4:	44 91       	lpm	r20, Z
+ 4f6:	49 8b       	std	Y+17, r20	; 0x11
+	
+	a = *round;
+ 4f8:	f9 01       	movw	r30, r18
+ 4fa:	80 81       	ld	r24, Z
+ 4fc:	8a 8b       	std	Y+18, r24	; 0x12
+	cnt_i = pgm_read_byte(Rcon + a);
+ 4fe:	9a 89       	ldd	r25, Y+18	; 0x12
+ 500:	fb 01       	movw	r30, r22
+ 502:	e9 0f       	add	r30, r25
+ 504:	f1 1d       	adc	r31, r1
+ 506:	64 91       	lpm	r22, Z
+ 508:	69 83       	std	Y+1, r22	; 0x01
+	temp2[0] = temp2[12]^cnt_i^roundkey[0];
+ 50a:	4e 85       	ldd	r20, Y+14	; 0x0e
+ 50c:	99 81       	ldd	r25, Y+1	; 0x01
+ 50e:	94 27       	eor	r25, r20
+ 510:	4c 91       	ld	r20, X
+ 512:	94 27       	eor	r25, r20
+ 514:	9a 83       	std	Y+2, r25	; 0x02
+	temp2[1] = temp2[13]^roundkey[1];
+ 516:	4f 85       	ldd	r20, Y+15	; 0x0f
+ 518:	11 96       	adiw	r26, 0x01	; 1
+ 51a:	9c 91       	ld	r25, X
+ 51c:	11 97       	sbiw	r26, 0x01	; 1
+ 51e:	94 27       	eor	r25, r20
+ 520:	9b 83       	std	Y+3, r25	; 0x03
+	temp2[2] = temp2[14]^roundkey[2];
+ 522:	48 89       	ldd	r20, Y+16	; 0x10
+ 524:	12 96       	adiw	r26, 0x02	; 2
+ 526:	9c 91       	ld	r25, X
+ 528:	12 97       	sbiw	r26, 0x02	; 2
+ 52a:	94 27       	eor	r25, r20
+ 52c:	9c 83       	std	Y+4, r25	; 0x04
+	temp2[3] = temp2[15]^roundkey[3];
+ 52e:	49 89       	ldd	r20, Y+17	; 0x11
+ 530:	13 96       	adiw	r26, 0x03	; 3
+ 532:	9c 91       	ld	r25, X
+ 534:	13 97       	sbiw	r26, 0x03	; 3
+ 536:	94 27       	eor	r25, r20
+ 538:	9d 83       	std	Y+5, r25	; 0x05
+	
+	temp2[4] = temp2[0]^roundkey[4];
+ 53a:	4a 81       	ldd	r20, Y+2	; 0x02
+ 53c:	14 96       	adiw	r26, 0x04	; 4
+ 53e:	9c 91       	ld	r25, X
+ 540:	14 97       	sbiw	r26, 0x04	; 4
+ 542:	94 27       	eor	r25, r20
+ 544:	9e 83       	std	Y+6, r25	; 0x06
+	temp2[5] = temp2[1]^roundkey[5];
+ 546:	4b 81       	ldd	r20, Y+3	; 0x03
+ 548:	15 96       	adiw	r26, 0x05	; 5
+ 54a:	9c 91       	ld	r25, X
+ 54c:	15 97       	sbiw	r26, 0x05	; 5
+ 54e:	94 27       	eor	r25, r20
+ 550:	9f 83       	std	Y+7, r25	; 0x07
+	temp2[6] = temp2[2]^roundkey[6];
+ 552:	4c 81       	ldd	r20, Y+4	; 0x04
+ 554:	16 96       	adiw	r26, 0x06	; 6
+ 556:	9c 91       	ld	r25, X
+ 558:	16 97       	sbiw	r26, 0x06	; 6
+ 55a:	94 27       	eor	r25, r20
+ 55c:	98 87       	std	Y+8, r25	; 0x08
+	temp2[7] = temp2[3]^roundkey[7];
+ 55e:	4d 81       	ldd	r20, Y+5	; 0x05
+ 560:	17 96       	adiw	r26, 0x07	; 7
+ 562:	9c 91       	ld	r25, X
+ 564:	17 97       	sbiw	r26, 0x07	; 7
+ 566:	94 27       	eor	r25, r20
+ 568:	99 87       	std	Y+9, r25	; 0x09
+	
+	temp2[8] = temp2[4]^roundkey[8];
+ 56a:	4e 81       	ldd	r20, Y+6	; 0x06
+ 56c:	18 96       	adiw	r26, 0x08	; 8
+ 56e:	9c 91       	ld	r25, X
+ 570:	18 97       	sbiw	r26, 0x08	; 8
+ 572:	94 27       	eor	r25, r20
+ 574:	9a 87       	std	Y+10, r25	; 0x0a
+	temp2[9] = temp2[5]^roundkey[9];
+ 576:	4f 81       	ldd	r20, Y+7	; 0x07
+ 578:	19 96       	adiw	r26, 0x09	; 9
+ 57a:	9c 91       	ld	r25, X
+ 57c:	19 97       	sbiw	r26, 0x09	; 9
+ 57e:	94 27       	eor	r25, r20
+ 580:	9b 87       	std	Y+11, r25	; 0x0b
+	temp2[10] = temp2[6]^roundkey[10];
+ 582:	78 85       	ldd	r23, Y+8	; 0x08
+ 584:	1a 96       	adiw	r26, 0x0a	; 10
+ 586:	9c 91       	ld	r25, X
+ 588:	1a 97       	sbiw	r26, 0x0a	; 10
+ 58a:	79 27       	eor	r23, r25
+ 58c:	7c 87       	std	Y+12, r23	; 0x0c
+	temp2[11] = temp2[7]^roundkey[11];
+ 58e:	99 85       	ldd	r25, Y+9	; 0x09
+ 590:	1b 96       	adiw	r26, 0x0b	; 11
+ 592:	7c 91       	ld	r23, X
+ 594:	1b 97       	sbiw	r26, 0x0b	; 11
+ 596:	79 27       	eor	r23, r25
+ 598:	7d 87       	std	Y+13, r23	; 0x0d
+	
+	temp2[12] = temp2[8]^roundkey[12];
+ 59a:	6a 85       	ldd	r22, Y+10	; 0x0a
+ 59c:	6e 25       	eor	r22, r14
+ 59e:	6e 87       	std	Y+14, r22	; 0x0e
+	temp2[13] = temp2[9]^roundkey[13];
+ 5a0:	5b 85       	ldd	r21, Y+11	; 0x0b
+ 5a2:	5f 25       	eor	r21, r15
+ 5a4:	5f 87       	std	Y+15, r21	; 0x0f
+	temp2[14] = temp2[10]^roundkey[14];
+ 5a6:	4c 85       	ldd	r20, Y+12	; 0x0c
+ 5a8:	40 27       	eor	r20, r16
+ 5aa:	48 8b       	std	Y+16, r20	; 0x10
+	temp2[15] = temp2[11]^roundkey[15];
+ 5ac:	9d 85       	ldd	r25, Y+13	; 0x0d
+ 5ae:	91 27       	eor	r25, r17
+ 5b0:	99 8b       	std	Y+17, r25	; 0x11
+	*round = *round + 1;
+ 5b2:	8f 5f       	subi	r24, 0xFF	; 255
+ 5b4:	f9 01       	movw	r30, r18
+ 5b6:	80 83       	st	Z, r24
+	for(cnt_i = 0 ; cnt_i <16; cnt_i++)
+ 5b8:	19 82       	std	Y+1, r1	; 0x01
+ 5ba:	89 81       	ldd	r24, Y+1	; 0x01
+ 5bc:	80 31       	cpi	r24, 0x10	; 16
+ 5be:	98 f4       	brcc	.+38     	; 0x5e6 <keyScheduling+0x16e>
+	{
+		roundkey[cnt_i] = temp2[cnt_i];
+ 5c0:	99 81       	ldd	r25, Y+1	; 0x01
+ 5c2:	89 81       	ldd	r24, Y+1	; 0x01
+ 5c4:	e2 e0       	ldi	r30, 0x02	; 2
+ 5c6:	f0 e0       	ldi	r31, 0x00	; 0
+ 5c8:	ec 0f       	add	r30, r28
+ 5ca:	fd 1f       	adc	r31, r29
+ 5cc:	e8 0f       	add	r30, r24
+ 5ce:	f1 1d       	adc	r31, r1
+ 5d0:	80 81       	ld	r24, Z
+ 5d2:	fd 01       	movw	r30, r26
+ 5d4:	e9 0f       	add	r30, r25
+ 5d6:	f1 1d       	adc	r31, r1
+ 5d8:	80 83       	st	Z, r24
+	temp2[12] = temp2[8]^roundkey[12];
+	temp2[13] = temp2[9]^roundkey[13];
+	temp2[14] = temp2[10]^roundkey[14];
+	temp2[15] = temp2[11]^roundkey[15];
+	*round = *round + 1;
+	for(cnt_i = 0 ; cnt_i <16; cnt_i++)
+ 5da:	99 81       	ldd	r25, Y+1	; 0x01
+ 5dc:	9f 5f       	subi	r25, 0xFF	; 255
+ 5de:	99 83       	std	Y+1, r25	; 0x01
+ 5e0:	89 81       	ldd	r24, Y+1	; 0x01
+ 5e2:	80 31       	cpi	r24, 0x10	; 16
+ 5e4:	68 f3       	brcs	.-38     	; 0x5c0 <keyScheduling+0x148>
+	{
+		roundkey[cnt_i] = temp2[cnt_i];
+	}
+}
+ 5e6:	64 96       	adiw	r28, 0x14	; 20
+ 5e8:	0f b6       	in	r0, 0x3f	; 63
+ 5ea:	f8 94       	cli
+ 5ec:	de bf       	out	0x3e, r29	; 62
+ 5ee:	0f be       	out	0x3f, r0	; 63
+ 5f0:	cd bf       	out	0x3d, r28	; 61
+ 5f2:	df 91       	pop	r29
+ 5f4:	cf 91       	pop	r28
+ 5f6:	1f 91       	pop	r17
+ 5f8:	0f 91       	pop	r16
+ 5fa:	ff 90       	pop	r15
+ 5fc:	ef 90       	pop	r14
+ 5fe:	08 95       	ret
+
+00000600 <AES_encrypt>:
+
+void AES_encrypt(u8* inp, u8* out, u8* usrkey,u8* sbox, u8* rcon)
+{
+ 600:	7f 92       	push	r7
+ 602:	8f 92       	push	r8
+ 604:	9f 92       	push	r9
+ 606:	af 92       	push	r10
+ 608:	bf 92       	push	r11
+ 60a:	cf 92       	push	r12
+ 60c:	df 92       	push	r13
+ 60e:	ef 92       	push	r14
+ 610:	ff 92       	push	r15
+ 612:	0f 93       	push	r16
+ 614:	1f 93       	push	r17
+ 616:	cf 93       	push	r28
+ 618:	df 93       	push	r29
+ 61a:	cd b7       	in	r28, 0x3d	; 61
+ 61c:	de b7       	in	r29, 0x3e	; 62
+ 61e:	a1 97       	sbiw	r28, 0x21	; 33
+ 620:	0f b6       	in	r0, 0x3f	; 63
+ 622:	f8 94       	cli
+ 624:	de bf       	out	0x3e, r29	; 62
+ 626:	0f be       	out	0x3f, r0	; 63
+ 628:	cd bf       	out	0x3d, r28	; 61
+ 62a:	86 2e       	mov	r8, r22
+ 62c:	97 2e       	mov	r9, r23
+ 62e:	59 01       	movw	r10, r18
+	u8 state[16];
+	u8 cnt_i;
+	u8 round = 0;
+ 630:	19 8a       	std	Y+17, r1	; 0x11
+	u8 roundkey[16] = {0x00};
+ 632:	de 01       	movw	r26, r28
+ 634:	52 96       	adiw	r26, 0x12	; 18
+ 636:	20 e1       	ldi	r18, 0x10	; 16
+ 638:	fd 01       	movw	r30, r26
+ 63a:	11 92       	st	Z+, r1
+ 63c:	2a 95       	dec	r18
+ 63e:	e9 f7       	brne	.-6      	; 0x63a <AES_encrypt+0x3a>
+ 640:	9e 01       	movw	r18, r28
+ 642:	2f 5f       	subi	r18, 0xFF	; 255
+ 644:	3f 4f       	sbci	r19, 0xFF	; 255
+ 646:	79 01       	movw	r14, r18
+ 648:	24 2f       	mov	r18, r20
+ 64a:	35 2f       	mov	r19, r21
+ 64c:	bd 01       	movw	r22, r26
+ 64e:	6e 01       	movw	r12, r28
+ 650:	41 e1       	ldi	r20, 0x11	; 17
+ 652:	c4 0e       	add	r12, r20
+ 654:	d1 1c       	adc	r13, r1
+ 656:	f7 01       	movw	r30, r14
+
+	for (cnt_i = 0; cnt_i < 16; cnt_i++)
+	{
+		state[cnt_i] = inp[cnt_i];
+ 658:	dc 01       	movw	r26, r24
+ 65a:	4d 91       	ld	r20, X+
+ 65c:	cd 01       	movw	r24, r26
+ 65e:	41 93       	st	Z+, r20
+		roundkey[cnt_i] = usrkey[cnt_i];
+ 660:	d9 01       	movw	r26, r18
+ 662:	4d 91       	ld	r20, X+
+ 664:	9d 01       	movw	r18, r26
+ 666:	db 01       	movw	r26, r22
+ 668:	4d 93       	st	X+, r20
+ 66a:	bd 01       	movw	r22, r26
+	u8 state[16];
+	u8 cnt_i;
+	u8 round = 0;
+	u8 roundkey[16] = {0x00};
+
+	for (cnt_i = 0; cnt_i < 16; cnt_i++)
+ 66c:	ec 15       	cp	r30, r12
+ 66e:	fd 05       	cpc	r31, r13
+ 670:	99 f7       	brne	.-26     	; 0x658 <AES_encrypt+0x58>
+	{
+		state[cnt_i] = inp[cnt_i];
+		roundkey[cnt_i] = usrkey[cnt_i];
+	}
+
+	AddRoundKey(state, roundkey);
+ 672:	be 01       	movw	r22, r28
+ 674:	6e 5e       	subi	r22, 0xEE	; 238
+ 676:	7f 4f       	sbci	r23, 0xFF	; 255
+ 678:	ce 01       	movw	r24, r28
+ 67a:	01 96       	adiw	r24, 0x01	; 1
+ 67c:	f0 de       	rcall	.-544    	; 0x45e <AddRoundKey>
+	keyScheduling(roundkey,rcon, sbox,&round);
+ 67e:	9e 01       	movw	r18, r28
+ 680:	2f 5e       	subi	r18, 0xEF	; 239
+ 682:	3f 4f       	sbci	r19, 0xFF	; 255
+ 684:	a5 01       	movw	r20, r10
+ 686:	b8 01       	movw	r22, r16
+ 688:	ce 01       	movw	r24, r28
+ 68a:	42 96       	adiw	r24, 0x12	; 18
+ 68c:	f5 de       	rcall	.-534    	; 0x478 <keyScheduling>
+ 68e:	0f 2e       	mov	r0, r31
+ 690:	f9 e0       	ldi	r31, 0x09	; 9
+ 692:	7f 2e       	mov	r7, r31
+ 694:	f0 2d       	mov	r31, r0
+
+	for (cnt_i = 1; cnt_i < AES_MAXNR; cnt_i++)
+	{
+		SubByte(state,sbox);
+ 696:	b5 01       	movw	r22, r10
+ 698:	ce 01       	movw	r24, r28
+ 69a:	01 96       	adiw	r24, 0x01	; 1
+ 69c:	47 de       	rcall	.-882    	; 0x32c <SubByte>
+		ShiftRow(state);
+ 69e:	ce 01       	movw	r24, r28
+ 6a0:	01 96       	adiw	r24, 0x01	; 1
+ 6a2:	52 de       	rcall	.-860    	; 0x348 <ShiftRow>
+		MixColumns(state);
+ 6a4:	ce 01       	movw	r24, r28
+ 6a6:	01 96       	adiw	r24, 0x01	; 1
+ 6a8:	69 de       	rcall	.-814    	; 0x37c <MixColumns>
+ 6aa:	be 01       	movw	r22, r28
+		AddRoundKey(state, roundkey);
+ 6ac:	6e 5e       	subi	r22, 0xEE	; 238
+ 6ae:	7f 4f       	sbci	r23, 0xFF	; 255
+ 6b0:	ce 01       	movw	r24, r28
+ 6b2:	01 96       	adiw	r24, 0x01	; 1
+ 6b4:	d4 de       	rcall	.-600    	; 0x45e <AddRoundKey>
+ 6b6:	9e 01       	movw	r18, r28
+		keyScheduling(roundkey,rcon, sbox,&round);
+ 6b8:	2f 5e       	subi	r18, 0xEF	; 239
+ 6ba:	3f 4f       	sbci	r19, 0xFF	; 255
+ 6bc:	a5 01       	movw	r20, r10
+ 6be:	b8 01       	movw	r22, r16
+ 6c0:	ce 01       	movw	r24, r28
+ 6c2:	42 96       	adiw	r24, 0x12	; 18
+ 6c4:	d9 de       	rcall	.-590    	; 0x478 <keyScheduling>
+ 6c6:	7a 94       	dec	r7
+	}
+
+	AddRoundKey(state, roundkey);
+	keyScheduling(roundkey,rcon, sbox,&round);
+
+	for (cnt_i = 1; cnt_i < AES_MAXNR; cnt_i++)
+ 6c8:	71 10       	cpse	r7, r1
+		AddRoundKey(state, roundkey);
+		keyScheduling(roundkey,rcon, sbox,&round);
+
+	}
+	
+	SubByte(state,sbox);
+ 6ca:	e5 cf       	rjmp	.-54     	; 0x696 <AES_encrypt+0x96>
+ 6cc:	b5 01       	movw	r22, r10
+ 6ce:	ce 01       	movw	r24, r28
+ 6d0:	01 96       	adiw	r24, 0x01	; 1
+ 6d2:	2c de       	rcall	.-936    	; 0x32c <SubByte>
+	ShiftRow(state);
+ 6d4:	ce 01       	movw	r24, r28
+ 6d6:	01 96       	adiw	r24, 0x01	; 1
+ 6d8:	37 de       	rcall	.-914    	; 0x348 <ShiftRow>
+	AddRoundKey(state, roundkey);
+ 6da:	be 01       	movw	r22, r28
+ 6dc:	6e 5e       	subi	r22, 0xEE	; 238
+ 6de:	7f 4f       	sbci	r23, 0xFF	; 255
+ 6e0:	ce 01       	movw	r24, r28
+ 6e2:	01 96       	adiw	r24, 0x01	; 1
+ 6e4:	bc de       	rcall	.-648    	; 0x45e <AddRoundKey>
+ 6e6:	e8 2d       	mov	r30, r8
+ 6e8:	f9 2d       	mov	r31, r9
+ 6ea:	d7 01       	movw	r26, r14
+
+	for (cnt_i = 0; cnt_i < 4 * Nb; cnt_i++)
+	{
+		out[cnt_i] = state[cnt_i];
+ 6ec:	8d 91       	ld	r24, X+
+ 6ee:	7d 01       	movw	r14, r26
+ 6f0:	81 93       	st	Z+, r24
+ 6f2:	ac 15       	cp	r26, r12
+	
+	SubByte(state,sbox);
+	ShiftRow(state);
+	AddRoundKey(state, roundkey);
+
+	for (cnt_i = 0; cnt_i < 4 * Nb; cnt_i++)
+ 6f4:	bd 05       	cpc	r27, r13
+ 6f6:	c9 f7       	brne	.-14     	; 0x6ea <AES_encrypt+0xea>
+ 6f8:	a1 96       	adiw	r28, 0x21	; 33
+	{
+		out[cnt_i] = state[cnt_i];
+	}
+}
+ 6fa:	0f b6       	in	r0, 0x3f	; 63
+ 6fc:	f8 94       	cli
+ 6fe:	de bf       	out	0x3e, r29	; 62
+ 700:	0f be       	out	0x3f, r0	; 63
+ 702:	cd bf       	out	0x3d, r28	; 61
+ 704:	df 91       	pop	r29
+ 706:	cf 91       	pop	r28
+ 708:	1f 91       	pop	r17
+ 70a:	0f 91       	pop	r16
+ 70c:	ff 90       	pop	r15
+ 70e:	ef 90       	pop	r14
+ 710:	df 90       	pop	r13
+ 712:	cf 90       	pop	r12
+ 714:	bf 90       	pop	r11
+ 716:	af 90       	pop	r10
+ 718:	9f 90       	pop	r9
+ 71a:	8f 90       	pop	r8
+ 71c:	7f 90       	pop	r7
+ 71e:	08 95       	ret
+
+00000720 <main>:
+	0xe1, 0xf8, 0x98, 0x11, 0x69, 0xd9, 0x8e, 0x94, 0x9b, 0x1e, 0x87, 0xe9, 0xce, 0x55, 0x28, 0xdf,
+0x8c, 0xa1, 0x89, 0x0d, 0xbf, 0xe6, 0x42, 0x68, 0x41, 0x99, 0x2d, 0x0f, 0xb0, 0x54, 0xbb, 0x16};
+
+
+int main(void)
+{
+ 720:	0f 93       	push	r16
+ 722:	1f 93       	push	r17
+ 724:	cf 93       	push	r28
+ 726:	df 93       	push	r29
+ 728:	cd b7       	in	r28, 0x3d	; 61
+ 72a:	de b7       	in	r29, 0x3e	; 62
+ 72c:	e0 97       	sbiw	r28, 0x30	; 48
+ 72e:	0f b6       	in	r0, 0x3f	; 63
+ 730:	f8 94       	cli
+ 732:	de bf       	out	0x3e, r29	; 62
+ 734:	0f be       	out	0x3f, r0	; 63
+ 736:	cd bf       	out	0x3d, r28	; 61
+	
+ 	 u8 inp[16] = {0x32,0x43,0xf6,0xa8,0x88,0x5a,0x30,0x8d,0x31,0x31,0x98,0xa2,0xe0,0x37,0x07,0x34};
+ 738:	80 e1       	ldi	r24, 0x10	; 16
+ 73a:	e0 e0       	ldi	r30, 0x00	; 0
+ 73c:	f1 e0       	ldi	r31, 0x01	; 1
+ 73e:	de 01       	movw	r26, r28
+ 740:	11 96       	adiw	r26, 0x01	; 1
+ 742:	01 90       	ld	r0, Z+
+ 744:	0d 92       	st	X+, r0
+ 746:	8a 95       	dec	r24
+ 748:	e1 f7       	brne	.-8      	; 0x742 <main+0x22>
+ 	 u8 userkey[16] = {0x2b,0x7e,0x15,0x16,0x28,0xae,0xd2,0xa6,0xab,0xf7,0x15,0x88,0x09,0xcf,0x4f,0x3c};
+ 74a:	80 e1       	ldi	r24, 0x10	; 16
+ 74c:	e0 e1       	ldi	r30, 0x10	; 16
+ 74e:	f1 e0       	ldi	r31, 0x01	; 1
+ 750:	de 01       	movw	r26, r28
+ 752:	51 96       	adiw	r26, 0x11	; 17
+ 754:	01 90       	ld	r0, Z+
+ 756:	0d 92       	st	X+, r0
+ 758:	8a 95       	dec	r24
+ 75a:	e1 f7       	brne	.-8      	; 0x754 <main+0x34>
+
+	 //u8 inp[16 * BLOCKSIZE] ={0x00};
+	 u8 out[16 * BLOCKSIZE] = {0x00};
+ 75c:	be 01       	movw	r22, r28
+ 75e:	6f 5d       	subi	r22, 0xDF	; 223
+ 760:	7f 4f       	sbci	r23, 0xFF	; 255
+ 762:	80 e1       	ldi	r24, 0x10	; 16
+ 764:	fb 01       	movw	r30, r22
+ 766:	11 92       	st	Z+, r1
+ 768:	8a 95       	dec	r24
+ 76a:	e9 f7       	brne	.-6      	; 0x766 <main+0x46>
+	//Make_LUT_Face_Light(LUT_FL,userkey,count,sbox,Rcon);
+	//CRYPTO_ctr128_encrypt_FACE_Light(inp,out,LUT_FL,AES_KEY_BIT,userkey,count,sbox,Rcon);
+	
+	//CRYPTO_ctr128_encrypt(inp,out,AES_KEY_BIT,userkey,count,sbox,Rcon);	
+	
+	AES_encrypt(inp,out,userkey,sbox,Rcon);
+ 76c:	00 e0       	ldi	r16, 0x00	; 0
+ 76e:	12 e0       	ldi	r17, 0x02	; 2
+ 770:	20 e0       	ldi	r18, 0x00	; 0
+ 772:	31 e0       	ldi	r19, 0x01	; 1
+ 774:	ae 01       	movw	r20, r28
+ 776:	4f 5e       	subi	r20, 0xEF	; 239
+ 778:	5f 4f       	sbci	r21, 0xFF	; 255
+ 77a:	ce 01       	movw	r24, r28
+ 77c:	01 96       	adiw	r24, 0x01	; 1
+ 77e:	40 df       	rcall	.-384    	; 0x600 <AES_encrypt>
+	//AES_encrypt_asm(inp,out,userkey,sbox,Rcon);
+
+
+	
+}
+ 780:	80 e0       	ldi	r24, 0x00	; 0
+ 782:	90 e0       	ldi	r25, 0x00	; 0
+ 784:	e0 96       	adiw	r28, 0x30	; 48
+ 786:	0f b6       	in	r0, 0x3f	; 63
+ 788:	f8 94       	cli
+ 78a:	de bf       	out	0x3e, r29	; 62
+ 78c:	0f be       	out	0x3f, r0	; 63
+ 78e:	cd bf       	out	0x3d, r28	; 61
+ 790:	df 91       	pop	r29
+ 792:	cf 91       	pop	r28
+ 794:	1f 91       	pop	r17
+ 796:	0f 91       	pop	r16
+ 798:	08 95       	ret
+
+0000079a <_exit>:
+ 79a:	f8 94       	cli
+
+0000079c <__stop_program>:
+ 79c:	ff cf       	rjmp	.-2      	; 0x79c <__stop_program>

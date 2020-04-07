@@ -2,11 +2,9 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-AES_fun.c
+func.c
+
+function.s
 
 main.c
-
-MixColumns.s
-
-Subbyte_ShiftRow.s
 

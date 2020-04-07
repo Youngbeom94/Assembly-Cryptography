@@ -4,14 +4,16 @@
 * Created: 2020-03-25 오전 11:22:41
 *  Author: 김영범
 */
- #include "AES_header.h"
+#include "header.h"
 
 void SubByte(u8 *state, u8* sbox)
 {
 	u8 cnt_i;
+	u8 temp = 0;
 	for (cnt_i = 0; cnt_i < 16; cnt_i++)
 	{
-		*(state + cnt_i) = sbox[state[cnt_i]]; //sbox를 이용해 치환하기
+		temp = state[cnt_i];
+		state[cnt_i] = pgm_read_byte(sbox+temp); //sbox를 이용해 치환하기
 	}
 }
 
@@ -84,15 +86,23 @@ void AddRoundKey(u8 *state, u8* rdkey)
 
 void keyScheduling(u8* roundkey,u8* Rcon, u8* sbox,u8* round)
 {
-	u8 cnt_i = 0x00;
-	u8 temp2[16] = {0x00};
+	volatile u8 cnt_i = 0x00;
+	volatile u8 temp2[16] = {0x00};
+	volatile u8 a,b,c,d;
+		
 	cnt_i = roundkey[12];
-	temp2[12] = sbox[roundkey[13]];
-	temp2[13] = sbox[roundkey[14]];
-	temp2[14] = sbox[roundkey[15]];
-	temp2[15] = sbox[cnt_i];
+	a = roundkey[13];
+	b = roundkey[14];
+	c = roundkey[15];
 	
-	temp2[0] = temp2[12]^Rcon[*round]^roundkey[0];
+	temp2[12] = pgm_read_byte(sbox+a);
+	temp2[13] = pgm_read_byte(sbox+b);
+	temp2[14] = pgm_read_byte(sbox+c);
+	temp2[15] = pgm_read_byte(sbox+ cnt_i);
+	
+	a = *round;
+	cnt_i = pgm_read_byte(Rcon + a);
+	temp2[0] = temp2[12]^cnt_i^roundkey[0];
 	temp2[1] = temp2[13]^roundkey[1];
 	temp2[2] = temp2[14]^roundkey[2];
 	temp2[3] = temp2[15]^roundkey[3];
@@ -318,7 +328,7 @@ void Make_LUT_Face_Light(u8 LUT_FL[4][4][256],u8* userkey,u8* count,u8* sbox, u8
 
 
 	reset_count(count);
-		state_copy(state, count);
+	state_copy(state, count);
 
 
 	for (volatile int16_t cnt_k = 0; cnt_k < 4; cnt_k++)
@@ -337,11 +347,11 @@ void Make_LUT_Face_Light(u8 LUT_FL[4][4][256],u8* userkey,u8* count,u8* sbox, u8
 			MixColumns(state);
 			AddRoundKey(state,roundkey);
 			keyScheduling(roundkey,rcon, sbox,&round);
-		
+			
 			SubByte(state,sbox);
-			for (cnt_j = 0; cnt_j < 4; cnt_j++)			{	
+			for (cnt_j = 0; cnt_j < 4; cnt_j++)			{
 				if (cnt_k != 3)
-					LUT_FL[cnt_k][cnt_j][cnt_i] = state[((cnt_k + 1) * 4) + cnt_j];
+				LUT_FL[cnt_k][cnt_j][cnt_i] = state[((cnt_k + 1) * 4) + cnt_j];
 				else
 				LUT_FL[cnt_k][cnt_j][cnt_i] = state[cnt_j];
 			}
@@ -533,7 +543,7 @@ void CRYPTO_ctr128_encrypt(u8* inp, u8* out, u8 len, u8* usrkey, u8* count, u8* 
 		{
 			iparray[cnt_j] = count[cnt_j];
 		}
-			AES_encrypt_asm(iparray, oparray,usrkey,sbox,rcon);
+		AES_encrypt(iparray, oparray,usrkey,sbox,rcon);
 		for (cnt_j = 0; cnt_j < 16; cnt_j++)
 		{
 			CT[cnt_i][cnt_j] = oparray[cnt_j] ^ PT[cnt_i][cnt_j];

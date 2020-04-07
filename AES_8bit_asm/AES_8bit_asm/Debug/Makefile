@@ -42,7 +42,8 @@ C_SRCS +=  \
 
 
 PREPROCESSING_SRCS +=  \
-../MixColumns.s
+../MixColumns.s \
+../Subbyte_ShiftRow.s
 
 
 ASM_SRCS += 
@@ -51,22 +52,26 @@ ASM_SRCS +=
 OBJS +=  \
 AES_fun.o \
 main.o \
-MixColumns.o
+MixColumns.o \
+Subbyte_ShiftRow.o
 
 OBJS_AS_ARGS +=  \
 AES_fun.o \
 main.o \
-MixColumns.o
+MixColumns.o \
+Subbyte_ShiftRow.o
 
 C_DEPS +=  \
 AES_fun.d \
 main.d \
-MixColumns.d
+MixColumns.d \
+Subbyte_ShiftRow.d
 
 C_DEPS_AS_ARGS +=  \
 AES_fun.d \
 main.d \
-MixColumns.d
+MixColumns.d \
+Subbyte_ShiftRow.d
 
 OUTPUT_FILE_PATH +=AES_8bit_asm.elf
 
@@ -105,6 +110,13 @@ LINKER_SCRIPT_DEP+=
 
 # AVR32/GNU Assembler
 ./MixColumns.o: .././MixColumns.s
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU Assembler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega128" -I "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -mrelax -Wa,-g   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./Subbyte_ShiftRow.o: .././Subbyte_ShiftRow.s
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU Assembler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega128" -I "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -mrelax -Wa,-g   -o "$@" "$<" 

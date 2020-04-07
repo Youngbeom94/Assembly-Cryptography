@@ -1,12 +1,14 @@
 ﻿/*
- * AES_header.h
+ * header.h
  *
- * Created: 2020-03-25 오전 11:22:13
+ * Created: 2020-04-07 오후 5:59:11
  *  Author: 김영범
- */ 
+ */
 
 #ifndef AES_HEADER_H_
 #define AES_HEADER_H_
+#define ALIGN_ZH __attribute__ ((aligned (256)))
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
