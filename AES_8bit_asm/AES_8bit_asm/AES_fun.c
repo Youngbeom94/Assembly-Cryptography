@@ -9,9 +9,11 @@
 void SubByte(u8 *state, u8* sbox)
 {
 	u8 cnt_i;
+	u8 temp = 0;
 	for (cnt_i = 0; cnt_i < 16; cnt_i++)
 	{
-		*(state + cnt_i) = sbox[state[cnt_i]]; //sbox를 이용해 치환하기
+		temp = state[cnt_i];
+		state[cnt_i] = pgm_read_byte(sbox+temp); //sbox를 이용해 치환하기
 	}
 }
 
@@ -84,15 +86,23 @@ void AddRoundKey(u8 *state, u8* rdkey)
 
 void keyScheduling(u8* roundkey,u8* Rcon, u8* sbox,u8* round)
 {
-	u8 cnt_i = 0x00;
-	u8 temp2[16] = {0x00};
-	cnt_i = roundkey[12];
-	temp2[12] = sbox[roundkey[13]];
-	temp2[13] = sbox[roundkey[14]];
-	temp2[14] = sbox[roundkey[15]];
-	temp2[15] = sbox[cnt_i];
+	volatile u8 cnt_i = 0x00;
+	volatile u8 temp2[16] = {0x00};
+	volatile u8 a,b,c;
 	
-	temp2[0] = temp2[12]^Rcon[*round]^roundkey[0];
+	cnt_i = roundkey[12];
+	a = roundkey[13];
+	b = roundkey[14];
+	c = roundkey[15];
+	
+	temp2[12] = pgm_read_byte(sbox+a);
+	temp2[13] = pgm_read_byte(sbox+b);
+	temp2[14] = pgm_read_byte(sbox+c);
+	temp2[15] = pgm_read_byte(sbox+ cnt_i);
+	
+	a = *round;
+	cnt_i = pgm_read_byte(Rcon + a);
+	temp2[0] = temp2[12]^cnt_i^roundkey[0];
 	temp2[1] = temp2[13]^roundkey[1];
 	temp2[2] = temp2[14]^roundkey[2];
 	temp2[3] = temp2[15]^roundkey[3];

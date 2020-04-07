@@ -12,19 +12,35 @@ Discarded input sections
  .text          0x00000000        0x0 AES_fun.o
  .data          0x00000000        0x0 AES_fun.o
  .bss           0x00000000        0x0 AES_fun.o
+ .text.MixColumns
+                0x00000000      0x36c AES_fun.o
  .text.AES_encrypt
                 0x00000000      0x18a AES_fun.o
- .text.AES_encrypt_asm
-                0x00000000      0x18c AES_fun.o
- .text.Count_Addition
-                0x00000000      0x11e AES_fun.o
- .text.CRYPTO_ctr128_encrypt
-                0x00000000      0x32a AES_fun.o
+ .text.state_copy
+                0x00000000       0x5e AES_fun.o
+ .text.Count_Add_for_LUT
+                0x00000000      0x312 AES_fun.o
+ .text.Count_Add_for_FACE_LIGHT
+                0x00000000      0x112 AES_fun.o
+ .text.Make_LUT_Face_Light
+                0x00000000      0x21c AES_fun.o
+ .text.AES_encrypt_FACE_Light
+                0x00000000      0x348 AES_fun.o
+ .text.CRYPTO_ctr128_encrypt_FACE_Light
+                0x00000000      0x35c AES_fun.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
  .data          0x00000000        0x0 MixColumns.o
  .bss           0x00000000        0x0 MixColumns.o
+ .text          0x00000000       0xba Subbyte_ShiftRow.o
+ .data          0x00000000        0x0 Subbyte_ShiftRow.o
+ .bss           0x00000000        0x0 Subbyte_ShiftRow.o
+ .debug_line    0x00000000      0x1dd Subbyte_ShiftRow.o
+ .debug_info    0x00000000       0x70 Subbyte_ShiftRow.o
+ .debug_abbrev  0x00000000       0x14 Subbyte_ShiftRow.o
+ .debug_aranges
+                0x00000000       0x20 Subbyte_ShiftRow.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
@@ -77,6 +93,7 @@ LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/
 LOAD AES_fun.o
 LOAD main.o
 LOAD MixColumns.o
+LOAD Subbyte_ShiftRow.o
 START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a
 END GROUP
@@ -186,7 +203,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x173c
+.text           0x00000000      0xf0e
  *(.vectors)
  .vectors       0x00000000       0x8c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
                 0x00000000                __vector_default
@@ -202,33 +219,40 @@ END GROUP
  *libprintf_flt.a:*(.progmem.data)
  *libc.a:*(.progmem.data)
  *(.progmem*)
-                0x0000008c                . = ALIGN (0x2)
+ *fill*         0x0000008c       0x74 
+ .progmem.data.Rcon
+                0x00000100      0x100 main.o
+                0x00000100                Rcon
+ .progmem.data.sbox
+                0x00000200      0x100 main.o
+                0x00000200                sbox
+                0x00000300                . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x0000008c                __ctors_start = .
+                0x00000300                __ctors_start = .
  *(.ctors)
-                0x0000008c                __ctors_end = .
-                0x0000008c                __dtors_start = .
+                0x00000300                __ctors_end = .
+                0x00000300                __dtors_start = .
  *(.dtors)
-                0x0000008c                __dtors_end = .
+                0x00000300                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x0000008c        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
-                0x0000008c                __init
+ .init0         0x00000300        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
+                0x00000300                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x0000008c        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
+ .init2         0x00000300        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000098       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_copy_data.o)
-                0x00000098                __do_copy_data
+ .init4         0x0000030c       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_copy_data.o)
+                0x0000030c                __do_copy_data
  *(.init4)
  *(.init5)
  *(.init5)
@@ -239,91 +263,79 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x000000b2        0x8 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
+ .init9         0x00000326        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
  *(.init9)
  *(.text)
- .text          0x000000ba        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
-                0x000000ba                __vector_22
-                0x000000ba                __vector_28
-                0x000000ba                __vector_1
-                0x000000ba                __vector_32
-                0x000000ba                __vector_34
-                0x000000ba                __vector_24
-                0x000000ba                __vector_12
-                0x000000ba                __bad_interrupt
-                0x000000ba                __vector_6
-                0x000000ba                __vector_31
-                0x000000ba                __vector_3
-                0x000000ba                __vector_23
-                0x000000ba                __vector_30
-                0x000000ba                __vector_25
-                0x000000ba                __vector_11
-                0x000000ba                __vector_13
-                0x000000ba                __vector_17
-                0x000000ba                __vector_19
-                0x000000ba                __vector_7
-                0x000000ba                __vector_27
-                0x000000ba                __vector_5
-                0x000000ba                __vector_33
-                0x000000ba                __vector_4
-                0x000000ba                __vector_9
-                0x000000ba                __vector_2
-                0x000000ba                __vector_21
-                0x000000ba                __vector_15
-                0x000000ba                __vector_29
-                0x000000ba                __vector_8
-                0x000000ba                __vector_26
-                0x000000ba                __vector_14
-                0x000000ba                __vector_10
-                0x000000ba                __vector_16
-                0x000000ba                __vector_18
-                0x000000ba                __vector_20
- .text          0x000000bc       0xba MixColumns.o
-                0x000000bc                MixColumns_asm
-                0x00000176                . = ALIGN (0x2)
+ .text          0x0000032a        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
+                0x0000032a                __vector_22
+                0x0000032a                __vector_28
+                0x0000032a                __vector_1
+                0x0000032a                __vector_32
+                0x0000032a                __vector_34
+                0x0000032a                __vector_24
+                0x0000032a                __vector_12
+                0x0000032a                __bad_interrupt
+                0x0000032a                __vector_6
+                0x0000032a                __vector_31
+                0x0000032a                __vector_3
+                0x0000032a                __vector_23
+                0x0000032a                __vector_30
+                0x0000032a                __vector_25
+                0x0000032a                __vector_11
+                0x0000032a                __vector_13
+                0x0000032a                __vector_17
+                0x0000032a                __vector_19
+                0x0000032a                __vector_7
+                0x0000032a                __vector_27
+                0x0000032a                __vector_5
+                0x0000032a                __vector_33
+                0x0000032a                __vector_4
+                0x0000032a                __vector_9
+                0x0000032a                __vector_2
+                0x0000032a                __vector_21
+                0x0000032a                __vector_15
+                0x0000032a                __vector_29
+                0x0000032a                __vector_8
+                0x0000032a                __vector_26
+                0x0000032a                __vector_14
+                0x0000032a                __vector_10
+                0x0000032a                __vector_16
+                0x0000032a                __vector_18
+                0x0000032a                __vector_20
+ .text          0x0000032c       0xba MixColumns.o
+                0x0000032c                MixColumns_asm
+                0x000003e6                . = ALIGN (0x2)
  *(.text.*)
- .text.SubByte  0x00000176       0x6c AES_fun.o
-                0x00000176                SubByte
+ .text.SubByte  0x000003e6       0x86 AES_fun.o
+                0x000003e6                SubByte
  .text.ShiftRow
-                0x000001e2      0x108 AES_fun.o
-                0x000001e2                ShiftRow
- .text.MixColumns
-                0x000002ea      0x36c AES_fun.o
-                0x000002ea                MixColumns
+                0x0000046c      0x108 AES_fun.o
+                0x0000046c                ShiftRow
  .text.AddRoundKey
-                0x00000656       0x74 AES_fun.o
-                0x00000656                AddRoundKey
+                0x00000574       0x74 AES_fun.o
+                0x00000574                AddRoundKey
  .text.keyScheduling
-                0x000006ca      0x220 AES_fun.o
-                0x000006ca                keyScheduling
+                0x000005e8      0x26a AES_fun.o
+                0x000005e8                keyScheduling
+ .text.AES_encrypt_asm
+                0x00000852      0x178 AES_fun.o
+                0x00000852                AES_encrypt_asm
  .text.reset_count
-                0x000008ea       0x42 AES_fun.o
-                0x000008ea                reset_count
- .text.state_copy
-                0x0000092c       0x5e AES_fun.o
-                0x0000092c                state_copy
- .text.Count_Add_for_LUT
-                0x0000098a      0x312 AES_fun.o
-                0x0000098a                Count_Add_for_LUT
- .text.Count_Add_for_FACE_LIGHT
-                0x00000c9c      0x112 AES_fun.o
-                0x00000c9c                Count_Add_for_FACE_LIGHT
- .text.Make_LUT_Face_Light
-                0x00000dae      0x1fe AES_fun.o
-                0x00000dae                Make_LUT_Face_Light
- .text.AES_encrypt_FACE_Light
-                0x00000fac      0x33a AES_fun.o
-                0x00000fac                AES_encrypt_FACE_Light
- .text.CRYPTO_ctr128_encrypt_FACE_Light
-                0x000012e6      0x356 AES_fun.o
-                0x000012e6                CRYPTO_ctr128_encrypt_FACE_Light
- .text.main     0x0000163c       0xfc main.o
-                0x0000163c                main
-                0x00001738                . = ALIGN (0x2)
+                0x000009ca       0x42 AES_fun.o
+                0x000009ca                reset_count
+ .text.Count_Addition
+                0x00000a0c      0x11e AES_fun.o
+                0x00000a0c                Count_Addition
+ .text.CRYPTO_ctr128_encrypt
+                0x00000b2a      0x324 AES_fun.o
+                0x00000b2a                CRYPTO_ctr128_encrypt
+ .text.main     0x00000e4e       0xbc main.o
+                0x00000e4e                main
+                0x00000f0a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001738        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
-                0x00001738                _exit
-                0x00001738                exit
+ .fini9         0x00000f0a        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+                0x00000f0a                _exit
+                0x00000f0a                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -342,11 +354,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001738        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ .fini0         0x00000f0a        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000173c                _etext = .
+                0x00000f0e                _etext = .
 
-.data           0x00800100      0x11e load address 0x0000173c
+.data           0x00800100       0x10 load address 0x00000f0e
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -354,30 +366,25 @@ END GROUP
  *(.rodata)
  .rodata        0x00800100       0x10 main.o
  *(.rodata*)
- .rodata.Rcon   0x00800110        0xd main.o
-                0x00800110                Rcon
- .rodata.sbox   0x0080011d      0x100 main.o
-                0x0080011d                sbox
  *(.gnu.linkonce.r*)
-                0x0080021e                . = ALIGN (0x2)
- *fill*         0x0080021d        0x1 
-                0x0080021e                _edata = .
-                0x0080021e                PROVIDE (__data_end, .)
+                0x00800110                . = ALIGN (0x2)
+                0x00800110                _edata = .
+                0x00800110                PROVIDE (__data_end, .)
 
-.bss            0x0080021e        0x0
+.bss            0x00800110        0x0
                 [!provide]                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
-                0x0000173c                __data_load_start = LOADADDR (.data)
-                0x0000185a                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000f0e                __data_load_start = LOADADDR (.data)
+                0x00000f1e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080021e        0x0
+.noinit         0x00800110        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x0080021e                _end = .
+                0x00800110                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -455,12 +462,12 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x12ee
+.debug_info     0x00000000     0x140a
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x780 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
- .debug_info    0x00000780      0x99a AES_fun.o
- .debug_info    0x0000111a      0x16a main.o
- .debug_info    0x00001284       0x6a MixColumns.o
+ .debug_info    0x00000780      0xae1 AES_fun.o
+ .debug_info    0x00001261      0x13f main.o
+ .debug_info    0x000013a0       0x6a MixColumns.o
 
 .debug_abbrev   0x00000000      0x94a
  *(.debug_abbrev)
@@ -469,30 +476,30 @@ END GROUP
  .debug_abbrev  0x0000088c       0xaa main.o
  .debug_abbrev  0x00000936       0x14 MixColumns.o
 
-.debug_line     0x00000000     0x10f2
+.debug_line     0x00000000     0x1114
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x169 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
- .debug_line    0x00000169      0xcd7 AES_fun.o
- .debug_line    0x00000e40       0xdb main.o
- .debug_line    0x00000f1b      0x1d7 MixColumns.o
+ .debug_line    0x00000169      0xd05 AES_fun.o
+ .debug_line    0x00000e6e       0xcf main.o
+ .debug_line    0x00000f3d      0x1d7 MixColumns.o
 
-.debug_frame    0x00000000      0x2f4
+.debug_frame    0x00000000      0x2e8
  *(.debug_frame)
  .debug_frame   0x00000000      0x294 AES_fun.o
- .debug_frame   0x00000294       0x60 main.o
+ .debug_frame   0x00000294       0x54 main.o
 
-.debug_str      0x00000000      0x559
+.debug_str      0x00000000      0x56c
  *(.debug_str)
  .debug_str     0x00000000      0x27d C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
- .debug_str     0x0000027d      0x2cb AES_fun.o
-                                0x311 (size before relaxing)
- .debug_str     0x00000548       0x11 main.o
-                                0x193 (size before relaxing)
+ .debug_str     0x0000027d      0x2de AES_fun.o
+                                0x32c (size before relaxing)
+ .debug_str     0x0000055b       0x11 main.o
+                                0x18c (size before relaxing)
 
-.debug_loc      0x00000000      0x65f
+.debug_loc      0x00000000      0x644
  *(.debug_loc)
- .debug_loc     0x00000000      0x5af AES_fun.o
- .debug_loc     0x000005af       0xb0 main.o
+ .debug_loc     0x00000000      0x5ae AES_fun.o
+ .debug_loc     0x000005ae       0x96 main.o
 
 .debug_macinfo
  *(.debug_macinfo)

@@ -12,8 +12,6 @@
  * Created: 2020-03-25 오후 2:11:23
  *  Author: 김영범
  */ 
- .include "m8515def.inc"
-
 
  .macro regBackupAdd
 	.irp i,0,3,4,5,6,7,8,16,17,28,29,30,31,

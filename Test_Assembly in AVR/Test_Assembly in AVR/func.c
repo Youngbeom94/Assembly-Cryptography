@@ -88,7 +88,7 @@ void keyScheduling(u8* roundkey,u8* Rcon, u8* sbox,u8* round)
 {
 	volatile u8 cnt_i = 0x00;
 	volatile u8 temp2[16] = {0x00};
-	volatile u8 a,b,c,d;
+	volatile u8 a,b,c;
 		
 	cnt_i = roundkey[12];
 	a = roundkey[13];

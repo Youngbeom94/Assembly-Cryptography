@@ -7,6 +7,8 @@
 
 #ifndef AES_HEADER_H_
 #define AES_HEADER_H_
+
+#define ALIGN_ZH __attribute__ ((aligned (256)))
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
