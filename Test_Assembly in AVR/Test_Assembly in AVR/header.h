@@ -30,18 +30,20 @@ typedef uint8_t u8;
 typedef int8_t  s8;
 typedef uint32_t k8;
 
-void SubByte(u8 *state,u8 *sbox);
+void SubByte(u8 *state);
 void ShiftRow(u8 *state);
 void MixColumns(u8 *state);
 void AddRoundKey(u8 *state, u8* rdkey);
-void AES_encrypt(u8* inp, u8* out, u8* usrkey,u8* sbox, u8* rcon);
-void keyScheduling(u8* roundkey,u8* Rcon, u8* sbox,u8 *round);
+void AES_encrypt(u8* inp, u8* out, u8* usrkey);
+void keyScheduling(u8* roundkey,u8 *round);
 
 
 void ShiftRow_asm(u8 *state);
-void Subbyte_ShiftRows_asm(u8 *state,u8 * sbox);
+void Subbyte_ShiftRows_asm(u8 *state);
 void MixColumns_asm(u8 *state);
-void AES_encrypt_asm(u8* inp, u8* out, u8* usrkey,u8* sbox, u8* rcon);
+void MixColumns_asm_Progm(u8 *state);
+void AES_encrypt_asm(u8* inp, u8* out, u8* usrkey);
+void AES_encrypt_asm_Progm(u8* inp, u8* out, u8* usrkey);
 
 
 // AES-CTR(FACE_LIGHT)
@@ -49,13 +51,13 @@ void reset_count(u8* count);
 void state_copy(u8* dst, u8* src);
 void Count_Add_for_LUT(u8* count, u8* cnt_k);
 void Count_Add_for_FACE_LIGHT(u8* count);
-void Make_LUT_Face_Light(u8 LUT_FL[4][4][256],u8* userkey, u8* count,u8* sbox, u8* rcon);//! LUK Table of FACE_Light
-void AES_encrypt_FACE_Light(u8 *inp,u8 LUT_FL[4][4][256], u8 *out, u8 *userkey,u8* sbox, u8* rcon);//AES encryption of FACE mode
-void CRYPTO_ctr128_encrypt_FACE_Light(u8* inp, u8* out, u8 LUT_FL[4][4][256], u8 len, u8* usrkey, u8* count, u8* sbox, u8* rcon); //AES CTR Mode of FACE_Light
+void Make_LUT_Face_Light(u8 LUT_FL[4][4][256],u8* userkey, u8* count);//! LUK Table of FACE_Light
+void AES_encrypt_FACE_Light(u8 *inp,u8 LUT_FL[4][4][256], u8 *out, u8 *userkey);//AES encryption of FACE mode
+void CRYPTO_ctr128_encrypt_FACE_Light(u8* inp, u8* out, u8 LUT_FL[4][4][256], u8 len, u8* usrkey, u8* count); //AES CTR Mode of FACE_Light
 
 // AES-CTR (Origin)
 void Count_Addition(u8 *count); //Count 배열에서 값을 1증가시키는 함수
-void CRYPTO_ctr128_encrypt(u8* inp, u8* out, u8 len, u8* usrkey, u8* count, u8* sbox, u8* rcon); //AES CTR Mode of origin
+void CRYPTO_ctr128_encrypt(u8* inp, u8* out, u8 len, u8* usrkey, u8* count); //AES CTR Mode of origin
 
 
 #endif /* AES_HEADER_H_ */
