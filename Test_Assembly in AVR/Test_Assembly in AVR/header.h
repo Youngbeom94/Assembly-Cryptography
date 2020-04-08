@@ -16,7 +16,7 @@
 #include <time.h>
 #include <avr/pgmspace.h>
 #include <avr/io.h>
-
+#include <avr/eeprom.h>
 
 #define _CRT_SECURE_NO_WARNINGS
 #define xtime(x) ((x << 1) ^ (((x >> 7) & 1) * 0x1b))
@@ -24,7 +24,7 @@
 #define Nk 4 //Number of 32-bit words comprising the Cipher Key
 #define AES_MAXNR 10 //10 round
 #define AES_KEY_BIT 128 // 128 bit
-#define BLOCKSIZE 1
+#define BLOCKSIZE 5
 
 typedef uint8_t u8;
 typedef int8_t  s8;

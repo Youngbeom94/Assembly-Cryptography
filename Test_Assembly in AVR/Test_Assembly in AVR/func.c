@@ -416,6 +416,7 @@ void Make_LUT_Face_Light(u8 LUT_FL[4][4][256],u8* userkey,u8* count)//! LUK Tabl
 	u8 roundkey[16] = {0x00};
 	volatile u8 round = 0;
 	volatile u8 cnt_j = 0;
+	volatile temp = 0;
 
 
 	reset_count(count);
@@ -424,7 +425,7 @@ void Make_LUT_Face_Light(u8 LUT_FL[4][4][256],u8* userkey,u8* count)//! LUK Tabl
 
 	for (volatile int16_t cnt_k = 0; cnt_k < 4; cnt_k++)
 	{
-		for (volatile int16_t cnt_i = 0; cnt_i < BLOCKSIZE ; cnt_i++)                      //! check BLOCKSIZE 블록size가 256넘어가면 그냥 256이라 써주면된다.
+		for (volatile int16_t cnt_i = 0; cnt_i < 5 ; cnt_i++)                      //! check BLOCKSIZE 블록size가 256넘어가면 그냥 256이라 써주면된다.
 		{
 			
 			round = 0x00;
@@ -433,18 +434,22 @@ void Make_LUT_Face_Light(u8 LUT_FL[4][4][256],u8* userkey,u8* count)//! LUK Tabl
 			keyScheduling(roundkey,&round);
 			
 
-			SubByte(state);
-			ShiftRow(state);
-			MixColumns(state);
+			Subbyte_ShiftRows_asm(state);
+			MixColumns_asm_Progm(state);
 			AddRoundKey(state,roundkey);
 			keyScheduling(roundkey,&round);
 			
 			SubByte(state);
 			for (cnt_j = 0; cnt_j < 4; cnt_j++)			{
-				if (cnt_k != 3)
-				LUT_FL[cnt_k][cnt_j][cnt_i] = state[((cnt_k + 1) * 4) + cnt_j];
-				else
-				LUT_FL[cnt_k][cnt_j][cnt_i] = state[cnt_j];
+				if (cnt_k != 3){
+					temp = state[((cnt_k + 1) * 4) + cnt_j];
+					eeprom_update_byte(&LUT_FL[cnt_k][cnt_j][cnt_i],temp);
+				}
+				else{
+					temp = state[cnt_j];
+					eeprom_update_byte(&LUT_FL[cnt_k][cnt_j][cnt_i],temp);
+				}
+				
 			}
 			Count_Add_for_LUT(count, &cnt_k);
 			state_copy(state, count);
@@ -463,10 +468,10 @@ void AES_encrypt_FACE_Light(u8 *inp,u8 LUT_FL[4][4][256], u8 *out, u8 *usrkey)//
 
 	for (cnt_i = 0; cnt_i < 4; cnt_i++)
 	{
-		state[cnt_i] = LUT_FL[3][cnt_i][inp[0]];
-		state[cnt_i + 4] = LUT_FL[0][cnt_i][inp[3]];
-		state[cnt_i + 8] = LUT_FL[1][cnt_i][inp[2]];
-		state[cnt_i + 12] = LUT_FL[2][cnt_i][inp[1]];
+		state[cnt_i] = eeprom_read_byte(&LUT_FL[3][cnt_i][inp[0]]);
+		state[cnt_i + 4] = eeprom_read_byte(&LUT_FL[0][cnt_i][inp[3]]);
+		state[cnt_i + 8] =  eeprom_read_byte(&LUT_FL[1][cnt_i][inp[2]]);
+		state[cnt_i + 12] =  eeprom_read_byte(&LUT_FL[2][cnt_i][inp[1]]);
 		roundkey[cnt_i] = usrkey[cnt_i];
 		roundkey[cnt_i+4] = usrkey[cnt_i+4];
 		roundkey[cnt_i+8] = usrkey[cnt_i+8];
@@ -476,22 +481,20 @@ void AES_encrypt_FACE_Light(u8 *inp,u8 LUT_FL[4][4][256], u8 *out, u8 *usrkey)//
 	keyScheduling(roundkey,&round);
 
 	ShiftRow(state);
-	MixColumns_asm(state);
+	MixColumns_asm_Progm(state);
 	AddRoundKey(state, roundkey);
 	keyScheduling(roundkey,&round);
 
 	for (cnt_i = 3; cnt_i < AES_MAXNR; cnt_i++)
 	{
-		SubByte(state);
-		ShiftRow(state);
-		MixColumns_asm(state);
+		Subbyte_ShiftRows_asm(state);
+		MixColumns_asm_Progm(state);
 		AddRoundKey(state, roundkey);
 		keyScheduling(roundkey,&round);
 
 	}
 	
-	SubByte(state);
-	ShiftRow(state);
+	Subbyte_ShiftRows_asm(state);
 	AddRoundKey(state, roundkey);
 
 	for (cnt_i = 0; cnt_i < 4 * Nb; cnt_i++)

@@ -1,13 +1,13 @@
 ﻿/*
- * AES_header.h
- *
- * Created: 2020-03-25 오전 11:22:13
- *  Author: 김영범
- */ 
+* AES_header.h
+*
+* Created: 2020-03-25 오전 11:22:13
+*  Author: 김영범
+*/
 
 #ifndef AES_HEADER_H_
 #define AES_HEADER_H_
-#define ALIGN_ZH __attribute__ ((aligned (256)))
+
 
 #include <stdio.h>
 #include <stdint.h>
@@ -16,8 +16,9 @@
 #include <time.h>
 #include <avr/pgmspace.h>
 #include <avr/io.h>
+#include <avr/eeprom.h>
 
-
+#define ALIGN_ZH __attribute__ ((aligned (256)))
 #define _CRT_SECURE_NO_WARNINGS
 #define xtime(x) ((x << 1) ^ (((x >> 7) & 1) * 0x1b))
 #define Nb 4
@@ -42,9 +43,9 @@ void Subbyte_ShiftRows_asm(u8 *state);
 void AddRoundKey_asm(u8* state, u8* rdkey);
 void MixColumns_asm(u8 *state);
 void MixColumns_asm_Progm(u8 *state);
+
 void AES_encrypt_asm(u8* inp, u8* out, u8* usrkey);
 void AES_encrypt_asm_Progm(u8* inp, u8* out, u8* usrkey);
-
 
 // AES-CTR(FACE_LIGHT)
 void reset_count(u8* count);

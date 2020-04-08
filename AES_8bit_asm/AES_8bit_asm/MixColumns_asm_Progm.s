@@ -34,7 +34,7 @@ loop:
 	eor	r0,		r4
 	eor	r0,		r5
 	eor r0,		r6
-	st X+,		r0 ; -------------------[0]
+	st  X+,		r0 ; -------------------[0]
 
 	; 1 2 3 1 
 	mov r0,		r4
@@ -44,7 +44,7 @@ loop:
 	eor	r0,		r2
 	eor	r0,		r5
 	eor r0,		r6
-	st X+,		r0  ; -------------------[1]
+	st  X+,		r0  ; -------------------[1]
 
 
 	; 1 1 2 3 
@@ -55,7 +55,7 @@ loop:
 	eor	r0,		r2
 	eor	r0,		r4
 	eor r0,		r6
-	st X+,		r0  ; -------------------[2]
+	st  X+,		r0  ; -------------------[2]
 
 	; 3 1 1 2 
 	mov r0,		r6
@@ -65,8 +65,8 @@ loop:
 	eor	r0,		r2
 	eor	r0,		r4
 	eor r0,		r5
-	st X+,		r0 ; -------------------[3]
-	dec		r16
+	st  X+,		r0 ; -------------------[3]
+	dec	r16
 	brne loop
 
 	regRetriveveAdd
