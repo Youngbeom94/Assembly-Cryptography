@@ -1,4 +1,4 @@
-Subbyte_ShiftRow.d Subbyte_ShiftRow.o: .././Subbyte_ShiftRow.s \
+Count_Addition_Asm.d Count_Addition_Asm.o: .././Count_Addition_Asm.s \
  .././AVR_macro.s \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \

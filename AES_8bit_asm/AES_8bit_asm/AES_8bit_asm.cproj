@@ -155,10 +155,19 @@
     <Compile Include="AES_header.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="AVR_macro.s">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Count_Addition_Asm.s">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MixColumns.s">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MixColumns_asm_Progm.s">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Subbyte_ShiftRow.s">

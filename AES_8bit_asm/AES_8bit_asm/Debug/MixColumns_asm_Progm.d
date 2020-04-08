@@ -1,5 +1,5 @@
-Subbyte_ShiftRow.d Subbyte_ShiftRow.o: .././Subbyte_ShiftRow.s \
- .././AVR_macro.s \
+MixColumns_asm_Progm.d MixColumns_asm_Progm.o: \
+ .././MixColumns_asm_Progm.s .././AVR_macro.s \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include/avr/iom128.h \
