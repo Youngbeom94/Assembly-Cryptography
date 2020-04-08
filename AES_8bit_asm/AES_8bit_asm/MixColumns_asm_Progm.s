@@ -14,11 +14,11 @@ MixColumns_asm_Progm:
 	regBackupAdd
 	movw r26,	r24 ; X
 	movw r28,	r24 ; Y
-	ldi	 r16,	4
+	ldi  r16,	4
 	ldi  r17,	0x1b
 
-	ldi	r30,	lo8(sbox2);!!!!!!!!!!!!!!!!
-	ldi	r31,	hi8(sbox2);!!!!!!!!!!!!!!!!
+	ldi  r30,	lo8(sbox2);!!!!!!!!!!!!!!!!
+	ldi  r31,	hi8(sbox2);!!!!!!!!!!!!!!!!
 
 loop:
 	;2 3 1 1 
@@ -31,8 +31,8 @@ loop:
 	eor r0,		r4
 	mov r30,	r0
 	lpm r0,		Z
-	eor	r0,		r4
-	eor	r0,		r5
+	eor r0,		r4
+	eor r0,		r5
 	eor r0,		r6
 	st  X+,		r0 ; -------------------[0]
 
@@ -41,8 +41,8 @@ loop:
 	eor r0,		r5
 	mov r30,	r0
 	lpm r0,		Z
-	eor	r0,		r2
-	eor	r0,		r5
+	eor r0,		r2
+	eor r0,		r5
 	eor r0,		r6
 	st  X+,		r0  ; -------------------[1]
 
@@ -52,8 +52,8 @@ loop:
 	eor r0,		r6
 	mov r30,	r0
 	lpm r0,		Z
-	eor	r0,		r2
-	eor	r0,		r4
+	eor r0,		r2
+	eor r0,		r4
 	eor r0,		r6
 	st  X+,		r0  ; -------------------[2]
 
@@ -62,11 +62,11 @@ loop:
 	eor r0,		r2
 	mov r30,	r0
 	lpm r0,		Z
-	eor	r0,		r2
-	eor	r0,		r4
+	eor r0,		r2
+	eor r0,		r4
 	eor r0,		r5
 	st  X+,		r0 ; -------------------[3]
-	dec	r16
+	dec r16
 	brne loop
 
 	regRetriveveAdd
