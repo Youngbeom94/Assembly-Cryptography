@@ -274,16 +274,14 @@ void AES_encrypt_asm_Progm(u8* inp, u8* out, u8* usrkey)
 
 	for (cnt_i = 1; cnt_i < AES_MAXNR; cnt_i++)
 	{
-		SubByte(state);
-		ShiftRow(state);
+		Subbyte_ShiftRows_asm(state);
 		MixColumns_asm_Progm(state);
 		AddRoundKey(state, roundkey);
 		keyScheduling(roundkey,&round);
 
 	}
 	
-	SubByte(state);
-	ShiftRow(state);
+	Subbyte_ShiftRows_asm(state);
 	AddRoundKey(state, roundkey);
 
 	for (cnt_i = 0; cnt_i < 4 * Nb; cnt_i++)

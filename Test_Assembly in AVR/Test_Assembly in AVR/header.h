@@ -38,8 +38,8 @@ void AES_encrypt(u8* inp, u8* out, u8* usrkey);
 void keyScheduling(u8* roundkey,u8 *round);
 
 
-void ShiftRow_asm(u8 *state);
 void Subbyte_ShiftRows_asm(u8 *state);
+void AddRoundKey_asm(u8* state, u8* rdkey);
 void MixColumns_asm(u8 *state);
 void MixColumns_asm_Progm(u8 *state);
 void AES_encrypt_asm(u8* inp, u8* out, u8* usrkey);

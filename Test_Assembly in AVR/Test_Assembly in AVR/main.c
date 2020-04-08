@@ -27,9 +27,13 @@ int main(void)
 	
 	//CRYPTO_ctr128_encrypt(inp,out,AES_KEY_BIT,userkey,count,sbox,Rcon);	
 	
-	AES_encrypt(inp,out,userkey);
-	AES_encrypt_asm(inp,out,userkey);
-	AES_encrypt_asm_Progm(inp,out,userkey);
+	//AES_encrypt(inp,out,userkey);
+	//AES_encrypt_asm(inp,out,userkey);
+	//AES_encrypt_asm_Progm(inp,out,userkey);
+	
+	AddRoundKey_asm(inp,userkey);
+	//AddRoundKey(inp,userkey);
+	
 
 
 

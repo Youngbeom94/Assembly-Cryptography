@@ -1,16 +1,4 @@
-
-  .macro regBackupAdd
-	.irp i,0,3,4,5,6,7,8,16,17,28,29,30,31,
-		push	\i
-	.endr
- .endm
-
- .macro regRetriveveAdd
-	.irp i,31,30,29,28,17,16,8,7,6,5,4,3,0
-		pop	\i
-	.endr
- .endm
- 
+#include "AVR_macro.s"
  
  .global MixColumns_asm
 MixColumns_asm:
