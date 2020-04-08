@@ -39,11 +39,11 @@ loop:
 	mov r7,		r3 ; r7 = r3
 	add r7,		r7 ; <<1
 	mov r8,		r3 ; r8 = r3
-	add	r8,		r8
+	add r8,		r8
 	eor r8,		r8
-	adc	r8,		r8 ; >>7 & 0x01 
-	mul	r8,		r17 ; (x>>7)&1 * 0x1b
-	eor	r0,		r7 
+	adc r8,		r8 ; >>7 & 0x01 
+	mul r8,		r17 ; (x>>7)&1 * 0x1b
+	eor r0,		r7 
 	eor r0,		r4 
 	eor r0,		r5
 	eor r0,		r6
@@ -55,11 +55,11 @@ loop:
 	mov r7,		r3 ; r7 = r3
 	add r7,		r7 ; <<1
 	mov r8,		r3 ; r8 = r3
-	add	r8,		r8
+	add r8,		r8
 	eor r8,		r8
-	adc	r8,		r8 ; >>7 & 0x01 
-	mul	r8,		r17 ; (x>>7)&1 * 0x1b
-	eor	r0,		r7 
+	adc r8,		r8 ; >>7 & 0x01 
+	mul r8,		r17 ; (x>>7)&1 * 0x1b
+	eor r0,		r7 
 	eor r0,		r2
 	eor r0,		r5
 	eor r0,		r6
@@ -72,11 +72,11 @@ loop:
 	mov r7,		r3 ; r7 = r3
 	add r7,		r7 ; <<1
 	mov r8,		r3 ; r8 = r3
-	add	r8,		r8
+	add r8,		r8
 	eor r8,		r8
-	adc	r8,		r8 ; >>7 & 0x01 
-	mul	r8,		r17 ; (x>>7)&1 * 0x1b
-	eor	r0,		r7 
+	adc r8,		r8 ; >>7 & 0x01 
+	mul r8,		r17 ; (x>>7)&1 * 0x1b
+	eor r0,		r7 
 	eor r0,		r2
 	eor r0,		r4
 	eor r0,		r6
@@ -88,11 +88,11 @@ loop:
 	mov r7,		r3 ; r7 = r3
 	add r7,		r7 ; <<1
 	mov r8,		r3 ; r8 = r3
-	add	r8,		r8
+	add r8,		r8
 	eor r8,		r8
-	adc	r8,		r8 ; >>7 & 0x01 
-	mul	r8,		r17 ; (x>>7)&1 * 0x1b
-	eor	r0,		r7 
+	adc r8,		r8 ; >>7 & 0x01 
+	mul r8,		r17 ; (x>>7)&1 * 0x1b
+	eor r0,		r7 
 	eor r0,		r2
 	eor r0,		r4
 	eor r0,		r5
