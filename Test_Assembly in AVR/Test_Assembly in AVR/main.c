@@ -25,7 +25,7 @@ int main(void)
 	Make_LUT_Face_Light(LUT_FL,userkey,count);
 	CRYPTO_ctr128_encrypt_FACE_Light(inp,out,LUT_FL,AES_KEY_BIT,userkey,count);
 	
-	CRYPTO_ctr128_encrypt(inp,out,AES_KEY_BIT,userkey,count);	
+	//CRYPTO_ctr128_encrypt(inp,out,AES_KEY_BIT,userkey,count);	
 	
 	//AES_encrypt(inp,out,userkey);
 	//AES_encrypt_asm(inp,out,userkey);
