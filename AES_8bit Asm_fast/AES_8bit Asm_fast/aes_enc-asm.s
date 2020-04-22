@@ -2,13 +2,12 @@
 /*
  * aes_enc_asm.s
  *
- * Created: 2020-04-21 오후 6:12:20
+ * Created: 2020-04-22 오후 5:24:12
  *  Author: 김영범
  */ 
 
- #include "avr-asm-macros.S"
 
-.arch atmega128
+//.arch atmega128
 .data
 
 SBOX_TABLE:
@@ -49,6 +48,8 @@ MIX2_TABLE:
 
 .text
 
+
+#include "avr-asm-macros.S"
 /*
  * param a: r24
  * param b: r22
@@ -173,8 +174,9 @@ exit:
 	mov ST13, ST03
 	mov ST03, T0
 
+
 	//Subbyte and Mixcolumns
-.irp row, 0, 1, 2, 3
+.irp row, 0,1,2,3
 
 	mov r28, ST\row\()0
 	eor r28, ST\row\()1
@@ -209,6 +211,7 @@ exit:
 	mov ST\row\()2, T2
 	mov ST\row\()3, T3
 .endr
+
 	/* Shift Row and Subbyte Mixcolumns(rows) done */
 	/* add key*/
 	rjmp 1b
