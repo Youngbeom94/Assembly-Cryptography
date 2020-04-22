@@ -6,7 +6,6 @@
  *  Author: 김영범
  */ 
 
-
 //.arch atmega128
 .data
 
@@ -70,14 +69,11 @@ aes128_enc:
 	ldi r20, 10
 
 
-/*
-  void aes_encrypt_core(aes_cipher_state_t *state, const aes_genctx_t *ks, uint8_t rounds)
-*/
 T0 = 16
 T1 = 17
 T2 = 18
 T3 = 19
-ST00 =  0
+ST00 =	21
 ST01 =  1
 ST02 =  2
 ST03 =  3
@@ -102,7 +98,7 @@ CTR = 24
  */
 .global aes_encrypt_core
 aes_encrypt_core:
-	push_range 0, 19
+	push_range 0, 20
 	push r28
 	push r29
 	push r24
@@ -118,8 +114,9 @@ aes_encrypt_core:
 		.endr
 	.endr
 	
-	ldi r31, hi8(SBOX_TABLE)
+	ldi r31, hi8(SBOX_TABLE)	
 	ldi r29, hi8(MIX2_TABLE)
+
 	
 	/* key whitening */
 1:
@@ -143,7 +140,7 @@ exit:
 	.endr
 	pop r29
 	pop r28
-	pop_range 0, 19
+	pop_range 0, 20
 	ret
 
 2:	dec CTR

@@ -3,29 +3,29 @@ AES_8bit Asm_fast.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000210  00800100  0000055e  0000065e  2**0
+  0 .data         00000310  00800100  00000350  000003c4  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000055e  00000000  00000000  00000100  2**8
+  1 .text         00000350  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  0000086e  2**0
+  2 .comment      00000030  00000000  00000000  000006d4  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000008a0  2**2
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000704  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000060  00000000  00000000  000008e0  2**3
+  4 .debug_aranges 00000060  00000000  00000000  00000740  2**3
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000a18  00000000  00000000  00000940  2**0
+  5 .debug_info   000009b1  00000000  00000000  000007a0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000830  00000000  00000000  00001358  2**0
+  6 .debug_abbrev 000007fe  00000000  00000000  00001151  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000707  00000000  00000000  00001b88  2**0
+  7 .debug_line   00000705  00000000  00000000  0000194f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000038  00000000  00000000  00002290  2**2
+  8 .debug_frame  00000038  00000000  00000000  00002054  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000003fe  00000000  00000000  000022c8  2**0
+  9 .debug_str    000003e7  00000000  00000000  0000208c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000048  00000000  00000000  000026c6  2**0
+ 10 .debug_loc    00000048  00000000  00000000  00002473  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000010  00000000  00000000  0000270e  2**0
+ 11 .debug_ranges 00000010  00000000  00000000  000024bb  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -111,11 +111,11 @@ Disassembly of section .text:
   96:	cd bf       	out	0x3d, r28	; 61
 
 00000098 <__do_copy_data>:
-  98:	13 e0       	ldi	r17, 0x03	; 3
+  98:	14 e0       	ldi	r17, 0x04	; 4
   9a:	a0 e0       	ldi	r26, 0x00	; 0
   9c:	b1 e0       	ldi	r27, 0x01	; 1
-  9e:	ee e5       	ldi	r30, 0x5E	; 94
-  a0:	f5 e0       	ldi	r31, 0x05	; 5
+  9e:	e0 e5       	ldi	r30, 0x50	; 80
+  a0:	f3 e0       	ldi	r31, 0x03	; 3
   a2:	00 e0       	ldi	r16, 0x00	; 0
   a4:	0b bf       	out	0x3b, r16	; 59
   a6:	02 c0       	rjmp	.+4      	; 0xac <__do_copy_data+0x14>
@@ -124,8 +124,8 @@ Disassembly of section .text:
   ac:	a0 31       	cpi	r26, 0x10	; 16
   ae:	b1 07       	cpc	r27, r17
   b0:	d9 f7       	brne	.-10     	; 0xa8 <__do_copy_data+0x10>
-  b2:	26 d2       	rcall	.+1100   	; 0x500 <main>
-  b4:	52 c2       	rjmp	.+1188   	; 0x55a <_exit>
+  b2:	21 d1       	rcall	.+578    	; 0x2f6 <main>
+  b4:	4b c1       	rjmp	.+662    	; 0x34c <_exit>
 
 000000b6 <__bad_interrupt>:
   b6:	a4 cf       	rjmp	.-184    	; 0x0 <__vectors>
@@ -206,7 +206,7 @@ aes_encrypt_core:
 			ld ST\row\col, Z+
 		.endr
 	.endr
-  fa:	01 90       	ld	r0, Z+
+  fa:	41 91       	ld	r20, Z+
   fc:	11 90       	ld	r1, Z+
   fe:	21 90       	ld	r2, Z+
  100:	31 90       	ld	r3, Z+
@@ -223,7 +223,7 @@ aes_encrypt_core:
  116:	e1 90       	ld	r14, Z+
  118:	f1 90       	ld	r15, Z+
 	
-	ldi r31, hi8(SBOX_TABLE)
+	ldi r31, hi8(SBOX_TABLE)	
  11a:	f1 e0       	ldi	r31, 0x01	; 1
 	ldi r29, hi8(MIX2_TABLE)
  11c:	d2 e0       	ldi	r29, 0x02	; 2
@@ -234,7 +234,7 @@ aes_encrypt_core:
 		.endr
 	.endr
  11e:	0d 90       	ld	r0, X+
- 120:	00 24       	eor	r0, r0
+ 120:	40 25       	eor	r20, r0
  122:	0d 90       	ld	r0, X+
  124:	10 24       	eor	r1, r0
  126:	0d 90       	ld	r0, X+
@@ -281,7 +281,7 @@ exit:
 			st Z+, ST\row\col
 		.endr
 	.endr
- 164:	01 92       	st	Z+, r0
+ 164:	41 93       	st	Z+, r20
  166:	11 92       	st	Z+, r1
  168:	21 92       	st	Z+, r2
  16a:	31 92       	st	Z+, r3
@@ -330,7 +330,7 @@ exit:
 	brne 3f
  1b4:	09 f4       	brne	.+2      	; 0x1b8 <exit+0x58>
 	breq 4f
- 1b6:	69 f1       	breq	.+90     	; 0x212 <exit+0xb2>
+ 1b6:	89 f0       	breq	.+34     	; 0x1da <exit+0x7a>
 	/* encryption loop */ 
 	/* Shift Row and Subbyte , Mixcolumns */
 
@@ -370,571 +370,402 @@ exit:
  1d4:	73 2c       	mov	r7, r3
 	mov ST03, T0
  1d6:	30 2e       	mov	r3, r16
-	
-	mov ST\row\()0, T0
-	mov ST\row\()1, T1
-	mov ST\row\()2, T2
 	mov ST\row\()3, T3
 .endr
- 1d8:	c0 2d       	mov	r28, r0
- 1da:	c1 25       	eor	r28, r1
- 1dc:	08 81       	ld	r16, Y
- 1de:	01 25       	eor	r16, r1
- 1e0:	02 25       	eor	r16, r2
- 1e2:	03 25       	eor	r16, r3
- 1e4:	c1 2d       	mov	r28, r1
- 1e6:	c2 25       	eor	r28, r2
- 1e8:	18 81       	ld	r17, Y
- 1ea:	10 25       	eor	r17, r0
- 1ec:	12 25       	eor	r17, r2
- 1ee:	13 25       	eor	r17, r3
- 1f0:	c2 2d       	mov	r28, r2
- 1f2:	c3 25       	eor	r28, r3
- 1f4:	28 81       	ld	r18, Y
- 1f6:	20 25       	eor	r18, r0
- 1f8:	21 25       	eor	r18, r1
- 1fa:	23 25       	eor	r18, r3
- 1fc:	c0 2d       	mov	r28, r0
- 1fe:	c3 25       	eor	r28, r3
- 200:	38 81       	ld	r19, Y
- 202:	30 25       	eor	r19, r0
- 204:	31 25       	eor	r19, r1
- 206:	32 25       	eor	r19, r2
- 208:	00 2e       	mov	r0, r16
- 20a:	11 2e       	mov	r1, r17
- 20c:	22 2e       	mov	r2, r18
- 20e:	33 2e       	mov	r3, r19
+*/
 	/* Shift Row and Subbyte Mixcolumns(rows) done */
 	/* add key*/
 	rjmp 1b
- 210:	86 cf       	rjmp	.-244    	; 0x11e <aes_encrypt_core+0x5c>
+ 1d8:	a2 cf       	rjmp	.-188    	; 0x11e <aes_encrypt_core+0x5c>
 	
 4:
 	mov r30, ST00
- 212:	e0 2d       	mov	r30, r0
+ 1da:	e4 2f       	mov	r30, r20
 	ld ST00, Z
- 214:	00 80       	ld	r0, Z
+ 1dc:	40 81       	ld	r20, Z
 	mov r30, ST10
- 216:	e4 2d       	mov	r30, r4
+ 1de:	e4 2d       	mov	r30, r4
 	ld ST10, Z
- 218:	40 80       	ld	r4, Z
+ 1e0:	40 80       	ld	r4, Z
 	mov r30, ST20
- 21a:	e8 2d       	mov	r30, r8
+ 1e2:	e8 2d       	mov	r30, r8
 	ld ST20, Z
- 21c:	80 80       	ld	r8, Z
+ 1e4:	80 80       	ld	r8, Z
 	mov r30, ST30
- 21e:	ec 2d       	mov	r30, r12
+ 1e6:	ec 2d       	mov	r30, r12
 	ld ST30, Z
- 220:	c0 80       	ld	r12, Z
+ 1e8:	c0 80       	ld	r12, Z
 
 	mov r30, ST01
- 222:	e1 2d       	mov	r30, r1
+ 1ea:	e1 2d       	mov	r30, r1
 	ld T0, Z
- 224:	00 81       	ld	r16, Z
+ 1ec:	00 81       	ld	r16, Z
 	mov r30, ST11
- 226:	e5 2d       	mov	r30, r5
+ 1ee:	e5 2d       	mov	r30, r5
 	ld ST01, Z
- 228:	10 80       	ld	r1, Z
+ 1f0:	10 80       	ld	r1, Z
 	mov r30, ST21
- 22a:	e9 2d       	mov	r30, r9
+ 1f2:	e9 2d       	mov	r30, r9
 	ld ST11, Z
- 22c:	50 80       	ld	r5, Z
+ 1f4:	50 80       	ld	r5, Z
 	mov r30, ST31
- 22e:	ed 2d       	mov	r30, r13
+ 1f6:	ed 2d       	mov	r30, r13
 	ld ST21, Z
- 230:	90 80       	ld	r9, Z
+ 1f8:	90 80       	ld	r9, Z
 	mov ST31, T0
- 232:	d0 2e       	mov	r13, r16
+ 1fa:	d0 2e       	mov	r13, r16
 
 	mov r30, ST02
- 234:	e2 2d       	mov	r30, r2
+ 1fc:	e2 2d       	mov	r30, r2
 	ld T0, Z
- 236:	00 81       	ld	r16, Z
+ 1fe:	00 81       	ld	r16, Z
 	mov r30, ST12
- 238:	e6 2d       	mov	r30, r6
+ 200:	e6 2d       	mov	r30, r6
 	ld T1, Z
- 23a:	10 81       	ld	r17, Z
+ 202:	10 81       	ld	r17, Z
 	mov r30, ST22
- 23c:	ea 2d       	mov	r30, r10
+ 204:	ea 2d       	mov	r30, r10
 	ld ST02, Z
- 23e:	20 80       	ld	r2, Z
+ 206:	20 80       	ld	r2, Z
 	mov r30, ST32
- 240:	ee 2d       	mov	r30, r14
+ 208:	ee 2d       	mov	r30, r14
 	ld ST12, Z
- 242:	60 80       	ld	r6, Z
+ 20a:	60 80       	ld	r6, Z
 	mov ST22, T0
- 244:	a0 2e       	mov	r10, r16
+ 20c:	a0 2e       	mov	r10, r16
 	mov ST32, T1
- 246:	e1 2e       	mov	r14, r17
+ 20e:	e1 2e       	mov	r14, r17
 
 	mov r30, ST03
- 248:	e3 2d       	mov	r30, r3
+ 210:	e3 2d       	mov	r30, r3
 	ld T0, Z
- 24a:	00 81       	ld	r16, Z
+ 212:	00 81       	ld	r16, Z
 	mov r30, ST33
- 24c:	ef 2d       	mov	r30, r15
+ 214:	ef 2d       	mov	r30, r15
 	ld  ST03, Z
- 24e:	30 80       	ld	r3, Z
+ 216:	30 80       	ld	r3, Z
 	mov r30, ST23
- 250:	eb 2d       	mov	r30, r11
+ 218:	eb 2d       	mov	r30, r11
 	ld ST33, Z
- 252:	f0 80       	ld	r15, Z
+ 21a:	f0 80       	ld	r15, Z
 	mov r30, ST13
- 254:	e7 2d       	mov	r30, r7
+ 21c:	e7 2d       	mov	r30, r7
 	ld ST23, Z
- 256:	b0 80       	ld	r11, Z
+ 21e:	b0 80       	ld	r11, Z
 	mov ST13, T0
- 258:	70 2e       	mov	r7, r16
+ 220:	70 2e       	mov	r7, r16
 		
 	set
- 25a:	68 94       	set
+ 222:	68 94       	set
 	/* mixcols (or rows in our case) */
 	rjmp 1b
- 25c:	60 cf       	rjmp	.-320    	; 0x11e <aes_encrypt_core+0x5c>
+ 224:	7c cf       	rjmp	.-264    	; 0x11e <aes_encrypt_core+0x5c>
 
-0000025e <aes256_init>:
- */ 
- #include "avr-asm-macros.S"
+00000226 <aes256_init>:
+
+.text
 
 .global aes256_init
 aes256_init:
 	movw r20, r22
- 25e:	ab 01       	movw	r20, r22
+ 226:	ab 01       	movw	r20, r22
 	ldi r23, hi8(256)
- 260:	71 e0       	ldi	r23, 0x01	; 1
+ 228:	71 e0       	ldi	r23, 0x01	; 1
 	ldi r22, lo8(256)
- 262:	60 e0       	ldi	r22, 0x00	; 0
+ 22a:	60 e0       	ldi	r22, 0x00	; 0
 	rjmp aes_init
- 264:	07 c0       	rjmp	.+14     	; 0x274 <aes_init>
+ 22c:	07 c0       	rjmp	.+14     	; 0x23c <aes_init>
 
-00000266 <aes192_init>:
+0000022e <aes192_init>:
 	
 .global aes192_init
 aes192_init:
 	movw r20, r22
- 266:	ab 01       	movw	r20, r22
+ 22e:	ab 01       	movw	r20, r22
 	ldi r23, hi8(192)
- 268:	70 e0       	ldi	r23, 0x00	; 0
+ 230:	70 e0       	ldi	r23, 0x00	; 0
 	ldi r22, lo8(192)
- 26a:	60 ec       	ldi	r22, 0xC0	; 192
+ 232:	60 ec       	ldi	r22, 0xC0	; 192
 	rjmp aes_init
- 26c:	03 c0       	rjmp	.+6      	; 0x274 <aes_init>
+ 234:	03 c0       	rjmp	.+6      	; 0x23c <aes_init>
 
-0000026e <aes128_init>:
+00000236 <aes128_init>:
 	
 .global aes128_init
 aes128_init:
 	movw r20, r22
- 26e:	ab 01       	movw	r20, r22
+ 236:	ab 01       	movw	r20, r22
 	clr r23
- 270:	77 27       	eor	r23, r23
+ 238:	77 27       	eor	r23, r23
 	ldi r22, 128
- 272:	60 e8       	ldi	r22, 0x80	; 128
+ 23a:	60 e8       	ldi	r22, 0x80	; 128
 
-00000274 <aes_init>:
+0000023c <aes_init>:
  * param keysize_b: r22:r23
  * param ctx:       r20:r21
  */
 .global aes_init
 aes_init:
 	push_range 14, 17
- 274:	ef 92       	push	r14
- 276:	ff 92       	push	r15
- 278:	0f 93       	push	r16
- 27a:	1f 93       	push	r17
+ 23c:	ef 92       	push	r14
+ 23e:	ff 92       	push	r15
+ 240:	0f 93       	push	r16
+ 242:	1f 93       	push	r17
 	push r28
- 27c:	cf 93       	push	r28
+ 244:	cf 93       	push	r28
 	push r29
- 27e:	df 93       	push	r29
+ 246:	df 93       	push	r29
 	movw r30, r20
- 280:	fa 01       	movw	r30, r20
+ 248:	fa 01       	movw	r30, r20
 	movw r28, r20
- 282:	ea 01       	movw	r28, r20
+ 24a:	ea 01       	movw	r28, r20
 	movw r26, r24
- 284:	dc 01       	movw	r26, r24
+ 24c:	dc 01       	movw	r26, r24
 	lsr r23
- 286:	76 95       	lsr	r23
+ 24e:	76 95       	lsr	r23
 	ror r22
- 288:	67 95       	ror	r22
+ 250:	67 95       	ror	r22
 	lsr r22
- 28a:	66 95       	lsr	r22
+ 252:	66 95       	lsr	r22
 	lsr r22 /* r22 contains keysize_b/8 */
- 28c:	66 95       	lsr	r22
+ 254:	66 95       	lsr	r22
 	mov C1, r22
- 28e:	26 2f       	mov	r18, r22
+ 256:	26 2f       	mov	r18, r22
 
 1:	/* copy key to ctx */ 
 	ld r0, X+
- 290:	0d 90       	ld	r0, X+
+ 258:	0d 90       	ld	r0, X+
 	st Z+, r0
- 292:	01 92       	st	Z+, r0
+ 25a:	01 92       	st	Z+, r0
 	dec C1
- 294:	2a 95       	dec	r18
+ 25c:	2a 95       	dec	r18
 	brne 1b
- 296:	e1 f7       	brne	.-8      	; 0x290 <aes_init+0x1c>
+ 25e:	e1 f7       	brne	.-8      	; 0x258 <aes_init+0x1c>
 	
 	lsr NK
- 298:	66 95       	lsr	r22
+ 260:	66 95       	lsr	r22
 	lsr NK
- 29a:	66 95       	lsr	r22
+ 262:	66 95       	lsr	r22
 	bst NK,3 /* set T if NK==8 */
- 29c:	63 fb       	bst	r22, 3
+ 264:	63 fb       	bst	r22, 3
 	mov NEXT_NK, NK
- 29e:	36 2f       	mov	r19, r22
+ 266:	36 2f       	mov	r19, r22
 	mov HI, NK
- 2a0:	76 2f       	mov	r23, r22
+ 268:	76 2f       	mov	r23, r22
 	subi HI, -7
- 2a2:	79 5f       	subi	r23, 0xF9	; 249
+ 26a:	79 5f       	subi	r23, 0xF9	; 249
 	lsl HI
- 2a4:	77 0f       	add	r23, r23
+ 26c:	77 0f       	add	r23, r23
 	lsl HI
- 2a6:	77 0f       	add	r23, r23
+ 26e:	77 0f       	add	r23, r23
 	movw r26, r30
- 2a8:	df 01       	movw	r26, r30
+ 270:	df 01       	movw	r26, r30
 	sbiw r26, 4
- 2aa:	14 97       	sbiw	r26, 0x04	; 4
+ 272:	14 97       	sbiw	r26, 0x04	; 4
 	mov C1, NK
- 2ac:	26 2f       	mov	r18, r22
-	ldi r31, hi8(aes_sbox)
- 2ae:	f4 e0       	ldi	r31, 0x04	; 4
+ 274:	26 2f       	mov	r18, r22
+	ldi r31, hi8(SBOX_TABLE)
+ 276:	f3 e0       	ldi	r31, 0x03	; 3
 	movw SBOX_SAVE0, r30
- 2b0:	7f 01       	movw	r14, r30
+ 278:	7f 01       	movw	r14, r30
 	ldi XRC, 1
- 2b2:	11 e0       	ldi	r17, 0x01	; 1
+ 27a:	11 e0       	ldi	r17, 0x01	; 1
 1:	
 	ld T0, X+
- 2b4:	4d 91       	ld	r20, X+
+ 27c:	4d 91       	ld	r20, X+
 	ld T1, X+
- 2b6:	5d 91       	ld	r21, X+
+ 27e:	5d 91       	ld	r21, X+
 	ld T2, X+
- 2b8:	8d 91       	ld	r24, X+
+ 280:	8d 91       	ld	r24, X+
 	ld T3, X+
- 2ba:	9d 91       	ld	r25, X+
+ 282:	9d 91       	ld	r25, X+
 	cp NEXT_NK, C1
- 2bc:	32 17       	cp	r19, r18
+ 284:	32 17       	cp	r19, r18
 	breq 2f 
- 2be:	79 f0       	breq	.+30     	; 0x2de <aes_init+0x6a>
+ 286:	79 f0       	breq	.+30     	; 0x2a6 <aes_init+0x6a>
 	brtc 5f
- 2c0:	ee f4       	brtc	.+58     	; 0x2fc <aes_init+0x88>
+ 288:	ee f4       	brtc	.+58     	; 0x2c4 <aes_init+0x88>
 	mov r16, C1
- 2c2:	02 2f       	mov	r16, r18
+ 28a:	02 2f       	mov	r16, r18
 	andi r16, 0x07
- 2c4:	07 70       	andi	r16, 0x07	; 7
+ 28c:	07 70       	andi	r16, 0x07	; 7
 	cpi r16, 0x04
- 2c6:	04 30       	cpi	r16, 0x04	; 4
+ 28e:	04 30       	cpi	r16, 0x04	; 4
 	brne 5f
- 2c8:	c9 f4       	brne	.+50     	; 0x2fc <aes_init+0x88>
+ 290:	c9 f4       	brne	.+50     	; 0x2c4 <aes_init+0x88>
 	movw r30, SBOX_SAVE0
- 2ca:	f7 01       	movw	r30, r14
+ 292:	f7 01       	movw	r30, r14
 	mov r30, T0
- 2cc:	e4 2f       	mov	r30, r20
-	lpm T0, Z
- 2ce:	44 91       	lpm	r20, Z
+ 294:	e4 2f       	mov	r30, r20
+	ld T0, Z
+ 296:	40 81       	ld	r20, Z
 
 	mov r30, T1
- 2d0:	e5 2f       	mov	r30, r21
-	lpm T1, Z
- 2d2:	54 91       	lpm	r21, Z
+ 298:	e5 2f       	mov	r30, r21
+	ld T1, Z
+ 29a:	50 81       	ld	r21, Z
 
 	mov r30, T2
- 2d4:	e8 2f       	mov	r30, r24
-	lpm T2, Z
- 2d6:	84 91       	lpm	r24, Z
+ 29c:	e8 2f       	mov	r30, r24
+	ld T2, Z
+ 29e:	80 81       	ld	r24, Z
 
 	mov r30, T3
- 2d8:	e9 2f       	mov	r30, r25
-	lpm T3, Z
- 2da:	94 91       	lpm	r25, Z
+ 2a0:	e9 2f       	mov	r30, r25
+	ld T3, Z
+ 2a2:	90 81       	ld	r25, Z
 
 	rjmp 5f
- 2dc:	0f c0       	rjmp	.+30     	; 0x2fc <aes_init+0x88>
+ 2a4:	0f c0       	rjmp	.+30     	; 0x2c4 <aes_init+0x88>
 2:
 	add NEXT_NK, NK
- 2de:	36 0f       	add	r19, r22
+ 2a6:	36 0f       	add	r19, r22
 	movw r30, SBOX_SAVE0
- 2e0:	f7 01       	movw	r30, r14
+ 2a8:	f7 01       	movw	r30, r14
 	mov r30, T0
- 2e2:	e4 2f       	mov	r30, r20
-	lpm r16, Z
- 2e4:	04 91       	lpm	r16, Z
+ 2aa:	e4 2f       	mov	r30, r20
+	ld r16, Z
+ 2ac:	00 81       	ld	r16, Z
 
 	mov r30, T1
- 2e6:	e5 2f       	mov	r30, r21
-	lpm T0, Z
- 2e8:	44 91       	lpm	r20, Z
+ 2ae:	e5 2f       	mov	r30, r21
+	ld T0, Z
+ 2b0:	40 81       	ld	r20, Z
 
 	mov r30, T2
- 2ea:	e8 2f       	mov	r30, r24
-	lpm T1, Z
- 2ec:	54 91       	lpm	r21, Z
+ 2b2:	e8 2f       	mov	r30, r24
+	ld T1, Z
+ 2b4:	50 81       	ld	r21, Z
 
 	mov r30, T3
- 2ee:	e9 2f       	mov	r30, r25
-	lpm T2, Z
- 2f0:	84 91       	lpm	r24, Z
+ 2b6:	e9 2f       	mov	r30, r25
+	ld T2, Z
+ 2b8:	80 81       	ld	r24, Z
 
 	mov T3, r16
- 2f2:	90 2f       	mov	r25, r16
+ 2ba:	90 2f       	mov	r25, r16
 	eor T0, XRC
- 2f4:	41 27       	eor	r20, r17
+ 2bc:	41 27       	eor	r20, r17
 	lsl XRC
- 2f6:	11 0f       	add	r17, r17
+ 2be:	11 0f       	add	r17, r17
 	brcc 3f
- 2f8:	08 f4       	brcc	.+2      	; 0x2fc <aes_init+0x88>
+ 2c0:	08 f4       	brcc	.+2      	; 0x2c4 <aes_init+0x88>
 	ldi XRC, 0x1b
- 2fa:	1b e1       	ldi	r17, 0x1B	; 27
+ 2c2:	1b e1       	ldi	r17, 0x1B	; 27
 3:
 5:	
 	movw r30, r26
- 2fc:	fd 01       	movw	r30, r26
+ 2c4:	fd 01       	movw	r30, r26
 
 	ld r0, Y+
- 2fe:	09 90       	ld	r0, Y+
+ 2c6:	09 90       	ld	r0, Y+
 	eor r0, T0
- 300:	04 26       	eor	r0, r20
+ 2c8:	04 26       	eor	r0, r20
 	st Z+, r0 
- 302:	01 92       	st	Z+, r0
+ 2ca:	01 92       	st	Z+, r0
 	ld r0, Y+
- 304:	09 90       	ld	r0, Y+
+ 2cc:	09 90       	ld	r0, Y+
 	eor r0 ,T1
- 306:	05 26       	eor	r0, r21
+ 2ce:	05 26       	eor	r0, r21
 	st Z+, r0
- 308:	01 92       	st	Z+, r0
+ 2d0:	01 92       	st	Z+, r0
 	ld r0, Y+
- 30a:	09 90       	ld	r0, Y+
+ 2d2:	09 90       	ld	r0, Y+
 	eor r0, T2
- 30c:	08 26       	eor	r0, r24
+ 2d4:	08 26       	eor	r0, r24
 	st Z+, r0
- 30e:	01 92       	st	Z+, r0
+ 2d6:	01 92       	st	Z+, r0
 	ld r0, Y+
- 310:	09 90       	ld	r0, Y+
+ 2d8:	09 90       	ld	r0, Y+
 	eor r0, T3
- 312:	09 26       	eor	r0, r25
+ 2da:	09 26       	eor	r0, r25
 	st Z+, r0
- 314:	01 92       	st	Z+, r0
+ 2dc:	01 92       	st	Z+, r0
 	
 	inc C1
- 316:	23 95       	inc	r18
+ 2de:	23 95       	inc	r18
 	cp C1, HI
- 318:	27 17       	cp	r18, r23
+ 2e0:	27 17       	cp	r18, r23
 	breq 6f
- 31a:	09 f0       	breq	.+2      	; 0x31e <aes_init+0xaa>
+ 2e2:	09 f0       	breq	.+2      	; 0x2e6 <aes_init+0xaa>
 	rjmp 1b
- 31c:	cb cf       	rjmp	.-106    	; 0x2b4 <aes_init+0x40>
+ 2e4:	cb cf       	rjmp	.-106    	; 0x27c <aes_init+0x40>
 6:	
 	clt
- 31e:	e8 94       	clt
+ 2e6:	e8 94       	clt
 	pop r29
- 320:	df 91       	pop	r29
+ 2e8:	df 91       	pop	r29
 	pop r28
- 322:	cf 91       	pop	r28
+ 2ea:	cf 91       	pop	r28
 	pop_range 14, 17
- 324:	1f 91       	pop	r17
- 326:	0f 91       	pop	r16
- 328:	ff 90       	pop	r15
- 32a:	ef 90       	pop	r14
- 32c:	08 95       	ret
-	...
+ 2ec:	1f 91       	pop	r17
+ 2ee:	0f 91       	pop	r16
+ 2f0:	ff 90       	pop	r15
+ 2f2:	ef 90       	pop	r14
+ 2f4:	08 95       	ret
 
-00000400 <aes_sbox>:
- 400:	63 7c       	andi	r22, 0xC3	; 195
- 402:	77 7b       	andi	r23, 0xB7	; 183
- 404:	f2 6b       	ori	r31, 0xB2	; 178
- 406:	6f c5       	rjmp	.+2782   	; 0xee6 <__data_load_end+0x778>
- 408:	30 01       	movw	r6, r0
- 40a:	67 2b       	or	r22, r23
- 40c:	fe d7       	rcall	.+4092   	; 0x140a <__stack+0x30b>
- 40e:	ab 76       	andi	r26, 0x6B	; 107
- 410:	ca 82       	std	Y+2, r12	; 0x02
- 412:	c9 7d       	andi	r28, 0xD9	; 217
- 414:	fa 59       	subi	r31, 0x9A	; 154
- 416:	47 f0       	brie	.+16     	; 0x428 <aes_sbox+0x28>
- 418:	ad d4       	rcall	.+2394   	; 0xd74 <__data_load_end+0x606>
- 41a:	a2 af       	std	Z+58, r26	; 0x3a
- 41c:	9c a4       	ldd	r9, Y+44	; 0x2c
- 41e:	72 c0       	rjmp	.+228    	; 0x504 <main+0x4>
- 420:	b7 fd       	sbrc	r27, 7
- 422:	93 26       	eor	r9, r19
- 424:	36 3f       	cpi	r19, 0xF6	; 246
- 426:	f7 cc       	rjmp	.-1554   	; 0xfffffe16 <__eeprom_end+0xff7efe16>
- 428:	34 a5       	ldd	r19, Z+44	; 0x2c
- 42a:	e5 f1       	brhs	.+120    	; 0x4a4 <aes_sbox+0xa4>
- 42c:	71 d8       	rcall	.-3870   	; 0xfffff510 <__eeprom_end+0xff7ef510>
- 42e:	31 15       	cp	r19, r1
- 430:	04 c7       	rjmp	.+3592   	; 0x123a <__stack+0x13b>
- 432:	23 c3       	rjmp	.+1606   	; 0xa7a <__data_load_end+0x30c>
- 434:	18 96       	adiw	r26, 0x08	; 8
- 436:	05 9a       	sbi	0x00, 5	; 0
- 438:	07 12       	cpse	r0, r23
- 43a:	80 e2       	ldi	r24, 0x20	; 32
- 43c:	eb 27       	eor	r30, r27
- 43e:	b2 75       	andi	r27, 0x52	; 82
- 440:	09 83       	std	Y+1, r16	; 0x01
- 442:	2c 1a       	sub	r2, r28
- 444:	1b 6e       	ori	r17, 0xEB	; 235
- 446:	5a a0       	ldd	r5, Y+34	; 0x22
- 448:	52 3b       	cpi	r21, 0xB2	; 178
- 44a:	d6 b3       	in	r29, 0x16	; 22
- 44c:	29 e3       	ldi	r18, 0x39	; 57
- 44e:	2f 84       	ldd	r2, Y+15	; 0x0f
- 450:	53 d1       	rcall	.+678    	; 0x6f8 <_etext+0x19a>
- 452:	00 ed       	ldi	r16, 0xD0	; 208
- 454:	20 fc       	sbrc	r2, 0
- 456:	b1 5b       	subi	r27, 0xB1	; 177
- 458:	6a cb       	rjmp	.-2348   	; 0xfffffb2e <__eeprom_end+0xff7efb2e>
- 45a:	be 39       	cpi	r27, 0x9E	; 158
- 45c:	4a 4c       	sbci	r20, 0xCA	; 202
- 45e:	58 cf       	rjmp	.-336    	; 0x310 <aes_init+0x9c>
- 460:	d0 ef       	ldi	r29, 0xF0	; 240
- 462:	aa fb       	.word	0xfbaa	; ????
- 464:	43 4d       	sbci	r20, 0xD3	; 211
- 466:	33 85       	ldd	r19, Z+11	; 0x0b
- 468:	45 f9       	bld	r20, 5
- 46a:	02 7f       	andi	r16, 0xF2	; 242
- 46c:	50 3c       	cpi	r21, 0xC0	; 192
- 46e:	9f a8       	ldd	r9, Y+55	; 0x37
- 470:	51 a3       	std	Z+33, r21	; 0x21
- 472:	40 8f       	std	Z+24, r20	; 0x18
- 474:	92 9d       	mul	r25, r2
- 476:	38 f5       	brcc	.+78     	; 0x4c6 <aes_sbox+0xc6>
- 478:	bc b6       	in	r11, 0x3c	; 60
- 47a:	da 21       	and	r29, r10
- 47c:	10 ff       	sbrs	r17, 0
- 47e:	f3 d2       	rcall	.+1510   	; 0xa66 <__data_load_end+0x2f8>
- 480:	cd 0c       	add	r12, r13
- 482:	13 ec       	ldi	r17, 0xC3	; 195
- 484:	5f 97       	sbiw	r26, 0x1f	; 31
- 486:	44 17       	cp	r20, r20
- 488:	c4 a7       	std	Z+44, r28	; 0x2c
- 48a:	7e 3d       	cpi	r23, 0xDE	; 222
- 48c:	64 5d       	subi	r22, 0xD4	; 212
- 48e:	19 73       	andi	r17, 0x39	; 57
- 490:	60 81       	ld	r22, Z
- 492:	4f dc       	rcall	.-1890   	; 0xfffffd32 <__eeprom_end+0xff7efd32>
- 494:	22 2a       	or	r2, r18
- 496:	90 88       	ldd	r9, Z+16	; 0x10
- 498:	46 ee       	ldi	r20, 0xE6	; 230
- 49a:	b8 14       	cp	r11, r8
- 49c:	de 5e       	subi	r29, 0xEE	; 238
- 49e:	0b db       	rcall	.-2538   	; 0xfffffab6 <__eeprom_end+0xff7efab6>
- 4a0:	e0 32       	cpi	r30, 0x20	; 32
- 4a2:	3a 0a       	sbc	r3, r26
- 4a4:	49 06       	cpc	r4, r25
- 4a6:	24 5c       	subi	r18, 0xC4	; 196
- 4a8:	c2 d3       	rcall	.+1924   	; 0xc2e <__data_load_end+0x4c0>
- 4aa:	ac 62       	ori	r26, 0x2C	; 44
- 4ac:	91 95       	neg	r25
- 4ae:	e4 79       	andi	r30, 0x94	; 148
- 4b0:	e7 c8       	rjmp	.-3634   	; 0xfffff680 <__eeprom_end+0xff7ef680>
- 4b2:	37 6d       	ori	r19, 0xD7	; 215
- 4b4:	8d d5       	rcall	.+2842   	; 0xfd0 <__data_load_end+0x862>
- 4b6:	4e a9       	ldd	r20, Y+54	; 0x36
- 4b8:	6c 56       	subi	r22, 0x6C	; 108
- 4ba:	f4 ea       	ldi	r31, 0xA4	; 164
- 4bc:	65 7a       	andi	r22, 0xA5	; 165
- 4be:	ae 08       	sbc	r10, r14
- 4c0:	ba 78       	andi	r27, 0x8A	; 138
- 4c2:	25 2e       	mov	r2, r21
- 4c4:	1c a6       	std	Y+44, r1	; 0x2c
- 4c6:	b4 c6       	rjmp	.+3432   	; 0x1230 <__stack+0x131>
- 4c8:	e8 dd       	rcall	.-1072   	; 0x9a <__do_copy_data+0x2>
- 4ca:	74 1f       	adc	r23, r20
- 4cc:	4b bd       	out	0x2b, r20	; 43
- 4ce:	8b 8a       	std	Y+19, r8	; 0x13
- 4d0:	70 3e       	cpi	r23, 0xE0	; 224
- 4d2:	b5 66       	ori	r27, 0x65	; 101
- 4d4:	48 03       	fmul	r20, r16
- 4d6:	f6 0e       	add	r15, r22
- 4d8:	61 35       	cpi	r22, 0x51	; 81
- 4da:	57 b9       	out	0x07, r21	; 7
- 4dc:	86 c1       	rjmp	.+780    	; 0x7ea <__data_load_end+0x7c>
- 4de:	1d 9e       	mul	r1, r29
- 4e0:	e1 f8       	bld	r14, 1
- 4e2:	98 11       	cpse	r25, r8
- 4e4:	69 d9       	rcall	.-3374   	; 0xfffff7b8 <__eeprom_end+0xff7ef7b8>
- 4e6:	8e 94 9b 1e 	call	0x203d36	; 0x203d36 <__TEXT_REGION_LENGTH__+0x1e3d36>
- 4ea:	87 e9       	ldi	r24, 0x97	; 151
- 4ec:	ce 55       	subi	r28, 0x5E	; 94
- 4ee:	28 df       	rcall	.-432    	; 0x340 <aes_init+0xcc>
- 4f0:	8c a1       	ldd	r24, Y+36	; 0x24
- 4f2:	89 0d       	add	r24, r9
- 4f4:	bf e6       	ldi	r27, 0x6F	; 111
- 4f6:	42 68       	ori	r20, 0x82	; 130
- 4f8:	41 99       	sbic	0x08, 1	; 8
- 4fa:	2d 0f       	add	r18, r29
- 4fc:	b0 54       	subi	r27, 0x40	; 64
- 4fe:	bb 16       	cp	r11, r27
-
-00000500 <main>:
+000002f6 <main>:
 
 #include <avr/io.h>
 #include "aes_types.h"
 
 int main(void)
 {
- 500:	cf 93       	push	r28
- 502:	df 93       	push	r29
- 504:	cd b7       	in	r28, 0x3d	; 61
- 506:	de b7       	in	r29, 0x3e	; 62
- 508:	c0 5d       	subi	r28, 0xD0	; 208
- 50a:	d1 09       	sbc	r29, r1
- 50c:	0f b6       	in	r0, 0x3f	; 63
- 50e:	f8 94       	cli
- 510:	de bf       	out	0x3e, r29	; 62
- 512:	0f be       	out	0x3f, r0	; 63
- 514:	cd bf       	out	0x3d, r28	; 61
+ 2f6:	cf 93       	push	r28
+ 2f8:	df 93       	push	r29
+ 2fa:	cd b7       	in	r28, 0x3d	; 61
+ 2fc:	de b7       	in	r29, 0x3e	; 62
+ 2fe:	c0 5d       	subi	r28, 0xD0	; 208
+ 300:	d1 09       	sbc	r29, r1
+ 302:	0f b6       	in	r0, 0x3f	; 63
+ 304:	f8 94       	cli
+ 306:	de bf       	out	0x3e, r29	; 62
+ 308:	0f be       	out	0x3f, r0	; 63
+ 30a:	cd bf       	out	0x3d, r28	; 61
     /* Replace with your application code */
     while (1) 
     {
 		u8 key[16] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+ 30c:	20 e1       	ldi	r18, 0x10	; 16
+ 30e:	e0 e0       	ldi	r30, 0x00	; 0
+ 310:	f4 e0       	ldi	r31, 0x04	; 4
+ 312:	ce 01       	movw	r24, r28
+ 314:	01 96       	adiw	r24, 0x01	; 1
+ 316:	dc 01       	movw	r26, r24
+ 318:	01 90       	ld	r0, Z+
+ 31a:	0d 92       	st	X+, r0
+ 31c:	2a 95       	dec	r18
+ 31e:	e1 f7       	brne	.-8      	; 0x318 <main+0x22>
 		u8 IV[16] = {0,};
- 516:	8e 01       	movw	r16, r28
- 518:	0f 54       	subi	r16, 0x4F	; 79
- 51a:	1f 4f       	sbci	r17, 0xFF	; 255
- 51c:	68 94       	set
- 51e:	ff 24       	eor	r15, r15
- 520:	f4 f8       	bld	r15, 4
-int main(void)
-{
-    /* Replace with your application code */
-    while (1) 
-    {
-		u8 key[16] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
- 522:	80 e1       	ldi	r24, 0x10	; 16
- 524:	e0 e0       	ldi	r30, 0x00	; 0
- 526:	f3 e0       	ldi	r31, 0x03	; 3
- 528:	de 01       	movw	r26, r28
- 52a:	af 53       	subi	r26, 0x3F	; 63
- 52c:	bf 4f       	sbci	r27, 0xFF	; 255
- 52e:	01 90       	ld	r0, Z+
- 530:	0d 92       	st	X+, r0
- 532:	8a 95       	dec	r24
- 534:	e1 f7       	brne	.-8      	; 0x52e <main+0x2e>
-		u8 IV[16] = {0,};
- 536:	f8 01       	movw	r30, r16
- 538:	8f 2d       	mov	r24, r15
- 53a:	11 92       	st	Z+, r1
- 53c:	8a 95       	dec	r24
- 53e:	e9 f7       	brne	.-6      	; 0x53a <main+0x3a>
+ 320:	20 e1       	ldi	r18, 0x10	; 16
+ 322:	ce 01       	movw	r24, r28
+ 324:	41 96       	adiw	r24, 0x11	; 17
+ 326:	fc 01       	movw	r30, r24
+ 328:	32 2f       	mov	r19, r18
+ 32a:	11 92       	st	Z+, r1
+ 32c:	3a 95       	dec	r19
+ 32e:	e9 f7       	brne	.-6      	; 0x32a <main+0x34>
 		aes128_ctx_t aes_test;
 		aes128_init(key, &aes_test);
- 540:	be 01       	movw	r22, r28
- 542:	6f 5f       	subi	r22, 0xFF	; 255
- 544:	7f 4f       	sbci	r23, 0xFF	; 255
- 546:	ce 01       	movw	r24, r28
- 548:	8f 53       	subi	r24, 0x3F	; 63
- 54a:	9f 4f       	sbci	r25, 0xFF	; 255
- 54c:	90 de       	rcall	.-736    	; 0x26e <aes128_init>
+ 330:	ce 01       	movw	r24, r28
+ 332:	81 96       	adiw	r24, 0x21	; 33
+ 334:	bc 01       	movw	r22, r24
+ 336:	ce 01       	movw	r24, r28
+ 338:	01 96       	adiw	r24, 0x01	; 1
+ 33a:	7d df       	rcall	.-262    	; 0x236 <aes128_init>
 		aes128_enc(IV,&aes_test);
- 54e:	be 01       	movw	r22, r28
- 550:	6f 5f       	subi	r22, 0xFF	; 255
- 552:	7f 4f       	sbci	r23, 0xFF	; 255
- 554:	c8 01       	movw	r24, r16
- 556:	b4 dd       	rcall	.-1176   	; 0xc0 <aes128_enc>
- 558:	e4 cf       	rjmp	.-56     	; 0x522 <main+0x22>
+ 33c:	9e 01       	movw	r18, r28
+ 33e:	2f 5d       	subi	r18, 0xDF	; 223
+ 340:	3f 4f       	sbci	r19, 0xFF	; 255
+ 342:	ce 01       	movw	r24, r28
+ 344:	41 96       	adiw	r24, 0x11	; 17
+ 346:	b9 01       	movw	r22, r18
+ 348:	bb de       	rcall	.-650    	; 0xc0 <aes128_enc>
+    }
+ 34a:	e0 cf       	rjmp	.-64     	; 0x30c <main+0x16>
 
-0000055a <_exit>:
- 55a:	f8 94       	cli
+0000034c <_exit>:
+ 34c:	f8 94       	cli
 
-0000055c <__stop_program>:
- 55c:	ff cf       	rjmp	.-2      	; 0x55c <__stop_program>
+0000034e <__stop_program>:
+ 34e:	ff cf       	rjmp	.-2      	; 0x34e <__stop_program>
