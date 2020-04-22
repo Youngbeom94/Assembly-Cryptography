@@ -1,5 +1,5 @@
 
-Face_Light.elf:     file format elf32-avr
+aes_nonmasking.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
@@ -13,19 +13,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   4 .debug_aranges 00000060  00000000  00000000  000040e0  2**3
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000a07  00000000  00000000  00004140  2**0
+  5 .debug_info   00000a2b  00000000  00000000  00004140  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 0000083d  00000000  00000000  00004b47  2**0
+  6 .debug_abbrev 0000083d  00000000  00000000  00004b6b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000006b4  00000000  00000000  00005384  2**0
+  7 .debug_line   000006b1  00000000  00000000  000053a8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000038  00000000  00000000  00005a38  2**2
+  8 .debug_frame  00000038  00000000  00000000  00005a5c  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000003f7  00000000  00000000  00005a70  2**0
+  9 .debug_str    000003fb  00000000  00000000  00005a94  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000048  00000000  00000000  00005e67  2**0
+ 10 .debug_loc    00000048  00000000  00000000  00005e8f  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000010  00000000  00000000  00005eaf  2**0
+ 11 .debug_ranges 00000010  00000000  00000000  00005ed7  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -233,38 +233,38 @@ aes_encrypt_core:
 			eor ST\row\col, T0
 		.endr
 	.endr
-     116:	45 90       	lpm	r4, Z+
-     118:	84 24       	eor	r8, r4
-     11a:	45 90       	lpm	r4, Z+
-     11c:	94 24       	eor	r9, r4
-     11e:	45 90       	lpm	r4, Z+
-     120:	a4 24       	eor	r10, r4
-     122:	45 90       	lpm	r4, Z+
-     124:	b4 24       	eor	r11, r4
-     126:	45 90       	lpm	r4, Z+
-     128:	c4 24       	eor	r12, r4
-     12a:	45 90       	lpm	r4, Z+
-     12c:	d4 24       	eor	r13, r4
-     12e:	45 90       	lpm	r4, Z+
-     130:	e4 24       	eor	r14, r4
-     132:	45 90       	lpm	r4, Z+
-     134:	f4 24       	eor	r15, r4
-     136:	45 90       	lpm	r4, Z+
-     138:	04 25       	eor	r16, r4
-     13a:	45 90       	lpm	r4, Z+
-     13c:	14 25       	eor	r17, r4
-     13e:	45 90       	lpm	r4, Z+
-     140:	24 25       	eor	r18, r4
-     142:	45 90       	lpm	r4, Z+
-     144:	34 25       	eor	r19, r4
-     146:	45 90       	lpm	r4, Z+
-     148:	44 25       	eor	r20, r4
-     14a:	45 90       	lpm	r4, Z+
-     14c:	54 25       	eor	r21, r4
-     14e:	45 90       	lpm	r4, Z+
-     150:	64 25       	eor	r22, r4
-     152:	45 90       	lpm	r4, Z+
-     154:	74 25       	eor	r23, r4
+     116:	55 90       	lpm	r5, Z+
+     118:	85 24       	eor	r8, r5
+     11a:	55 90       	lpm	r5, Z+
+     11c:	95 24       	eor	r9, r5
+     11e:	55 90       	lpm	r5, Z+
+     120:	a5 24       	eor	r10, r5
+     122:	55 90       	lpm	r5, Z+
+     124:	b5 24       	eor	r11, r5
+     126:	55 90       	lpm	r5, Z+
+     128:	c5 24       	eor	r12, r5
+     12a:	55 90       	lpm	r5, Z+
+     12c:	d5 24       	eor	r13, r5
+     12e:	55 90       	lpm	r5, Z+
+     130:	e5 24       	eor	r14, r5
+     132:	55 90       	lpm	r5, Z+
+     134:	f5 24       	eor	r15, r5
+     136:	55 90       	lpm	r5, Z+
+     138:	05 25       	eor	r16, r5
+     13a:	55 90       	lpm	r5, Z+
+     13c:	15 25       	eor	r17, r5
+     13e:	55 90       	lpm	r5, Z+
+     140:	25 25       	eor	r18, r5
+     142:	55 90       	lpm	r5, Z+
+     144:	35 25       	eor	r19, r5
+     146:	55 90       	lpm	r5, Z+
+     148:	45 25       	eor	r20, r5
+     14a:	55 90       	lpm	r5, Z+
+     14c:	55 25       	eor	r21, r5
+     14e:	55 90       	lpm	r5, Z+
+     150:	65 25       	eor	r22, r5
+     152:	55 90       	lpm	r5, Z+
+     154:	75 25       	eor	r23, r5
 	
 	ldi r31, hi8(aes_sbox)
      156:	f4 e0       	ldi	r31, 0x04	; 4
@@ -308,7 +308,6 @@ aes_encrypt_core:
      194:	60 25       	eor	r22, r0
      196:	0d 90       	ld	r0, X+
      198:	70 25       	eor	r23, r0
-
 2:
 	brtc 2f
      19a:	06 f5       	brtc	.+64     	; 0x1dc <exit+0x40>
@@ -370,7 +369,7 @@ exit:
 	/* encryption loop */ 
 
 	/* SBOX substitution and shifting */
-	mov r30, ST00
+mov r30, ST00
      1e2:	e8 2d       	mov	r30, r8
 	lpm ST00, Z
      1e4:	84 90       	lpm	r8, Z
@@ -390,7 +389,7 @@ exit:
 	mov r30, ST01
      1f2:	e9 2d       	mov	r30, r9
 	lpm T0, Z
-     1f4:	44 90       	lpm	r4, Z
+     1f4:	54 90       	lpm	r5, Z
 	mov r30, ST11
      1f6:	ed 2d       	mov	r30, r13
 	lpm ST01, Z
@@ -404,16 +403,16 @@ exit:
 	lpm ST21, Z
      200:	14 91       	lpm	r17, Z
 	mov ST31, T0
-     202:	54 2d       	mov	r21, r4
+     202:	55 2d       	mov	r21, r5
 
 	mov r30, ST02
      204:	ea 2d       	mov	r30, r10
 	lpm T0, Z
-     206:	44 90       	lpm	r4, Z
+     206:	54 90       	lpm	r5, Z
 	mov r30, ST12
      208:	ee 2d       	mov	r30, r14
 	lpm T1, Z
-     20a:	54 90       	lpm	r5, Z
+     20a:	64 90       	lpm	r6, Z
 	mov r30, ST22
      20c:	e2 2f       	mov	r30, r18
 	lpm ST02, Z
@@ -423,14 +422,14 @@ exit:
 	lpm ST12, Z
      212:	e4 90       	lpm	r14, Z
 	mov ST22, T0
-     214:	24 2d       	mov	r18, r4
+     214:	25 2d       	mov	r18, r5
 	mov ST32, T1
-     216:	65 2d       	mov	r22, r5
+     216:	66 2d       	mov	r22, r6
 
 	mov r30, ST03
      218:	eb 2d       	mov	r30, r11
 	lpm T0, Z
-     21a:	44 90       	lpm	r4, Z
+     21a:	54 90       	lpm	r5, Z
 	mov r30, ST33
      21c:	e7 2f       	mov	r30, r23
 	lpm ST03, Z
@@ -444,136 +443,134 @@ exit:
 	lpm ST23, Z
      226:	34 91       	lpm	r19, Z
 	mov ST13, T0
-     228:	f4 2c       	mov	r15, r4
+     228:	f5 2c       	mov	r15, r5
 
 	brtc 2f
      22a:	0e f4       	brtc	.+2      	; 0x22e <exit+0x92>
 	rjmp 1b
      22c:	96 cf       	rjmp	.-212    	; 0x15a <aes_encrypt_core+0x94>
-	mov ST\row\()0, T0
-	mov ST\row\()1, T1
-	mov ST\row\()2, T2
-	mov ST\row\()3, T3*/
+	brcc 3f
+	eor T0, xREDUCER
+3:	eor T0, r0
+	eor ST\row\()3, T0
 
 .endr
      22e:	0a 2c       	mov	r0, r10
      230:	0b 24       	eor	r0, r11
-     232:	60 2c       	mov	r6, r0
-     234:	48 2c       	mov	r4, r8
+     232:	70 2c       	mov	r7, r0
+     234:	58 2c       	mov	r5, r8
      236:	89 24       	eor	r8, r9
      238:	08 24       	eor	r0, r8
      23a:	88 0c       	add	r8, r8
      23c:	08 f4       	brcc	.+2      	; 0x240 <exit+0xa4>
      23e:	89 26       	eor	r8, r25
      240:	80 24       	eor	r8, r0
-     242:	84 24       	eor	r8, r4
-     244:	59 2c       	mov	r5, r9
-     246:	5a 24       	eor	r5, r10
-     248:	55 0c       	add	r5, r5
+     242:	85 24       	eor	r8, r5
+     244:	69 2c       	mov	r6, r9
+     246:	6a 24       	eor	r6, r10
+     248:	66 0c       	add	r6, r6
      24a:	08 f4       	brcc	.+2      	; 0x24e <exit+0xb2>
-     24c:	59 26       	eor	r5, r25
-     24e:	50 24       	eor	r5, r0
-     250:	95 24       	eor	r9, r5
-     252:	66 0c       	add	r6, r6
+     24c:	69 26       	eor	r6, r25
+     24e:	60 24       	eor	r6, r0
+     250:	96 24       	eor	r9, r6
+     252:	77 0c       	add	r7, r7
      254:	08 f4       	brcc	.+2      	; 0x258 <exit+0xbc>
-     256:	69 26       	eor	r6, r25
-     258:	60 24       	eor	r6, r0
-     25a:	a6 24       	eor	r10, r6
-     25c:	4b 24       	eor	r4, r11
-     25e:	44 0c       	add	r4, r4
+     256:	79 26       	eor	r7, r25
+     258:	70 24       	eor	r7, r0
+     25a:	a7 24       	eor	r10, r7
+     25c:	5b 24       	eor	r5, r11
+     25e:	55 0c       	add	r5, r5
      260:	08 f4       	brcc	.+2      	; 0x264 <exit+0xc8>
-     262:	49 26       	eor	r4, r25
-     264:	40 24       	eor	r4, r0
-     266:	b4 24       	eor	r11, r4
+     262:	59 26       	eor	r5, r25
+     264:	50 24       	eor	r5, r0
+     266:	b5 24       	eor	r11, r5
      268:	0e 2c       	mov	r0, r14
      26a:	0f 24       	eor	r0, r15
-     26c:	60 2c       	mov	r6, r0
-     26e:	4c 2c       	mov	r4, r12
+     26c:	70 2c       	mov	r7, r0
+     26e:	5c 2c       	mov	r5, r12
      270:	cd 24       	eor	r12, r13
      272:	0c 24       	eor	r0, r12
      274:	cc 0c       	add	r12, r12
      276:	08 f4       	brcc	.+2      	; 0x27a <exit+0xde>
      278:	c9 26       	eor	r12, r25
      27a:	c0 24       	eor	r12, r0
-     27c:	c4 24       	eor	r12, r4
-     27e:	5d 2c       	mov	r5, r13
-     280:	5e 24       	eor	r5, r14
-     282:	55 0c       	add	r5, r5
+     27c:	c5 24       	eor	r12, r5
+     27e:	6d 2c       	mov	r6, r13
+     280:	6e 24       	eor	r6, r14
+     282:	66 0c       	add	r6, r6
      284:	08 f4       	brcc	.+2      	; 0x288 <exit+0xec>
-     286:	59 26       	eor	r5, r25
-     288:	50 24       	eor	r5, r0
-     28a:	d5 24       	eor	r13, r5
-     28c:	66 0c       	add	r6, r6
+     286:	69 26       	eor	r6, r25
+     288:	60 24       	eor	r6, r0
+     28a:	d6 24       	eor	r13, r6
+     28c:	77 0c       	add	r7, r7
      28e:	08 f4       	brcc	.+2      	; 0x292 <exit+0xf6>
-     290:	69 26       	eor	r6, r25
-     292:	60 24       	eor	r6, r0
-     294:	e6 24       	eor	r14, r6
-     296:	4f 24       	eor	r4, r15
-     298:	44 0c       	add	r4, r4
+     290:	79 26       	eor	r7, r25
+     292:	70 24       	eor	r7, r0
+     294:	e7 24       	eor	r14, r7
+     296:	5f 24       	eor	r5, r15
+     298:	55 0c       	add	r5, r5
      29a:	08 f4       	brcc	.+2      	; 0x29e <exit+0x102>
-     29c:	49 26       	eor	r4, r25
-     29e:	40 24       	eor	r4, r0
-     2a0:	f4 24       	eor	r15, r4
+     29c:	59 26       	eor	r5, r25
+     29e:	50 24       	eor	r5, r0
+     2a0:	f5 24       	eor	r15, r5
      2a2:	02 2e       	mov	r0, r18
      2a4:	03 26       	eor	r0, r19
-     2a6:	60 2c       	mov	r6, r0
-     2a8:	40 2e       	mov	r4, r16
+     2a6:	70 2c       	mov	r7, r0
+     2a8:	50 2e       	mov	r5, r16
      2aa:	01 27       	eor	r16, r17
      2ac:	00 26       	eor	r0, r16
      2ae:	00 0f       	add	r16, r16
      2b0:	08 f4       	brcc	.+2      	; 0x2b4 <exit+0x118>
      2b2:	09 27       	eor	r16, r25
      2b4:	00 25       	eor	r16, r0
-     2b6:	04 25       	eor	r16, r4
-     2b8:	51 2e       	mov	r5, r17
-     2ba:	52 26       	eor	r5, r18
-     2bc:	55 0c       	add	r5, r5
+     2b6:	05 25       	eor	r16, r5
+     2b8:	61 2e       	mov	r6, r17
+     2ba:	62 26       	eor	r6, r18
+     2bc:	66 0c       	add	r6, r6
      2be:	08 f4       	brcc	.+2      	; 0x2c2 <exit+0x126>
-     2c0:	59 26       	eor	r5, r25
-     2c2:	50 24       	eor	r5, r0
-     2c4:	15 25       	eor	r17, r5
-     2c6:	66 0c       	add	r6, r6
+     2c0:	69 26       	eor	r6, r25
+     2c2:	60 24       	eor	r6, r0
+     2c4:	16 25       	eor	r17, r6
+     2c6:	77 0c       	add	r7, r7
      2c8:	08 f4       	brcc	.+2      	; 0x2cc <exit+0x130>
-     2ca:	69 26       	eor	r6, r25
-     2cc:	60 24       	eor	r6, r0
-     2ce:	26 25       	eor	r18, r6
-     2d0:	43 26       	eor	r4, r19
-     2d2:	44 0c       	add	r4, r4
+     2ca:	79 26       	eor	r7, r25
+     2cc:	70 24       	eor	r7, r0
+     2ce:	27 25       	eor	r18, r7
+     2d0:	53 26       	eor	r5, r19
+     2d2:	55 0c       	add	r5, r5
      2d4:	08 f4       	brcc	.+2      	; 0x2d8 <exit+0x13c>
-     2d6:	49 26       	eor	r4, r25
-     2d8:	40 24       	eor	r4, r0
-     2da:	34 25       	eor	r19, r4
+     2d6:	59 26       	eor	r5, r25
+     2d8:	50 24       	eor	r5, r0
+     2da:	35 25       	eor	r19, r5
      2dc:	06 2e       	mov	r0, r22
      2de:	07 26       	eor	r0, r23
-     2e0:	60 2c       	mov	r6, r0
-     2e2:	44 2e       	mov	r4, r20
+     2e0:	70 2c       	mov	r7, r0
+     2e2:	54 2e       	mov	r5, r20
      2e4:	45 27       	eor	r20, r21
      2e6:	04 26       	eor	r0, r20
      2e8:	44 0f       	add	r20, r20
      2ea:	08 f4       	brcc	.+2      	; 0x2ee <exit+0x152>
      2ec:	49 27       	eor	r20, r25
      2ee:	40 25       	eor	r20, r0
-     2f0:	44 25       	eor	r20, r4
-     2f2:	55 2e       	mov	r5, r21
-     2f4:	56 26       	eor	r5, r22
-     2f6:	55 0c       	add	r5, r5
+     2f0:	45 25       	eor	r20, r5
+     2f2:	65 2e       	mov	r6, r21
+     2f4:	66 26       	eor	r6, r22
+     2f6:	66 0c       	add	r6, r6
      2f8:	08 f4       	brcc	.+2      	; 0x2fc <exit+0x160>
-     2fa:	59 26       	eor	r5, r25
-     2fc:	50 24       	eor	r5, r0
-     2fe:	55 25       	eor	r21, r5
-     300:	66 0c       	add	r6, r6
+     2fa:	69 26       	eor	r6, r25
+     2fc:	60 24       	eor	r6, r0
+     2fe:	56 25       	eor	r21, r6
+     300:	77 0c       	add	r7, r7
      302:	08 f4       	brcc	.+2      	; 0x306 <exit+0x16a>
-     304:	69 26       	eor	r6, r25
-     306:	60 24       	eor	r6, r0
-     308:	66 25       	eor	r22, r6
-     30a:	47 26       	eor	r4, r23
-     30c:	44 0c       	add	r4, r4
+     304:	79 26       	eor	r7, r25
+     306:	70 24       	eor	r7, r0
+     308:	67 25       	eor	r22, r7
+     30a:	57 26       	eor	r5, r23
+     30c:	55 0c       	add	r5, r5
      30e:	08 f4       	brcc	.+2      	; 0x312 <exit+0x176>
-     310:	49 26       	eor	r4, r25
-     312:	40 24       	eor	r4, r0
-     314:	74 25       	eor	r23, r4
-	//ldi r31, hi8(aes_sbox)
-
+     310:	59 26       	eor	r5, r25
+     312:	50 24       	eor	r5, r0
+     314:	75 25       	eor	r23, r5
 	/* mix colums (rows) done */
 
 	/* add key*/
@@ -581,8 +578,7 @@ exit:
      316:	21 cf       	rjmp	.-446    	; 0x15a <aes_encrypt_core+0x94>
 
 00000318 <aes256_init>:
-
- #include "avr-asm-macros.S"
+﻿#include "avr-asm-macros.S"
 
 .global aes256_init
 aes256_init:
@@ -810,6 +806,7 @@ aes_init:
 	rjmp 1b
      3d6:	cb cf       	rjmp	.-106    	; 0x36e <aes_init+0x40>
 6:	
+	
 	clt
      3d8:	e8 94       	clt
 	pop r29

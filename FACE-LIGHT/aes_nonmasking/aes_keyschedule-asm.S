@@ -1,12 +1,4 @@
-﻿
-/*
- * aes_keyschedule_asm.s
- *
- * Created: 2020-04-21 오후 6:11:50
- *  Author: 김영범
- */ 
-
- #include "avr-asm-macros.S"
+﻿#include "avr-asm-macros.S"
 
 .global aes256_init
 aes256_init:
@@ -180,6 +172,7 @@ aes_init:
 	breq 6f
 	rjmp 1b
 6:	
+	
 	clt
 	pop r29
 	pop r28

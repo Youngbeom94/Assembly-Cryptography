@@ -1,11 +1,10 @@
 ﻿
 /*
- * aes_enc_asm.s
+ * aes_enc_asm.S
  *
- * Created: 2020-04-21 오후 6:12:20
- *  Author: 김영범
+ * Created: 2019-08-20 오전 7:07:03
+ *  Author: kyung
  */ 
-
 
 #include "avr-asm-macros.S"
 
@@ -38,10 +37,9 @@ aes128_enc:
   void aes_encrypt_core(aes_cipher_state_t *state, const aes_genctx_t *ks, uint8_t rounds)
 */
 
-T0= 4
-T1= 5
-T2= 6
-T3 = 7
+T0= 5
+T1= 6
+T2= 7
 ST00 =  8
 ST01 =  9
 ST02 = 10
@@ -108,7 +106,6 @@ aes_encrypt_core:
 			eor ST\row\col, r0
 		.endr
 	.endr
-
 2:
 	brtc 2f
 exit:
@@ -132,7 +129,7 @@ exit:
 	/* encryption loop */ 
 
 	/* SBOX substitution and shifting */
-	mov r30, ST00
+mov r30, ST00
 	lpm ST00, Z
 	mov r30, ST10
 	lpm ST10, Z
@@ -178,9 +175,7 @@ exit:
 
 2:	
  /* mixrows */
- //ldi r31, hi8(aes_xtime)
-	
-.irp row, 0, 1, 2, 3
+ .irp row, 0, 1, 2, 3
 	mov r0, ST\row\()2
 	eor r0, ST\row\()3
 	mov T2, r0
@@ -191,9 +186,7 @@ exit:
 	lsl ST\row\()0
 	brcc 3f
 	eor ST\row\()0, xREDUCER
-
-3:	
-	eor ST\row\()0, r0
+3:	eor ST\row\()0, r0
 	eor ST\row\()0, T0
 
 	mov T1, ST\row\()1
@@ -217,51 +210,7 @@ exit:
 3:	eor T0, r0
 	eor ST\row\()3, T0
 
-	/*mov r0, ST\row\()0
-	eor r0, ST\row\()1
-	mov r30, r0
-	lpm r0,	Z
-	eor r0, ST\row\()1
-	eor r0, ST\row\()2
-	eor r0, ST\row\()3 
-	mov T0, r0
-
-	mov r0, ST\row\()1
-	eor r0, ST\row\()2
-	mov r30, r0
-	lpm r0,	Z
-	eor r0, ST\row\()0
-	eor r0, ST\row\()2
-	eor r0, ST\row\()3 
-	mov T1, r0
-
-	mov r0, ST\row\()2
-	eor r0, ST\row\()3
-	mov r30, r0
-	lpm r0,	Z
-	eor r0, ST\row\()0
-	eor r0, ST\row\()1
-	eor r0, ST\row\()3
-	mov T2, r0
-
-	mov r0, ST\row\()0
-	eor r0, ST\row\()3
-	mov r30, r0
-	lpm r0,	Z
-	eor r0, ST\row\()0
-	eor r0, ST\row\()1
-	eor r0, ST\row\()2
-	mov T3, r0
-
-	mov ST\row\()0, T0
-	mov ST\row\()1, T1
-	mov ST\row\()2, T2
-	mov ST\row\()3, T3*/
-
 .endr
-
-	//ldi r31, hi8(aes_sbox)
-
 	/* mix colums (rows) done */
 
 	/* add key*/

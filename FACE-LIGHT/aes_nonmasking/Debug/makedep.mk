@@ -2,17 +2,15 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-aes_enc-asm.s
+aes_enc-asm.S
 
-aes_keyschedule-asm.s
+aes_keyschedule-asm.S
 
-aes_sbox-asm.s
+aes_sbox-asm.S
 
-aes_xtime-asm.s
-
-avr-asm-macros.s
+avr-asm-macros.S
 
 main.c
 
-variable.s
+variable.S
 

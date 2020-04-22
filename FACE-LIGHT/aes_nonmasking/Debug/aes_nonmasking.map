@@ -16,10 +16,6 @@ Discarded input sections
  .data          0x00000000        0x0 aes_sbox-asm.o
  .bss           0x00000000        0x0 aes_sbox-asm.o
  .avr.prop      0x00000000       0x16 aes_sbox-asm.o
- .text          0x00000000      0x100 aes_xtime-asm.o
- .data          0x00000000        0x0 aes_xtime-asm.o
- .bss           0x00000000        0x0 aes_xtime-asm.o
- .avr.prop      0x00000000       0x16 aes_xtime-asm.o
  .text          0x00000000        0x0 avr-asm-macros.o
  .data          0x00000000        0x0 avr-asm-macros.o
  .bss           0x00000000        0x0 avr-asm-macros.o
@@ -81,7 +77,6 @@ LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/
 LOAD aes_enc-asm.o
 LOAD aes_keyschedule-asm.o
 LOAD aes_sbox-asm.o
-LOAD aes_xtime-asm.o
 LOAD avr-asm-macros.o
 LOAD main.o
 LOAD variable.o
@@ -437,12 +432,12 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xa07
+.debug_info     0x00000000      0xa2b
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x780 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
- .debug_info    0x00000780       0x67 aes_enc-asm.o
- .debug_info    0x000007e7       0x6f aes_keyschedule-asm.o
- .debug_info    0x00000856      0x1b1 main.o
+ .debug_info    0x00000780       0x79 aes_enc-asm.o
+ .debug_info    0x000007f9       0x81 aes_keyschedule-asm.o
+ .debug_info    0x0000087a      0x1b1 main.o
 
 .debug_abbrev   0x00000000      0x83d
  *(.debug_abbrev)
@@ -451,22 +446,22 @@ END GROUP
  .debug_abbrev  0x0000072c       0x14 aes_keyschedule-asm.o
  .debug_abbrev  0x00000740       0xfd main.o
 
-.debug_line     0x00000000      0x6b4
+.debug_line     0x00000000      0x6b1
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x169 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
- .debug_line    0x00000169      0x1e5 aes_enc-asm.o
- .debug_line    0x0000034e      0x28e aes_keyschedule-asm.o
- .debug_line    0x000005dc       0xd8 main.o
+ .debug_line    0x00000169      0x1e4 aes_enc-asm.o
+ .debug_line    0x0000034d      0x28c aes_keyschedule-asm.o
+ .debug_line    0x000005d9       0xd8 main.o
 
 .debug_frame    0x00000000       0x38
  *(.debug_frame)
  .debug_frame   0x00000000       0x38 main.o
 
-.debug_str      0x00000000      0x3f7
+.debug_str      0x00000000      0x3fb
  *(.debug_str)
  .debug_str     0x00000000      0x27d C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
- .debug_str     0x0000027d      0x17a main.o
-                                0x1ae (size before relaxing)
+ .debug_str     0x0000027d      0x17e main.o
+                                0x1b2 (size before relaxing)
 
 .debug_loc      0x00000000       0x48
  *(.debug_loc)
@@ -496,5 +491,5 @@ END GROUP
 
 .debug_macro
  *(.debug_macro)
-OUTPUT(Face_Light.elf elf32-avr)
+OUTPUT(aes_nonmasking.elf elf32-avr)
 LOAD linker stubs
