@@ -273,19 +273,6 @@ exit:
 	ld  T5, Z
 	eor T0, T5
 
-	/*
-	mov r28, ST\row\()0
-	mov r26, ST\row\()1
-	ld  T0, Y
-	ld  T5, X
-	eor T0, T5
-	mov r30, ST\row\()2
-	ld  T5, Z
-	eor T0, T5
-	mov r30, ST\row\()3
-	ld  T5, Z
-	eor T0, T5
-
 	mov r28, ST\row\()1
 	mov r26, ST\row\()2
 	ld  T1, Y
@@ -326,7 +313,6 @@ exit:
 	mov ST\row\()1, T1
 	mov ST\row\()2, T2
 	mov ST\row\()3, T3
-	*/
 
 
 .endr
