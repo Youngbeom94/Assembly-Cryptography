@@ -278,17 +278,17 @@ END GROUP
                 0x000000b6                __vector_16
                 0x000000b6                __vector_18
                 0x000000b6                __vector_20
- .text          0x000000b8      0x26e aes_enc-asm.o
+ .text          0x000000b8      0x22e aes_enc-asm.o
                 0x000000b8                aes256_enc
                 0x000000bc                aes192_enc
                 0x000000c0                aes128_enc
                 0x000000c2                aes_encrypt_core
- .text          0x00000326       0xd0 aes_keyschedule-asm.o
-                0x00000326                aes256_init
-                0x0000032e                aes192_init
-                0x00000336                aes128_init
-                0x0000033c                aes_init
- *fill*         0x000003f6        0xa 
+ .text          0x000002e6       0xd0 aes_keyschedule-asm.o
+                0x000002e6                aes256_init
+                0x000002ee                aes192_init
+                0x000002f6                aes128_init
+                0x000002fc                aes_init
+ *fill*         0x000003b6       0x4a 
  .text          0x00000400      0x100 aes_sbox-asm.o
                 0x00000400                aes_sbox
  .text          0x00000500      0x226 Avr_crypto_lib.o
@@ -450,13 +450,13 @@ END GROUP
  .debug_abbrev  0x00000740       0x14 Avr_crypto_lib.o
  .debug_abbrev  0x00000754       0xb5 main.o
 
-.debug_line     0x00000000      0xc02
+.debug_line     0x00000000      0xbf6
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x169 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
- .debug_line    0x00000169      0x562 aes_enc-asm.o
- .debug_line    0x000006cb      0x28e aes_keyschedule-asm.o
- .debug_line    0x00000959      0x1db Avr_crypto_lib.o
- .debug_line    0x00000b34       0xce main.o
+ .debug_line    0x00000169      0x556 aes_enc-asm.o
+ .debug_line    0x000006bf      0x28e aes_keyschedule-asm.o
+ .debug_line    0x0000094d      0x1db Avr_crypto_lib.o
+ .debug_line    0x00000b28       0xce main.o
 
 .debug_frame    0x00000000       0x38
  *(.debug_frame)

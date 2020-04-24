@@ -101,7 +101,7 @@ CTR = 24
  */
 .global aes_encrypt_core
 aes_encrypt_core:
-	push_range 0, 15
+	//push_range 0, 15
 	push r28
 	push r29
 	push r24
@@ -142,7 +142,7 @@ exit:
 	.endr
 	pop r29
 	pop r28
-	pop_range 0, 15
+	//pop_range 0, 15
 	ret
 
 2:	
