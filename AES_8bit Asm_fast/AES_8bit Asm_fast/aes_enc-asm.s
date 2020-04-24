@@ -6,7 +6,7 @@
  *  Author: 김영범
  */ 
 
-//.arch atmega128
+.arch atmega128
 .data
 
 SBOX_TABLE:
@@ -151,7 +151,7 @@ exit:
 	breq 4f
 
 	/* encryption loop */ 
-	/* Shift Row and Subbyte , Mixcolumns */
+	/* for last round */
 4:
 	mov r30, ST00
 	ld ST00, Z
@@ -198,41 +198,42 @@ exit:
 	rjmp 1b
 
 3:
-	
+	/* encryption loop */ 
+	/* Shift Row and Subbyte , Mixcolumns */
 	//! 1번째 열 시작
 	mov r30, ST00 
-	ld	M1, Z 
+	ld  M1, Z 
 	mov M2, M1
-	mov M3, M2 ; 1옮겨주기 subbyte 상태로
+	mov M3, M2 
 	mov r28, ST00
 	ld  M0, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
 
 	mov r30, ST11
-	ld	T0, Z
+	ld  T0, Z
 	eor M0, T0
 	eor M2, T0
-	eor M3, T0 ;  1옮겨주기 subbyte 상태로
+	eor M3, T0 
 	mov r28, ST11
 	ld  T0, Y
 	eor M0, T0
 	eor M1, T0 ;3, 2, 2, 1 완료
 
 	mov r30, ST22
-	ld	T0, Z
+	ld  T0, Z
 	eor M0, T0
 	eor M1, T0
-	eor M3, T0 ;  1옮겨주기 subbyte 상태로
+	eor M3, T0
 	mov r28, ST22
 	ld  T0, Y
 	eor M1, T0
 	eor M2, T0 ;1, 3, 2, 1 완료
 
 	mov r30, ST33
-	ld	T0, Z
+	ld  T0, Z
 	eor M0, T0
 	eor M1, T0
-	eor M2, T0 ;  1옮겨주기 subbyte 상태로
+	eor M2, T0 
 	mov r28, ST33
 	ld  T0, Y
 	eor M2, T0
@@ -243,38 +244,38 @@ exit:
 
 	//! 2번째 열 시작
 	mov r30, ST10 
-	ld	T1, Z 
+	ld  T1, Z 
 	mov T2, T1
-	mov T3, T2 ; 1옮겨주기 subbyte 상태로
+	mov T3, T2 
 	mov r28, ST10
 	ld  T0, Y
 	eor T3, T0 ; 2, 1, 1, 3 완료
 
 	mov r30, ST21
-	ld	M0, Z
+	ld  M0, Z
 	eor T0, M0
 	eor T2, M0
-	eor T3, M0 ;  1옮겨주기 subbyte 상태로
+	eor T3, M0 
 	mov r28, ST21
 	ld  M0, Y
 	eor T0, M0
 	eor T1, M0 ;3, 2, 2, 1 완료
 
 	mov r30, ST32
-	ld	M0, Z
+	ld  M0, Z
 	eor T0, M0
 	eor T1, M0
-	eor T3, M0 ;  1옮겨주기 subbyte 상태로
+	eor T3, M0 
 	mov r28, ST32
 	ld  M0, Y
 	eor T1, M0
 	eor T2, M0 ;1, 3, 2, 1 완료
 
 	mov r30, ST03
-	ld	M0, Z
+	ld  M0, Z
 	eor T0, M0
 	eor T1, M0
-	eor T2, M0 ;  1옮겨주기 subbyte 상태로
+	eor T2, M0 
 	mov r28, ST03
 	ld  M0, Y
 	eor T2, M0
@@ -287,38 +288,38 @@ exit:
 
 	//! 3번째 열 시작
 	mov r30, ST20 
-	ld	T0, Z 
+	ld  T0, Z 
 	mov T1, T0
-	mov M3, T1 ; 1옮겨주기 subbyte 상태로
+	mov M3, T1 
 	mov r28, ST20
 	ld  M0, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
 
 	mov r30, ST31
-	ld	r25, Z
+	ld  r25, Z
 	eor M0, r25
 	eor T1, r25
-	eor M3, r25 ;  1옮겨주기 subbyte 상태로
+	eor M3, r25
 	mov r28, ST31
 	ld  r25, Y
 	eor M0, r25
 	eor T0, r25 ;3, 2, 2, 1 완료
 
 	mov r30, ST02
-	ld	r25, Z
+	ld  r25, Z
 	eor M0, r25
 	eor T0, r25
-	eor M3, r25;  1옮겨주기 subbyte 상태로
+	eor M3, r25
 	mov r28, ST02
 	ld  r25, Y
 	eor T0, r25
 	eor T1, r25;1, 3, 2, 1 완료
 
 	mov r30, ST13
-	ld	r25, Z
+	ld  r25, Z
 	eor M0, r25
 	eor T0, r25
-	eor T1, r25 ;  1옮겨주기 subbyte 상태로
+	eor T1, r25 
 	mov r28, ST13
 	ld  r25, Y
 	eor T1, r25
@@ -334,38 +335,38 @@ exit:
 
 	//! 4번째 열 시작
 	mov r30, ST30 
-	ld	T1, Z 
+	ld  T1, Z 
 	mov T3, T1
-	mov r25, T3 ; 1옮겨주기 subbyte 상태로
+	mov r25, T3 
 	mov r28, ST30
 	ld  T0, Y
 	eor r25, T0 ; 2, 1, 1, 3 완료
 
 	mov r30, ST01
-	ld	M0, Z
+	ld  M0, Z
 	eor T0, M0
 	eor T3, M0
-	eor r25, M0 ;  1옮겨주기 subbyte 상태로
+	eor r25, M0 
 	mov r28, ST01
 	ld  M0, Y
 	eor T0, M0
 	eor T1, M0 ;3, 2, 2, 1 완료
 
 	mov r30, ST12
-	ld	M0, Z
+	ld  M0, Z
 	eor T0, M0
 	eor T1, M0
-	eor r25, M0 ;  1옮겨주기 subbyte 상태로
+	eor r25, M0 
 	mov r28, ST12
 	ld  M0, Y
 	eor T1, M0
 	eor T3, M0 ;1, 3, 2, 1 완료
 
 	mov r30, ST23
-	ld	M0, Z
+	ld  M0, Z
 	eor T0, M0
 	eor T1, M0
-	eor T3, M0 ;  1옮겨주기 subbyte 상태로
+	eor T3, M0 
 	mov r28, ST23
 	ld  M0, Y
 	eor T3, M0
