@@ -10,5 +10,7 @@ aes_sbox-asm.s
 
 avr-asm-macros.s
 
+Avr_crypto_lib.S
+
 main.c
 

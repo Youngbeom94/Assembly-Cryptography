@@ -32,13 +32,6 @@ typedef struct{
 
 typedef unsigned char u8;
 
-void aes128_init(const void *key, aes128_ctx_t *ctx);
-void aes128_enc(void *buffer, aes128_ctx_t *ctx);
-void aes192_init(const void *key, aes192_ctx_t *ctx);
-void aes192_enc(void *buffer, aes192_ctx_t *ctx);
-void aes256_init(const void *key, aes128_ctx_t *ctx);
-void aes256_enc(void *buffer, aes128_ctx_t *ctx);
-
 //typedef struct{
 //	uint8_t s[16];
 //} aes_cipher_state_t;

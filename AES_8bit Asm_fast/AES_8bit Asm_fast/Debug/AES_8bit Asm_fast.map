@@ -11,13 +11,14 @@ Discarded input sections
  .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
  .bss           0x00000000        0x0 aes_enc-asm.o
  .bss           0x00000000        0x0 aes_keyschedule-asm.o
- .text          0x00000000      0x100 aes_sbox-asm.o
  .data          0x00000000        0x0 aes_sbox-asm.o
  .bss           0x00000000        0x0 aes_sbox-asm.o
  .avr.prop      0x00000000       0x16 aes_sbox-asm.o
  .text          0x00000000        0x0 avr-asm-macros.o
  .data          0x00000000        0x0 avr-asm-macros.o
  .bss           0x00000000        0x0 avr-asm-macros.o
+ .data          0x00000000        0x0 Avr_crypto_lib.o
+ .bss           0x00000000        0x0 Avr_crypto_lib.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
@@ -74,6 +75,7 @@ LOAD aes_enc-asm.o
 LOAD aes_keyschedule-asm.o
 LOAD aes_sbox-asm.o
 LOAD avr-asm-macros.o
+LOAD Avr_crypto_lib.o
 LOAD main.o
 START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a
@@ -184,7 +186,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x3ac
+.text           0x00000000      0x7a4
  *(.vectors)
  .vectors       0x00000000       0x8c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
                 0x00000000                __vector_default
@@ -276,26 +278,33 @@ END GROUP
                 0x000000b6                __vector_16
                 0x000000b6                __vector_18
                 0x000000b6                __vector_20
- .text          0x000000b8      0x1c4 aes_enc-asm.o
+ .text          0x000000b8      0x26e aes_enc-asm.o
                 0x000000b8                aes256_enc
                 0x000000bc                aes192_enc
                 0x000000c0                aes128_enc
                 0x000000c2                aes_encrypt_core
- .text          0x0000027c       0xd0 aes_keyschedule-asm.o
-                0x0000027c                aes256_init
-                0x00000284                aes192_init
-                0x0000028c                aes128_init
-                0x00000292                aes_init
-                0x0000034c                . = ALIGN (0x2)
+ .text          0x00000326       0xd0 aes_keyschedule-asm.o
+                0x00000326                aes256_init
+                0x0000032e                aes192_init
+                0x00000336                aes128_init
+                0x0000033c                aes_init
+ *fill*         0x000003f6        0xa 
+ .text          0x00000400      0x100 aes_sbox-asm.o
+                0x00000400                aes_sbox
+ .text          0x00000500      0x226 Avr_crypto_lib.o
+                0x00000500                aes256_enc_origin
+                0x00000504                aes192_enc_origin
+                0x00000508                aes128_enc_origin
+                0x0000050a                aes_encrypt_core_origin
+                0x00000726                . = ALIGN (0x2)
  *(.text.*)
- .text.startup.main
-                0x0000034c       0x5c main.o
-                0x0000034c                main
-                0x000003a8                . = ALIGN (0x2)
+ .text.main     0x00000726       0x7a main.o
+                0x00000726                main
+                0x000007a0                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000003a8        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
-                0x000003a8                _exit
-                0x000003a8                exit
+ .fini9         0x000007a0        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+                0x000007a0                _exit
+                0x000007a0                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -314,39 +323,39 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000003a8        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ .fini0         0x000007a0        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  *(.fini0)
-                0x000003ac                _etext = .
+                0x000007a4                _etext = .
 
-.data           0x00800100      0x520 load address 0x000003ac
+.data           0x00800100      0x310 load address 0x000007a4
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
- .data          0x00800100      0x400 aes_enc-asm.o
- .data          0x00800500      0x100 aes_keyschedule-asm.o
+ .data          0x00800100      0x200 aes_enc-asm.o
+ .data          0x00800300      0x100 aes_keyschedule-asm.o
  *(.data*)
  *(.gnu.linkonce.d*)
  *(.rodata)
- .rodata        0x00800600       0x20 main.o
+ .rodata        0x00800400       0x10 main.o
  *(.rodata*)
  *(.gnu.linkonce.r*)
-                0x00800620                . = ALIGN (0x2)
-                0x00800620                _edata = .
-                0x00800620                PROVIDE (__data_end, .)
+                0x00800410                . = ALIGN (0x2)
+                0x00800410                _edata = .
+                0x00800410                PROVIDE (__data_end, .)
 
-.bss            0x00800620        0x0
+.bss            0x00800410        0x0
                 [!provide]                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
-                0x000003ac                __data_load_start = LOADADDR (.data)
-                0x000008cc                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000007a4                __data_load_start = LOADADDR (.data)
+                0x00000ab4                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800620        0x0
+.noinit         0x00800410        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800620                _end = .
+                0x00800410                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -411,48 +420,53 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0x60
+.debug_aranges  0x00000000       0x80
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x20 aes_enc-asm.o
  .debug_aranges
                 0x00000020       0x20 aes_keyschedule-asm.o
  .debug_aranges
-                0x00000040       0x20 main.o
+                0x00000040       0x20 Avr_crypto_lib.o
+ .debug_aranges
+                0x00000060       0x20 main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xa18
+.debug_info     0x00000000      0xa1f
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x780 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
  .debug_info    0x00000780       0x75 aes_enc-asm.o
  .debug_info    0x000007f5       0x7d aes_keyschedule-asm.o
- .debug_info    0x00000872      0x1a6 main.o
+ .debug_info    0x00000872       0x78 Avr_crypto_lib.o
+ .debug_info    0x000008ea      0x135 main.o
 
-.debug_abbrev   0x00000000      0x830
+.debug_abbrev   0x00000000      0x809
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x718 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
  .debug_abbrev  0x00000718       0x14 aes_enc-asm.o
  .debug_abbrev  0x0000072c       0x14 aes_keyschedule-asm.o
- .debug_abbrev  0x00000740       0xf0 main.o
+ .debug_abbrev  0x00000740       0x14 Avr_crypto_lib.o
+ .debug_abbrev  0x00000754       0xb5 main.o
 
-.debug_line     0x00000000      0x715
+.debug_line     0x00000000      0xc02
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x169 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
- .debug_line    0x00000169      0x24c aes_enc-asm.o
- .debug_line    0x000003b5      0x28e aes_keyschedule-asm.o
- .debug_line    0x00000643       0xd2 main.o
+ .debug_line    0x00000169      0x562 aes_enc-asm.o
+ .debug_line    0x000006cb      0x28e aes_keyschedule-asm.o
+ .debug_line    0x00000959      0x1db Avr_crypto_lib.o
+ .debug_line    0x00000b34       0xce main.o
 
 .debug_frame    0x00000000       0x38
  *(.debug_frame)
  .debug_frame   0x00000000       0x38 main.o
 
-.debug_str      0x00000000      0x3fe
+.debug_str      0x00000000      0x3e7
  *(.debug_str)
  .debug_str     0x00000000      0x27d C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
- .debug_str     0x0000027d      0x181 main.o
-                                0x1b5 (size before relaxing)
+ .debug_str     0x0000027d      0x16a main.o
+                                0x19e (size before relaxing)
 
 .debug_loc      0x00000000       0x48
  *(.debug_loc)

@@ -44,7 +44,8 @@ PREPROCESSING_SRCS +=  \
 ../aes_enc-asm.s \
 ../aes_keyschedule-asm.s \
 ../aes_sbox-asm.s \
-../avr-asm-macros.s
+../avr-asm-macros.s \
+../Avr_crypto_lib.S
 
 
 ASM_SRCS += 
@@ -55,6 +56,7 @@ aes_enc-asm.o \
 aes_keyschedule-asm.o \
 aes_sbox-asm.o \
 avr-asm-macros.o \
+Avr_crypto_lib.o \
 main.o
 
 OBJS_AS_ARGS +=  \
@@ -62,6 +64,7 @@ aes_enc-asm.o \
 aes_keyschedule-asm.o \
 aes_sbox-asm.o \
 avr-asm-macros.o \
+Avr_crypto_lib.o \
 main.o
 
 C_DEPS +=  \
@@ -69,6 +72,7 @@ aes_enc-asm.d \
 aes_keyschedule-asm.d \
 aes_sbox-asm.d \
 avr-asm-macros.d \
+Avr_crypto_lib.d \
 main.d
 
 C_DEPS_AS_ARGS +=  \
@@ -76,6 +80,7 @@ aes_enc-asm.d \
 aes_keyschedule-asm.d \
 aes_sbox-asm.d \
 avr-asm-macros.d \
+Avr_crypto_lib.d \
 main.d
 
 OUTPUT_FILE_PATH +=AES_8bit\ Asm_fast.elf
@@ -95,7 +100,7 @@ LINKER_SCRIPT_DEP+=
 ./main.o: .././main.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -O3 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
@@ -129,6 +134,13 @@ LINKER_SCRIPT_DEP+=
 	
 
 ./avr-asm-macros.o: .././avr-asm-macros.s
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU Assembler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega128" -I "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -mrelax -Wa,-g   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./Avr_crypto_lib.o: .././Avr_crypto_lib.S
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU Assembler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega128" -I "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -mrelax -Wa,-g   -o "$@" "$<" 

@@ -18,6 +18,9 @@ void aes192_enc(void *buffer, aes192_ctx_t *ctx);
 void aes256_init(const void *key, aes128_ctx_t *ctx);
 void aes256_enc(void *buffer, aes128_ctx_t *ctx);
 
+void aes128_enc_origin(void *buffer, aes128_ctx_t *ctx);
+void aes192_enc_origin(void *buffer, aes128_ctx_t *ctx);
+void aes256_enc_origin(void *buffer, aes128_ctx_t *ctx);
 
 int main(void)
 {
@@ -31,6 +34,7 @@ int main(void)
 		aes128_ctx_t aes_test;
 		aes128_init(key, &aes_test);
 		aes128_enc(IV,&aes_test);
+		//aes128_enc_origin(IV,&aes_test);
     }
 }
 

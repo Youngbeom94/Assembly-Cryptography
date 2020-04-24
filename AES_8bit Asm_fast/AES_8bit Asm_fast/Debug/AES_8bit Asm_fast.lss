@@ -3,29 +3,29 @@ AES_8bit Asm_fast.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000520  00800100  000003ac  00000420  2**0
+  0 .data         00000310  00800100  000007a4  000008a4  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         000003ac  00000000  00000000  00000074  2**1
+  1 .text         000007a4  00000000  00000000  00000100  2**8
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  00000940  2**0
+  2 .comment      00000030  00000000  00000000  00000bb4  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000970  2**2
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000be4  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000060  00000000  00000000  000009b0  2**3
+  4 .debug_aranges 00000080  00000000  00000000  00000c20  2**3
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000a18  00000000  00000000  00000a10  2**0
+  5 .debug_info   00000a1f  00000000  00000000  00000ca0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000830  00000000  00000000  00001428  2**0
+  6 .debug_abbrev 00000809  00000000  00000000  000016bf  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000715  00000000  00000000  00001c58  2**0
+  7 .debug_line   00000c02  00000000  00000000  00001ec8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000038  00000000  00000000  00002370  2**2
+  8 .debug_frame  00000038  00000000  00000000  00002acc  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000003fe  00000000  00000000  000023a8  2**0
+  9 .debug_str    000003e7  00000000  00000000  00002b04  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000048  00000000  00000000  000027a6  2**0
+ 10 .debug_loc    00000048  00000000  00000000  00002eeb  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000010  00000000  00000000  000027ee  2**0
+ 11 .debug_ranges 00000010  00000000  00000000  00002f33  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -111,21 +111,21 @@ Disassembly of section .text:
   96:	cd bf       	out	0x3d, r28	; 61
 
 00000098 <__do_copy_data>:
-  98:	16 e0       	ldi	r17, 0x06	; 6
+  98:	14 e0       	ldi	r17, 0x04	; 4
   9a:	a0 e0       	ldi	r26, 0x00	; 0
   9c:	b1 e0       	ldi	r27, 0x01	; 1
-  9e:	ec ea       	ldi	r30, 0xAC	; 172
-  a0:	f3 e0       	ldi	r31, 0x03	; 3
+  9e:	e4 ea       	ldi	r30, 0xA4	; 164
+  a0:	f7 e0       	ldi	r31, 0x07	; 7
   a2:	00 e0       	ldi	r16, 0x00	; 0
   a4:	0b bf       	out	0x3b, r16	; 59
   a6:	02 c0       	rjmp	.+4      	; 0xac <__do_copy_data+0x14>
   a8:	07 90       	elpm	r0, Z+
   aa:	0d 92       	st	X+, r0
-  ac:	a0 32       	cpi	r26, 0x20	; 32
+  ac:	a0 31       	cpi	r26, 0x10	; 16
   ae:	b1 07       	cpc	r27, r17
   b0:	d9 f7       	brne	.-10     	; 0xa8 <__do_copy_data+0x10>
-  b2:	4c d1       	rcall	.+664    	; 0x34c <main>
-  b4:	79 c1       	rjmp	.+754    	; 0x3a8 <_exit>
+  b2:	39 d3       	rcall	.+1650   	; 0x726 <main>
+  b4:	75 c3       	rjmp	.+1770   	; 0x7a0 <_exit>
 
 000000b6 <__bad_interrupt>:
   b6:	a4 cf       	rjmp	.-184    	; 0x0 <__vectors>
@@ -163,7 +163,7 @@ aes128_enc:
  */
 .global aes_encrypt_core
 aes_encrypt_core:
-	push_range 0, 17
+	push_range 0, 15
   c2:	0f 92       	push	r0
   c4:	1f 92       	push	r1
   c6:	2f 92       	push	r2
@@ -180,648 +180,1439 @@ aes_encrypt_core:
   dc:	df 92       	push	r13
   de:	ef 92       	push	r14
   e0:	ff 92       	push	r15
-  e2:	0f 93       	push	r16
-  e4:	1f 93       	push	r17
 	push r28
-  e6:	cf 93       	push	r28
+  e2:	cf 93       	push	r28
 	push r29
-  e8:	df 93       	push	r29
+  e4:	df 93       	push	r29
 	push r24
-  ea:	8f 93       	push	r24
+  e6:	8f 93       	push	r24
 	push r25
-  ec:	9f 93       	push	r25
+  e8:	9f 93       	push	r25
 	movw r26, r22
-  ee:	db 01       	movw	r26, r22
+  ea:	db 01       	movw	r26, r22
 	movw r30, r24
-  f0:	fc 01       	movw	r30, r24
+  ec:	fc 01       	movw	r30, r24
 	mov  CTR, r20
-  f2:	84 2f       	mov	r24, r20
+  ee:	84 2f       	mov	r24, r20
 	clt
-  f4:	e8 94       	clt
+  f0:	e8 94       	clt
 	
 	.irp row, 0, 1, 2, 3
 		.irp col, 0, 1, 2, 3
 			ld ST\row\col, Z+
 		.endr
 	.endr
-  f6:	01 90       	ld	r0, Z+
-  f8:	11 90       	ld	r1, Z+
-  fa:	21 90       	ld	r2, Z+
-  fc:	31 90       	ld	r3, Z+
-  fe:	41 90       	ld	r4, Z+
- 100:	51 90       	ld	r5, Z+
- 102:	61 90       	ld	r6, Z+
- 104:	71 90       	ld	r7, Z+
- 106:	81 90       	ld	r8, Z+
- 108:	91 90       	ld	r9, Z+
- 10a:	a1 90       	ld	r10, Z+
- 10c:	b1 90       	ld	r11, Z+
- 10e:	c1 90       	ld	r12, Z+
- 110:	d1 90       	ld	r13, Z+
- 112:	e1 90       	ld	r14, Z+
- 114:	f1 90       	ld	r15, Z+
+  f2:	01 90       	ld	r0, Z+
+  f4:	11 90       	ld	r1, Z+
+  f6:	21 90       	ld	r2, Z+
+  f8:	31 90       	ld	r3, Z+
+  fa:	41 90       	ld	r4, Z+
+  fc:	51 90       	ld	r5, Z+
+  fe:	61 90       	ld	r6, Z+
+ 100:	71 90       	ld	r7, Z+
+ 102:	81 90       	ld	r8, Z+
+ 104:	91 90       	ld	r9, Z+
+ 106:	a1 90       	ld	r10, Z+
+ 108:	b1 90       	ld	r11, Z+
+ 10a:	c1 90       	ld	r12, Z+
+ 10c:	d1 90       	ld	r13, Z+
+ 10e:	e1 90       	ld	r14, Z+
+ 110:	f1 90       	ld	r15, Z+
 	
 
 	ldi r31, hi8(SBOX_TABLE)	
- 116:	f1 e0       	ldi	r31, 0x01	; 1
+ 112:	f1 e0       	ldi	r31, 0x01	; 1
 	ldi r29, hi8(MIX2_TABLE)
- 118:	d2 e0       	ldi	r29, 0x02	; 2
+ 114:	d2 e0       	ldi	r29, 0x02	; 2
 	.irp row, 0, 1, 2, 3
 		.irp col, 0, 1, 2, 3
 			ld r16, X+
 			eor ST\row\col, r16
 		.endr
 	.endr
+ 116:	0d 91       	ld	r16, X+
+ 118:	00 26       	eor	r0, r16
  11a:	0d 91       	ld	r16, X+
- 11c:	00 26       	eor	r0, r16
+ 11c:	10 26       	eor	r1, r16
  11e:	0d 91       	ld	r16, X+
- 120:	10 26       	eor	r1, r16
+ 120:	20 26       	eor	r2, r16
  122:	0d 91       	ld	r16, X+
- 124:	20 26       	eor	r2, r16
+ 124:	30 26       	eor	r3, r16
  126:	0d 91       	ld	r16, X+
- 128:	30 26       	eor	r3, r16
+ 128:	40 26       	eor	r4, r16
  12a:	0d 91       	ld	r16, X+
- 12c:	40 26       	eor	r4, r16
+ 12c:	50 26       	eor	r5, r16
  12e:	0d 91       	ld	r16, X+
- 130:	50 26       	eor	r5, r16
+ 130:	60 26       	eor	r6, r16
  132:	0d 91       	ld	r16, X+
- 134:	60 26       	eor	r6, r16
+ 134:	70 26       	eor	r7, r16
  136:	0d 91       	ld	r16, X+
- 138:	70 26       	eor	r7, r16
+ 138:	80 26       	eor	r8, r16
  13a:	0d 91       	ld	r16, X+
- 13c:	80 26       	eor	r8, r16
+ 13c:	90 26       	eor	r9, r16
  13e:	0d 91       	ld	r16, X+
- 140:	90 26       	eor	r9, r16
+ 140:	a0 26       	eor	r10, r16
  142:	0d 91       	ld	r16, X+
- 144:	a0 26       	eor	r10, r16
+ 144:	b0 26       	eor	r11, r16
  146:	0d 91       	ld	r16, X+
- 148:	b0 26       	eor	r11, r16
+ 148:	c0 26       	eor	r12, r16
  14a:	0d 91       	ld	r16, X+
- 14c:	c0 26       	eor	r12, r16
+ 14c:	d0 26       	eor	r13, r16
  14e:	0d 91       	ld	r16, X+
- 150:	d0 26       	eor	r13, r16
+ 150:	e0 26       	eor	r14, r16
  152:	0d 91       	ld	r16, X+
- 154:	e0 26       	eor	r14, r16
- 156:	0d 91       	ld	r16, X+
- 158:	f0 26       	eor	r15, r16
+ 154:	f0 26       	eor	r15, r16
 	
 	brtc 2f
- 15a:	3e f5       	brtc	.+78     	; 0x1aa <exit+0x4e>
+ 156:	2e f5       	brtc	.+74     	; 0x1a2 <exit+0x4a>
 
-0000015c <exit>:
+00000158 <exit>:
 
 exit:
 	pop r31
- 15c:	ff 91       	pop	r31
+ 158:	ff 91       	pop	r31
 	pop r30
- 15e:	ef 91       	pop	r30
+ 15a:	ef 91       	pop	r30
 	.irp row, 0, 1, 2, 3
 			.irp col, 0, 1, 2, 3
 			st Z+, ST\row\col
 		.endr
 	.endr
- 160:	01 92       	st	Z+, r0
- 162:	11 92       	st	Z+, r1
- 164:	21 92       	st	Z+, r2
- 166:	31 92       	st	Z+, r3
- 168:	41 92       	st	Z+, r4
- 16a:	51 92       	st	Z+, r5
- 16c:	61 92       	st	Z+, r6
- 16e:	71 92       	st	Z+, r7
- 170:	81 92       	st	Z+, r8
- 172:	91 92       	st	Z+, r9
- 174:	a1 92       	st	Z+, r10
- 176:	b1 92       	st	Z+, r11
- 178:	c1 92       	st	Z+, r12
- 17a:	d1 92       	st	Z+, r13
- 17c:	e1 92       	st	Z+, r14
- 17e:	f1 92       	st	Z+, r15
+ 15c:	01 92       	st	Z+, r0
+ 15e:	11 92       	st	Z+, r1
+ 160:	21 92       	st	Z+, r2
+ 162:	31 92       	st	Z+, r3
+ 164:	41 92       	st	Z+, r4
+ 166:	51 92       	st	Z+, r5
+ 168:	61 92       	st	Z+, r6
+ 16a:	71 92       	st	Z+, r7
+ 16c:	81 92       	st	Z+, r8
+ 16e:	91 92       	st	Z+, r9
+ 170:	a1 92       	st	Z+, r10
+ 172:	b1 92       	st	Z+, r11
+ 174:	c1 92       	st	Z+, r12
+ 176:	d1 92       	st	Z+, r13
+ 178:	e1 92       	st	Z+, r14
+ 17a:	f1 92       	st	Z+, r15
 	pop r29
- 180:	df 91       	pop	r29
+ 17c:	df 91       	pop	r29
 	pop r28
- 182:	cf 91       	pop	r28
-	pop_range 0, 17
- 184:	1f 91       	pop	r17
- 186:	0f 91       	pop	r16
- 188:	ff 90       	pop	r15
- 18a:	ef 90       	pop	r14
- 18c:	df 90       	pop	r13
- 18e:	cf 90       	pop	r12
- 190:	bf 90       	pop	r11
- 192:	af 90       	pop	r10
- 194:	9f 90       	pop	r9
- 196:	8f 90       	pop	r8
- 198:	7f 90       	pop	r7
- 19a:	6f 90       	pop	r6
- 19c:	5f 90       	pop	r5
- 19e:	4f 90       	pop	r4
- 1a0:	3f 90       	pop	r3
- 1a2:	2f 90       	pop	r2
- 1a4:	1f 90       	pop	r1
- 1a6:	0f 90       	pop	r0
+ 17e:	cf 91       	pop	r28
+	pop_range 0, 15
+ 180:	ff 90       	pop	r15
+ 182:	ef 90       	pop	r14
+ 184:	df 90       	pop	r13
+ 186:	cf 90       	pop	r12
+ 188:	bf 90       	pop	r11
+ 18a:	af 90       	pop	r10
+ 18c:	9f 90       	pop	r9
+ 18e:	8f 90       	pop	r8
+ 190:	7f 90       	pop	r7
+ 192:	6f 90       	pop	r6
+ 194:	5f 90       	pop	r5
+ 196:	4f 90       	pop	r4
+ 198:	3f 90       	pop	r3
+ 19a:	2f 90       	pop	r2
+ 19c:	1f 90       	pop	r1
+ 19e:	0f 90       	pop	r0
 	ret
- 1a8:	08 95       	ret
+ 1a0:	08 95       	ret
 
 2:	
 	dec CTR
- 1aa:	8a 95       	dec	r24
+ 1a2:	8a 95       	dec	r24
 	brne 3f
- 1ac:	39 f5       	brne	.+78     	; 0x1fc <exit+0xa0>
+ 1a4:	39 f5       	brne	.+78     	; 0x1f4 <exit+0x9c>
 	breq 4f
- 1ae:	01 f0       	breq	.+0      	; 0x1b0 <exit+0x54>
+ 1a6:	01 f0       	breq	.+0      	; 0x1a8 <exit+0x50>
 
 	/* encryption loop */ 
 	/* Shift Row and Subbyte , Mixcolumns */
 4:
 	mov r30, ST00
- 1b0:	e0 2d       	mov	r30, r0
+ 1a8:	e0 2d       	mov	r30, r0
 	ld ST00, Z
- 1b2:	00 80       	ld	r0, Z
+ 1aa:	00 80       	ld	r0, Z
 	mov r30, ST10
- 1b4:	e4 2d       	mov	r30, r4
+ 1ac:	e4 2d       	mov	r30, r4
 	ld ST10, Z
- 1b6:	40 80       	ld	r4, Z
+ 1ae:	40 80       	ld	r4, Z
 	mov r30, ST20
- 1b8:	e8 2d       	mov	r30, r8
+ 1b0:	e8 2d       	mov	r30, r8
 	ld ST20, Z
- 1ba:	80 80       	ld	r8, Z
+ 1b2:	80 80       	ld	r8, Z
 	mov r30, ST30
- 1bc:	ec 2d       	mov	r30, r12
+ 1b4:	ec 2d       	mov	r30, r12
 	ld ST30, Z
- 1be:	c0 80       	ld	r12, Z
+ 1b6:	c0 80       	ld	r12, Z
 
 	mov r30, ST01
- 1c0:	e1 2d       	mov	r30, r1
+ 1b8:	e1 2d       	mov	r30, r1
 	ld T0, Z
- 1c2:	00 81       	ld	r16, Z
+ 1ba:	40 81       	ld	r20, Z
 	mov r30, ST11
- 1c4:	e5 2d       	mov	r30, r5
+ 1bc:	e5 2d       	mov	r30, r5
 	ld ST01, Z
- 1c6:	10 80       	ld	r1, Z
+ 1be:	10 80       	ld	r1, Z
 	mov r30, ST21
- 1c8:	e9 2d       	mov	r30, r9
+ 1c0:	e9 2d       	mov	r30, r9
 	ld ST11, Z
- 1ca:	50 80       	ld	r5, Z
+ 1c2:	50 80       	ld	r5, Z
 	mov r30, ST31
- 1cc:	ed 2d       	mov	r30, r13
+ 1c4:	ed 2d       	mov	r30, r13
 	ld ST21, Z
- 1ce:	90 80       	ld	r9, Z
+ 1c6:	90 80       	ld	r9, Z
 	mov ST31, T0
- 1d0:	d0 2e       	mov	r13, r16
+ 1c8:	d4 2e       	mov	r13, r20
 
 	mov r30, ST02
- 1d2:	e2 2d       	mov	r30, r2
+ 1ca:	e2 2d       	mov	r30, r2
 	ld T0, Z
- 1d4:	00 81       	ld	r16, Z
+ 1cc:	40 81       	ld	r20, Z
 	mov r30, ST12
- 1d6:	e6 2d       	mov	r30, r6
+ 1ce:	e6 2d       	mov	r30, r6
 	ld T1, Z
- 1d8:	10 81       	ld	r17, Z
+ 1d0:	50 81       	ld	r21, Z
 	mov r30, ST22
- 1da:	ea 2d       	mov	r30, r10
+ 1d2:	ea 2d       	mov	r30, r10
 	ld ST02, Z
- 1dc:	20 80       	ld	r2, Z
+ 1d4:	20 80       	ld	r2, Z
 	mov r30, ST32
- 1de:	ee 2d       	mov	r30, r14
+ 1d6:	ee 2d       	mov	r30, r14
 	ld ST12, Z
- 1e0:	60 80       	ld	r6, Z
+ 1d8:	60 80       	ld	r6, Z
 	mov ST22, T0
- 1e2:	a0 2e       	mov	r10, r16
+ 1da:	a4 2e       	mov	r10, r20
 	mov ST32, T1
- 1e4:	e1 2e       	mov	r14, r17
+ 1dc:	e5 2e       	mov	r14, r21
 
 	mov r30, ST03
- 1e6:	e3 2d       	mov	r30, r3
+ 1de:	e3 2d       	mov	r30, r3
 	ld T0, Z
- 1e8:	00 81       	ld	r16, Z
+ 1e0:	40 81       	ld	r20, Z
 	mov r30, ST33
- 1ea:	ef 2d       	mov	r30, r15
+ 1e2:	ef 2d       	mov	r30, r15
 	ld  ST03, Z
- 1ec:	30 80       	ld	r3, Z
+ 1e4:	30 80       	ld	r3, Z
 	mov r30, ST23
- 1ee:	eb 2d       	mov	r30, r11
+ 1e6:	eb 2d       	mov	r30, r11
 	ld ST33, Z
- 1f0:	f0 80       	ld	r15, Z
+ 1e8:	f0 80       	ld	r15, Z
 	mov r30, ST13
- 1f2:	e7 2d       	mov	r30, r7
+ 1ea:	e7 2d       	mov	r30, r7
 	ld ST23, Z
- 1f4:	b0 80       	ld	r11, Z
+ 1ec:	b0 80       	ld	r11, Z
 	mov ST13, T0
- 1f6:	70 2e       	mov	r7, r16
+ 1ee:	74 2e       	mov	r7, r20
 		
 	set
- 1f8:	68 94       	set
+ 1f0:	68 94       	set
 	/* mixcols (or rows in our case) */
 	rjmp 1b
- 1fa:	8f cf       	rjmp	.-226    	; 0x11a <aes_encrypt_core+0x58>
+ 1f2:	91 cf       	rjmp	.-222    	; 0x116 <aes_encrypt_core+0x54>
 
 3:
-	movw KS_SAVE0, r26
- 1fc:	bd 01       	movw	r22, r26
-	ldi r27, hi8(MIX3_TABLE)	
- 1fe:	b3 e0       	ldi	r27, 0x03	; 3
+	
+	//! 1번째 열 시작
+	mov r30, ST00 
+ 1f4:	e0 2d       	mov	r30, r0
+	ld	M1, Z 
+ 1f6:	10 81       	ld	r17, Z
+	mov M2, M1
+ 1f8:	21 2f       	mov	r18, r17
+	mov M3, M2 ; 1옮겨주기 subbyte 상태로
+ 1fa:	32 2f       	mov	r19, r18
+	mov r28, ST00
+ 1fc:	c0 2d       	mov	r28, r0
+	ld  M0, Y
+ 1fe:	08 81       	ld	r16, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+ 200:	30 27       	eor	r19, r16
 
-	//Shift Row	
-	mov T0, ST01                    
- 200:	01 2d       	mov	r16, r1
-	mov ST01, ST11
- 202:	15 2c       	mov	r1, r5
-	mov ST11, ST21
- 204:	59 2c       	mov	r5, r9
-	mov ST21, ST31
- 206:	9d 2c       	mov	r9, r13
-	mov ST31, T0
- 208:	d0 2e       	mov	r13, r16
+	mov r30, ST11
+ 202:	e5 2d       	mov	r30, r5
+	ld	T0, Z
+ 204:	40 81       	ld	r20, Z
+	eor M0, T0
+ 206:	04 27       	eor	r16, r20
+	eor M2, T0
+ 208:	24 27       	eor	r18, r20
+	eor M3, T0 ;  1옮겨주기 subbyte 상태로
+ 20a:	34 27       	eor	r19, r20
+	mov r28, ST11
+ 20c:	c5 2d       	mov	r28, r5
+	ld  T0, Y
+ 20e:	48 81       	ld	r20, Y
+	eor M0, T0
+ 210:	04 27       	eor	r16, r20
+	eor M1, T0 ;3, 2, 2, 1 완료
+ 212:	14 27       	eor	r17, r20
 
-	mov T0, ST02
- 20a:	02 2d       	mov	r16, r2
-	mov T1, ST12                    
- 20c:	16 2d       	mov	r17, r6
-	mov ST02, ST22
- 20e:	2a 2c       	mov	r2, r10
-	mov ST12, ST32
- 210:	6e 2c       	mov	r6, r14
-	mov ST22, T0
- 212:	a0 2e       	mov	r10, r16
-	mov ST32, T1
- 214:	e1 2e       	mov	r14, r17
+	mov r30, ST22
+ 214:	ea 2d       	mov	r30, r10
+	ld	T0, Z
+ 216:	40 81       	ld	r20, Z
+	eor M0, T0
+ 218:	04 27       	eor	r16, r20
+	eor M1, T0
+ 21a:	14 27       	eor	r17, r20
+	eor M3, T0 ;  1옮겨주기 subbyte 상태로
+ 21c:	34 27       	eor	r19, r20
+	mov r28, ST22
+ 21e:	ca 2d       	mov	r28, r10
+	ld  T0, Y
+ 220:	48 81       	ld	r20, Y
+	eor M1, T0
+ 222:	14 27       	eor	r17, r20
+	eor M2, T0 ;1, 3, 2, 1 완료
+ 224:	24 27       	eor	r18, r20
 
-	mov T0, ST33                    
- 216:	0f 2d       	mov	r16, r15
-	mov ST33, ST23
- 218:	fb 2c       	mov	r15, r11
-	mov ST23, ST13
- 21a:	b7 2c       	mov	r11, r7
-	mov ST13, ST03
- 21c:	73 2c       	mov	r7, r3
-	mov ST03, T0
- 21e:	30 2e       	mov	r3, r16
-	mov ST\row\()2, T2
-	mov ST\row\()3, T3
-	*/
+	mov r30, ST33
+ 226:	ef 2d       	mov	r30, r15
+	ld	T0, Z
+ 228:	40 81       	ld	r20, Z
+	eor M0, T0
+ 22a:	04 27       	eor	r16, r20
+	eor M1, T0
+ 22c:	14 27       	eor	r17, r20
+	eor M2, T0 ;  1옮겨주기 subbyte 상태로
+ 22e:	24 27       	eor	r18, r20
+	mov r28, ST33
+ 230:	cf 2d       	mov	r28, r15
+	ld  T0, Y
+ 232:	48 81       	ld	r20, Y
+	eor M2, T0
+ 234:	24 27       	eor	r18, r20
+	eor M3, T0 ;1, 1, 3, 2 완료
+ 236:	34 27       	eor	r19, r20
 
+	mov ST00, M0
+ 238:	00 2e       	mov	r0, r16
+	//! 1번째 열 완료
 
-.endr
- 220:	c0 2d       	mov	r28, r0
- 222:	a1 2d       	mov	r26, r1
- 224:	08 81       	ld	r16, Y
- 226:	4c 91       	ld	r20, X
- 228:	04 27       	eor	r16, r20
- 22a:	e2 2d       	mov	r30, r2
- 22c:	40 81       	ld	r20, Z
- 22e:	04 27       	eor	r16, r20
- 230:	e3 2d       	mov	r30, r3
- 232:	40 81       	ld	r20, Z
- 234:	04 27       	eor	r16, r20
- 236:	c4 2d       	mov	r28, r4
- 238:	a5 2d       	mov	r26, r5
- 23a:	08 81       	ld	r16, Y
- 23c:	4c 91       	ld	r20, X
- 23e:	04 27       	eor	r16, r20
- 240:	e6 2d       	mov	r30, r6
- 242:	40 81       	ld	r20, Z
- 244:	04 27       	eor	r16, r20
- 246:	e7 2d       	mov	r30, r7
- 248:	40 81       	ld	r20, Z
- 24a:	04 27       	eor	r16, r20
- 24c:	c8 2d       	mov	r28, r8
- 24e:	a9 2d       	mov	r26, r9
- 250:	08 81       	ld	r16, Y
- 252:	4c 91       	ld	r20, X
- 254:	04 27       	eor	r16, r20
- 256:	ea 2d       	mov	r30, r10
- 258:	40 81       	ld	r20, Z
- 25a:	04 27       	eor	r16, r20
- 25c:	eb 2d       	mov	r30, r11
- 25e:	40 81       	ld	r20, Z
- 260:	04 27       	eor	r16, r20
- 262:	cc 2d       	mov	r28, r12
- 264:	ad 2d       	mov	r26, r13
+	//! 2번째 열 시작
+	mov r30, ST10 
+ 23a:	e4 2d       	mov	r30, r4
+	ld	T1, Z 
+ 23c:	50 81       	ld	r21, Z
+	mov T2, T1
+ 23e:	65 2f       	mov	r22, r21
+	mov T3, T2 ; 1옮겨주기 subbyte 상태로
+ 240:	76 2f       	mov	r23, r22
+	mov r28, ST10
+ 242:	c4 2d       	mov	r28, r4
+	ld  T0, Y
+ 244:	48 81       	ld	r20, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+ 246:	74 27       	eor	r23, r20
+
+	mov r30, ST21
+ 248:	e9 2d       	mov	r30, r9
+	ld	M0, Z
+ 24a:	00 81       	ld	r16, Z
+	eor T0, M0
+ 24c:	40 27       	eor	r20, r16
+	eor T2, M0
+ 24e:	60 27       	eor	r22, r16
+	eor T3, M0 ;  1옮겨주기 subbyte 상태로
+ 250:	70 27       	eor	r23, r16
+	mov r28, ST21
+ 252:	c9 2d       	mov	r28, r9
+	ld  M0, Y
+ 254:	08 81       	ld	r16, Y
+	eor T0, M0
+ 256:	40 27       	eor	r20, r16
+	eor T1, M0 ;3, 2, 2, 1 완료
+ 258:	50 27       	eor	r21, r16
+
+	mov r30, ST32
+ 25a:	ee 2d       	mov	r30, r14
+	ld	M0, Z
+ 25c:	00 81       	ld	r16, Z
+	eor T0, M0
+ 25e:	40 27       	eor	r20, r16
+	eor T1, M0
+ 260:	50 27       	eor	r21, r16
+	eor T3, M0 ;  1옮겨주기 subbyte 상태로
+ 262:	70 27       	eor	r23, r16
+	mov r28, ST32
+ 264:	ce 2d       	mov	r28, r14
+	ld  M0, Y
  266:	08 81       	ld	r16, Y
- 268:	4c 91       	ld	r20, X
- 26a:	04 27       	eor	r16, r20
- 26c:	ee 2d       	mov	r30, r14
- 26e:	40 81       	ld	r20, Z
- 270:	04 27       	eor	r16, r20
- 272:	ef 2d       	mov	r30, r15
- 274:	40 81       	ld	r20, Z
- 276:	04 27       	eor	r16, r20
-	movw r26,	KS_SAVE0
- 278:	db 01       	movw	r26, r22
-	/* Shift Row and Subbyte Mixcolumns(rows) done */
+	eor T1, M0
+ 268:	50 27       	eor	r21, r16
+	eor T2, M0 ;1, 3, 2, 1 완료
+ 26a:	60 27       	eor	r22, r16
+
+	mov r30, ST03
+ 26c:	e3 2d       	mov	r30, r3
+	ld	M0, Z
+ 26e:	00 81       	ld	r16, Z
+	eor T0, M0
+ 270:	40 27       	eor	r20, r16
+	eor T1, M0
+ 272:	50 27       	eor	r21, r16
+	eor T2, M0 ;  1옮겨주기 subbyte 상태로
+ 274:	60 27       	eor	r22, r16
+	mov r28, ST03
+ 276:	c3 2d       	mov	r28, r3
+	ld  M0, Y
+ 278:	08 81       	ld	r16, Y
+	eor T2, M0
+ 27a:	60 27       	eor	r22, r16
+	eor T3, M0 ;1, 1, 3, 2 완료
+ 27c:	70 27       	eor	r23, r16
+
+	mov ST10, T0
+ 27e:	44 2e       	mov	r4, r20
+	mov ST11, T1
+ 280:	55 2e       	mov	r5, r21
+	mov ST03, M3
+ 282:	33 2e       	mov	r3, r19
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+ 284:	e8 2d       	mov	r30, r8
+	ld	T0, Z 
+ 286:	40 81       	ld	r20, Z
+	mov T1, T0
+ 288:	54 2f       	mov	r21, r20
+	mov M3, T1 ; 1옮겨주기 subbyte 상태로
+ 28a:	35 2f       	mov	r19, r21
+	mov r28, ST20
+ 28c:	c8 2d       	mov	r28, r8
+	ld  M0, Y
+ 28e:	08 81       	ld	r16, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+ 290:	30 27       	eor	r19, r16
+
+	mov r30, ST31
+ 292:	ed 2d       	mov	r30, r13
+	ld	r25, Z
+ 294:	90 81       	ld	r25, Z
+	eor M0, r25
+ 296:	09 27       	eor	r16, r25
+	eor T1, r25
+ 298:	59 27       	eor	r21, r25
+	eor M3, r25 ;  1옮겨주기 subbyte 상태로
+ 29a:	39 27       	eor	r19, r25
+	mov r28, ST31
+ 29c:	cd 2d       	mov	r28, r13
+	ld  r25, Y
+ 29e:	98 81       	ld	r25, Y
+	eor M0, r25
+ 2a0:	09 27       	eor	r16, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+ 2a2:	49 27       	eor	r20, r25
+
+	mov r30, ST02
+ 2a4:	e2 2d       	mov	r30, r2
+	ld	r25, Z
+ 2a6:	90 81       	ld	r25, Z
+	eor M0, r25
+ 2a8:	09 27       	eor	r16, r25
+	eor T0, r25
+ 2aa:	49 27       	eor	r20, r25
+	eor M3, r25;  1옮겨주기 subbyte 상태로
+ 2ac:	39 27       	eor	r19, r25
+	mov r28, ST02
+ 2ae:	c2 2d       	mov	r28, r2
+	ld  r25, Y
+ 2b0:	98 81       	ld	r25, Y
+	eor T0, r25
+ 2b2:	49 27       	eor	r20, r25
+	eor T1, r25;1, 3, 2, 1 완료
+ 2b4:	59 27       	eor	r21, r25
+
+	mov r30, ST13
+ 2b6:	e7 2d       	mov	r30, r7
+	ld	r25, Z
+ 2b8:	90 81       	ld	r25, Z
+	eor M0, r25
+ 2ba:	09 27       	eor	r16, r25
+	eor T0, r25
+ 2bc:	49 27       	eor	r20, r25
+	eor T1, r25 ;  1옮겨주기 subbyte 상태로
+ 2be:	59 27       	eor	r21, r25
+	mov r28, ST13
+ 2c0:	c7 2d       	mov	r28, r7
+	ld  r25, Y
+ 2c2:	98 81       	ld	r25, Y
+	eor T1, r25
+ 2c4:	59 27       	eor	r21, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+ 2c6:	39 27       	eor	r19, r25
+
+	mov ST20, M0
+ 2c8:	80 2e       	mov	r8, r16
+	mov ST21, T0
+ 2ca:	94 2e       	mov	r9, r20
+	mov ST22, T1
+ 2cc:	a5 2e       	mov	r10, r21
+	mov ST13, T3
+ 2ce:	77 2e       	mov	r7, r23
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+ 2d0:	ec 2d       	mov	r30, r12
+	ld	T1, Z 
+ 2d2:	50 81       	ld	r21, Z
+	mov T3, T1
+ 2d4:	75 2f       	mov	r23, r21
+	mov r25, T3 ; 1옮겨주기 subbyte 상태로
+ 2d6:	97 2f       	mov	r25, r23
+	mov r28, ST30
+ 2d8:	cc 2d       	mov	r28, r12
+	ld  T0, Y
+ 2da:	48 81       	ld	r20, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+ 2dc:	94 27       	eor	r25, r20
+
+	mov r30, ST01
+ 2de:	e1 2d       	mov	r30, r1
+	ld	M0, Z
+ 2e0:	00 81       	ld	r16, Z
+	eor T0, M0
+ 2e2:	40 27       	eor	r20, r16
+	eor T3, M0
+ 2e4:	70 27       	eor	r23, r16
+	eor r25, M0 ;  1옮겨주기 subbyte 상태로
+ 2e6:	90 27       	eor	r25, r16
+	mov r28, ST01
+ 2e8:	c1 2d       	mov	r28, r1
+	ld  M0, Y
+ 2ea:	08 81       	ld	r16, Y
+	eor T0, M0
+ 2ec:	40 27       	eor	r20, r16
+	eor T1, M0 ;3, 2, 2, 1 완료
+ 2ee:	50 27       	eor	r21, r16
+
+	mov r30, ST12
+ 2f0:	e6 2d       	mov	r30, r6
+	ld	M0, Z
+ 2f2:	00 81       	ld	r16, Z
+	eor T0, M0
+ 2f4:	40 27       	eor	r20, r16
+	eor T1, M0
+ 2f6:	50 27       	eor	r21, r16
+	eor r25, M0 ;  1옮겨주기 subbyte 상태로
+ 2f8:	90 27       	eor	r25, r16
+	mov r28, ST12
+ 2fa:	c6 2d       	mov	r28, r6
+	ld  M0, Y
+ 2fc:	08 81       	ld	r16, Y
+	eor T1, M0
+ 2fe:	50 27       	eor	r21, r16
+	eor T3, M0 ;1, 3, 2, 1 완료
+ 300:	70 27       	eor	r23, r16
+
+	mov r30, ST23
+ 302:	eb 2d       	mov	r30, r11
+	ld	M0, Z
+ 304:	00 81       	ld	r16, Z
+	eor T0, M0
+ 306:	40 27       	eor	r20, r16
+	eor T1, M0
+ 308:	50 27       	eor	r21, r16
+	eor T3, M0 ;  1옮겨주기 subbyte 상태로
+ 30a:	70 27       	eor	r23, r16
+	mov r28, ST23
+ 30c:	cb 2d       	mov	r28, r11
+	ld  M0, Y
+ 30e:	08 81       	ld	r16, Y
+	eor T3, M0
+ 310:	70 27       	eor	r23, r16
+	eor r25, M0 ;1, 1, 3, 2 완료
+ 312:	90 27       	eor	r25, r16
+
+	mov ST30, T0
+ 314:	c4 2e       	mov	r12, r20
+	mov ST31, T1
+ 316:	d5 2e       	mov	r13, r21
+	mov ST32, T3
+ 318:	e7 2e       	mov	r14, r23
+	mov ST33, r25
+ 31a:	f9 2e       	mov	r15, r25
+	mov ST01, M1
+ 31c:	11 2e       	mov	r1, r17
+	mov ST02, M2
+ 31e:	22 2e       	mov	r2, r18
+	mov ST12, T2
+ 320:	66 2e       	mov	r6, r22
+	mov ST23, M3
+ 322:	b3 2e       	mov	r11, r19
+	//! 4번째 열 완료
+
 	/* add key*/
 	rjmp 1b
- 27a:	4f cf       	rjmp	.-354    	; 0x11a <aes_encrypt_core+0x58>
+ 324:	f8 ce       	rjmp	.-528    	; 0x116 <aes_encrypt_core+0x54>
 
-0000027c <aes256_init>:
+00000326 <aes256_init>:
 
 .text
 
 .global aes256_init
 aes256_init:
 	movw r20, r22
- 27c:	ab 01       	movw	r20, r22
+ 326:	ab 01       	movw	r20, r22
 	ldi r23, hi8(256)
- 27e:	71 e0       	ldi	r23, 0x01	; 1
+ 328:	71 e0       	ldi	r23, 0x01	; 1
 	ldi r22, lo8(256)
- 280:	60 e0       	ldi	r22, 0x00	; 0
+ 32a:	60 e0       	ldi	r22, 0x00	; 0
 	rjmp aes_init
- 282:	07 c0       	rjmp	.+14     	; 0x292 <aes_init>
+ 32c:	07 c0       	rjmp	.+14     	; 0x33c <aes_init>
 
-00000284 <aes192_init>:
+0000032e <aes192_init>:
 	
 .global aes192_init
 aes192_init:
 	movw r20, r22
- 284:	ab 01       	movw	r20, r22
+ 32e:	ab 01       	movw	r20, r22
 	ldi r23, hi8(192)
- 286:	70 e0       	ldi	r23, 0x00	; 0
+ 330:	70 e0       	ldi	r23, 0x00	; 0
 	ldi r22, lo8(192)
- 288:	60 ec       	ldi	r22, 0xC0	; 192
+ 332:	60 ec       	ldi	r22, 0xC0	; 192
 	rjmp aes_init
- 28a:	03 c0       	rjmp	.+6      	; 0x292 <aes_init>
+ 334:	03 c0       	rjmp	.+6      	; 0x33c <aes_init>
 
-0000028c <aes128_init>:
+00000336 <aes128_init>:
 	
 .global aes128_init
 aes128_init:
 	movw r20, r22
- 28c:	ab 01       	movw	r20, r22
+ 336:	ab 01       	movw	r20, r22
 	clr r23
- 28e:	77 27       	eor	r23, r23
+ 338:	77 27       	eor	r23, r23
 	ldi r22, 128
- 290:	60 e8       	ldi	r22, 0x80	; 128
+ 33a:	60 e8       	ldi	r22, 0x80	; 128
 
-00000292 <aes_init>:
+0000033c <aes_init>:
  * param keysize_b: r22:r23
  * param ctx:       r20:r21
  */
 .global aes_init
 aes_init:
 	push_range 14, 17
- 292:	ef 92       	push	r14
- 294:	ff 92       	push	r15
- 296:	0f 93       	push	r16
- 298:	1f 93       	push	r17
+ 33c:	ef 92       	push	r14
+ 33e:	ff 92       	push	r15
+ 340:	0f 93       	push	r16
+ 342:	1f 93       	push	r17
 	push r28
- 29a:	cf 93       	push	r28
+ 344:	cf 93       	push	r28
 	push r29
- 29c:	df 93       	push	r29
+ 346:	df 93       	push	r29
 	movw r30, r20
- 29e:	fa 01       	movw	r30, r20
+ 348:	fa 01       	movw	r30, r20
 	movw r28, r20
- 2a0:	ea 01       	movw	r28, r20
+ 34a:	ea 01       	movw	r28, r20
 	movw r26, r24
- 2a2:	dc 01       	movw	r26, r24
+ 34c:	dc 01       	movw	r26, r24
 	lsr r23
- 2a4:	76 95       	lsr	r23
+ 34e:	76 95       	lsr	r23
 	ror r22
- 2a6:	67 95       	ror	r22
+ 350:	67 95       	ror	r22
 	lsr r22
- 2a8:	66 95       	lsr	r22
+ 352:	66 95       	lsr	r22
 	lsr r22 /* r22 contains keysize_b/8 */
- 2aa:	66 95       	lsr	r22
+ 354:	66 95       	lsr	r22
 	mov C1, r22
- 2ac:	26 2f       	mov	r18, r22
+ 356:	26 2f       	mov	r18, r22
 
 1:	/* copy key to ctx */ 
 	ld r0, X+
- 2ae:	0d 90       	ld	r0, X+
+ 358:	0d 90       	ld	r0, X+
 	st Z+, r0
- 2b0:	01 92       	st	Z+, r0
+ 35a:	01 92       	st	Z+, r0
 	dec C1
- 2b2:	2a 95       	dec	r18
+ 35c:	2a 95       	dec	r18
 	brne 1b
- 2b4:	e1 f7       	brne	.-8      	; 0x2ae <aes_init+0x1c>
+ 35e:	e1 f7       	brne	.-8      	; 0x358 <aes_init+0x1c>
 	
 	lsr NK
- 2b6:	66 95       	lsr	r22
+ 360:	66 95       	lsr	r22
 	lsr NK
- 2b8:	66 95       	lsr	r22
+ 362:	66 95       	lsr	r22
 	bst NK,3 /* set T if NK==8 */
- 2ba:	63 fb       	bst	r22, 3
+ 364:	63 fb       	bst	r22, 3
 	mov NEXT_NK, NK
- 2bc:	36 2f       	mov	r19, r22
+ 366:	36 2f       	mov	r19, r22
 	mov HI, NK
- 2be:	76 2f       	mov	r23, r22
+ 368:	76 2f       	mov	r23, r22
 	subi HI, -7
- 2c0:	79 5f       	subi	r23, 0xF9	; 249
+ 36a:	79 5f       	subi	r23, 0xF9	; 249
 	lsl HI
- 2c2:	77 0f       	add	r23, r23
+ 36c:	77 0f       	add	r23, r23
 	lsl HI
- 2c4:	77 0f       	add	r23, r23
+ 36e:	77 0f       	add	r23, r23
 	movw r26, r30
- 2c6:	df 01       	movw	r26, r30
+ 370:	df 01       	movw	r26, r30
 	sbiw r26, 4
- 2c8:	14 97       	sbiw	r26, 0x04	; 4
+ 372:	14 97       	sbiw	r26, 0x04	; 4
 	mov C1, NK
- 2ca:	26 2f       	mov	r18, r22
+ 374:	26 2f       	mov	r18, r22
 	ldi r31, hi8(SBOX_TABLE)
- 2cc:	f5 e0       	ldi	r31, 0x05	; 5
+ 376:	f3 e0       	ldi	r31, 0x03	; 3
 	movw SBOX_SAVE0, r30
- 2ce:	7f 01       	movw	r14, r30
+ 378:	7f 01       	movw	r14, r30
 	ldi XRC, 1
- 2d0:	11 e0       	ldi	r17, 0x01	; 1
+ 37a:	11 e0       	ldi	r17, 0x01	; 1
 1:	
 	ld T0, X+
- 2d2:	4d 91       	ld	r20, X+
+ 37c:	4d 91       	ld	r20, X+
 	ld T1, X+
- 2d4:	5d 91       	ld	r21, X+
+ 37e:	5d 91       	ld	r21, X+
 	ld T2, X+
- 2d6:	8d 91       	ld	r24, X+
+ 380:	8d 91       	ld	r24, X+
 	ld T3, X+
- 2d8:	9d 91       	ld	r25, X+
+ 382:	9d 91       	ld	r25, X+
 	cp NEXT_NK, C1
- 2da:	32 17       	cp	r19, r18
+ 384:	32 17       	cp	r19, r18
 	breq 2f 
- 2dc:	79 f0       	breq	.+30     	; 0x2fc <aes_init+0x6a>
+ 386:	79 f0       	breq	.+30     	; 0x3a6 <aes_init+0x6a>
 	brtc 5f
- 2de:	ee f4       	brtc	.+58     	; 0x31a <aes_init+0x88>
+ 388:	ee f4       	brtc	.+58     	; 0x3c4 <aes_init+0x88>
 	mov r16, C1
- 2e0:	02 2f       	mov	r16, r18
+ 38a:	02 2f       	mov	r16, r18
 	andi r16, 0x07
- 2e2:	07 70       	andi	r16, 0x07	; 7
+ 38c:	07 70       	andi	r16, 0x07	; 7
 	cpi r16, 0x04
- 2e4:	04 30       	cpi	r16, 0x04	; 4
+ 38e:	04 30       	cpi	r16, 0x04	; 4
 	brne 5f
- 2e6:	c9 f4       	brne	.+50     	; 0x31a <aes_init+0x88>
+ 390:	c9 f4       	brne	.+50     	; 0x3c4 <aes_init+0x88>
 	movw r30, SBOX_SAVE0
- 2e8:	f7 01       	movw	r30, r14
+ 392:	f7 01       	movw	r30, r14
 	mov r30, T0
- 2ea:	e4 2f       	mov	r30, r20
+ 394:	e4 2f       	mov	r30, r20
 	ld T0, Z
- 2ec:	40 81       	ld	r20, Z
+ 396:	40 81       	ld	r20, Z
 
 	mov r30, T1
- 2ee:	e5 2f       	mov	r30, r21
+ 398:	e5 2f       	mov	r30, r21
 	ld T1, Z
- 2f0:	50 81       	ld	r21, Z
+ 39a:	50 81       	ld	r21, Z
 
 	mov r30, T2
- 2f2:	e8 2f       	mov	r30, r24
+ 39c:	e8 2f       	mov	r30, r24
 	ld T2, Z
- 2f4:	80 81       	ld	r24, Z
+ 39e:	80 81       	ld	r24, Z
 
 	mov r30, T3
- 2f6:	e9 2f       	mov	r30, r25
+ 3a0:	e9 2f       	mov	r30, r25
 	ld T3, Z
- 2f8:	90 81       	ld	r25, Z
+ 3a2:	90 81       	ld	r25, Z
 
 	rjmp 5f
- 2fa:	0f c0       	rjmp	.+30     	; 0x31a <aes_init+0x88>
+ 3a4:	0f c0       	rjmp	.+30     	; 0x3c4 <aes_init+0x88>
 2:
 	add NEXT_NK, NK
- 2fc:	36 0f       	add	r19, r22
+ 3a6:	36 0f       	add	r19, r22
 	movw r30, SBOX_SAVE0
- 2fe:	f7 01       	movw	r30, r14
+ 3a8:	f7 01       	movw	r30, r14
 	mov r30, T0
- 300:	e4 2f       	mov	r30, r20
+ 3aa:	e4 2f       	mov	r30, r20
 	ld r16, Z
- 302:	00 81       	ld	r16, Z
+ 3ac:	00 81       	ld	r16, Z
 
 	mov r30, T1
- 304:	e5 2f       	mov	r30, r21
+ 3ae:	e5 2f       	mov	r30, r21
 	ld T0, Z
- 306:	40 81       	ld	r20, Z
+ 3b0:	40 81       	ld	r20, Z
 
 	mov r30, T2
- 308:	e8 2f       	mov	r30, r24
+ 3b2:	e8 2f       	mov	r30, r24
 	ld T1, Z
- 30a:	50 81       	ld	r21, Z
+ 3b4:	50 81       	ld	r21, Z
 
 	mov r30, T3
- 30c:	e9 2f       	mov	r30, r25
+ 3b6:	e9 2f       	mov	r30, r25
 	ld T2, Z
- 30e:	80 81       	ld	r24, Z
+ 3b8:	80 81       	ld	r24, Z
 
 	mov T3, r16
- 310:	90 2f       	mov	r25, r16
+ 3ba:	90 2f       	mov	r25, r16
 	eor T0, XRC
- 312:	41 27       	eor	r20, r17
+ 3bc:	41 27       	eor	r20, r17
 	lsl XRC
- 314:	11 0f       	add	r17, r17
+ 3be:	11 0f       	add	r17, r17
 	brcc 3f
- 316:	08 f4       	brcc	.+2      	; 0x31a <aes_init+0x88>
+ 3c0:	08 f4       	brcc	.+2      	; 0x3c4 <aes_init+0x88>
 	ldi XRC, 0x1b
- 318:	1b e1       	ldi	r17, 0x1B	; 27
+ 3c2:	1b e1       	ldi	r17, 0x1B	; 27
 3:
 5:	
 	movw r30, r26
- 31a:	fd 01       	movw	r30, r26
+ 3c4:	fd 01       	movw	r30, r26
 
 	ld r0, Y+
- 31c:	09 90       	ld	r0, Y+
+ 3c6:	09 90       	ld	r0, Y+
 	eor r0, T0
- 31e:	04 26       	eor	r0, r20
+ 3c8:	04 26       	eor	r0, r20
 	st Z+, r0 
- 320:	01 92       	st	Z+, r0
+ 3ca:	01 92       	st	Z+, r0
 	ld r0, Y+
- 322:	09 90       	ld	r0, Y+
+ 3cc:	09 90       	ld	r0, Y+
 	eor r0 ,T1
- 324:	05 26       	eor	r0, r21
+ 3ce:	05 26       	eor	r0, r21
 	st Z+, r0
- 326:	01 92       	st	Z+, r0
+ 3d0:	01 92       	st	Z+, r0
 	ld r0, Y+
- 328:	09 90       	ld	r0, Y+
+ 3d2:	09 90       	ld	r0, Y+
 	eor r0, T2
- 32a:	08 26       	eor	r0, r24
+ 3d4:	08 26       	eor	r0, r24
 	st Z+, r0
- 32c:	01 92       	st	Z+, r0
+ 3d6:	01 92       	st	Z+, r0
 	ld r0, Y+
- 32e:	09 90       	ld	r0, Y+
+ 3d8:	09 90       	ld	r0, Y+
 	eor r0, T3
- 330:	09 26       	eor	r0, r25
+ 3da:	09 26       	eor	r0, r25
 	st Z+, r0
- 332:	01 92       	st	Z+, r0
+ 3dc:	01 92       	st	Z+, r0
 	
 	inc C1
- 334:	23 95       	inc	r18
+ 3de:	23 95       	inc	r18
 	cp C1, HI
- 336:	27 17       	cp	r18, r23
+ 3e0:	27 17       	cp	r18, r23
 	breq 6f
- 338:	09 f0       	breq	.+2      	; 0x33c <aes_init+0xaa>
+ 3e2:	09 f0       	breq	.+2      	; 0x3e6 <aes_init+0xaa>
 	rjmp 1b
- 33a:	cb cf       	rjmp	.-106    	; 0x2d2 <aes_init+0x40>
+ 3e4:	cb cf       	rjmp	.-106    	; 0x37c <aes_init+0x40>
 6:	
 	clt
- 33c:	e8 94       	clt
+ 3e6:	e8 94       	clt
 	pop r29
- 33e:	df 91       	pop	r29
+ 3e8:	df 91       	pop	r29
 	pop r28
- 340:	cf 91       	pop	r28
+ 3ea:	cf 91       	pop	r28
 	pop_range 14, 17
- 342:	1f 91       	pop	r17
- 344:	0f 91       	pop	r16
- 346:	ff 90       	pop	r15
- 348:	ef 90       	pop	r14
- 34a:	08 95       	ret
+ 3ec:	1f 91       	pop	r17
+ 3ee:	0f 91       	pop	r16
+ 3f0:	ff 90       	pop	r15
+ 3f2:	ef 90       	pop	r14
+ 3f4:	08 95       	ret
+	...
 
-0000034c <main>:
+00000400 <aes_sbox>:
+ 400:	63 7c       	andi	r22, 0xC3	; 195
+ 402:	77 7b       	andi	r23, 0xB7	; 183
+ 404:	f2 6b       	ori	r31, 0xB2	; 178
+ 406:	6f c5       	rjmp	.+2782   	; 0xee6 <__data_load_end+0x432>
+ 408:	30 01       	movw	r6, r0
+ 40a:	67 2b       	or	r22, r23
+ 40c:	fe d7       	rcall	.+4092   	; 0x140a <__stack+0x30b>
+ 40e:	ab 76       	andi	r26, 0x6B	; 107
+ 410:	ca 82       	std	Y+2, r12	; 0x02
+ 412:	c9 7d       	andi	r28, 0xD9	; 217
+ 414:	fa 59       	subi	r31, 0x9A	; 154
+ 416:	47 f0       	brie	.+16     	; 0x428 <aes_sbox+0x28>
+ 418:	ad d4       	rcall	.+2394   	; 0xd74 <__data_load_end+0x2c0>
+ 41a:	a2 af       	std	Z+58, r26	; 0x3a
+ 41c:	9c a4       	ldd	r9, Y+44	; 0x2c
+ 41e:	72 c0       	rjmp	.+228    	; 0x504 <aes192_enc_origin>
+ 420:	b7 fd       	sbrc	r27, 7
+ 422:	93 26       	eor	r9, r19
+ 424:	36 3f       	cpi	r19, 0xF6	; 246
+ 426:	f7 cc       	rjmp	.-1554   	; 0xfffffe16 <__eeprom_end+0xff7efe16>
+ 428:	34 a5       	ldd	r19, Z+44	; 0x2c
+ 42a:	e5 f1       	brhs	.+120    	; 0x4a4 <aes_sbox+0xa4>
+ 42c:	71 d8       	rcall	.-3870   	; 0xfffff510 <__eeprom_end+0xff7ef510>
+ 42e:	31 15       	cp	r19, r1
+ 430:	04 c7       	rjmp	.+3592   	; 0x123a <__stack+0x13b>
+ 432:	23 c3       	rjmp	.+1606   	; 0xa7a <_etext+0x2d6>
+ 434:	18 96       	adiw	r26, 0x08	; 8
+ 436:	05 9a       	sbi	0x00, 5	; 0
+ 438:	07 12       	cpse	r0, r23
+ 43a:	80 e2       	ldi	r24, 0x20	; 32
+ 43c:	eb 27       	eor	r30, r27
+ 43e:	b2 75       	andi	r27, 0x52	; 82
+ 440:	09 83       	std	Y+1, r16	; 0x01
+ 442:	2c 1a       	sub	r2, r28
+ 444:	1b 6e       	ori	r17, 0xEB	; 235
+ 446:	5a a0       	ldd	r5, Y+34	; 0x22
+ 448:	52 3b       	cpi	r21, 0xB2	; 178
+ 44a:	d6 b3       	in	r29, 0x16	; 22
+ 44c:	29 e3       	ldi	r18, 0x39	; 57
+ 44e:	2f 84       	ldd	r2, Y+15	; 0x0f
+ 450:	53 d1       	rcall	.+678    	; 0x6f8 <exit+0x158>
+ 452:	00 ed       	ldi	r16, 0xD0	; 208
+ 454:	20 fc       	sbrc	r2, 0
+ 456:	b1 5b       	subi	r27, 0xB1	; 177
+ 458:	6a cb       	rjmp	.-2348   	; 0xfffffb2e <__eeprom_end+0xff7efb2e>
+ 45a:	be 39       	cpi	r27, 0x9E	; 158
+ 45c:	4a 4c       	sbci	r20, 0xCA	; 202
+ 45e:	58 cf       	rjmp	.-336    	; 0x310 <exit+0x1b8>
+ 460:	d0 ef       	ldi	r29, 0xF0	; 240
+ 462:	aa fb       	.word	0xfbaa	; ????
+ 464:	43 4d       	sbci	r20, 0xD3	; 211
+ 466:	33 85       	ldd	r19, Z+11	; 0x0b
+ 468:	45 f9       	bld	r20, 5
+ 46a:	02 7f       	andi	r16, 0xF2	; 242
+ 46c:	50 3c       	cpi	r21, 0xC0	; 192
+ 46e:	9f a8       	ldd	r9, Y+55	; 0x37
+ 470:	51 a3       	std	Z+33, r21	; 0x21
+ 472:	40 8f       	std	Z+24, r20	; 0x18
+ 474:	92 9d       	mul	r25, r2
+ 476:	38 f5       	brcc	.+78     	; 0x4c6 <aes_sbox+0xc6>
+ 478:	bc b6       	in	r11, 0x3c	; 60
+ 47a:	da 21       	and	r29, r10
+ 47c:	10 ff       	sbrs	r17, 0
+ 47e:	f3 d2       	rcall	.+1510   	; 0xa66 <_etext+0x2c2>
+ 480:	cd 0c       	add	r12, r13
+ 482:	13 ec       	ldi	r17, 0xC3	; 195
+ 484:	5f 97       	sbiw	r26, 0x1f	; 31
+ 486:	44 17       	cp	r20, r20
+ 488:	c4 a7       	std	Z+44, r28	; 0x2c
+ 48a:	7e 3d       	cpi	r23, 0xDE	; 222
+ 48c:	64 5d       	subi	r22, 0xD4	; 212
+ 48e:	19 73       	andi	r17, 0x39	; 57
+ 490:	60 81       	ld	r22, Z
+ 492:	4f dc       	rcall	.-1890   	; 0xfffffd32 <__eeprom_end+0xff7efd32>
+ 494:	22 2a       	or	r2, r18
+ 496:	90 88       	ldd	r9, Z+16	; 0x10
+ 498:	46 ee       	ldi	r20, 0xE6	; 230
+ 49a:	b8 14       	cp	r11, r8
+ 49c:	de 5e       	subi	r29, 0xEE	; 238
+ 49e:	0b db       	rcall	.-2538   	; 0xfffffab6 <__eeprom_end+0xff7efab6>
+ 4a0:	e0 32       	cpi	r30, 0x20	; 32
+ 4a2:	3a 0a       	sbc	r3, r26
+ 4a4:	49 06       	cpc	r4, r25
+ 4a6:	24 5c       	subi	r18, 0xC4	; 196
+ 4a8:	c2 d3       	rcall	.+1924   	; 0xc2e <__data_load_end+0x17a>
+ 4aa:	ac 62       	ori	r26, 0x2C	; 44
+ 4ac:	91 95       	neg	r25
+ 4ae:	e4 79       	andi	r30, 0x94	; 148
+ 4b0:	e7 c8       	rjmp	.-3634   	; 0xfffff680 <__eeprom_end+0xff7ef680>
+ 4b2:	37 6d       	ori	r19, 0xD7	; 215
+ 4b4:	8d d5       	rcall	.+2842   	; 0xfd0 <__data_load_end+0x51c>
+ 4b6:	4e a9       	ldd	r20, Y+54	; 0x36
+ 4b8:	6c 56       	subi	r22, 0x6C	; 108
+ 4ba:	f4 ea       	ldi	r31, 0xA4	; 164
+ 4bc:	65 7a       	andi	r22, 0xA5	; 165
+ 4be:	ae 08       	sbc	r10, r14
+ 4c0:	ba 78       	andi	r27, 0x8A	; 138
+ 4c2:	25 2e       	mov	r2, r21
+ 4c4:	1c a6       	std	Y+44, r1	; 0x2c
+ 4c6:	b4 c6       	rjmp	.+3432   	; 0x1230 <__stack+0x131>
+ 4c8:	e8 dd       	rcall	.-1072   	; 0x9a <__do_copy_data+0x2>
+ 4ca:	74 1f       	adc	r23, r20
+ 4cc:	4b bd       	out	0x2b, r20	; 43
+ 4ce:	8b 8a       	std	Y+19, r8	; 0x13
+ 4d0:	70 3e       	cpi	r23, 0xE0	; 224
+ 4d2:	b5 66       	ori	r27, 0x65	; 101
+ 4d4:	48 03       	fmul	r20, r16
+ 4d6:	f6 0e       	add	r15, r22
+ 4d8:	61 35       	cpi	r22, 0x51	; 81
+ 4da:	57 b9       	out	0x07, r21	; 7
+ 4dc:	86 c1       	rjmp	.+780    	; 0x7ea <_etext+0x46>
+ 4de:	1d 9e       	mul	r1, r29
+ 4e0:	e1 f8       	bld	r14, 1
+ 4e2:	98 11       	cpse	r25, r8
+ 4e4:	69 d9       	rcall	.-3374   	; 0xfffff7b8 <__eeprom_end+0xff7ef7b8>
+ 4e6:	8e 94 9b 1e 	call	0x203d36	; 0x203d36 <__TEXT_REGION_LENGTH__+0x1e3d36>
+ 4ea:	87 e9       	ldi	r24, 0x97	; 151
+ 4ec:	ce 55       	subi	r28, 0x5E	; 94
+ 4ee:	28 df       	rcall	.-432    	; 0x340 <aes_init+0x4>
+ 4f0:	8c a1       	ldd	r24, Y+36	; 0x24
+ 4f2:	89 0d       	add	r24, r9
+ 4f4:	bf e6       	ldi	r27, 0x6F	; 111
+ 4f6:	42 68       	ori	r20, 0x82	; 130
+ 4f8:	41 99       	sbic	0x08, 1	; 8
+ 4fa:	2d 0f       	add	r18, r29
+ 4fc:	b0 54       	subi	r27, 0x40	; 64
+ 4fe:	bb 16       	cp	r11, r27
 
-#include <avr/io.h>
-#include "aes_types.h"
+00000500 <aes256_enc_origin>:
+P = 0
+xREDUCER = 25
+
+.global aes256_enc_origin
+aes256_enc_origin:
+	ldi r20, 14
+ 500:	4e e0       	ldi	r20, 0x0E	; 14
+	rjmp aes_encrypt_core_origin
+ 502:	03 c0       	rjmp	.+6      	; 0x50a <aes_encrypt_core_origin>
+
+00000504 <aes192_enc_origin>:
+
+.global aes192_enc_origin
+aes192_enc_origin:
+	ldi r20, 12
+ 504:	4c e0       	ldi	r20, 0x0C	; 12
+	rjmp aes_encrypt_core_origin
+ 506:	01 c0       	rjmp	.+2      	; 0x50a <aes_encrypt_core_origin>
+
+00000508 <aes128_enc_origin>:
+
+.global aes128_enc_origin
+aes128_enc_origin:
+	ldi r20, 10
+ 508:	4a e0       	ldi	r20, 0x0A	; 10
+
+0000050a <aes_encrypt_core_origin>:
+ * param ks:     r22:r23
+ * param rounds: r20   
+ */
+.global aes_encrypt_core_origin
+aes_encrypt_core_origin:
+	push_range 2, 17
+ 50a:	2f 92       	push	r2
+ 50c:	3f 92       	push	r3
+ 50e:	4f 92       	push	r4
+ 510:	5f 92       	push	r5
+ 512:	6f 92       	push	r6
+ 514:	7f 92       	push	r7
+ 516:	8f 92       	push	r8
+ 518:	9f 92       	push	r9
+ 51a:	af 92       	push	r10
+ 51c:	bf 92       	push	r11
+ 51e:	cf 92       	push	r12
+ 520:	df 92       	push	r13
+ 522:	ef 92       	push	r14
+ 524:	ff 92       	push	r15
+ 526:	0f 93       	push	r16
+ 528:	1f 93       	push	r17
+	push r28
+ 52a:	cf 93       	push	r28
+	push r29
+ 52c:	df 93       	push	r29
+	push r24
+ 52e:	8f 93       	push	r24
+	push r25
+ 530:	9f 93       	push	r25
+	movw r26, r22
+ 532:	db 01       	movw	r26, r22
+	movw r30, r24
+ 534:	fc 01       	movw	r30, r24
+	mov  CTR, r20
+ 536:	84 2f       	mov	r24, r20
+	clt
+ 538:	e8 94       	clt
+	
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld ST\row\col, Z+
+		.endr
+	.endr
+ 53a:	81 90       	ld	r8, Z+
+ 53c:	91 90       	ld	r9, Z+
+ 53e:	a1 90       	ld	r10, Z+
+ 540:	b1 90       	ld	r11, Z+
+ 542:	c1 90       	ld	r12, Z+
+ 544:	d1 90       	ld	r13, Z+
+ 546:	e1 90       	ld	r14, Z+
+ 548:	f1 90       	ld	r15, Z+
+ 54a:	01 91       	ld	r16, Z+
+ 54c:	11 91       	ld	r17, Z+
+ 54e:	21 91       	ld	r18, Z+
+ 550:	31 91       	ld	r19, Z+
+ 552:	41 91       	ld	r20, Z+
+ 554:	51 91       	ld	r21, Z+
+ 556:	61 91       	ld	r22, Z+
+ 558:	71 91       	ld	r23, Z+
+	
+	ldi xREDUCER, 0x1b /* load reducer */
+ 55a:	9b e1       	ldi	r25, 0x1B	; 27
+	ldi r31, hi8(aes_sbox)
+ 55c:	f4 e0       	ldi	r31, 0x04	; 4
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r0, X+
+			eor ST\row\col, r0
+		.endr
+	.endr
+ 55e:	0d 90       	ld	r0, X+
+ 560:	80 24       	eor	r8, r0
+ 562:	0d 90       	ld	r0, X+
+ 564:	90 24       	eor	r9, r0
+ 566:	0d 90       	ld	r0, X+
+ 568:	a0 24       	eor	r10, r0
+ 56a:	0d 90       	ld	r0, X+
+ 56c:	b0 24       	eor	r11, r0
+ 56e:	0d 90       	ld	r0, X+
+ 570:	c0 24       	eor	r12, r0
+ 572:	0d 90       	ld	r0, X+
+ 574:	d0 24       	eor	r13, r0
+ 576:	0d 90       	ld	r0, X+
+ 578:	e0 24       	eor	r14, r0
+ 57a:	0d 90       	ld	r0, X+
+ 57c:	f0 24       	eor	r15, r0
+ 57e:	0d 90       	ld	r0, X+
+ 580:	00 25       	eor	r16, r0
+ 582:	0d 90       	ld	r0, X+
+ 584:	10 25       	eor	r17, r0
+ 586:	0d 90       	ld	r0, X+
+ 588:	20 25       	eor	r18, r0
+ 58a:	0d 90       	ld	r0, X+
+ 58c:	30 25       	eor	r19, r0
+ 58e:	0d 90       	ld	r0, X+
+ 590:	40 25       	eor	r20, r0
+ 592:	0d 90       	ld	r0, X+
+ 594:	50 25       	eor	r21, r0
+ 596:	0d 90       	ld	r0, X+
+ 598:	60 25       	eor	r22, r0
+ 59a:	0d 90       	ld	r0, X+
+ 59c:	70 25       	eor	r23, r0
+	
+	brtc 2f
+ 59e:	2e f5       	brtc	.+74     	; 0x5ea <exit+0x4a>
+
+000005a0 <exit>:
+exit:
+	pop r31
+ 5a0:	ff 91       	pop	r31
+	pop r30
+ 5a2:	ef 91       	pop	r30
+	.irp row, 0, 1, 2, 3
+			.irp col, 0, 1, 2, 3
+			st Z+, ST\row\col
+		.endr
+	.endr
+ 5a4:	81 92       	st	Z+, r8
+ 5a6:	91 92       	st	Z+, r9
+ 5a8:	a1 92       	st	Z+, r10
+ 5aa:	b1 92       	st	Z+, r11
+ 5ac:	c1 92       	st	Z+, r12
+ 5ae:	d1 92       	st	Z+, r13
+ 5b0:	e1 92       	st	Z+, r14
+ 5b2:	f1 92       	st	Z+, r15
+ 5b4:	01 93       	st	Z+, r16
+ 5b6:	11 93       	st	Z+, r17
+ 5b8:	21 93       	st	Z+, r18
+ 5ba:	31 93       	st	Z+, r19
+ 5bc:	41 93       	st	Z+, r20
+ 5be:	51 93       	st	Z+, r21
+ 5c0:	61 93       	st	Z+, r22
+ 5c2:	71 93       	st	Z+, r23
+	pop r29
+ 5c4:	df 91       	pop	r29
+	pop r28
+ 5c6:	cf 91       	pop	r28
+	pop_range 2, 17
+ 5c8:	1f 91       	pop	r17
+ 5ca:	0f 91       	pop	r16
+ 5cc:	ff 90       	pop	r15
+ 5ce:	ef 90       	pop	r14
+ 5d0:	df 90       	pop	r13
+ 5d2:	cf 90       	pop	r12
+ 5d4:	bf 90       	pop	r11
+ 5d6:	af 90       	pop	r10
+ 5d8:	9f 90       	pop	r9
+ 5da:	8f 90       	pop	r8
+ 5dc:	7f 90       	pop	r7
+ 5de:	6f 90       	pop	r6
+ 5e0:	5f 90       	pop	r5
+ 5e2:	4f 90       	pop	r4
+ 5e4:	3f 90       	pop	r3
+ 5e6:	2f 90       	pop	r2
+	ret
+ 5e8:	08 95       	ret
+
+2:	dec CTR
+ 5ea:	8a 95       	dec	r24
+	brne 3f
+ 5ec:	09 f4       	brne	.+2      	; 0x5f0 <exit+0x50>
+	set
+ 5ee:	68 94       	set
+3:
+
+	/* encryption loop */ 
+
+	/* SBOX substitution and shifting */
+	mov r30, ST00
+ 5f0:	e8 2d       	mov	r30, r8
+	lpm ST00, Z
+ 5f2:	84 90       	lpm	r8, Z
+	mov r30, ST10
+ 5f4:	ec 2d       	mov	r30, r12
+	lpm ST10, Z
+ 5f6:	c4 90       	lpm	r12, Z
+	mov r30, ST20
+ 5f8:	e0 2f       	mov	r30, r16
+	lpm ST20, Z
+ 5fa:	04 91       	lpm	r16, Z
+	mov r30, ST30
+ 5fc:	e4 2f       	mov	r30, r20
+	lpm ST30, Z
+ 5fe:	44 91       	lpm	r20, Z
+
+	mov r30, ST01
+ 600:	e9 2d       	mov	r30, r9
+	lpm T0, Z
+ 602:	24 90       	lpm	r2, Z
+	mov r30, ST11
+ 604:	ed 2d       	mov	r30, r13
+	lpm ST01, Z
+ 606:	94 90       	lpm	r9, Z
+	mov r30, ST21
+ 608:	e1 2f       	mov	r30, r17
+	lpm ST11, Z
+ 60a:	d4 90       	lpm	r13, Z
+	mov r30, ST31
+ 60c:	e5 2f       	mov	r30, r21
+	lpm ST21, Z
+ 60e:	14 91       	lpm	r17, Z
+	mov ST31, T0
+ 610:	52 2d       	mov	r21, r2
+
+	mov r30, ST02
+ 612:	ea 2d       	mov	r30, r10
+	lpm T0, Z
+ 614:	24 90       	lpm	r2, Z
+	mov r30, ST12
+ 616:	ee 2d       	mov	r30, r14
+	lpm T1, Z
+ 618:	34 90       	lpm	r3, Z
+	mov r30, ST22
+ 61a:	e2 2f       	mov	r30, r18
+	lpm ST02, Z
+ 61c:	a4 90       	lpm	r10, Z
+	mov r30, ST32
+ 61e:	e6 2f       	mov	r30, r22
+	lpm ST12, Z
+ 620:	e4 90       	lpm	r14, Z
+	mov ST22, T0
+ 622:	22 2d       	mov	r18, r2
+	mov ST32, T1
+ 624:	63 2d       	mov	r22, r3
+
+	mov r30, ST03
+ 626:	eb 2d       	mov	r30, r11
+	lpm T0, Z
+ 628:	24 90       	lpm	r2, Z
+	mov r30, ST33
+ 62a:	e7 2f       	mov	r30, r23
+	lpm ST03, Z
+ 62c:	b4 90       	lpm	r11, Z
+	mov r30, ST23
+ 62e:	e3 2f       	mov	r30, r19
+	lpm ST33, Z
+ 630:	74 91       	lpm	r23, Z
+	mov r30, ST13
+ 632:	ef 2d       	mov	r30, r15
+	lpm ST23, Z
+ 634:	34 91       	lpm	r19, Z
+	mov ST13, T0
+ 636:	f2 2c       	mov	r15, r2
+		
+	/* mixcols (or rows in our case) */
+	brtc 2f
+ 638:	0e f4       	brtc	.+2      	; 0x63c <exit+0x9c>
+	rjmp 1b
+ 63a:	91 cf       	rjmp	.-222    	; 0x55e <aes_encrypt_core_origin+0x54>
+	brcc 3f
+	eor T0, xREDUCER
+3:	eor T0, r0
+	eor ST\row\()3, T0
+
+.endr
+ 63c:	0a 2c       	mov	r0, r10
+ 63e:	0b 24       	eor	r0, r11
+ 640:	40 2c       	mov	r4, r0
+ 642:	28 2c       	mov	r2, r8
+ 644:	89 24       	eor	r8, r9
+ 646:	08 24       	eor	r0, r8
+ 648:	88 0c       	add	r8, r8
+ 64a:	08 f4       	brcc	.+2      	; 0x64e <exit+0xae>
+ 64c:	89 26       	eor	r8, r25
+ 64e:	80 24       	eor	r8, r0
+ 650:	82 24       	eor	r8, r2
+ 652:	39 2c       	mov	r3, r9
+ 654:	3a 24       	eor	r3, r10
+ 656:	33 0c       	add	r3, r3
+ 658:	08 f4       	brcc	.+2      	; 0x65c <exit+0xbc>
+ 65a:	39 26       	eor	r3, r25
+ 65c:	30 24       	eor	r3, r0
+ 65e:	93 24       	eor	r9, r3
+ 660:	44 0c       	add	r4, r4
+ 662:	08 f4       	brcc	.+2      	; 0x666 <exit+0xc6>
+ 664:	49 26       	eor	r4, r25
+ 666:	40 24       	eor	r4, r0
+ 668:	a4 24       	eor	r10, r4
+ 66a:	2b 24       	eor	r2, r11
+ 66c:	22 0c       	add	r2, r2
+ 66e:	08 f4       	brcc	.+2      	; 0x672 <exit+0xd2>
+ 670:	29 26       	eor	r2, r25
+ 672:	20 24       	eor	r2, r0
+ 674:	b2 24       	eor	r11, r2
+ 676:	0e 2c       	mov	r0, r14
+ 678:	0f 24       	eor	r0, r15
+ 67a:	40 2c       	mov	r4, r0
+ 67c:	2c 2c       	mov	r2, r12
+ 67e:	cd 24       	eor	r12, r13
+ 680:	0c 24       	eor	r0, r12
+ 682:	cc 0c       	add	r12, r12
+ 684:	08 f4       	brcc	.+2      	; 0x688 <exit+0xe8>
+ 686:	c9 26       	eor	r12, r25
+ 688:	c0 24       	eor	r12, r0
+ 68a:	c2 24       	eor	r12, r2
+ 68c:	3d 2c       	mov	r3, r13
+ 68e:	3e 24       	eor	r3, r14
+ 690:	33 0c       	add	r3, r3
+ 692:	08 f4       	brcc	.+2      	; 0x696 <exit+0xf6>
+ 694:	39 26       	eor	r3, r25
+ 696:	30 24       	eor	r3, r0
+ 698:	d3 24       	eor	r13, r3
+ 69a:	44 0c       	add	r4, r4
+ 69c:	08 f4       	brcc	.+2      	; 0x6a0 <exit+0x100>
+ 69e:	49 26       	eor	r4, r25
+ 6a0:	40 24       	eor	r4, r0
+ 6a2:	e4 24       	eor	r14, r4
+ 6a4:	2f 24       	eor	r2, r15
+ 6a6:	22 0c       	add	r2, r2
+ 6a8:	08 f4       	brcc	.+2      	; 0x6ac <exit+0x10c>
+ 6aa:	29 26       	eor	r2, r25
+ 6ac:	20 24       	eor	r2, r0
+ 6ae:	f2 24       	eor	r15, r2
+ 6b0:	02 2e       	mov	r0, r18
+ 6b2:	03 26       	eor	r0, r19
+ 6b4:	40 2c       	mov	r4, r0
+ 6b6:	20 2e       	mov	r2, r16
+ 6b8:	01 27       	eor	r16, r17
+ 6ba:	00 26       	eor	r0, r16
+ 6bc:	00 0f       	add	r16, r16
+ 6be:	08 f4       	brcc	.+2      	; 0x6c2 <exit+0x122>
+ 6c0:	09 27       	eor	r16, r25
+ 6c2:	00 25       	eor	r16, r0
+ 6c4:	02 25       	eor	r16, r2
+ 6c6:	31 2e       	mov	r3, r17
+ 6c8:	32 26       	eor	r3, r18
+ 6ca:	33 0c       	add	r3, r3
+ 6cc:	08 f4       	brcc	.+2      	; 0x6d0 <exit+0x130>
+ 6ce:	39 26       	eor	r3, r25
+ 6d0:	30 24       	eor	r3, r0
+ 6d2:	13 25       	eor	r17, r3
+ 6d4:	44 0c       	add	r4, r4
+ 6d6:	08 f4       	brcc	.+2      	; 0x6da <exit+0x13a>
+ 6d8:	49 26       	eor	r4, r25
+ 6da:	40 24       	eor	r4, r0
+ 6dc:	24 25       	eor	r18, r4
+ 6de:	23 26       	eor	r2, r19
+ 6e0:	22 0c       	add	r2, r2
+ 6e2:	08 f4       	brcc	.+2      	; 0x6e6 <exit+0x146>
+ 6e4:	29 26       	eor	r2, r25
+ 6e6:	20 24       	eor	r2, r0
+ 6e8:	32 25       	eor	r19, r2
+ 6ea:	06 2e       	mov	r0, r22
+ 6ec:	07 26       	eor	r0, r23
+ 6ee:	40 2c       	mov	r4, r0
+ 6f0:	24 2e       	mov	r2, r20
+ 6f2:	45 27       	eor	r20, r21
+ 6f4:	04 26       	eor	r0, r20
+ 6f6:	44 0f       	add	r20, r20
+ 6f8:	08 f4       	brcc	.+2      	; 0x6fc <exit+0x15c>
+ 6fa:	49 27       	eor	r20, r25
+ 6fc:	40 25       	eor	r20, r0
+ 6fe:	42 25       	eor	r20, r2
+ 700:	35 2e       	mov	r3, r21
+ 702:	36 26       	eor	r3, r22
+ 704:	33 0c       	add	r3, r3
+ 706:	08 f4       	brcc	.+2      	; 0x70a <exit+0x16a>
+ 708:	39 26       	eor	r3, r25
+ 70a:	30 24       	eor	r3, r0
+ 70c:	53 25       	eor	r21, r3
+ 70e:	44 0c       	add	r4, r4
+ 710:	08 f4       	brcc	.+2      	; 0x714 <exit+0x174>
+ 712:	49 26       	eor	r4, r25
+ 714:	40 24       	eor	r4, r0
+ 716:	64 25       	eor	r22, r4
+ 718:	27 26       	eor	r2, r23
+ 71a:	22 0c       	add	r2, r2
+ 71c:	08 f4       	brcc	.+2      	; 0x720 <exit+0x180>
+ 71e:	29 26       	eor	r2, r25
+ 720:	20 24       	eor	r2, r0
+ 722:	72 25       	eor	r23, r2
+	/* mix colums (rows) done */
+
+	/* add key*/
+ 724:	1c cf       	rjmp	.-456    	; 0x55e <aes_encrypt_core_origin+0x54>
+
+00000726 <main>:
+void aes128_enc_origin(void *buffer, aes128_ctx_t *ctx);
+void aes192_enc_origin(void *buffer, aes192_ctx_t *ctx);
+void aes256_enc_origin(void *buffer, aes128_ctx_t *ctx);
 
 int main(void)
 {
- 34c:	cf 93       	push	r28
- 34e:	df 93       	push	r29
- 350:	cd b7       	in	r28, 0x3d	; 61
- 352:	de b7       	in	r29, 0x3e	; 62
- 354:	c0 5d       	subi	r28, 0xD0	; 208
- 356:	d1 09       	sbc	r29, r1
- 358:	0f b6       	in	r0, 0x3f	; 63
- 35a:	f8 94       	cli
- 35c:	de bf       	out	0x3e, r29	; 62
- 35e:	0f be       	out	0x3f, r0	; 63
- 360:	cd bf       	out	0x3d, r28	; 61
-    /* Replace with your application code */
-    while (1) 
-    {
-		//u8 key[16] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
-		//u8 IV[16] = {0,};
-		u8 key[16] = {0x2b,0x7e,0x15,0x16,0x28,0xae,0xd2,0xa6,0xab,0xf7,0x15,0x88,0x09,0xcf,0x4f,0x3c};
- 362:	80 e1       	ldi	r24, 0x10	; 16
- 364:	e0 e0       	ldi	r30, 0x00	; 0
- 366:	f6 e0       	ldi	r31, 0x06	; 6
- 368:	de 01       	movw	r26, r28
- 36a:	af 53       	subi	r26, 0x3F	; 63
- 36c:	bf 4f       	sbci	r27, 0xFF	; 255
- 36e:	01 90       	ld	r0, Z+
- 370:	0d 92       	st	X+, r0
- 372:	8a 95       	dec	r24
- 374:	e1 f7       	brne	.-8      	; 0x36e <main+0x22>
-		u8 IV[16] = {0x32,0x43,0xf6,0xa8,0x88,0x5a,0x30,0x8d,0x31,0x31,0x98,0xa2,0xe0,0x37,0x07,0x34};
- 376:	80 e1       	ldi	r24, 0x10	; 16
- 378:	e0 e1       	ldi	r30, 0x10	; 16
- 37a:	f6 e0       	ldi	r31, 0x06	; 6
- 37c:	de 01       	movw	r26, r28
- 37e:	af 54       	subi	r26, 0x4F	; 79
- 380:	bf 4f       	sbci	r27, 0xFF	; 255
- 382:	01 90       	ld	r0, Z+
- 384:	0d 92       	st	X+, r0
- 386:	8a 95       	dec	r24
- 388:	e1 f7       	brne	.-8      	; 0x382 <main+0x36>
-		aes128_ctx_t aes_test;
-		aes128_init(key, &aes_test);
- 38a:	be 01       	movw	r22, r28
- 38c:	6f 5f       	subi	r22, 0xFF	; 255
- 38e:	7f 4f       	sbci	r23, 0xFF	; 255
- 390:	ce 01       	movw	r24, r28
- 392:	8f 53       	subi	r24, 0x3F	; 63
- 394:	9f 4f       	sbci	r25, 0xFF	; 255
- 396:	7a df       	rcall	.-268    	; 0x28c <aes128_init>
-		aes128_enc(IV,&aes_test);
- 398:	be 01       	movw	r22, r28
- 39a:	6f 5f       	subi	r22, 0xFF	; 255
- 39c:	7f 4f       	sbci	r23, 0xFF	; 255
- 39e:	ce 01       	movw	r24, r28
- 3a0:	8f 54       	subi	r24, 0x4F	; 79
- 3a2:	9f 4f       	sbci	r25, 0xFF	; 255
- 3a4:	8d de       	rcall	.-742    	; 0xc0 <aes128_enc>
- 3a6:	dd cf       	rjmp	.-70     	; 0x362 <main+0x16>
+ 726:	cf 93       	push	r28
+ 728:	df 93       	push	r29
+ 72a:	cd b7       	in	r28, 0x3d	; 61
+ 72c:	de b7       	in	r29, 0x3e	; 62
+ 72e:	c0 5f       	subi	r28, 0xF0	; 240
+ 730:	d1 09       	sbc	r29, r1
+ 732:	0f b6       	in	r0, 0x3f	; 63
+ 734:	f8 94       	cli
+ 736:	de bf       	out	0x3e, r29	; 62
+ 738:	0f be       	out	0x3f, r0	; 63
+ 73a:	cd bf       	out	0x3d, r28	; 61
+	/* Replace with your application code */
 
-000003a8 <_exit>:
- 3a8:	f8 94       	cli
+	u8 key[16] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+ 73c:	20 e1       	ldi	r18, 0x10	; 16
+ 73e:	e0 e0       	ldi	r30, 0x00	; 0
+ 740:	f4 e0       	ldi	r31, 0x04	; 4
+ 742:	ce 01       	movw	r24, r28
+ 744:	01 96       	adiw	r24, 0x01	; 1
+ 746:	dc 01       	movw	r26, r24
+ 748:	01 90       	ld	r0, Z+
+ 74a:	0d 92       	st	X+, r0
+ 74c:	2a 95       	dec	r18
+ 74e:	e1 f7       	brne	.-8      	; 0x748 <main+0x22>
+	u8 IV[16] = {0,};
+ 750:	20 e1       	ldi	r18, 0x10	; 16
+ 752:	ce 01       	movw	r24, r28
+ 754:	41 96       	adiw	r24, 0x11	; 17
+ 756:	fc 01       	movw	r30, r24
+ 758:	32 2f       	mov	r19, r18
+ 75a:	11 92       	st	Z+, r1
+ 75c:	3a 95       	dec	r19
+ 75e:	e9 f7       	brne	.-6      	; 0x75a <main+0x34>
+	//u8 key[16] = {0x2b,0x7e,0x15,0x16,0x28,0xae,0xd2,0xa6,0xab,0xf7,0x15,0x88,0x09,0xcf,0x4f,0x3c};
+	//u8 IV[16] = {0x32,0x43,0xf6,0xa8,0x88,0x5a,0x30,0x8d,0x31,0x31,0x98,0xa2,0xe0,0x37,0x07,0x34};
+	aes192_ctx_t aes_test;
+	aes192_init(key, &aes_test);
+ 760:	ce 01       	movw	r24, r28
+ 762:	81 96       	adiw	r24, 0x21	; 33
+ 764:	bc 01       	movw	r22, r24
+ 766:	ce 01       	movw	r24, r28
+ 768:	01 96       	adiw	r24, 0x01	; 1
+ 76a:	e1 dd       	rcall	.-1086   	; 0x32e <aes192_init>
+	aes192_enc(IV,&aes_test);
+ 76c:	9e 01       	movw	r18, r28
+ 76e:	2f 5d       	subi	r18, 0xDF	; 223
+ 770:	3f 4f       	sbci	r19, 0xFF	; 255
+ 772:	ce 01       	movw	r24, r28
+ 774:	41 96       	adiw	r24, 0x11	; 17
+ 776:	b9 01       	movw	r22, r18
+ 778:	a1 dc       	rcall	.-1726   	; 0xbc <aes192_enc>
+	aes192_enc_origin(IV,&aes_test);
+ 77a:	9e 01       	movw	r18, r28
+ 77c:	2f 5d       	subi	r18, 0xDF	; 223
+ 77e:	3f 4f       	sbci	r19, 0xFF	; 255
+ 780:	ce 01       	movw	r24, r28
+ 782:	41 96       	adiw	r24, 0x11	; 17
+ 784:	b9 01       	movw	r22, r18
+ 786:	be de       	rcall	.-644    	; 0x504 <aes192_enc_origin>
+ 788:	80 e0       	ldi	r24, 0x00	; 0
+ 78a:	90 e0       	ldi	r25, 0x00	; 0
 
-000003aa <__stop_program>:
- 3aa:	ff cf       	rjmp	.-2      	; 0x3aa <__stop_program>
+	
+}
+ 78c:	c0 51       	subi	r28, 0x10	; 16
+ 78e:	df 4f       	sbci	r29, 0xFF	; 255
+ 790:	0f b6       	in	r0, 0x3f	; 63
+ 792:	f8 94       	cli
+ 794:	de bf       	out	0x3e, r29	; 62
+ 796:	0f be       	out	0x3f, r0	; 63
+ 798:	cd bf       	out	0x3d, r28	; 61
+ 79a:	df 91       	pop	r29
+ 79c:	cf 91       	pop	r28
+ 79e:	08 95       	ret
+
+000007a0 <_exit>:
+ 7a0:	f8 94       	cli
+
+000007a2 <__stop_program>:
+ 7a2:	ff cf       	rjmp	.-2      	; 0x7a2 <__stop_program>

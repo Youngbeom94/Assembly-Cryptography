@@ -1,10 +1,33 @@
 ﻿
 /*
- * aes_enc_asm.S
+ * Avr_crypto_lib.S
  *
- * Created: 2019-08-20 오전 7:07:03
- *  Author: kyung
+ * Created: 2020-04-24 오후 3:58:25
+ *  Author: 김영범
  */ 
+ /* aes_enc-asm.S */
+/*
+    This file is part of the AVR-Crypto-Lib.
+    Copyright (C) 2008, 2009  Daniel Otte (daniel.otte@rub.de)
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+/**
+ * \file     aes_enc-asm.S
+ * \email    daniel.otte@rub.de
+ * \author   Daniel Otte 
+ * \date     2009-01-10
+ * \license  GPLv3 or later
+ * 
+ */
 
 #include "avr-asm-macros.S"
 
@@ -18,28 +41,30 @@ B = 29
 P = 0
 xREDUCER = 25
 
-.global aes256_enc
-aes256_enc:
-	ldi r18, 12
-	rjmp aes_encrypt_core
+.global aes256_enc_origin
+aes256_enc_origin:
+	ldi r20, 14
+	rjmp aes_encrypt_core_origin
 
-.global aes192_enc
-aes192_enc:
-	ldi r18, 10
-	rjmp aes_encrypt_core
+.global aes192_enc_origin
+aes192_enc_origin:
+	ldi r20, 12
+	rjmp aes_encrypt_core_origin
 
-.global aes128_enc
-aes128_enc:
-	ldi r18, 8
+.global aes128_enc_origin
+aes128_enc_origin:
+	ldi r20, 10
 
 
 /*
   void aes_encrypt_core(aes_cipher_state_t *state, const aes_genctx_t *ks, uint8_t rounds)
 */
-
-T0= 5
-T1= 6
-T2= 7
+T0= 2
+T1= 3
+T2= 4
+T3= 5
+SBOX_SAVE0 = 6
+SBOX_SAVE1 = 7
 ST00 =  8
 ST01 =  9
 ST02 = 10
@@ -60,65 +85,51 @@ CTR = 24
 /*
  * param state:  r24:r25
  * param ks:     r22:r23
- * mask: r20:r21  
+ * param rounds: r20   
  */
-.global aes_encrypt_core
-aes_encrypt_core:
-	push_range 5, 17
+.global aes_encrypt_core_origin
+aes_encrypt_core_origin:
+	push_range 2, 17
+	push r28
+	push r29
 	push r24
 	push r25
-
 	movw r26, r22
-	mov  CTR, r18 // round
+	movw r30, r24
+	mov  CTR, r20
 	clt
 	
-	adiw r26, 0x30
-	ldi xREDUCER, 0x1b /* load reducer */
-
-
-	ldi r31, hi8(cachetable3)
-	ldi r30, lo8(cachetable3)
 	.irp row, 0, 1, 2, 3
 		.irp col, 0, 1, 2, 3
-			lpm ST\row\col, Z+
-		.endr
-	.endr
-
-
-
-	ldi r31, hi8(cachetable1)
-	ldi r30, lo8(cachetable1)
-	.irp row, 0, 1, 2, 3
-		.irp col, 0, 1, 2, 3
-			lpm T0, Z+
-			eor ST\row\col, T0
+			ld ST\row\col, Z+
 		.endr
 	.endr
 	
+	ldi xREDUCER, 0x1b /* load reducer */
 	ldi r31, hi8(aes_sbox)
-	brtc 2f
-
+	
 	/* key whitening */
 1:
+
 	.irp row, 0, 1, 2, 3
 		.irp col, 0, 1, 2, 3
 			ld r0, X+
 			eor ST\row\col, r0
 		.endr
 	.endr
-2:
+	
 	brtc 2f
 exit:
 	pop r31
 	pop r30
-	
 	.irp row, 0, 1, 2, 3
-		.irp col, 0, 1, 2, 3
+			.irp col, 0, 1, 2, 3
 			st Z+, ST\row\col
 		.endr
 	.endr
-
-	pop_range 5, 17
+	pop r29
+	pop r28
+	pop_range 2, 17
 	ret
 
 2:	dec CTR
@@ -168,11 +179,10 @@ exit:
 	mov r30, ST13
 	lpm ST23, Z
 	mov ST13, T0
-
+		
+	/* mixcols (or rows in our case) */
 	brtc 2f
 	rjmp 1b
-	/* mixcols (or rows in our case) */
-
 2:	
  /* mixrows */
  .irp row, 0, 1, 2, 3
@@ -215,4 +225,3 @@ exit:
 
 	/* add key*/
 	rjmp 1b
-	
