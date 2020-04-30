@@ -44,8 +44,11 @@ PREPROCESSING_SRCS +=  \
 ../aes_enc-asm.s \
 ../aes_keyschedule-asm.s \
 ../aes_sbox-asm.s \
+../aes256_enc_nobr.s \
+../aes192_enc_nobr.s \
 ../avr-asm-macros.s \
-../Avr_crypto_lib.S
+../Avr_crypto_lib.S \
+../aes128_enc_nobr.s
 
 
 ASM_SRCS += 
@@ -55,33 +58,45 @@ OBJS +=  \
 aes_enc-asm.o \
 aes_keyschedule-asm.o \
 aes_sbox-asm.o \
+aes256_enc_nobr.o \
+aes192_enc_nobr.o \
 avr-asm-macros.o \
 Avr_crypto_lib.o \
-main.o
+main.o \
+aes128_enc_nobr.o
 
 OBJS_AS_ARGS +=  \
 aes_enc-asm.o \
 aes_keyschedule-asm.o \
 aes_sbox-asm.o \
+aes256_enc_nobr.o \
+aes192_enc_nobr.o \
 avr-asm-macros.o \
 Avr_crypto_lib.o \
-main.o
+main.o \
+aes128_enc_nobr.o
 
 C_DEPS +=  \
 aes_enc-asm.d \
 aes_keyschedule-asm.d \
 aes_sbox-asm.d \
+aes256_enc_nobr.d \
+aes192_enc_nobr.d \
 avr-asm-macros.d \
 Avr_crypto_lib.d \
-main.d
+main.d \
+aes128_enc_nobr.d
 
 C_DEPS_AS_ARGS +=  \
 aes_enc-asm.d \
 aes_keyschedule-asm.d \
 aes_sbox-asm.d \
+aes256_enc_nobr.d \
+aes192_enc_nobr.d \
 avr-asm-macros.d \
 Avr_crypto_lib.d \
-main.d
+main.d \
+aes128_enc_nobr.d
 
 OUTPUT_FILE_PATH +=AES_8bit\ Asm_fast.elf
 
@@ -133,6 +148,20 @@ LINKER_SCRIPT_DEP+=
 	@echo Finished building: $<
 	
 
+./aes256_enc_nobr.o: .././aes256_enc_nobr.s
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU Assembler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega128" -I "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -mrelax -Wa,-g   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./aes192_enc_nobr.o: .././aes192_enc_nobr.s
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU Assembler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega128" -I "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -mrelax -Wa,-g   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 ./avr-asm-macros.o: .././avr-asm-macros.s
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU Assembler : 5.4.0
@@ -141,6 +170,13 @@ LINKER_SCRIPT_DEP+=
 	
 
 ./Avr_crypto_lib.o: .././Avr_crypto_lib.S
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU Assembler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega128" -I "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -mrelax -Wa,-g   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./aes128_enc_nobr.o: .././aes128_enc_nobr.s
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU Assembler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega128" -I "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -mrelax -Wa,-g   -o "$@" "$<" 

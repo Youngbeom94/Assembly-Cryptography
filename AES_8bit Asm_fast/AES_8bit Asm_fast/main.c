@@ -20,6 +20,11 @@ void aes128_enc_origin(void *buffer, aes128_ctx_t *ctx);
 void aes192_enc_origin(void *buffer, aes192_ctx_t *ctx);
 void aes256_enc_origin(void *buffer, aes128_ctx_t *ctx);
 
+void aes128_enc_nobr(void *buffer, aes128_ctx_t *ctx);
+void aes192_enc_nobr(void *buffer, aes128_ctx_t *ctx);
+void aes256_enc_nobr(void *buffer, aes128_ctx_t *ctx);
+
+
 int main(void)
 {
 	/* Replace with your application code */
@@ -30,8 +35,21 @@ int main(void)
 	//u8 IV[16] = {0x32,0x43,0xf6,0xa8,0x88,0x5a,0x30,0x8d,0x31,0x31,0x98,0xa2,0xe0,0x37,0x07,0x34};
 	aes128_ctx_t aes_test;
 	aes128_init(key, &aes_test);
-	aes128_enc(IV,&aes_test);
+	//aes128_enc(IV,&aes_test);
+	aes128_enc_nobr(IV,&aes_test);
 	//aes128_enc_origin(IV,&aes_test);
+	
+	//aes192_ctx_t aes_test;
+	//aes192_init(key, &aes_test);
+	//aes192_enc(IV,&aes_test);
+	//aes192_enc_nobr(IV,&aes_test);
+	//aes192_enc_origin(IV,&aes_test);
+	
+	//aes256_ctx_t aes_test;
+	//aes256_init(key, &aes_test);
+	//aes256_enc(IV,&aes_test);
+	//aes256_enc_nobr(IV,&aes_test);
+	//aes256_enc_origin(IV,&aes_test);
 
 	
 }
