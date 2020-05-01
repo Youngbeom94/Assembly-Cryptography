@@ -6,7 +6,7 @@
  *  Author: 김영범
  */ 
 
-.arch atmega128
+//.arch atmega128
 .data
 
 SBOX_TABLE:

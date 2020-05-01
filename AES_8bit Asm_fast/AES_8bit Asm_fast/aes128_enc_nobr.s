@@ -5,7 +5,7 @@
  * Created: 2020-04-28 오후 1:37:57
  *  Author: 김영범
  */ 
-.arch atmega128
+//.arch atmega128
 .data
 
 SBOX_TABLE:
