@@ -3,4039 +3,4800 @@ AES_8bit Asm_fast.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000310  00800100  00000fe4  00001058  2**0
+  0 .data         00000310  00800100  000012d6  0000134a  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000fe4  00000000  00000000  00000074  2**1
+  1 .text         000012d6  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  00001368  2**0
+  2 .comment      00000030  00000000  00000000  0000165a  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00001398  2**2
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000168c  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000060  00000000  00000000  000013d8  2**3
+  4 .debug_aranges 00000060  00000000  00000000  000016d0  2**3
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   0000081f  00000000  00000000  00001438  2**0
+  5 .debug_info   0000082d  00000000  00000000  00001730  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 0000067f  00000000  00000000  00001c57  2**0
+  6 .debug_abbrev 0000067f  00000000  00000000  00001f5d  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00002652  00000000  00000000  000022d6  2**0
+  7 .debug_line   00002d9c  00000000  00000000  000025dc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000038  00000000  00000000  00004928  2**2
+  8 .debug_frame  00000038  00000000  00000000  00005378  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000371  00000000  00000000  00004960  2**0
+  9 .debug_str    00000371  00000000  00000000  000053b0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000048  00000000  00000000  00004cd1  2**0
+ 10 .debug_loc    00000048  00000000  00000000  00005721  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000010  00000000  00000000  00004d19  2**0
+ 11 .debug_ranges 00000010  00000000  00000000  00005769  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
-   0:	33 c0       	rjmp	.+102    	; 0x68 <__ctors_end>
-   2:	00 00       	nop
-   4:	44 c0       	rjmp	.+136    	; 0x8e <__bad_interrupt>
-   6:	00 00       	nop
-   8:	42 c0       	rjmp	.+132    	; 0x8e <__bad_interrupt>
-   a:	00 00       	nop
-   c:	40 c0       	rjmp	.+128    	; 0x8e <__bad_interrupt>
-   e:	00 00       	nop
-  10:	3e c0       	rjmp	.+124    	; 0x8e <__bad_interrupt>
-  12:	00 00       	nop
-  14:	3c c0       	rjmp	.+120    	; 0x8e <__bad_interrupt>
-  16:	00 00       	nop
-  18:	3a c0       	rjmp	.+116    	; 0x8e <__bad_interrupt>
-  1a:	00 00       	nop
-  1c:	38 c0       	rjmp	.+112    	; 0x8e <__bad_interrupt>
-  1e:	00 00       	nop
-  20:	36 c0       	rjmp	.+108    	; 0x8e <__bad_interrupt>
-  22:	00 00       	nop
-  24:	34 c0       	rjmp	.+104    	; 0x8e <__bad_interrupt>
-  26:	00 00       	nop
-  28:	32 c0       	rjmp	.+100    	; 0x8e <__bad_interrupt>
-  2a:	00 00       	nop
-  2c:	30 c0       	rjmp	.+96     	; 0x8e <__bad_interrupt>
-  2e:	00 00       	nop
-  30:	2e c0       	rjmp	.+92     	; 0x8e <__bad_interrupt>
-  32:	00 00       	nop
-  34:	2c c0       	rjmp	.+88     	; 0x8e <__bad_interrupt>
-  36:	00 00       	nop
-  38:	2a c0       	rjmp	.+84     	; 0x8e <__bad_interrupt>
-  3a:	00 00       	nop
-  3c:	28 c0       	rjmp	.+80     	; 0x8e <__bad_interrupt>
-  3e:	00 00       	nop
-  40:	26 c0       	rjmp	.+76     	; 0x8e <__bad_interrupt>
-  42:	00 00       	nop
-  44:	24 c0       	rjmp	.+72     	; 0x8e <__bad_interrupt>
-  46:	00 00       	nop
-  48:	22 c0       	rjmp	.+68     	; 0x8e <__bad_interrupt>
-  4a:	00 00       	nop
-  4c:	20 c0       	rjmp	.+64     	; 0x8e <__bad_interrupt>
-  4e:	00 00       	nop
-  50:	1e c0       	rjmp	.+60     	; 0x8e <__bad_interrupt>
-  52:	00 00       	nop
-  54:	1c c0       	rjmp	.+56     	; 0x8e <__bad_interrupt>
-  56:	00 00       	nop
-  58:	1a c0       	rjmp	.+52     	; 0x8e <__bad_interrupt>
-  5a:	00 00       	nop
-  5c:	18 c0       	rjmp	.+48     	; 0x8e <__bad_interrupt>
-  5e:	00 00       	nop
-  60:	16 c0       	rjmp	.+44     	; 0x8e <__bad_interrupt>
-  62:	00 00       	nop
-  64:	14 c0       	rjmp	.+40     	; 0x8e <__bad_interrupt>
+       0:	33 c0       	rjmp	.+102    	; 0x68 <__ctors_end>
+       2:	00 00       	nop
+       4:	46 c0       	rjmp	.+140    	; 0x92 <__bad_interrupt>
+       6:	00 00       	nop
+       8:	44 c0       	rjmp	.+136    	; 0x92 <__bad_interrupt>
+       a:	00 00       	nop
+       c:	42 c0       	rjmp	.+132    	; 0x92 <__bad_interrupt>
+       e:	00 00       	nop
+      10:	40 c0       	rjmp	.+128    	; 0x92 <__bad_interrupt>
+      12:	00 00       	nop
+      14:	3e c0       	rjmp	.+124    	; 0x92 <__bad_interrupt>
+      16:	00 00       	nop
+      18:	3c c0       	rjmp	.+120    	; 0x92 <__bad_interrupt>
+      1a:	00 00       	nop
+      1c:	3a c0       	rjmp	.+116    	; 0x92 <__bad_interrupt>
+      1e:	00 00       	nop
+      20:	38 c0       	rjmp	.+112    	; 0x92 <__bad_interrupt>
+      22:	00 00       	nop
+      24:	36 c0       	rjmp	.+108    	; 0x92 <__bad_interrupt>
+      26:	00 00       	nop
+      28:	34 c0       	rjmp	.+104    	; 0x92 <__bad_interrupt>
+      2a:	00 00       	nop
+      2c:	32 c0       	rjmp	.+100    	; 0x92 <__bad_interrupt>
+      2e:	00 00       	nop
+      30:	30 c0       	rjmp	.+96     	; 0x92 <__bad_interrupt>
+      32:	00 00       	nop
+      34:	2e c0       	rjmp	.+92     	; 0x92 <__bad_interrupt>
+      36:	00 00       	nop
+      38:	2c c0       	rjmp	.+88     	; 0x92 <__bad_interrupt>
+      3a:	00 00       	nop
+      3c:	2a c0       	rjmp	.+84     	; 0x92 <__bad_interrupt>
+      3e:	00 00       	nop
+      40:	28 c0       	rjmp	.+80     	; 0x92 <__bad_interrupt>
+      42:	00 00       	nop
+      44:	26 c0       	rjmp	.+76     	; 0x92 <__bad_interrupt>
+      46:	00 00       	nop
+      48:	24 c0       	rjmp	.+72     	; 0x92 <__bad_interrupt>
+      4a:	00 00       	nop
+      4c:	22 c0       	rjmp	.+68     	; 0x92 <__bad_interrupt>
+      4e:	00 00       	nop
+      50:	20 c0       	rjmp	.+64     	; 0x92 <__bad_interrupt>
+      52:	00 00       	nop
+      54:	1e c0       	rjmp	.+60     	; 0x92 <__bad_interrupt>
+      56:	00 00       	nop
+      58:	1c c0       	rjmp	.+56     	; 0x92 <__bad_interrupt>
+      5a:	00 00       	nop
+      5c:	1a c0       	rjmp	.+52     	; 0x92 <__bad_interrupt>
+      5e:	00 00       	nop
+      60:	18 c0       	rjmp	.+48     	; 0x92 <__bad_interrupt>
+      62:	00 00       	nop
+      64:	16 c0       	rjmp	.+44     	; 0x92 <__bad_interrupt>
 	...
 
 00000068 <__ctors_end>:
-  68:	11 24       	eor	r1, r1
-  6a:	1f be       	out	0x3f, r1	; 63
-  6c:	cf ef       	ldi	r28, 0xFF	; 255
-  6e:	d8 e0       	ldi	r29, 0x08	; 8
-  70:	de bf       	out	0x3e, r29	; 62
-  72:	cd bf       	out	0x3d, r28	; 61
+      68:	11 24       	eor	r1, r1
+      6a:	1f be       	out	0x3f, r1	; 63
+      6c:	cf ef       	ldi	r28, 0xFF	; 255
+      6e:	d8 e0       	ldi	r29, 0x08	; 8
+      70:	de bf       	out	0x3e, r29	; 62
+      72:	cd bf       	out	0x3d, r28	; 61
 
 00000074 <__do_copy_data>:
-  74:	14 e0       	ldi	r17, 0x04	; 4
-  76:	a0 e0       	ldi	r26, 0x00	; 0
-  78:	b1 e0       	ldi	r27, 0x01	; 1
-  7a:	e4 ee       	ldi	r30, 0xE4	; 228
-  7c:	ff e0       	ldi	r31, 0x0F	; 15
-  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
-  80:	05 90       	lpm	r0, Z+
-  82:	0d 92       	st	X+, r0
-  84:	a0 31       	cpi	r26, 0x10	; 16
-  86:	b1 07       	cpc	r27, r17
-  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
-  8a:	74 d7       	rcall	.+3816   	; 0xf74 <main>
-  8c:	a9 c7       	rjmp	.+3922   	; 0xfe0 <_exit>
+      74:	14 e0       	ldi	r17, 0x04	; 4
+      76:	a0 e0       	ldi	r26, 0x00	; 0
+      78:	b1 e0       	ldi	r27, 0x01	; 1
+      7a:	e6 ed       	ldi	r30, 0xD6	; 214
+      7c:	f2 e1       	ldi	r31, 0x12	; 18
+      7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+      80:	05 90       	lpm	r0, Z+
+      82:	0d 92       	st	X+, r0
+      84:	a0 31       	cpi	r26, 0x10	; 16
+      86:	b1 07       	cpc	r27, r17
+      88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+      8a:	0e 94 11 09 	call	0x1222	; 0x1222 <main>
+      8e:	0c 94 69 09 	jmp	0x12d2	; 0x12d2 <_exit>
 
-0000008e <__bad_interrupt>:
-  8e:	b8 cf       	rjmp	.-144    	; 0x0 <__vectors>
+00000092 <__bad_interrupt>:
+      92:	b6 cf       	rjmp	.-148    	; 0x0 <__vectors>
 
-00000090 <aes256_init>:
+00000094 <aes256_init>:
 
 .text
 
 .global aes256_init
 aes256_init:
 	movw r20, r22
-  90:	ab 01       	movw	r20, r22
+      94:	ab 01       	movw	r20, r22
 	ldi r23, hi8(256)
-  92:	71 e0       	ldi	r23, 0x01	; 1
+      96:	71 e0       	ldi	r23, 0x01	; 1
 	ldi r22, lo8(256)
-  94:	60 e0       	ldi	r22, 0x00	; 0
+      98:	60 e0       	ldi	r22, 0x00	; 0
 	rjmp aes_init
-  96:	07 c0       	rjmp	.+14     	; 0xa6 <aes_init>
+      9a:	07 c0       	rjmp	.+14     	; 0xaa <aes_init>
 
-00000098 <aes192_init>:
+0000009c <aes192_init>:
 	
 .global aes192_init
 aes192_init:
 	movw r20, r22
-  98:	ab 01       	movw	r20, r22
+      9c:	ab 01       	movw	r20, r22
 	ldi r23, hi8(192)
-  9a:	70 e0       	ldi	r23, 0x00	; 0
+      9e:	70 e0       	ldi	r23, 0x00	; 0
 	ldi r22, lo8(192)
-  9c:	60 ec       	ldi	r22, 0xC0	; 192
+      a0:	60 ec       	ldi	r22, 0xC0	; 192
 	rjmp aes_init
-  9e:	03 c0       	rjmp	.+6      	; 0xa6 <aes_init>
+      a2:	03 c0       	rjmp	.+6      	; 0xaa <aes_init>
 
-000000a0 <aes128_init>:
+000000a4 <aes128_init>:
 	
 .global aes128_init
 aes128_init:
 	movw r20, r22
-  a0:	ab 01       	movw	r20, r22
+      a4:	ab 01       	movw	r20, r22
 	clr r23
-  a2:	77 27       	eor	r23, r23
+      a6:	77 27       	eor	r23, r23
 	ldi r22, 128
-  a4:	60 e8       	ldi	r22, 0x80	; 128
+      a8:	60 e8       	ldi	r22, 0x80	; 128
 
-000000a6 <aes_init>:
+000000aa <aes_init>:
  * param keysize_b: r22:r23
  * param ctx:       r20:r21
  */
 .global aes_init
 aes_init:
 	push_range 14, 17
-  a6:	ef 92       	push	r14
-  a8:	ff 92       	push	r15
-  aa:	0f 93       	push	r16
-  ac:	1f 93       	push	r17
+      aa:	ef 92       	push	r14
+      ac:	ff 92       	push	r15
+      ae:	0f 93       	push	r16
+      b0:	1f 93       	push	r17
 	push r28
-  ae:	cf 93       	push	r28
+      b2:	cf 93       	push	r28
 	push r29
-  b0:	df 93       	push	r29
+      b4:	df 93       	push	r29
 	movw r30, r20
-  b2:	fa 01       	movw	r30, r20
+      b6:	fa 01       	movw	r30, r20
 	movw r28, r20
-  b4:	ea 01       	movw	r28, r20
+      b8:	ea 01       	movw	r28, r20
 	movw r26, r24
-  b6:	dc 01       	movw	r26, r24
+      ba:	dc 01       	movw	r26, r24
 	lsr r23
-  b8:	76 95       	lsr	r23
+      bc:	76 95       	lsr	r23
 	ror r22
-  ba:	67 95       	ror	r22
+      be:	67 95       	ror	r22
 	lsr r22
-  bc:	66 95       	lsr	r22
+      c0:	66 95       	lsr	r22
 	lsr r22 /* r22 contains keysize_b/8 */
-  be:	66 95       	lsr	r22
+      c2:	66 95       	lsr	r22
 	mov C1, r22
-  c0:	26 2f       	mov	r18, r22
+      c4:	26 2f       	mov	r18, r22
 
 1:	/* copy key to ctx */ 
 	ld r0, X+
-  c2:	0d 90       	ld	r0, X+
+      c6:	0d 90       	ld	r0, X+
 	st Z+, r0
-  c4:	01 92       	st	Z+, r0
+      c8:	01 92       	st	Z+, r0
 	dec C1
-  c6:	2a 95       	dec	r18
+      ca:	2a 95       	dec	r18
 	brne 1b
-  c8:	e1 f7       	brne	.-8      	; 0xc2 <aes_init+0x1c>
+      cc:	e1 f7       	brne	.-8      	; 0xc6 <aes_init+0x1c>
 	
 	lsr NK
-  ca:	66 95       	lsr	r22
+      ce:	66 95       	lsr	r22
 	lsr NK
-  cc:	66 95       	lsr	r22
+      d0:	66 95       	lsr	r22
 	bst NK,3 /* set T if NK==8 */
-  ce:	63 fb       	bst	r22, 3
+      d2:	63 fb       	bst	r22, 3
 	mov NEXT_NK, NK
-  d0:	36 2f       	mov	r19, r22
+      d4:	36 2f       	mov	r19, r22
 	mov HI, NK
-  d2:	76 2f       	mov	r23, r22
+      d6:	76 2f       	mov	r23, r22
 	subi HI, -7
-  d4:	79 5f       	subi	r23, 0xF9	; 249
+      d8:	79 5f       	subi	r23, 0xF9	; 249
 	lsl HI
-  d6:	77 0f       	add	r23, r23
+      da:	77 0f       	add	r23, r23
 	lsl HI
-  d8:	77 0f       	add	r23, r23
+      dc:	77 0f       	add	r23, r23
 	movw r26, r30
-  da:	df 01       	movw	r26, r30
+      de:	df 01       	movw	r26, r30
 	sbiw r26, 4
-  dc:	14 97       	sbiw	r26, 0x04	; 4
+      e0:	14 97       	sbiw	r26, 0x04	; 4
 	mov C1, NK
-  de:	26 2f       	mov	r18, r22
+      e2:	26 2f       	mov	r18, r22
 	ldi r31, hi8(SBOX_TABLE)
-  e0:	f1 e0       	ldi	r31, 0x01	; 1
+      e4:	f1 e0       	ldi	r31, 0x01	; 1
 	movw SBOX_SAVE0, r30
-  e2:	7f 01       	movw	r14, r30
+      e6:	7f 01       	movw	r14, r30
 	ldi XRC, 1
-  e4:	11 e0       	ldi	r17, 0x01	; 1
+      e8:	11 e0       	ldi	r17, 0x01	; 1
 1:	
 	ld T0, X+
-  e6:	4d 91       	ld	r20, X+
+      ea:	4d 91       	ld	r20, X+
 	ld T1, X+
-  e8:	5d 91       	ld	r21, X+
+      ec:	5d 91       	ld	r21, X+
 	ld T2, X+
-  ea:	8d 91       	ld	r24, X+
+      ee:	8d 91       	ld	r24, X+
 	ld T3, X+
-  ec:	9d 91       	ld	r25, X+
+      f0:	9d 91       	ld	r25, X+
 	cp NEXT_NK, C1
-  ee:	32 17       	cp	r19, r18
+      f2:	32 17       	cp	r19, r18
 	breq 2f 
-  f0:	79 f0       	breq	.+30     	; 0x110 <aes_init+0x6a>
+      f4:	79 f0       	breq	.+30     	; 0x114 <aes_init+0x6a>
 	brtc 5f
-  f2:	ee f4       	brtc	.+58     	; 0x12e <aes_init+0x88>
+      f6:	ee f4       	brtc	.+58     	; 0x132 <aes_init+0x88>
 	mov r16, C1
-  f4:	02 2f       	mov	r16, r18
+      f8:	02 2f       	mov	r16, r18
 	andi r16, 0x07
-  f6:	07 70       	andi	r16, 0x07	; 7
+      fa:	07 70       	andi	r16, 0x07	; 7
 	cpi r16, 0x04
-  f8:	04 30       	cpi	r16, 0x04	; 4
+      fc:	04 30       	cpi	r16, 0x04	; 4
 	brne 5f
-  fa:	c9 f4       	brne	.+50     	; 0x12e <aes_init+0x88>
+      fe:	c9 f4       	brne	.+50     	; 0x132 <aes_init+0x88>
 	movw r30, SBOX_SAVE0
-  fc:	f7 01       	movw	r30, r14
+     100:	f7 01       	movw	r30, r14
 	mov r30, T0
-  fe:	e4 2f       	mov	r30, r20
+     102:	e4 2f       	mov	r30, r20
 	ld T0, Z
- 100:	40 81       	ld	r20, Z
+     104:	40 81       	ld	r20, Z
 
 	mov r30, T1
- 102:	e5 2f       	mov	r30, r21
+     106:	e5 2f       	mov	r30, r21
 	ld T1, Z
- 104:	50 81       	ld	r21, Z
+     108:	50 81       	ld	r21, Z
 
 	mov r30, T2
- 106:	e8 2f       	mov	r30, r24
+     10a:	e8 2f       	mov	r30, r24
 	ld T2, Z
- 108:	80 81       	ld	r24, Z
+     10c:	80 81       	ld	r24, Z
 
 	mov r30, T3
- 10a:	e9 2f       	mov	r30, r25
+     10e:	e9 2f       	mov	r30, r25
 	ld T3, Z
- 10c:	90 81       	ld	r25, Z
+     110:	90 81       	ld	r25, Z
 
 	rjmp 5f
- 10e:	0f c0       	rjmp	.+30     	; 0x12e <aes_init+0x88>
+     112:	0f c0       	rjmp	.+30     	; 0x132 <aes_init+0x88>
 2:
 	add NEXT_NK, NK
- 110:	36 0f       	add	r19, r22
+     114:	36 0f       	add	r19, r22
 	movw r30, SBOX_SAVE0
- 112:	f7 01       	movw	r30, r14
+     116:	f7 01       	movw	r30, r14
 	mov r30, T0
- 114:	e4 2f       	mov	r30, r20
+     118:	e4 2f       	mov	r30, r20
 	ld r16, Z
- 116:	00 81       	ld	r16, Z
+     11a:	00 81       	ld	r16, Z
 
 	mov r30, T1
- 118:	e5 2f       	mov	r30, r21
+     11c:	e5 2f       	mov	r30, r21
 	ld T0, Z
- 11a:	40 81       	ld	r20, Z
+     11e:	40 81       	ld	r20, Z
 
 	mov r30, T2
- 11c:	e8 2f       	mov	r30, r24
+     120:	e8 2f       	mov	r30, r24
 	ld T1, Z
- 11e:	50 81       	ld	r21, Z
+     122:	50 81       	ld	r21, Z
 
 	mov r30, T3
- 120:	e9 2f       	mov	r30, r25
+     124:	e9 2f       	mov	r30, r25
 	ld T2, Z
- 122:	80 81       	ld	r24, Z
+     126:	80 81       	ld	r24, Z
 
 	mov T3, r16
- 124:	90 2f       	mov	r25, r16
+     128:	90 2f       	mov	r25, r16
 	eor T0, XRC
- 126:	41 27       	eor	r20, r17
+     12a:	41 27       	eor	r20, r17
 	lsl XRC
- 128:	11 0f       	add	r17, r17
+     12c:	11 0f       	add	r17, r17
 	brcc 3f
- 12a:	08 f4       	brcc	.+2      	; 0x12e <aes_init+0x88>
+     12e:	08 f4       	brcc	.+2      	; 0x132 <aes_init+0x88>
 	ldi XRC, 0x1b
- 12c:	1b e1       	ldi	r17, 0x1B	; 27
+     130:	1b e1       	ldi	r17, 0x1B	; 27
 3:
 5:	
 	movw r30, r26
- 12e:	fd 01       	movw	r30, r26
+     132:	fd 01       	movw	r30, r26
 
 	ld r0, Y+
- 130:	09 90       	ld	r0, Y+
+     134:	09 90       	ld	r0, Y+
 	eor r0, T0
- 132:	04 26       	eor	r0, r20
+     136:	04 26       	eor	r0, r20
 	st Z+, r0 
- 134:	01 92       	st	Z+, r0
+     138:	01 92       	st	Z+, r0
 	ld r0, Y+
- 136:	09 90       	ld	r0, Y+
+     13a:	09 90       	ld	r0, Y+
 	eor r0 ,T1
- 138:	05 26       	eor	r0, r21
+     13c:	05 26       	eor	r0, r21
 	st Z+, r0
- 13a:	01 92       	st	Z+, r0
+     13e:	01 92       	st	Z+, r0
 	ld r0, Y+
- 13c:	09 90       	ld	r0, Y+
+     140:	09 90       	ld	r0, Y+
 	eor r0, T2
- 13e:	08 26       	eor	r0, r24
+     142:	08 26       	eor	r0, r24
 	st Z+, r0
- 140:	01 92       	st	Z+, r0
+     144:	01 92       	st	Z+, r0
 	ld r0, Y+
- 142:	09 90       	ld	r0, Y+
+     146:	09 90       	ld	r0, Y+
 	eor r0, T3
- 144:	09 26       	eor	r0, r25
+     148:	09 26       	eor	r0, r25
 	st Z+, r0
- 146:	01 92       	st	Z+, r0
+     14a:	01 92       	st	Z+, r0
 	
 	inc C1
- 148:	23 95       	inc	r18
+     14c:	23 95       	inc	r18
 	cp C1, HI
- 14a:	27 17       	cp	r18, r23
+     14e:	27 17       	cp	r18, r23
 	breq 6f
- 14c:	09 f0       	breq	.+2      	; 0x150 <aes_init+0xaa>
+     150:	09 f0       	breq	.+2      	; 0x154 <aes_init+0xaa>
 	rjmp 1b
- 14e:	cb cf       	rjmp	.-106    	; 0xe6 <aes_init+0x40>
+     152:	cb cf       	rjmp	.-106    	; 0xea <aes_init+0x40>
 6:	
 	clt
- 150:	e8 94       	clt
+     154:	e8 94       	clt
 	pop r29
- 152:	df 91       	pop	r29
+     156:	df 91       	pop	r29
 	pop r28
- 154:	cf 91       	pop	r28
+     158:	cf 91       	pop	r28
 	pop_range 14, 17
- 156:	1f 91       	pop	r17
- 158:	0f 91       	pop	r16
- 15a:	ff 90       	pop	r15
- 15c:	ef 90       	pop	r14
- 15e:	08 95       	ret
+     15a:	1f 91       	pop	r17
+     15c:	0f 91       	pop	r16
+     15e:	ff 90       	pop	r15
+     160:	ef 90       	pop	r14
+     162:	08 95       	ret
 
-00000160 <aes128_enc_nobr>:
+00000164 <aes192_enc_nobr>:
  * param state:  r24:r25
  * param ks:     r22:r23
  * param rounds: r20   
  */
 	//push_range 0, 15
 	push r28
- 160:	cf 93       	push	r28
+     164:	cf 93       	push	r28
 	push r29
- 162:	df 93       	push	r29
+     166:	df 93       	push	r29
 	push r24
- 164:	8f 93       	push	r24
+     168:	8f 93       	push	r24
 	push r25
- 166:	9f 93       	push	r25
+     16a:	9f 93       	push	r25
 	movw r26, r22
- 168:	db 01       	movw	r26, r22
+     16c:	db 01       	movw	r26, r22
 	movw r30, r24
- 16a:	fc 01       	movw	r30, r24
-	mov  CTR, r20
- 16c:	84 2f       	mov	r24, r20
+     16e:	fc 01       	movw	r30, r24
 	//State Set
 	.irp row, 0, 1, 2, 3
 		.irp col, 0, 1, 2, 3
 			ld ST\row\col, Z+
 		.endr
 	.endr
- 16e:	01 90       	ld	r0, Z+
- 170:	11 90       	ld	r1, Z+
- 172:	21 90       	ld	r2, Z+
- 174:	31 90       	ld	r3, Z+
- 176:	41 90       	ld	r4, Z+
- 178:	51 90       	ld	r5, Z+
- 17a:	61 90       	ld	r6, Z+
- 17c:	71 90       	ld	r7, Z+
- 17e:	81 90       	ld	r8, Z+
- 180:	91 90       	ld	r9, Z+
- 182:	a1 90       	ld	r10, Z+
- 184:	b1 90       	ld	r11, Z+
- 186:	c1 90       	ld	r12, Z+
- 188:	d1 90       	ld	r13, Z+
- 18a:	e1 90       	ld	r14, Z+
- 18c:	f1 90       	ld	r15, Z+
+     170:	01 90       	ld	r0, Z+
+     172:	11 90       	ld	r1, Z+
+     174:	21 90       	ld	r2, Z+
+     176:	31 90       	ld	r3, Z+
+     178:	41 90       	ld	r4, Z+
+     17a:	51 90       	ld	r5, Z+
+     17c:	61 90       	ld	r6, Z+
+     17e:	71 90       	ld	r7, Z+
+     180:	81 90       	ld	r8, Z+
+     182:	91 90       	ld	r9, Z+
+     184:	a1 90       	ld	r10, Z+
+     186:	b1 90       	ld	r11, Z+
+     188:	c1 90       	ld	r12, Z+
+     18a:	d1 90       	ld	r13, Z+
+     18c:	e1 90       	ld	r14, Z+
+     18e:	f1 90       	ld	r15, Z+
 
 	ldi r31, hi8(SBOX_TABLE)	
- 18e:	f2 e0       	ldi	r31, 0x02	; 2
+     190:	f2 e0       	ldi	r31, 0x02	; 2
 	ldi r29, hi8(MIX2_TABLE)
- 190:	d3 e0       	ldi	r29, 0x03	; 3
-	.irp row, 0, 1, 2, 3
-		.irp col, 0, 1, 2, 3
-			ld r16, X+
-			eor ST\row\col, r16
-		.endr
-	.endr
- 192:	0d 91       	ld	r16, X+
- 194:	00 26       	eor	r0, r16
- 196:	0d 91       	ld	r16, X+
- 198:	10 26       	eor	r1, r16
- 19a:	0d 91       	ld	r16, X+
- 19c:	20 26       	eor	r2, r16
- 19e:	0d 91       	ld	r16, X+
- 1a0:	30 26       	eor	r3, r16
- 1a2:	0d 91       	ld	r16, X+
- 1a4:	40 26       	eor	r4, r16
- 1a6:	0d 91       	ld	r16, X+
- 1a8:	50 26       	eor	r5, r16
- 1aa:	0d 91       	ld	r16, X+
- 1ac:	60 26       	eor	r6, r16
- 1ae:	0d 91       	ld	r16, X+
- 1b0:	70 26       	eor	r7, r16
- 1b2:	0d 91       	ld	r16, X+
- 1b4:	80 26       	eor	r8, r16
- 1b6:	0d 91       	ld	r16, X+
- 1b8:	90 26       	eor	r9, r16
- 1ba:	0d 91       	ld	r16, X+
- 1bc:	a0 26       	eor	r10, r16
- 1be:	0d 91       	ld	r16, X+
- 1c0:	b0 26       	eor	r11, r16
- 1c2:	0d 91       	ld	r16, X+
- 1c4:	c0 26       	eor	r12, r16
- 1c6:	0d 91       	ld	r16, X+
- 1c8:	d0 26       	eor	r13, r16
- 1ca:	0d 91       	ld	r16, X+
- 1cc:	e0 26       	eor	r14, r16
- 1ce:	0d 91       	ld	r16, X+
- 1d0:	f0 26       	eor	r15, r16
+     192:	d3 e0       	ldi	r29, 0x03	; 3
+
+	ldi r20, 14 ;!!-------
+     194:	4e e0       	ldi	r20, 0x0E	; 14
+	add r26, r20 ;!!------
+     196:	a4 0f       	add	r26, r20
+	/*ld r16,	X+ ;------
+	eor ST30, r16  ;------
+	ld r16,	X+     ;------
+	eor ST31, r16*/;------
+
+	ld r16,	X+     ;------
+     198:	0d 91       	ld	r16, X+
+	eor ST32, r16  ;------
+     19a:	e0 26       	eor	r14, r16
+	ld r16,	X+     ;------
+     19c:	0d 91       	ld	r16, X+
+	eor ST33, r16  ;------
+     19e:	f0 26       	eor	r15, r16
 
 	//1 Round------------------------------------------------------------------------------------------
 	
 	/* Shift Row and Subbyte , Mixcolumns */
 	//! 1번째 열 시작
 	mov r30, ST00 
- 1d2:	e0 2d       	mov	r30, r0
+     1a0:	e0 2d       	mov	r30, r0
 	ld  M1, Z 
- 1d4:	10 81       	ld	r17, Z
+     1a2:	10 81       	ld	r17, Z
 	mov M2, M1
- 1d6:	21 2f       	mov	r18, r17
+     1a4:	21 2f       	mov	r18, r17
 	mov M3, M2 
- 1d8:	32 2f       	mov	r19, r18
+     1a6:	32 2f       	mov	r19, r18
 	mov r28, ST00
- 1da:	c0 2d       	mov	r28, r0
+     1a8:	c0 2d       	mov	r28, r0
 	ld  M0, Y
- 1dc:	08 81       	ld	r16, Y
+     1aa:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- 1de:	30 27       	eor	r19, r16
+     1ac:	30 27       	eor	r19, r16
 
 	mov r30, ST11
- 1e0:	e5 2d       	mov	r30, r5
+     1ae:	e5 2d       	mov	r30, r5
 	ld  T0, Z
- 1e2:	40 81       	ld	r20, Z
+     1b0:	40 81       	ld	r20, Z
 	eor M0, T0
- 1e4:	04 27       	eor	r16, r20
+     1b2:	04 27       	eor	r16, r20
 	eor M2, T0
- 1e6:	24 27       	eor	r18, r20
+     1b4:	24 27       	eor	r18, r20
 	eor M3, T0 
- 1e8:	34 27       	eor	r19, r20
+     1b6:	34 27       	eor	r19, r20
 	mov r28, ST11
- 1ea:	c5 2d       	mov	r28, r5
+     1b8:	c5 2d       	mov	r28, r5
 	ld  T0, Y
- 1ec:	48 81       	ld	r20, Y
+     1ba:	48 81       	ld	r20, Y
 	eor M0, T0
- 1ee:	04 27       	eor	r16, r20
+     1bc:	04 27       	eor	r16, r20
 	eor M1, T0 ;3, 2, 2, 1 완료
- 1f0:	14 27       	eor	r17, r20
+     1be:	14 27       	eor	r17, r20
 
 	mov r30, ST22
- 1f2:	ea 2d       	mov	r30, r10
+     1c0:	ea 2d       	mov	r30, r10
 	ld  T0, Z
- 1f4:	40 81       	ld	r20, Z
+     1c2:	40 81       	ld	r20, Z
 	eor M0, T0
- 1f6:	04 27       	eor	r16, r20
+     1c4:	04 27       	eor	r16, r20
 	eor M1, T0
- 1f8:	14 27       	eor	r17, r20
+     1c6:	14 27       	eor	r17, r20
 	eor M3, T0
- 1fa:	34 27       	eor	r19, r20
+     1c8:	34 27       	eor	r19, r20
 	mov r28, ST22
- 1fc:	ca 2d       	mov	r28, r10
+     1ca:	ca 2d       	mov	r28, r10
 	ld  T0, Y
- 1fe:	48 81       	ld	r20, Y
+     1cc:	48 81       	ld	r20, Y
 	eor M1, T0
- 200:	14 27       	eor	r17, r20
+     1ce:	14 27       	eor	r17, r20
 	eor M2, T0 ;1, 3, 2, 1 완료
- 202:	24 27       	eor	r18, r20
+     1d0:	24 27       	eor	r18, r20
 
 	mov r30, ST33
- 204:	ef 2d       	mov	r30, r15
+     1d2:	ef 2d       	mov	r30, r15
 	ld  T0, Z
- 206:	40 81       	ld	r20, Z
+     1d4:	40 81       	ld	r20, Z
 	eor M0, T0
- 208:	04 27       	eor	r16, r20
+     1d6:	04 27       	eor	r16, r20
 	eor M1, T0
- 20a:	14 27       	eor	r17, r20
+     1d8:	14 27       	eor	r17, r20
 	eor M2, T0 
- 20c:	24 27       	eor	r18, r20
+     1da:	24 27       	eor	r18, r20
 	mov r28, ST33
- 20e:	cf 2d       	mov	r28, r15
+     1dc:	cf 2d       	mov	r28, r15
 	ld  T0, Y
- 210:	48 81       	ld	r20, Y
+     1de:	48 81       	ld	r20, Y
 	eor M2, T0
- 212:	24 27       	eor	r18, r20
+     1e0:	24 27       	eor	r18, r20
 	eor M3, T0 ;1, 1, 3, 2 완료
- 214:	34 27       	eor	r19, r20
+     1e2:	34 27       	eor	r19, r20
 
 	mov ST00, M0
- 216:	00 2e       	mov	r0, r16
+     1e4:	00 2e       	mov	r0, r16
 	//! 1번째 열 완료
 
 	//! 2번째 열 시작
 	mov r30, ST10 
- 218:	e4 2d       	mov	r30, r4
+     1e6:	e4 2d       	mov	r30, r4
 	ld  T1, Z 
- 21a:	50 81       	ld	r21, Z
+     1e8:	50 81       	ld	r21, Z
 	mov T2, T1
- 21c:	65 2f       	mov	r22, r21
+     1ea:	65 2f       	mov	r22, r21
 	mov T3, T2 
- 21e:	76 2f       	mov	r23, r22
+     1ec:	76 2f       	mov	r23, r22
 	mov r28, ST10
- 220:	c4 2d       	mov	r28, r4
+     1ee:	c4 2d       	mov	r28, r4
 	ld  T0, Y
- 222:	48 81       	ld	r20, Y
+     1f0:	48 81       	ld	r20, Y
 	eor T3, T0 ; 2, 1, 1, 3 완료
- 224:	74 27       	eor	r23, r20
+     1f2:	74 27       	eor	r23, r20
 
 	mov r30, ST21
- 226:	e9 2d       	mov	r30, r9
+     1f4:	e9 2d       	mov	r30, r9
 	ld  M0, Z
- 228:	00 81       	ld	r16, Z
+     1f6:	00 81       	ld	r16, Z
 	eor T0, M0
- 22a:	40 27       	eor	r20, r16
+     1f8:	40 27       	eor	r20, r16
 	eor T2, M0
- 22c:	60 27       	eor	r22, r16
+     1fa:	60 27       	eor	r22, r16
 	eor T3, M0 
- 22e:	70 27       	eor	r23, r16
+     1fc:	70 27       	eor	r23, r16
 	mov r28, ST21
- 230:	c9 2d       	mov	r28, r9
+     1fe:	c9 2d       	mov	r28, r9
 	ld  M0, Y
- 232:	08 81       	ld	r16, Y
+     200:	08 81       	ld	r16, Y
 	eor T0, M0
- 234:	40 27       	eor	r20, r16
+     202:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- 236:	50 27       	eor	r21, r16
+     204:	50 27       	eor	r21, r16
 
 	mov r30, ST32
- 238:	ee 2d       	mov	r30, r14
+     206:	ee 2d       	mov	r30, r14
 	ld  M0, Z
- 23a:	00 81       	ld	r16, Z
+     208:	00 81       	ld	r16, Z
 	eor T0, M0
- 23c:	40 27       	eor	r20, r16
+     20a:	40 27       	eor	r20, r16
 	eor T1, M0
- 23e:	50 27       	eor	r21, r16
+     20c:	50 27       	eor	r21, r16
 	eor T3, M0 
- 240:	70 27       	eor	r23, r16
+     20e:	70 27       	eor	r23, r16
 	mov r28, ST32
- 242:	ce 2d       	mov	r28, r14
+     210:	ce 2d       	mov	r28, r14
 	ld  M0, Y
- 244:	08 81       	ld	r16, Y
+     212:	08 81       	ld	r16, Y
 	eor T1, M0
- 246:	50 27       	eor	r21, r16
+     214:	50 27       	eor	r21, r16
 	eor T2, M0 ;1, 3, 2, 1 완료
- 248:	60 27       	eor	r22, r16
+     216:	60 27       	eor	r22, r16
 
 	mov r30, ST03
- 24a:	e3 2d       	mov	r30, r3
+     218:	e3 2d       	mov	r30, r3
 	ld  M0, Z
- 24c:	00 81       	ld	r16, Z
+     21a:	00 81       	ld	r16, Z
 	eor T0, M0
- 24e:	40 27       	eor	r20, r16
+     21c:	40 27       	eor	r20, r16
 	eor T1, M0
- 250:	50 27       	eor	r21, r16
+     21e:	50 27       	eor	r21, r16
 	eor T2, M0 
- 252:	60 27       	eor	r22, r16
+     220:	60 27       	eor	r22, r16
 	mov r28, ST03
- 254:	c3 2d       	mov	r28, r3
+     222:	c3 2d       	mov	r28, r3
 	ld  M0, Y
- 256:	08 81       	ld	r16, Y
+     224:	08 81       	ld	r16, Y
 	eor T2, M0
- 258:	60 27       	eor	r22, r16
+     226:	60 27       	eor	r22, r16
 	eor T3, M0 ;1, 1, 3, 2 완료
- 25a:	70 27       	eor	r23, r16
+     228:	70 27       	eor	r23, r16
 
 	mov ST10, T0
- 25c:	44 2e       	mov	r4, r20
+     22a:	44 2e       	mov	r4, r20
 	mov ST11, T1
- 25e:	55 2e       	mov	r5, r21
+     22c:	55 2e       	mov	r5, r21
 	mov ST03, M3
- 260:	33 2e       	mov	r3, r19
+     22e:	33 2e       	mov	r3, r19
 	//! 2번째 열 완료
 
 	//! 3번째 열 시작
 	mov r30, ST20 
- 262:	e8 2d       	mov	r30, r8
+     230:	e8 2d       	mov	r30, r8
 	ld  T0, Z 
- 264:	40 81       	ld	r20, Z
+     232:	40 81       	ld	r20, Z
 	mov T1, T0
- 266:	54 2f       	mov	r21, r20
+     234:	54 2f       	mov	r21, r20
 	mov M3, T1 
- 268:	35 2f       	mov	r19, r21
+     236:	35 2f       	mov	r19, r21
 	mov r28, ST20
- 26a:	c8 2d       	mov	r28, r8
+     238:	c8 2d       	mov	r28, r8
 	ld  M0, Y
- 26c:	08 81       	ld	r16, Y
+     23a:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- 26e:	30 27       	eor	r19, r16
+     23c:	30 27       	eor	r19, r16
 
 	mov r30, ST31
- 270:	ed 2d       	mov	r30, r13
+     23e:	ed 2d       	mov	r30, r13
 	ld  r25, Z
- 272:	90 81       	ld	r25, Z
+     240:	90 81       	ld	r25, Z
 	eor M0, r25
- 274:	09 27       	eor	r16, r25
+     242:	09 27       	eor	r16, r25
 	eor T1, r25
- 276:	59 27       	eor	r21, r25
+     244:	59 27       	eor	r21, r25
 	eor M3, r25
- 278:	39 27       	eor	r19, r25
+     246:	39 27       	eor	r19, r25
 	mov r28, ST31
- 27a:	cd 2d       	mov	r28, r13
+     248:	cd 2d       	mov	r28, r13
 	ld  r25, Y
- 27c:	98 81       	ld	r25, Y
+     24a:	98 81       	ld	r25, Y
 	eor M0, r25
- 27e:	09 27       	eor	r16, r25
+     24c:	09 27       	eor	r16, r25
 	eor T0, r25 ;3, 2, 2, 1 완료
- 280:	49 27       	eor	r20, r25
+     24e:	49 27       	eor	r20, r25
 
 	mov r30, ST02
- 282:	e2 2d       	mov	r30, r2
+     250:	e2 2d       	mov	r30, r2
 	ld  r25, Z
- 284:	90 81       	ld	r25, Z
+     252:	90 81       	ld	r25, Z
 	eor M0, r25
- 286:	09 27       	eor	r16, r25
+     254:	09 27       	eor	r16, r25
 	eor T0, r25
- 288:	49 27       	eor	r20, r25
+     256:	49 27       	eor	r20, r25
 	eor M3, r25
- 28a:	39 27       	eor	r19, r25
+     258:	39 27       	eor	r19, r25
 	mov r28, ST02
- 28c:	c2 2d       	mov	r28, r2
+     25a:	c2 2d       	mov	r28, r2
 	ld  r25, Y
- 28e:	98 81       	ld	r25, Y
+     25c:	98 81       	ld	r25, Y
 	eor T0, r25
- 290:	49 27       	eor	r20, r25
+     25e:	49 27       	eor	r20, r25
 	eor T1, r25;1, 3, 2, 1 완료
- 292:	59 27       	eor	r21, r25
+     260:	59 27       	eor	r21, r25
 
 	mov r30, ST13
- 294:	e7 2d       	mov	r30, r7
+     262:	e7 2d       	mov	r30, r7
 	ld  r25, Z
- 296:	90 81       	ld	r25, Z
+     264:	90 81       	ld	r25, Z
 	eor M0, r25
- 298:	09 27       	eor	r16, r25
+     266:	09 27       	eor	r16, r25
 	eor T0, r25
- 29a:	49 27       	eor	r20, r25
+     268:	49 27       	eor	r20, r25
 	eor T1, r25 
- 29c:	59 27       	eor	r21, r25
+     26a:	59 27       	eor	r21, r25
 	mov r28, ST13
- 29e:	c7 2d       	mov	r28, r7
+     26c:	c7 2d       	mov	r28, r7
 	ld  r25, Y
- 2a0:	98 81       	ld	r25, Y
+     26e:	98 81       	ld	r25, Y
 	eor T1, r25
- 2a2:	59 27       	eor	r21, r25
+     270:	59 27       	eor	r21, r25
 	eor M3, r25 ;1, 1, 3, 2 완료
- 2a4:	39 27       	eor	r19, r25
+     272:	39 27       	eor	r19, r25
 
 	mov ST20, M0
- 2a6:	80 2e       	mov	r8, r16
+     274:	80 2e       	mov	r8, r16
 	mov ST21, T0
- 2a8:	94 2e       	mov	r9, r20
+     276:	94 2e       	mov	r9, r20
 	mov ST22, T1
- 2aa:	a5 2e       	mov	r10, r21
+     278:	a5 2e       	mov	r10, r21
 	mov ST13, T3
- 2ac:	77 2e       	mov	r7, r23
+     27a:	77 2e       	mov	r7, r23
 	//! 3번째 열 완료
 
 
 
 	//! 4번째 열 시작
 	mov r30, ST30 
- 2ae:	ec 2d       	mov	r30, r12
+     27c:	ec 2d       	mov	r30, r12
 	ld  T1, Z 
- 2b0:	50 81       	ld	r21, Z
+     27e:	50 81       	ld	r21, Z
 	mov T3, T1
- 2b2:	75 2f       	mov	r23, r21
+     280:	75 2f       	mov	r23, r21
 	mov r25, T3 
- 2b4:	97 2f       	mov	r25, r23
+     282:	97 2f       	mov	r25, r23
 	mov r28, ST30
- 2b6:	cc 2d       	mov	r28, r12
+     284:	cc 2d       	mov	r28, r12
 	ld  T0, Y
- 2b8:	48 81       	ld	r20, Y
+     286:	48 81       	ld	r20, Y
 	eor r25, T0 ; 2, 1, 1, 3 완료
- 2ba:	94 27       	eor	r25, r20
+     288:	94 27       	eor	r25, r20
 
 	mov r30, ST01
- 2bc:	e1 2d       	mov	r30, r1
+     28a:	e1 2d       	mov	r30, r1
 	ld  M0, Z
- 2be:	00 81       	ld	r16, Z
+     28c:	00 81       	ld	r16, Z
 	eor T0, M0
- 2c0:	40 27       	eor	r20, r16
+     28e:	40 27       	eor	r20, r16
 	eor T3, M0
- 2c2:	70 27       	eor	r23, r16
+     290:	70 27       	eor	r23, r16
 	eor r25, M0 
- 2c4:	90 27       	eor	r25, r16
+     292:	90 27       	eor	r25, r16
 	mov r28, ST01
- 2c6:	c1 2d       	mov	r28, r1
+     294:	c1 2d       	mov	r28, r1
 	ld  M0, Y
- 2c8:	08 81       	ld	r16, Y
+     296:	08 81       	ld	r16, Y
 	eor T0, M0
- 2ca:	40 27       	eor	r20, r16
+     298:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- 2cc:	50 27       	eor	r21, r16
+     29a:	50 27       	eor	r21, r16
 
 	mov r30, ST12
- 2ce:	e6 2d       	mov	r30, r6
+     29c:	e6 2d       	mov	r30, r6
 	ld  M0, Z
- 2d0:	00 81       	ld	r16, Z
+     29e:	00 81       	ld	r16, Z
 	eor T0, M0
- 2d2:	40 27       	eor	r20, r16
+     2a0:	40 27       	eor	r20, r16
 	eor T1, M0
- 2d4:	50 27       	eor	r21, r16
+     2a2:	50 27       	eor	r21, r16
 	eor r25, M0 
- 2d6:	90 27       	eor	r25, r16
+     2a4:	90 27       	eor	r25, r16
 	mov r28, ST12
- 2d8:	c6 2d       	mov	r28, r6
+     2a6:	c6 2d       	mov	r28, r6
 	ld  M0, Y
- 2da:	08 81       	ld	r16, Y
+     2a8:	08 81       	ld	r16, Y
 	eor T1, M0
- 2dc:	50 27       	eor	r21, r16
+     2aa:	50 27       	eor	r21, r16
 	eor T3, M0 ;1, 3, 2, 1 완료
- 2de:	70 27       	eor	r23, r16
+     2ac:	70 27       	eor	r23, r16
 
 	mov r30, ST23
- 2e0:	eb 2d       	mov	r30, r11
+     2ae:	eb 2d       	mov	r30, r11
 	ld  M0, Z
- 2e2:	00 81       	ld	r16, Z
+     2b0:	00 81       	ld	r16, Z
 	eor T0, M0
- 2e4:	40 27       	eor	r20, r16
+     2b2:	40 27       	eor	r20, r16
 	eor T1, M0
- 2e6:	50 27       	eor	r21, r16
+     2b4:	50 27       	eor	r21, r16
 	eor T3, M0 
- 2e8:	70 27       	eor	r23, r16
+     2b6:	70 27       	eor	r23, r16
 	mov r28, ST23
- 2ea:	cb 2d       	mov	r28, r11
+     2b8:	cb 2d       	mov	r28, r11
 	ld  M0, Y
- 2ec:	08 81       	ld	r16, Y
+     2ba:	08 81       	ld	r16, Y
 	eor T3, M0
- 2ee:	70 27       	eor	r23, r16
+     2bc:	70 27       	eor	r23, r16
 	eor r25, M0 ;1, 1, 3, 2 완료
- 2f0:	90 27       	eor	r25, r16
+     2be:	90 27       	eor	r25, r16
 
 	mov ST30, T0
- 2f2:	c4 2e       	mov	r12, r20
+     2c0:	c4 2e       	mov	r12, r20
 	mov ST31, T1
- 2f4:	d5 2e       	mov	r13, r21
+     2c2:	d5 2e       	mov	r13, r21
 	mov ST32, T3
- 2f6:	e7 2e       	mov	r14, r23
+     2c4:	e7 2e       	mov	r14, r23
 	mov ST33, r25
- 2f8:	f9 2e       	mov	r15, r25
+     2c6:	f9 2e       	mov	r15, r25
 	mov ST01, M1
- 2fa:	11 2e       	mov	r1, r17
+     2c8:	11 2e       	mov	r1, r17
 	mov ST02, M2
- 2fc:	22 2e       	mov	r2, r18
+     2ca:	22 2e       	mov	r2, r18
 	mov ST12, T2
- 2fe:	66 2e       	mov	r6, r22
+     2cc:	66 2e       	mov	r6, r22
 	mov ST23, M3
- 300:	b3 2e       	mov	r11, r19
+     2ce:	b3 2e       	mov	r11, r19
 	.irp row, 0, 1, 2, 3
 		.irp col, 0, 1, 2, 3
 			ld r16, X+
 			eor ST\row\col, r16
 		.endr
 	.endr
- 302:	0d 91       	ld	r16, X+
- 304:	00 26       	eor	r0, r16
- 306:	0d 91       	ld	r16, X+
- 308:	10 26       	eor	r1, r16
- 30a:	0d 91       	ld	r16, X+
- 30c:	20 26       	eor	r2, r16
- 30e:	0d 91       	ld	r16, X+
- 310:	30 26       	eor	r3, r16
- 312:	0d 91       	ld	r16, X+
- 314:	40 26       	eor	r4, r16
- 316:	0d 91       	ld	r16, X+
- 318:	50 26       	eor	r5, r16
- 31a:	0d 91       	ld	r16, X+
- 31c:	60 26       	eor	r6, r16
- 31e:	0d 91       	ld	r16, X+
- 320:	70 26       	eor	r7, r16
- 322:	0d 91       	ld	r16, X+
- 324:	80 26       	eor	r8, r16
- 326:	0d 91       	ld	r16, X+
- 328:	90 26       	eor	r9, r16
- 32a:	0d 91       	ld	r16, X+
- 32c:	a0 26       	eor	r10, r16
- 32e:	0d 91       	ld	r16, X+
- 330:	b0 26       	eor	r11, r16
- 332:	0d 91       	ld	r16, X+
- 334:	c0 26       	eor	r12, r16
- 336:	0d 91       	ld	r16, X+
- 338:	d0 26       	eor	r13, r16
- 33a:	0d 91       	ld	r16, X+
- 33c:	e0 26       	eor	r14, r16
- 33e:	0d 91       	ld	r16, X+
- 340:	f0 26       	eor	r15, r16
+     2d0:	0d 91       	ld	r16, X+
+     2d2:	00 26       	eor	r0, r16
+     2d4:	0d 91       	ld	r16, X+
+     2d6:	10 26       	eor	r1, r16
+     2d8:	0d 91       	ld	r16, X+
+     2da:	20 26       	eor	r2, r16
+     2dc:	0d 91       	ld	r16, X+
+     2de:	30 26       	eor	r3, r16
+     2e0:	0d 91       	ld	r16, X+
+     2e2:	40 26       	eor	r4, r16
+     2e4:	0d 91       	ld	r16, X+
+     2e6:	50 26       	eor	r5, r16
+     2e8:	0d 91       	ld	r16, X+
+     2ea:	60 26       	eor	r6, r16
+     2ec:	0d 91       	ld	r16, X+
+     2ee:	70 26       	eor	r7, r16
+     2f0:	0d 91       	ld	r16, X+
+     2f2:	80 26       	eor	r8, r16
+     2f4:	0d 91       	ld	r16, X+
+     2f6:	90 26       	eor	r9, r16
+     2f8:	0d 91       	ld	r16, X+
+     2fa:	a0 26       	eor	r10, r16
+     2fc:	0d 91       	ld	r16, X+
+     2fe:	b0 26       	eor	r11, r16
+     300:	0d 91       	ld	r16, X+
+     302:	c0 26       	eor	r12, r16
+     304:	0d 91       	ld	r16, X+
+     306:	d0 26       	eor	r13, r16
+     308:	0d 91       	ld	r16, X+
+     30a:	e0 26       	eor	r14, r16
+     30c:	0d 91       	ld	r16, X+
+     30e:	f0 26       	eor	r15, r16
 	
 	//2 Round------------------------------------------------------------------------------------------
 	
 	/* Shift Row and Subbyte , Mixcolumns */
 	//! 1번째 열 시작
 	mov r30, ST00 
- 342:	e0 2d       	mov	r30, r0
+     310:	e0 2d       	mov	r30, r0
 	ld  M1, Z 
- 344:	10 81       	ld	r17, Z
+     312:	10 81       	ld	r17, Z
 	mov M2, M1
- 346:	21 2f       	mov	r18, r17
+     314:	21 2f       	mov	r18, r17
 	mov M3, M2 
- 348:	32 2f       	mov	r19, r18
+     316:	32 2f       	mov	r19, r18
 	mov r28, ST00
- 34a:	c0 2d       	mov	r28, r0
+     318:	c0 2d       	mov	r28, r0
 	ld  M0, Y
- 34c:	08 81       	ld	r16, Y
+     31a:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- 34e:	30 27       	eor	r19, r16
+     31c:	30 27       	eor	r19, r16
 
 	mov r30, ST11
- 350:	e5 2d       	mov	r30, r5
+     31e:	e5 2d       	mov	r30, r5
 	ld  T0, Z
- 352:	40 81       	ld	r20, Z
+     320:	40 81       	ld	r20, Z
 	eor M0, T0
- 354:	04 27       	eor	r16, r20
+     322:	04 27       	eor	r16, r20
 	eor M2, T0
- 356:	24 27       	eor	r18, r20
+     324:	24 27       	eor	r18, r20
 	eor M3, T0 
- 358:	34 27       	eor	r19, r20
+     326:	34 27       	eor	r19, r20
 	mov r28, ST11
- 35a:	c5 2d       	mov	r28, r5
+     328:	c5 2d       	mov	r28, r5
 	ld  T0, Y
- 35c:	48 81       	ld	r20, Y
+     32a:	48 81       	ld	r20, Y
 	eor M0, T0
- 35e:	04 27       	eor	r16, r20
+     32c:	04 27       	eor	r16, r20
 	eor M1, T0 ;3, 2, 2, 1 완료
- 360:	14 27       	eor	r17, r20
+     32e:	14 27       	eor	r17, r20
 
 	mov r30, ST22
- 362:	ea 2d       	mov	r30, r10
+     330:	ea 2d       	mov	r30, r10
 	ld  T0, Z
- 364:	40 81       	ld	r20, Z
+     332:	40 81       	ld	r20, Z
 	eor M0, T0
- 366:	04 27       	eor	r16, r20
+     334:	04 27       	eor	r16, r20
 	eor M1, T0
- 368:	14 27       	eor	r17, r20
+     336:	14 27       	eor	r17, r20
 	eor M3, T0
- 36a:	34 27       	eor	r19, r20
+     338:	34 27       	eor	r19, r20
 	mov r28, ST22
- 36c:	ca 2d       	mov	r28, r10
+     33a:	ca 2d       	mov	r28, r10
 	ld  T0, Y
- 36e:	48 81       	ld	r20, Y
+     33c:	48 81       	ld	r20, Y
 	eor M1, T0
- 370:	14 27       	eor	r17, r20
+     33e:	14 27       	eor	r17, r20
 	eor M2, T0 ;1, 3, 2, 1 완료
- 372:	24 27       	eor	r18, r20
+     340:	24 27       	eor	r18, r20
 
 	mov r30, ST33
- 374:	ef 2d       	mov	r30, r15
+     342:	ef 2d       	mov	r30, r15
 	ld  T0, Z
- 376:	40 81       	ld	r20, Z
+     344:	40 81       	ld	r20, Z
 	eor M0, T0
- 378:	04 27       	eor	r16, r20
+     346:	04 27       	eor	r16, r20
 	eor M1, T0
- 37a:	14 27       	eor	r17, r20
+     348:	14 27       	eor	r17, r20
 	eor M2, T0 
- 37c:	24 27       	eor	r18, r20
+     34a:	24 27       	eor	r18, r20
 	mov r28, ST33
- 37e:	cf 2d       	mov	r28, r15
+     34c:	cf 2d       	mov	r28, r15
 	ld  T0, Y
- 380:	48 81       	ld	r20, Y
+     34e:	48 81       	ld	r20, Y
 	eor M2, T0
- 382:	24 27       	eor	r18, r20
+     350:	24 27       	eor	r18, r20
 	eor M3, T0 ;1, 1, 3, 2 완료
- 384:	34 27       	eor	r19, r20
+     352:	34 27       	eor	r19, r20
 
 	mov ST00, M0
- 386:	00 2e       	mov	r0, r16
+     354:	00 2e       	mov	r0, r16
 	//! 1번째 열 완료
 
 	//! 2번째 열 시작
 	mov r30, ST10 
- 388:	e4 2d       	mov	r30, r4
+     356:	e4 2d       	mov	r30, r4
 	ld  T1, Z 
- 38a:	50 81       	ld	r21, Z
+     358:	50 81       	ld	r21, Z
 	mov T2, T1
- 38c:	65 2f       	mov	r22, r21
+     35a:	65 2f       	mov	r22, r21
 	mov T3, T2 
- 38e:	76 2f       	mov	r23, r22
+     35c:	76 2f       	mov	r23, r22
 	mov r28, ST10
- 390:	c4 2d       	mov	r28, r4
+     35e:	c4 2d       	mov	r28, r4
 	ld  T0, Y
- 392:	48 81       	ld	r20, Y
+     360:	48 81       	ld	r20, Y
 	eor T3, T0 ; 2, 1, 1, 3 완료
- 394:	74 27       	eor	r23, r20
+     362:	74 27       	eor	r23, r20
 
 	mov r30, ST21
- 396:	e9 2d       	mov	r30, r9
+     364:	e9 2d       	mov	r30, r9
 	ld  M0, Z
- 398:	00 81       	ld	r16, Z
+     366:	00 81       	ld	r16, Z
 	eor T0, M0
- 39a:	40 27       	eor	r20, r16
+     368:	40 27       	eor	r20, r16
 	eor T2, M0
- 39c:	60 27       	eor	r22, r16
+     36a:	60 27       	eor	r22, r16
 	eor T3, M0 
- 39e:	70 27       	eor	r23, r16
+     36c:	70 27       	eor	r23, r16
 	mov r28, ST21
- 3a0:	c9 2d       	mov	r28, r9
+     36e:	c9 2d       	mov	r28, r9
 	ld  M0, Y
- 3a2:	08 81       	ld	r16, Y
+     370:	08 81       	ld	r16, Y
 	eor T0, M0
- 3a4:	40 27       	eor	r20, r16
+     372:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- 3a6:	50 27       	eor	r21, r16
+     374:	50 27       	eor	r21, r16
 
 	mov r30, ST32
- 3a8:	ee 2d       	mov	r30, r14
+     376:	ee 2d       	mov	r30, r14
 	ld  M0, Z
- 3aa:	00 81       	ld	r16, Z
+     378:	00 81       	ld	r16, Z
 	eor T0, M0
- 3ac:	40 27       	eor	r20, r16
+     37a:	40 27       	eor	r20, r16
 	eor T1, M0
- 3ae:	50 27       	eor	r21, r16
+     37c:	50 27       	eor	r21, r16
 	eor T3, M0 
- 3b0:	70 27       	eor	r23, r16
+     37e:	70 27       	eor	r23, r16
 	mov r28, ST32
- 3b2:	ce 2d       	mov	r28, r14
+     380:	ce 2d       	mov	r28, r14
 	ld  M0, Y
- 3b4:	08 81       	ld	r16, Y
+     382:	08 81       	ld	r16, Y
 	eor T1, M0
- 3b6:	50 27       	eor	r21, r16
+     384:	50 27       	eor	r21, r16
 	eor T2, M0 ;1, 3, 2, 1 완료
- 3b8:	60 27       	eor	r22, r16
+     386:	60 27       	eor	r22, r16
 
 	mov r30, ST03
- 3ba:	e3 2d       	mov	r30, r3
+     388:	e3 2d       	mov	r30, r3
 	ld  M0, Z
- 3bc:	00 81       	ld	r16, Z
+     38a:	00 81       	ld	r16, Z
 	eor T0, M0
- 3be:	40 27       	eor	r20, r16
+     38c:	40 27       	eor	r20, r16
 	eor T1, M0
- 3c0:	50 27       	eor	r21, r16
+     38e:	50 27       	eor	r21, r16
 	eor T2, M0 
- 3c2:	60 27       	eor	r22, r16
+     390:	60 27       	eor	r22, r16
 	mov r28, ST03
- 3c4:	c3 2d       	mov	r28, r3
+     392:	c3 2d       	mov	r28, r3
 	ld  M0, Y
- 3c6:	08 81       	ld	r16, Y
+     394:	08 81       	ld	r16, Y
 	eor T2, M0
- 3c8:	60 27       	eor	r22, r16
+     396:	60 27       	eor	r22, r16
 	eor T3, M0 ;1, 1, 3, 2 완료
- 3ca:	70 27       	eor	r23, r16
+     398:	70 27       	eor	r23, r16
 
 	mov ST10, T0
- 3cc:	44 2e       	mov	r4, r20
+     39a:	44 2e       	mov	r4, r20
 	mov ST11, T1
- 3ce:	55 2e       	mov	r5, r21
+     39c:	55 2e       	mov	r5, r21
 	mov ST03, M3
- 3d0:	33 2e       	mov	r3, r19
+     39e:	33 2e       	mov	r3, r19
 	//! 2번째 열 완료
 
 	//! 3번째 열 시작
 	mov r30, ST20 
- 3d2:	e8 2d       	mov	r30, r8
+     3a0:	e8 2d       	mov	r30, r8
 	ld  T0, Z 
- 3d4:	40 81       	ld	r20, Z
+     3a2:	40 81       	ld	r20, Z
 	mov T1, T0
- 3d6:	54 2f       	mov	r21, r20
+     3a4:	54 2f       	mov	r21, r20
 	mov M3, T1 
- 3d8:	35 2f       	mov	r19, r21
+     3a6:	35 2f       	mov	r19, r21
 	mov r28, ST20
- 3da:	c8 2d       	mov	r28, r8
+     3a8:	c8 2d       	mov	r28, r8
 	ld  M0, Y
- 3dc:	08 81       	ld	r16, Y
+     3aa:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- 3de:	30 27       	eor	r19, r16
+     3ac:	30 27       	eor	r19, r16
 
 	mov r30, ST31
- 3e0:	ed 2d       	mov	r30, r13
+     3ae:	ed 2d       	mov	r30, r13
 	ld  r25, Z
- 3e2:	90 81       	ld	r25, Z
+     3b0:	90 81       	ld	r25, Z
 	eor M0, r25
- 3e4:	09 27       	eor	r16, r25
+     3b2:	09 27       	eor	r16, r25
 	eor T1, r25
- 3e6:	59 27       	eor	r21, r25
+     3b4:	59 27       	eor	r21, r25
 	eor M3, r25
- 3e8:	39 27       	eor	r19, r25
+     3b6:	39 27       	eor	r19, r25
 	mov r28, ST31
- 3ea:	cd 2d       	mov	r28, r13
+     3b8:	cd 2d       	mov	r28, r13
 	ld  r25, Y
- 3ec:	98 81       	ld	r25, Y
+     3ba:	98 81       	ld	r25, Y
 	eor M0, r25
- 3ee:	09 27       	eor	r16, r25
+     3bc:	09 27       	eor	r16, r25
 	eor T0, r25 ;3, 2, 2, 1 완료
- 3f0:	49 27       	eor	r20, r25
+     3be:	49 27       	eor	r20, r25
 
 	mov r30, ST02
- 3f2:	e2 2d       	mov	r30, r2
+     3c0:	e2 2d       	mov	r30, r2
 	ld  r25, Z
- 3f4:	90 81       	ld	r25, Z
+     3c2:	90 81       	ld	r25, Z
 	eor M0, r25
- 3f6:	09 27       	eor	r16, r25
+     3c4:	09 27       	eor	r16, r25
 	eor T0, r25
- 3f8:	49 27       	eor	r20, r25
+     3c6:	49 27       	eor	r20, r25
 	eor M3, r25
- 3fa:	39 27       	eor	r19, r25
+     3c8:	39 27       	eor	r19, r25
 	mov r28, ST02
- 3fc:	c2 2d       	mov	r28, r2
+     3ca:	c2 2d       	mov	r28, r2
 	ld  r25, Y
- 3fe:	98 81       	ld	r25, Y
+     3cc:	98 81       	ld	r25, Y
 	eor T0, r25
- 400:	49 27       	eor	r20, r25
+     3ce:	49 27       	eor	r20, r25
 	eor T1, r25;1, 3, 2, 1 완료
- 402:	59 27       	eor	r21, r25
+     3d0:	59 27       	eor	r21, r25
 
 	mov r30, ST13
- 404:	e7 2d       	mov	r30, r7
+     3d2:	e7 2d       	mov	r30, r7
 	ld  r25, Z
- 406:	90 81       	ld	r25, Z
+     3d4:	90 81       	ld	r25, Z
 	eor M0, r25
- 408:	09 27       	eor	r16, r25
+     3d6:	09 27       	eor	r16, r25
 	eor T0, r25
- 40a:	49 27       	eor	r20, r25
+     3d8:	49 27       	eor	r20, r25
 	eor T1, r25 
- 40c:	59 27       	eor	r21, r25
+     3da:	59 27       	eor	r21, r25
 	mov r28, ST13
- 40e:	c7 2d       	mov	r28, r7
+     3dc:	c7 2d       	mov	r28, r7
 	ld  r25, Y
- 410:	98 81       	ld	r25, Y
+     3de:	98 81       	ld	r25, Y
 	eor T1, r25
- 412:	59 27       	eor	r21, r25
+     3e0:	59 27       	eor	r21, r25
 	eor M3, r25 ;1, 1, 3, 2 완료
- 414:	39 27       	eor	r19, r25
+     3e2:	39 27       	eor	r19, r25
 
 	mov ST20, M0
- 416:	80 2e       	mov	r8, r16
+     3e4:	80 2e       	mov	r8, r16
 	mov ST21, T0
- 418:	94 2e       	mov	r9, r20
+     3e6:	94 2e       	mov	r9, r20
 	mov ST22, T1
- 41a:	a5 2e       	mov	r10, r21
+     3e8:	a5 2e       	mov	r10, r21
 	mov ST13, T3
- 41c:	77 2e       	mov	r7, r23
+     3ea:	77 2e       	mov	r7, r23
 	//! 3번째 열 완료
 
 
 
 	//! 4번째 열 시작
 	mov r30, ST30 
- 41e:	ec 2d       	mov	r30, r12
+     3ec:	ec 2d       	mov	r30, r12
 	ld  T1, Z 
- 420:	50 81       	ld	r21, Z
+     3ee:	50 81       	ld	r21, Z
 	mov T3, T1
- 422:	75 2f       	mov	r23, r21
+     3f0:	75 2f       	mov	r23, r21
 	mov r25, T3 
- 424:	97 2f       	mov	r25, r23
+     3f2:	97 2f       	mov	r25, r23
 	mov r28, ST30
- 426:	cc 2d       	mov	r28, r12
+     3f4:	cc 2d       	mov	r28, r12
 	ld  T0, Y
- 428:	48 81       	ld	r20, Y
+     3f6:	48 81       	ld	r20, Y
 	eor r25, T0 ; 2, 1, 1, 3 완료
- 42a:	94 27       	eor	r25, r20
+     3f8:	94 27       	eor	r25, r20
 
 	mov r30, ST01
- 42c:	e1 2d       	mov	r30, r1
+     3fa:	e1 2d       	mov	r30, r1
 	ld  M0, Z
- 42e:	00 81       	ld	r16, Z
+     3fc:	00 81       	ld	r16, Z
 	eor T0, M0
- 430:	40 27       	eor	r20, r16
+     3fe:	40 27       	eor	r20, r16
 	eor T3, M0
- 432:	70 27       	eor	r23, r16
+     400:	70 27       	eor	r23, r16
 	eor r25, M0 
- 434:	90 27       	eor	r25, r16
+     402:	90 27       	eor	r25, r16
 	mov r28, ST01
- 436:	c1 2d       	mov	r28, r1
+     404:	c1 2d       	mov	r28, r1
 	ld  M0, Y
- 438:	08 81       	ld	r16, Y
+     406:	08 81       	ld	r16, Y
 	eor T0, M0
- 43a:	40 27       	eor	r20, r16
+     408:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- 43c:	50 27       	eor	r21, r16
+     40a:	50 27       	eor	r21, r16
 
 	mov r30, ST12
- 43e:	e6 2d       	mov	r30, r6
+     40c:	e6 2d       	mov	r30, r6
 	ld  M0, Z
- 440:	00 81       	ld	r16, Z
+     40e:	00 81       	ld	r16, Z
 	eor T0, M0
- 442:	40 27       	eor	r20, r16
+     410:	40 27       	eor	r20, r16
 	eor T1, M0
- 444:	50 27       	eor	r21, r16
+     412:	50 27       	eor	r21, r16
 	eor r25, M0 
- 446:	90 27       	eor	r25, r16
+     414:	90 27       	eor	r25, r16
 	mov r28, ST12
- 448:	c6 2d       	mov	r28, r6
+     416:	c6 2d       	mov	r28, r6
 	ld  M0, Y
- 44a:	08 81       	ld	r16, Y
+     418:	08 81       	ld	r16, Y
 	eor T1, M0
- 44c:	50 27       	eor	r21, r16
+     41a:	50 27       	eor	r21, r16
 	eor T3, M0 ;1, 3, 2, 1 완료
- 44e:	70 27       	eor	r23, r16
+     41c:	70 27       	eor	r23, r16
 
 	mov r30, ST23
- 450:	eb 2d       	mov	r30, r11
+     41e:	eb 2d       	mov	r30, r11
 	ld  M0, Z
- 452:	00 81       	ld	r16, Z
+     420:	00 81       	ld	r16, Z
 	eor T0, M0
- 454:	40 27       	eor	r20, r16
+     422:	40 27       	eor	r20, r16
 	eor T1, M0
- 456:	50 27       	eor	r21, r16
+     424:	50 27       	eor	r21, r16
 	eor T3, M0 
- 458:	70 27       	eor	r23, r16
+     426:	70 27       	eor	r23, r16
 	mov r28, ST23
- 45a:	cb 2d       	mov	r28, r11
+     428:	cb 2d       	mov	r28, r11
 	ld  M0, Y
- 45c:	08 81       	ld	r16, Y
+     42a:	08 81       	ld	r16, Y
 	eor T3, M0
- 45e:	70 27       	eor	r23, r16
+     42c:	70 27       	eor	r23, r16
 	eor r25, M0 ;1, 1, 3, 2 완료
- 460:	90 27       	eor	r25, r16
+     42e:	90 27       	eor	r25, r16
 
 	mov ST30, T0
- 462:	c4 2e       	mov	r12, r20
+     430:	c4 2e       	mov	r12, r20
 	mov ST31, T1
- 464:	d5 2e       	mov	r13, r21
+     432:	d5 2e       	mov	r13, r21
 	mov ST32, T3
- 466:	e7 2e       	mov	r14, r23
+     434:	e7 2e       	mov	r14, r23
 	mov ST33, r25
- 468:	f9 2e       	mov	r15, r25
+     436:	f9 2e       	mov	r15, r25
 	mov ST01, M1
- 46a:	11 2e       	mov	r1, r17
+     438:	11 2e       	mov	r1, r17
 	mov ST02, M2
- 46c:	22 2e       	mov	r2, r18
+     43a:	22 2e       	mov	r2, r18
 	mov ST12, T2
- 46e:	66 2e       	mov	r6, r22
+     43c:	66 2e       	mov	r6, r22
 	mov ST23, M3
- 470:	b3 2e       	mov	r11, r19
+     43e:	b3 2e       	mov	r11, r19
 	.irp row, 0, 1, 2, 3
 		.irp col, 0, 1, 2, 3
 			ld r16, X+
 			eor ST\row\col, r16
 		.endr
 	.endr
- 472:	0d 91       	ld	r16, X+
- 474:	00 26       	eor	r0, r16
- 476:	0d 91       	ld	r16, X+
- 478:	10 26       	eor	r1, r16
- 47a:	0d 91       	ld	r16, X+
- 47c:	20 26       	eor	r2, r16
- 47e:	0d 91       	ld	r16, X+
- 480:	30 26       	eor	r3, r16
- 482:	0d 91       	ld	r16, X+
- 484:	40 26       	eor	r4, r16
- 486:	0d 91       	ld	r16, X+
- 488:	50 26       	eor	r5, r16
- 48a:	0d 91       	ld	r16, X+
- 48c:	60 26       	eor	r6, r16
- 48e:	0d 91       	ld	r16, X+
- 490:	70 26       	eor	r7, r16
- 492:	0d 91       	ld	r16, X+
- 494:	80 26       	eor	r8, r16
- 496:	0d 91       	ld	r16, X+
- 498:	90 26       	eor	r9, r16
- 49a:	0d 91       	ld	r16, X+
- 49c:	a0 26       	eor	r10, r16
- 49e:	0d 91       	ld	r16, X+
- 4a0:	b0 26       	eor	r11, r16
- 4a2:	0d 91       	ld	r16, X+
- 4a4:	c0 26       	eor	r12, r16
- 4a6:	0d 91       	ld	r16, X+
- 4a8:	d0 26       	eor	r13, r16
- 4aa:	0d 91       	ld	r16, X+
- 4ac:	e0 26       	eor	r14, r16
- 4ae:	0d 91       	ld	r16, X+
- 4b0:	f0 26       	eor	r15, r16
+     440:	0d 91       	ld	r16, X+
+     442:	00 26       	eor	r0, r16
+     444:	0d 91       	ld	r16, X+
+     446:	10 26       	eor	r1, r16
+     448:	0d 91       	ld	r16, X+
+     44a:	20 26       	eor	r2, r16
+     44c:	0d 91       	ld	r16, X+
+     44e:	30 26       	eor	r3, r16
+     450:	0d 91       	ld	r16, X+
+     452:	40 26       	eor	r4, r16
+     454:	0d 91       	ld	r16, X+
+     456:	50 26       	eor	r5, r16
+     458:	0d 91       	ld	r16, X+
+     45a:	60 26       	eor	r6, r16
+     45c:	0d 91       	ld	r16, X+
+     45e:	70 26       	eor	r7, r16
+     460:	0d 91       	ld	r16, X+
+     462:	80 26       	eor	r8, r16
+     464:	0d 91       	ld	r16, X+
+     466:	90 26       	eor	r9, r16
+     468:	0d 91       	ld	r16, X+
+     46a:	a0 26       	eor	r10, r16
+     46c:	0d 91       	ld	r16, X+
+     46e:	b0 26       	eor	r11, r16
+     470:	0d 91       	ld	r16, X+
+     472:	c0 26       	eor	r12, r16
+     474:	0d 91       	ld	r16, X+
+     476:	d0 26       	eor	r13, r16
+     478:	0d 91       	ld	r16, X+
+     47a:	e0 26       	eor	r14, r16
+     47c:	0d 91       	ld	r16, X+
+     47e:	f0 26       	eor	r15, r16
 	
 	//3 Round------------------------------------------------------------------------------------------
 	
 	/* Shift Row and Subbyte , Mixcolumns */
 	//! 1번째 열 시작
 	mov r30, ST00 
- 4b2:	e0 2d       	mov	r30, r0
+     480:	e0 2d       	mov	r30, r0
 	ld  M1, Z 
- 4b4:	10 81       	ld	r17, Z
+     482:	10 81       	ld	r17, Z
 	mov M2, M1
- 4b6:	21 2f       	mov	r18, r17
+     484:	21 2f       	mov	r18, r17
 	mov M3, M2 
- 4b8:	32 2f       	mov	r19, r18
+     486:	32 2f       	mov	r19, r18
 	mov r28, ST00
- 4ba:	c0 2d       	mov	r28, r0
+     488:	c0 2d       	mov	r28, r0
 	ld  M0, Y
- 4bc:	08 81       	ld	r16, Y
+     48a:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- 4be:	30 27       	eor	r19, r16
+     48c:	30 27       	eor	r19, r16
 
 	mov r30, ST11
- 4c0:	e5 2d       	mov	r30, r5
+     48e:	e5 2d       	mov	r30, r5
 	ld  T0, Z
- 4c2:	40 81       	ld	r20, Z
+     490:	40 81       	ld	r20, Z
 	eor M0, T0
- 4c4:	04 27       	eor	r16, r20
+     492:	04 27       	eor	r16, r20
 	eor M2, T0
- 4c6:	24 27       	eor	r18, r20
+     494:	24 27       	eor	r18, r20
 	eor M3, T0 
- 4c8:	34 27       	eor	r19, r20
+     496:	34 27       	eor	r19, r20
 	mov r28, ST11
- 4ca:	c5 2d       	mov	r28, r5
+     498:	c5 2d       	mov	r28, r5
 	ld  T0, Y
- 4cc:	48 81       	ld	r20, Y
+     49a:	48 81       	ld	r20, Y
 	eor M0, T0
- 4ce:	04 27       	eor	r16, r20
+     49c:	04 27       	eor	r16, r20
 	eor M1, T0 ;3, 2, 2, 1 완료
- 4d0:	14 27       	eor	r17, r20
+     49e:	14 27       	eor	r17, r20
 
 	mov r30, ST22
- 4d2:	ea 2d       	mov	r30, r10
+     4a0:	ea 2d       	mov	r30, r10
 	ld  T0, Z
- 4d4:	40 81       	ld	r20, Z
+     4a2:	40 81       	ld	r20, Z
 	eor M0, T0
- 4d6:	04 27       	eor	r16, r20
+     4a4:	04 27       	eor	r16, r20
 	eor M1, T0
- 4d8:	14 27       	eor	r17, r20
+     4a6:	14 27       	eor	r17, r20
 	eor M3, T0
- 4da:	34 27       	eor	r19, r20
+     4a8:	34 27       	eor	r19, r20
 	mov r28, ST22
- 4dc:	ca 2d       	mov	r28, r10
+     4aa:	ca 2d       	mov	r28, r10
 	ld  T0, Y
- 4de:	48 81       	ld	r20, Y
+     4ac:	48 81       	ld	r20, Y
 	eor M1, T0
- 4e0:	14 27       	eor	r17, r20
+     4ae:	14 27       	eor	r17, r20
 	eor M2, T0 ;1, 3, 2, 1 완료
- 4e2:	24 27       	eor	r18, r20
+     4b0:	24 27       	eor	r18, r20
 
 	mov r30, ST33
- 4e4:	ef 2d       	mov	r30, r15
+     4b2:	ef 2d       	mov	r30, r15
 	ld  T0, Z
- 4e6:	40 81       	ld	r20, Z
+     4b4:	40 81       	ld	r20, Z
 	eor M0, T0
- 4e8:	04 27       	eor	r16, r20
+     4b6:	04 27       	eor	r16, r20
 	eor M1, T0
- 4ea:	14 27       	eor	r17, r20
+     4b8:	14 27       	eor	r17, r20
 	eor M2, T0 
- 4ec:	24 27       	eor	r18, r20
+     4ba:	24 27       	eor	r18, r20
 	mov r28, ST33
- 4ee:	cf 2d       	mov	r28, r15
+     4bc:	cf 2d       	mov	r28, r15
 	ld  T0, Y
- 4f0:	48 81       	ld	r20, Y
+     4be:	48 81       	ld	r20, Y
 	eor M2, T0
- 4f2:	24 27       	eor	r18, r20
+     4c0:	24 27       	eor	r18, r20
 	eor M3, T0 ;1, 1, 3, 2 완료
- 4f4:	34 27       	eor	r19, r20
+     4c2:	34 27       	eor	r19, r20
 
 	mov ST00, M0
- 4f6:	00 2e       	mov	r0, r16
+     4c4:	00 2e       	mov	r0, r16
 	//! 1번째 열 완료
 
 	//! 2번째 열 시작
 	mov r30, ST10 
- 4f8:	e4 2d       	mov	r30, r4
+     4c6:	e4 2d       	mov	r30, r4
 	ld  T1, Z 
- 4fa:	50 81       	ld	r21, Z
+     4c8:	50 81       	ld	r21, Z
 	mov T2, T1
- 4fc:	65 2f       	mov	r22, r21
+     4ca:	65 2f       	mov	r22, r21
 	mov T3, T2 
- 4fe:	76 2f       	mov	r23, r22
+     4cc:	76 2f       	mov	r23, r22
 	mov r28, ST10
- 500:	c4 2d       	mov	r28, r4
+     4ce:	c4 2d       	mov	r28, r4
 	ld  T0, Y
- 502:	48 81       	ld	r20, Y
+     4d0:	48 81       	ld	r20, Y
 	eor T3, T0 ; 2, 1, 1, 3 완료
- 504:	74 27       	eor	r23, r20
+     4d2:	74 27       	eor	r23, r20
 
 	mov r30, ST21
- 506:	e9 2d       	mov	r30, r9
+     4d4:	e9 2d       	mov	r30, r9
 	ld  M0, Z
- 508:	00 81       	ld	r16, Z
+     4d6:	00 81       	ld	r16, Z
 	eor T0, M0
- 50a:	40 27       	eor	r20, r16
+     4d8:	40 27       	eor	r20, r16
 	eor T2, M0
- 50c:	60 27       	eor	r22, r16
+     4da:	60 27       	eor	r22, r16
 	eor T3, M0 
- 50e:	70 27       	eor	r23, r16
+     4dc:	70 27       	eor	r23, r16
 	mov r28, ST21
- 510:	c9 2d       	mov	r28, r9
+     4de:	c9 2d       	mov	r28, r9
 	ld  M0, Y
- 512:	08 81       	ld	r16, Y
+     4e0:	08 81       	ld	r16, Y
 	eor T0, M0
- 514:	40 27       	eor	r20, r16
+     4e2:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- 516:	50 27       	eor	r21, r16
+     4e4:	50 27       	eor	r21, r16
 
 	mov r30, ST32
- 518:	ee 2d       	mov	r30, r14
+     4e6:	ee 2d       	mov	r30, r14
 	ld  M0, Z
- 51a:	00 81       	ld	r16, Z
+     4e8:	00 81       	ld	r16, Z
 	eor T0, M0
- 51c:	40 27       	eor	r20, r16
+     4ea:	40 27       	eor	r20, r16
 	eor T1, M0
- 51e:	50 27       	eor	r21, r16
+     4ec:	50 27       	eor	r21, r16
 	eor T3, M0 
- 520:	70 27       	eor	r23, r16
+     4ee:	70 27       	eor	r23, r16
 	mov r28, ST32
- 522:	ce 2d       	mov	r28, r14
+     4f0:	ce 2d       	mov	r28, r14
 	ld  M0, Y
- 524:	08 81       	ld	r16, Y
+     4f2:	08 81       	ld	r16, Y
 	eor T1, M0
- 526:	50 27       	eor	r21, r16
+     4f4:	50 27       	eor	r21, r16
 	eor T2, M0 ;1, 3, 2, 1 완료
- 528:	60 27       	eor	r22, r16
+     4f6:	60 27       	eor	r22, r16
 
 	mov r30, ST03
- 52a:	e3 2d       	mov	r30, r3
+     4f8:	e3 2d       	mov	r30, r3
 	ld  M0, Z
- 52c:	00 81       	ld	r16, Z
+     4fa:	00 81       	ld	r16, Z
 	eor T0, M0
- 52e:	40 27       	eor	r20, r16
+     4fc:	40 27       	eor	r20, r16
 	eor T1, M0
- 530:	50 27       	eor	r21, r16
+     4fe:	50 27       	eor	r21, r16
 	eor T2, M0 
- 532:	60 27       	eor	r22, r16
+     500:	60 27       	eor	r22, r16
 	mov r28, ST03
- 534:	c3 2d       	mov	r28, r3
+     502:	c3 2d       	mov	r28, r3
 	ld  M0, Y
- 536:	08 81       	ld	r16, Y
+     504:	08 81       	ld	r16, Y
 	eor T2, M0
- 538:	60 27       	eor	r22, r16
+     506:	60 27       	eor	r22, r16
 	eor T3, M0 ;1, 1, 3, 2 완료
- 53a:	70 27       	eor	r23, r16
+     508:	70 27       	eor	r23, r16
 
 	mov ST10, T0
- 53c:	44 2e       	mov	r4, r20
+     50a:	44 2e       	mov	r4, r20
 	mov ST11, T1
- 53e:	55 2e       	mov	r5, r21
+     50c:	55 2e       	mov	r5, r21
 	mov ST03, M3
- 540:	33 2e       	mov	r3, r19
+     50e:	33 2e       	mov	r3, r19
 	//! 2번째 열 완료
 
 	//! 3번째 열 시작
 	mov r30, ST20 
- 542:	e8 2d       	mov	r30, r8
+     510:	e8 2d       	mov	r30, r8
 	ld  T0, Z 
- 544:	40 81       	ld	r20, Z
+     512:	40 81       	ld	r20, Z
 	mov T1, T0
- 546:	54 2f       	mov	r21, r20
+     514:	54 2f       	mov	r21, r20
 	mov M3, T1 
- 548:	35 2f       	mov	r19, r21
+     516:	35 2f       	mov	r19, r21
 	mov r28, ST20
- 54a:	c8 2d       	mov	r28, r8
+     518:	c8 2d       	mov	r28, r8
 	ld  M0, Y
- 54c:	08 81       	ld	r16, Y
+     51a:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- 54e:	30 27       	eor	r19, r16
+     51c:	30 27       	eor	r19, r16
 
 	mov r30, ST31
- 550:	ed 2d       	mov	r30, r13
+     51e:	ed 2d       	mov	r30, r13
 	ld  r25, Z
- 552:	90 81       	ld	r25, Z
+     520:	90 81       	ld	r25, Z
 	eor M0, r25
- 554:	09 27       	eor	r16, r25
+     522:	09 27       	eor	r16, r25
 	eor T1, r25
- 556:	59 27       	eor	r21, r25
+     524:	59 27       	eor	r21, r25
 	eor M3, r25
- 558:	39 27       	eor	r19, r25
+     526:	39 27       	eor	r19, r25
 	mov r28, ST31
- 55a:	cd 2d       	mov	r28, r13
+     528:	cd 2d       	mov	r28, r13
 	ld  r25, Y
- 55c:	98 81       	ld	r25, Y
+     52a:	98 81       	ld	r25, Y
 	eor M0, r25
- 55e:	09 27       	eor	r16, r25
+     52c:	09 27       	eor	r16, r25
 	eor T0, r25 ;3, 2, 2, 1 완료
- 560:	49 27       	eor	r20, r25
+     52e:	49 27       	eor	r20, r25
 
 	mov r30, ST02
- 562:	e2 2d       	mov	r30, r2
+     530:	e2 2d       	mov	r30, r2
 	ld  r25, Z
- 564:	90 81       	ld	r25, Z
+     532:	90 81       	ld	r25, Z
 	eor M0, r25
- 566:	09 27       	eor	r16, r25
+     534:	09 27       	eor	r16, r25
 	eor T0, r25
- 568:	49 27       	eor	r20, r25
+     536:	49 27       	eor	r20, r25
 	eor M3, r25
- 56a:	39 27       	eor	r19, r25
+     538:	39 27       	eor	r19, r25
 	mov r28, ST02
- 56c:	c2 2d       	mov	r28, r2
+     53a:	c2 2d       	mov	r28, r2
 	ld  r25, Y
- 56e:	98 81       	ld	r25, Y
+     53c:	98 81       	ld	r25, Y
 	eor T0, r25
- 570:	49 27       	eor	r20, r25
+     53e:	49 27       	eor	r20, r25
 	eor T1, r25;1, 3, 2, 1 완료
- 572:	59 27       	eor	r21, r25
+     540:	59 27       	eor	r21, r25
 
 	mov r30, ST13
- 574:	e7 2d       	mov	r30, r7
+     542:	e7 2d       	mov	r30, r7
 	ld  r25, Z
- 576:	90 81       	ld	r25, Z
+     544:	90 81       	ld	r25, Z
 	eor M0, r25
- 578:	09 27       	eor	r16, r25
+     546:	09 27       	eor	r16, r25
 	eor T0, r25
- 57a:	49 27       	eor	r20, r25
+     548:	49 27       	eor	r20, r25
 	eor T1, r25 
- 57c:	59 27       	eor	r21, r25
+     54a:	59 27       	eor	r21, r25
 	mov r28, ST13
- 57e:	c7 2d       	mov	r28, r7
+     54c:	c7 2d       	mov	r28, r7
 	ld  r25, Y
- 580:	98 81       	ld	r25, Y
+     54e:	98 81       	ld	r25, Y
 	eor T1, r25
- 582:	59 27       	eor	r21, r25
+     550:	59 27       	eor	r21, r25
 	eor M3, r25 ;1, 1, 3, 2 완료
- 584:	39 27       	eor	r19, r25
+     552:	39 27       	eor	r19, r25
 
 	mov ST20, M0
- 586:	80 2e       	mov	r8, r16
+     554:	80 2e       	mov	r8, r16
 	mov ST21, T0
- 588:	94 2e       	mov	r9, r20
+     556:	94 2e       	mov	r9, r20
 	mov ST22, T1
- 58a:	a5 2e       	mov	r10, r21
+     558:	a5 2e       	mov	r10, r21
 	mov ST13, T3
- 58c:	77 2e       	mov	r7, r23
+     55a:	77 2e       	mov	r7, r23
 	//! 3번째 열 완료
 
 
 
 	//! 4번째 열 시작
 	mov r30, ST30 
- 58e:	ec 2d       	mov	r30, r12
+     55c:	ec 2d       	mov	r30, r12
 	ld  T1, Z 
- 590:	50 81       	ld	r21, Z
+     55e:	50 81       	ld	r21, Z
 	mov T3, T1
- 592:	75 2f       	mov	r23, r21
+     560:	75 2f       	mov	r23, r21
 	mov r25, T3 
- 594:	97 2f       	mov	r25, r23
+     562:	97 2f       	mov	r25, r23
 	mov r28, ST30
- 596:	cc 2d       	mov	r28, r12
+     564:	cc 2d       	mov	r28, r12
 	ld  T0, Y
- 598:	48 81       	ld	r20, Y
+     566:	48 81       	ld	r20, Y
 	eor r25, T0 ; 2, 1, 1, 3 완료
- 59a:	94 27       	eor	r25, r20
+     568:	94 27       	eor	r25, r20
 
 	mov r30, ST01
- 59c:	e1 2d       	mov	r30, r1
+     56a:	e1 2d       	mov	r30, r1
 	ld  M0, Z
- 59e:	00 81       	ld	r16, Z
+     56c:	00 81       	ld	r16, Z
 	eor T0, M0
- 5a0:	40 27       	eor	r20, r16
+     56e:	40 27       	eor	r20, r16
 	eor T3, M0
- 5a2:	70 27       	eor	r23, r16
+     570:	70 27       	eor	r23, r16
 	eor r25, M0 
- 5a4:	90 27       	eor	r25, r16
+     572:	90 27       	eor	r25, r16
 	mov r28, ST01
- 5a6:	c1 2d       	mov	r28, r1
+     574:	c1 2d       	mov	r28, r1
 	ld  M0, Y
- 5a8:	08 81       	ld	r16, Y
+     576:	08 81       	ld	r16, Y
 	eor T0, M0
- 5aa:	40 27       	eor	r20, r16
+     578:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- 5ac:	50 27       	eor	r21, r16
+     57a:	50 27       	eor	r21, r16
 
 	mov r30, ST12
- 5ae:	e6 2d       	mov	r30, r6
+     57c:	e6 2d       	mov	r30, r6
 	ld  M0, Z
- 5b0:	00 81       	ld	r16, Z
+     57e:	00 81       	ld	r16, Z
 	eor T0, M0
- 5b2:	40 27       	eor	r20, r16
+     580:	40 27       	eor	r20, r16
 	eor T1, M0
- 5b4:	50 27       	eor	r21, r16
+     582:	50 27       	eor	r21, r16
 	eor r25, M0 
- 5b6:	90 27       	eor	r25, r16
+     584:	90 27       	eor	r25, r16
 	mov r28, ST12
- 5b8:	c6 2d       	mov	r28, r6
+     586:	c6 2d       	mov	r28, r6
 	ld  M0, Y
- 5ba:	08 81       	ld	r16, Y
+     588:	08 81       	ld	r16, Y
 	eor T1, M0
- 5bc:	50 27       	eor	r21, r16
+     58a:	50 27       	eor	r21, r16
 	eor T3, M0 ;1, 3, 2, 1 완료
- 5be:	70 27       	eor	r23, r16
+     58c:	70 27       	eor	r23, r16
 
 	mov r30, ST23
- 5c0:	eb 2d       	mov	r30, r11
+     58e:	eb 2d       	mov	r30, r11
 	ld  M0, Z
- 5c2:	00 81       	ld	r16, Z
+     590:	00 81       	ld	r16, Z
 	eor T0, M0
- 5c4:	40 27       	eor	r20, r16
+     592:	40 27       	eor	r20, r16
 	eor T1, M0
- 5c6:	50 27       	eor	r21, r16
+     594:	50 27       	eor	r21, r16
 	eor T3, M0 
- 5c8:	70 27       	eor	r23, r16
+     596:	70 27       	eor	r23, r16
 	mov r28, ST23
- 5ca:	cb 2d       	mov	r28, r11
+     598:	cb 2d       	mov	r28, r11
 	ld  M0, Y
- 5cc:	08 81       	ld	r16, Y
+     59a:	08 81       	ld	r16, Y
 	eor T3, M0
- 5ce:	70 27       	eor	r23, r16
+     59c:	70 27       	eor	r23, r16
 	eor r25, M0 ;1, 1, 3, 2 완료
- 5d0:	90 27       	eor	r25, r16
+     59e:	90 27       	eor	r25, r16
 
 	mov ST30, T0
- 5d2:	c4 2e       	mov	r12, r20
+     5a0:	c4 2e       	mov	r12, r20
 	mov ST31, T1
- 5d4:	d5 2e       	mov	r13, r21
+     5a2:	d5 2e       	mov	r13, r21
 	mov ST32, T3
- 5d6:	e7 2e       	mov	r14, r23
+     5a4:	e7 2e       	mov	r14, r23
 	mov ST33, r25
- 5d8:	f9 2e       	mov	r15, r25
+     5a6:	f9 2e       	mov	r15, r25
 	mov ST01, M1
- 5da:	11 2e       	mov	r1, r17
+     5a8:	11 2e       	mov	r1, r17
 	mov ST02, M2
- 5dc:	22 2e       	mov	r2, r18
+     5aa:	22 2e       	mov	r2, r18
 	mov ST12, T2
- 5de:	66 2e       	mov	r6, r22
+     5ac:	66 2e       	mov	r6, r22
 	mov ST23, M3
- 5e0:	b3 2e       	mov	r11, r19
+     5ae:	b3 2e       	mov	r11, r19
 	.irp row, 0, 1, 2, 3
 		.irp col, 0, 1, 2, 3
 			ld r16, X+
 			eor ST\row\col, r16
 		.endr
 	.endr
- 5e2:	0d 91       	ld	r16, X+
- 5e4:	00 26       	eor	r0, r16
- 5e6:	0d 91       	ld	r16, X+
- 5e8:	10 26       	eor	r1, r16
- 5ea:	0d 91       	ld	r16, X+
- 5ec:	20 26       	eor	r2, r16
- 5ee:	0d 91       	ld	r16, X+
- 5f0:	30 26       	eor	r3, r16
- 5f2:	0d 91       	ld	r16, X+
- 5f4:	40 26       	eor	r4, r16
- 5f6:	0d 91       	ld	r16, X+
- 5f8:	50 26       	eor	r5, r16
- 5fa:	0d 91       	ld	r16, X+
- 5fc:	60 26       	eor	r6, r16
- 5fe:	0d 91       	ld	r16, X+
- 600:	70 26       	eor	r7, r16
- 602:	0d 91       	ld	r16, X+
- 604:	80 26       	eor	r8, r16
- 606:	0d 91       	ld	r16, X+
- 608:	90 26       	eor	r9, r16
- 60a:	0d 91       	ld	r16, X+
- 60c:	a0 26       	eor	r10, r16
- 60e:	0d 91       	ld	r16, X+
- 610:	b0 26       	eor	r11, r16
- 612:	0d 91       	ld	r16, X+
- 614:	c0 26       	eor	r12, r16
- 616:	0d 91       	ld	r16, X+
- 618:	d0 26       	eor	r13, r16
- 61a:	0d 91       	ld	r16, X+
- 61c:	e0 26       	eor	r14, r16
- 61e:	0d 91       	ld	r16, X+
- 620:	f0 26       	eor	r15, r16
+     5b0:	0d 91       	ld	r16, X+
+     5b2:	00 26       	eor	r0, r16
+     5b4:	0d 91       	ld	r16, X+
+     5b6:	10 26       	eor	r1, r16
+     5b8:	0d 91       	ld	r16, X+
+     5ba:	20 26       	eor	r2, r16
+     5bc:	0d 91       	ld	r16, X+
+     5be:	30 26       	eor	r3, r16
+     5c0:	0d 91       	ld	r16, X+
+     5c2:	40 26       	eor	r4, r16
+     5c4:	0d 91       	ld	r16, X+
+     5c6:	50 26       	eor	r5, r16
+     5c8:	0d 91       	ld	r16, X+
+     5ca:	60 26       	eor	r6, r16
+     5cc:	0d 91       	ld	r16, X+
+     5ce:	70 26       	eor	r7, r16
+     5d0:	0d 91       	ld	r16, X+
+     5d2:	80 26       	eor	r8, r16
+     5d4:	0d 91       	ld	r16, X+
+     5d6:	90 26       	eor	r9, r16
+     5d8:	0d 91       	ld	r16, X+
+     5da:	a0 26       	eor	r10, r16
+     5dc:	0d 91       	ld	r16, X+
+     5de:	b0 26       	eor	r11, r16
+     5e0:	0d 91       	ld	r16, X+
+     5e2:	c0 26       	eor	r12, r16
+     5e4:	0d 91       	ld	r16, X+
+     5e6:	d0 26       	eor	r13, r16
+     5e8:	0d 91       	ld	r16, X+
+     5ea:	e0 26       	eor	r14, r16
+     5ec:	0d 91       	ld	r16, X+
+     5ee:	f0 26       	eor	r15, r16
 	
 	//4 Round------------------------------------------------------------------------------------------
 	
 	/* Shift Row and Subbyte , Mixcolumns */
 	//! 1번째 열 시작
 	mov r30, ST00 
- 622:	e0 2d       	mov	r30, r0
+     5f0:	e0 2d       	mov	r30, r0
 	ld  M1, Z 
- 624:	10 81       	ld	r17, Z
+     5f2:	10 81       	ld	r17, Z
 	mov M2, M1
- 626:	21 2f       	mov	r18, r17
+     5f4:	21 2f       	mov	r18, r17
 	mov M3, M2 
- 628:	32 2f       	mov	r19, r18
+     5f6:	32 2f       	mov	r19, r18
 	mov r28, ST00
- 62a:	c0 2d       	mov	r28, r0
+     5f8:	c0 2d       	mov	r28, r0
 	ld  M0, Y
- 62c:	08 81       	ld	r16, Y
+     5fa:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- 62e:	30 27       	eor	r19, r16
+     5fc:	30 27       	eor	r19, r16
 
 	mov r30, ST11
- 630:	e5 2d       	mov	r30, r5
+     5fe:	e5 2d       	mov	r30, r5
 	ld  T0, Z
- 632:	40 81       	ld	r20, Z
+     600:	40 81       	ld	r20, Z
 	eor M0, T0
- 634:	04 27       	eor	r16, r20
+     602:	04 27       	eor	r16, r20
 	eor M2, T0
- 636:	24 27       	eor	r18, r20
+     604:	24 27       	eor	r18, r20
 	eor M3, T0 
- 638:	34 27       	eor	r19, r20
+     606:	34 27       	eor	r19, r20
 	mov r28, ST11
- 63a:	c5 2d       	mov	r28, r5
+     608:	c5 2d       	mov	r28, r5
 	ld  T0, Y
- 63c:	48 81       	ld	r20, Y
+     60a:	48 81       	ld	r20, Y
 	eor M0, T0
- 63e:	04 27       	eor	r16, r20
+     60c:	04 27       	eor	r16, r20
 	eor M1, T0 ;3, 2, 2, 1 완료
- 640:	14 27       	eor	r17, r20
+     60e:	14 27       	eor	r17, r20
 
 	mov r30, ST22
- 642:	ea 2d       	mov	r30, r10
+     610:	ea 2d       	mov	r30, r10
 	ld  T0, Z
- 644:	40 81       	ld	r20, Z
+     612:	40 81       	ld	r20, Z
 	eor M0, T0
- 646:	04 27       	eor	r16, r20
+     614:	04 27       	eor	r16, r20
 	eor M1, T0
- 648:	14 27       	eor	r17, r20
+     616:	14 27       	eor	r17, r20
 	eor M3, T0
- 64a:	34 27       	eor	r19, r20
+     618:	34 27       	eor	r19, r20
 	mov r28, ST22
- 64c:	ca 2d       	mov	r28, r10
+     61a:	ca 2d       	mov	r28, r10
 	ld  T0, Y
- 64e:	48 81       	ld	r20, Y
+     61c:	48 81       	ld	r20, Y
 	eor M1, T0
- 650:	14 27       	eor	r17, r20
+     61e:	14 27       	eor	r17, r20
 	eor M2, T0 ;1, 3, 2, 1 완료
- 652:	24 27       	eor	r18, r20
+     620:	24 27       	eor	r18, r20
 
 	mov r30, ST33
- 654:	ef 2d       	mov	r30, r15
+     622:	ef 2d       	mov	r30, r15
 	ld  T0, Z
- 656:	40 81       	ld	r20, Z
+     624:	40 81       	ld	r20, Z
 	eor M0, T0
- 658:	04 27       	eor	r16, r20
+     626:	04 27       	eor	r16, r20
 	eor M1, T0
- 65a:	14 27       	eor	r17, r20
+     628:	14 27       	eor	r17, r20
 	eor M2, T0 
- 65c:	24 27       	eor	r18, r20
+     62a:	24 27       	eor	r18, r20
 	mov r28, ST33
- 65e:	cf 2d       	mov	r28, r15
+     62c:	cf 2d       	mov	r28, r15
 	ld  T0, Y
- 660:	48 81       	ld	r20, Y
+     62e:	48 81       	ld	r20, Y
 	eor M2, T0
- 662:	24 27       	eor	r18, r20
+     630:	24 27       	eor	r18, r20
 	eor M3, T0 ;1, 1, 3, 2 완료
- 664:	34 27       	eor	r19, r20
+     632:	34 27       	eor	r19, r20
 
 	mov ST00, M0
- 666:	00 2e       	mov	r0, r16
+     634:	00 2e       	mov	r0, r16
 	//! 1번째 열 완료
 
 	//! 2번째 열 시작
 	mov r30, ST10 
- 668:	e4 2d       	mov	r30, r4
+     636:	e4 2d       	mov	r30, r4
 	ld  T1, Z 
- 66a:	50 81       	ld	r21, Z
+     638:	50 81       	ld	r21, Z
 	mov T2, T1
- 66c:	65 2f       	mov	r22, r21
+     63a:	65 2f       	mov	r22, r21
 	mov T3, T2 
- 66e:	76 2f       	mov	r23, r22
+     63c:	76 2f       	mov	r23, r22
 	mov r28, ST10
- 670:	c4 2d       	mov	r28, r4
+     63e:	c4 2d       	mov	r28, r4
 	ld  T0, Y
- 672:	48 81       	ld	r20, Y
+     640:	48 81       	ld	r20, Y
 	eor T3, T0 ; 2, 1, 1, 3 완료
- 674:	74 27       	eor	r23, r20
+     642:	74 27       	eor	r23, r20
 
 	mov r30, ST21
- 676:	e9 2d       	mov	r30, r9
+     644:	e9 2d       	mov	r30, r9
 	ld  M0, Z
- 678:	00 81       	ld	r16, Z
+     646:	00 81       	ld	r16, Z
 	eor T0, M0
- 67a:	40 27       	eor	r20, r16
+     648:	40 27       	eor	r20, r16
 	eor T2, M0
- 67c:	60 27       	eor	r22, r16
+     64a:	60 27       	eor	r22, r16
 	eor T3, M0 
- 67e:	70 27       	eor	r23, r16
+     64c:	70 27       	eor	r23, r16
 	mov r28, ST21
- 680:	c9 2d       	mov	r28, r9
+     64e:	c9 2d       	mov	r28, r9
 	ld  M0, Y
- 682:	08 81       	ld	r16, Y
+     650:	08 81       	ld	r16, Y
 	eor T0, M0
- 684:	40 27       	eor	r20, r16
+     652:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- 686:	50 27       	eor	r21, r16
+     654:	50 27       	eor	r21, r16
 
 	mov r30, ST32
- 688:	ee 2d       	mov	r30, r14
+     656:	ee 2d       	mov	r30, r14
 	ld  M0, Z
- 68a:	00 81       	ld	r16, Z
+     658:	00 81       	ld	r16, Z
 	eor T0, M0
- 68c:	40 27       	eor	r20, r16
+     65a:	40 27       	eor	r20, r16
 	eor T1, M0
- 68e:	50 27       	eor	r21, r16
+     65c:	50 27       	eor	r21, r16
 	eor T3, M0 
- 690:	70 27       	eor	r23, r16
+     65e:	70 27       	eor	r23, r16
 	mov r28, ST32
- 692:	ce 2d       	mov	r28, r14
+     660:	ce 2d       	mov	r28, r14
 	ld  M0, Y
- 694:	08 81       	ld	r16, Y
+     662:	08 81       	ld	r16, Y
 	eor T1, M0
- 696:	50 27       	eor	r21, r16
+     664:	50 27       	eor	r21, r16
 	eor T2, M0 ;1, 3, 2, 1 완료
- 698:	60 27       	eor	r22, r16
+     666:	60 27       	eor	r22, r16
 
 	mov r30, ST03
- 69a:	e3 2d       	mov	r30, r3
+     668:	e3 2d       	mov	r30, r3
 	ld  M0, Z
- 69c:	00 81       	ld	r16, Z
+     66a:	00 81       	ld	r16, Z
 	eor T0, M0
- 69e:	40 27       	eor	r20, r16
+     66c:	40 27       	eor	r20, r16
 	eor T1, M0
- 6a0:	50 27       	eor	r21, r16
+     66e:	50 27       	eor	r21, r16
 	eor T2, M0 
- 6a2:	60 27       	eor	r22, r16
+     670:	60 27       	eor	r22, r16
 	mov r28, ST03
- 6a4:	c3 2d       	mov	r28, r3
+     672:	c3 2d       	mov	r28, r3
 	ld  M0, Y
- 6a6:	08 81       	ld	r16, Y
+     674:	08 81       	ld	r16, Y
 	eor T2, M0
- 6a8:	60 27       	eor	r22, r16
+     676:	60 27       	eor	r22, r16
 	eor T3, M0 ;1, 1, 3, 2 완료
- 6aa:	70 27       	eor	r23, r16
+     678:	70 27       	eor	r23, r16
 
 	mov ST10, T0
- 6ac:	44 2e       	mov	r4, r20
+     67a:	44 2e       	mov	r4, r20
 	mov ST11, T1
- 6ae:	55 2e       	mov	r5, r21
+     67c:	55 2e       	mov	r5, r21
 	mov ST03, M3
- 6b0:	33 2e       	mov	r3, r19
+     67e:	33 2e       	mov	r3, r19
 	//! 2번째 열 완료
 
 	//! 3번째 열 시작
 	mov r30, ST20 
- 6b2:	e8 2d       	mov	r30, r8
+     680:	e8 2d       	mov	r30, r8
 	ld  T0, Z 
- 6b4:	40 81       	ld	r20, Z
+     682:	40 81       	ld	r20, Z
 	mov T1, T0
- 6b6:	54 2f       	mov	r21, r20
+     684:	54 2f       	mov	r21, r20
 	mov M3, T1 
- 6b8:	35 2f       	mov	r19, r21
+     686:	35 2f       	mov	r19, r21
 	mov r28, ST20
- 6ba:	c8 2d       	mov	r28, r8
+     688:	c8 2d       	mov	r28, r8
 	ld  M0, Y
- 6bc:	08 81       	ld	r16, Y
+     68a:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- 6be:	30 27       	eor	r19, r16
+     68c:	30 27       	eor	r19, r16
 
 	mov r30, ST31
- 6c0:	ed 2d       	mov	r30, r13
+     68e:	ed 2d       	mov	r30, r13
 	ld  r25, Z
- 6c2:	90 81       	ld	r25, Z
+     690:	90 81       	ld	r25, Z
 	eor M0, r25
- 6c4:	09 27       	eor	r16, r25
+     692:	09 27       	eor	r16, r25
 	eor T1, r25
- 6c6:	59 27       	eor	r21, r25
+     694:	59 27       	eor	r21, r25
 	eor M3, r25
- 6c8:	39 27       	eor	r19, r25
+     696:	39 27       	eor	r19, r25
 	mov r28, ST31
- 6ca:	cd 2d       	mov	r28, r13
+     698:	cd 2d       	mov	r28, r13
 	ld  r25, Y
- 6cc:	98 81       	ld	r25, Y
+     69a:	98 81       	ld	r25, Y
 	eor M0, r25
- 6ce:	09 27       	eor	r16, r25
+     69c:	09 27       	eor	r16, r25
 	eor T0, r25 ;3, 2, 2, 1 완료
- 6d0:	49 27       	eor	r20, r25
+     69e:	49 27       	eor	r20, r25
 
 	mov r30, ST02
- 6d2:	e2 2d       	mov	r30, r2
+     6a0:	e2 2d       	mov	r30, r2
 	ld  r25, Z
- 6d4:	90 81       	ld	r25, Z
+     6a2:	90 81       	ld	r25, Z
 	eor M0, r25
- 6d6:	09 27       	eor	r16, r25
+     6a4:	09 27       	eor	r16, r25
 	eor T0, r25
- 6d8:	49 27       	eor	r20, r25
+     6a6:	49 27       	eor	r20, r25
 	eor M3, r25
- 6da:	39 27       	eor	r19, r25
+     6a8:	39 27       	eor	r19, r25
 	mov r28, ST02
- 6dc:	c2 2d       	mov	r28, r2
+     6aa:	c2 2d       	mov	r28, r2
 	ld  r25, Y
- 6de:	98 81       	ld	r25, Y
+     6ac:	98 81       	ld	r25, Y
 	eor T0, r25
- 6e0:	49 27       	eor	r20, r25
+     6ae:	49 27       	eor	r20, r25
 	eor T1, r25;1, 3, 2, 1 완료
- 6e2:	59 27       	eor	r21, r25
+     6b0:	59 27       	eor	r21, r25
 
 	mov r30, ST13
- 6e4:	e7 2d       	mov	r30, r7
+     6b2:	e7 2d       	mov	r30, r7
 	ld  r25, Z
- 6e6:	90 81       	ld	r25, Z
+     6b4:	90 81       	ld	r25, Z
 	eor M0, r25
- 6e8:	09 27       	eor	r16, r25
+     6b6:	09 27       	eor	r16, r25
 	eor T0, r25
- 6ea:	49 27       	eor	r20, r25
+     6b8:	49 27       	eor	r20, r25
 	eor T1, r25 
- 6ec:	59 27       	eor	r21, r25
+     6ba:	59 27       	eor	r21, r25
 	mov r28, ST13
- 6ee:	c7 2d       	mov	r28, r7
+     6bc:	c7 2d       	mov	r28, r7
 	ld  r25, Y
- 6f0:	98 81       	ld	r25, Y
+     6be:	98 81       	ld	r25, Y
 	eor T1, r25
- 6f2:	59 27       	eor	r21, r25
+     6c0:	59 27       	eor	r21, r25
 	eor M3, r25 ;1, 1, 3, 2 완료
- 6f4:	39 27       	eor	r19, r25
+     6c2:	39 27       	eor	r19, r25
 
 	mov ST20, M0
- 6f6:	80 2e       	mov	r8, r16
+     6c4:	80 2e       	mov	r8, r16
 	mov ST21, T0
- 6f8:	94 2e       	mov	r9, r20
+     6c6:	94 2e       	mov	r9, r20
 	mov ST22, T1
- 6fa:	a5 2e       	mov	r10, r21
+     6c8:	a5 2e       	mov	r10, r21
 	mov ST13, T3
- 6fc:	77 2e       	mov	r7, r23
+     6ca:	77 2e       	mov	r7, r23
 	//! 3번째 열 완료
 
 
 
 	//! 4번째 열 시작
 	mov r30, ST30 
- 6fe:	ec 2d       	mov	r30, r12
+     6cc:	ec 2d       	mov	r30, r12
 	ld  T1, Z 
- 700:	50 81       	ld	r21, Z
+     6ce:	50 81       	ld	r21, Z
 	mov T3, T1
- 702:	75 2f       	mov	r23, r21
+     6d0:	75 2f       	mov	r23, r21
 	mov r25, T3 
- 704:	97 2f       	mov	r25, r23
+     6d2:	97 2f       	mov	r25, r23
 	mov r28, ST30
- 706:	cc 2d       	mov	r28, r12
+     6d4:	cc 2d       	mov	r28, r12
 	ld  T0, Y
- 708:	48 81       	ld	r20, Y
+     6d6:	48 81       	ld	r20, Y
 	eor r25, T0 ; 2, 1, 1, 3 완료
- 70a:	94 27       	eor	r25, r20
+     6d8:	94 27       	eor	r25, r20
 
 	mov r30, ST01
- 70c:	e1 2d       	mov	r30, r1
+     6da:	e1 2d       	mov	r30, r1
 	ld  M0, Z
- 70e:	00 81       	ld	r16, Z
+     6dc:	00 81       	ld	r16, Z
 	eor T0, M0
- 710:	40 27       	eor	r20, r16
+     6de:	40 27       	eor	r20, r16
 	eor T3, M0
- 712:	70 27       	eor	r23, r16
+     6e0:	70 27       	eor	r23, r16
 	eor r25, M0 
- 714:	90 27       	eor	r25, r16
+     6e2:	90 27       	eor	r25, r16
 	mov r28, ST01
- 716:	c1 2d       	mov	r28, r1
+     6e4:	c1 2d       	mov	r28, r1
 	ld  M0, Y
- 718:	08 81       	ld	r16, Y
+     6e6:	08 81       	ld	r16, Y
 	eor T0, M0
- 71a:	40 27       	eor	r20, r16
+     6e8:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- 71c:	50 27       	eor	r21, r16
+     6ea:	50 27       	eor	r21, r16
 
 	mov r30, ST12
- 71e:	e6 2d       	mov	r30, r6
+     6ec:	e6 2d       	mov	r30, r6
 	ld  M0, Z
- 720:	00 81       	ld	r16, Z
+     6ee:	00 81       	ld	r16, Z
 	eor T0, M0
- 722:	40 27       	eor	r20, r16
+     6f0:	40 27       	eor	r20, r16
 	eor T1, M0
- 724:	50 27       	eor	r21, r16
+     6f2:	50 27       	eor	r21, r16
 	eor r25, M0 
- 726:	90 27       	eor	r25, r16
+     6f4:	90 27       	eor	r25, r16
 	mov r28, ST12
- 728:	c6 2d       	mov	r28, r6
+     6f6:	c6 2d       	mov	r28, r6
 	ld  M0, Y
- 72a:	08 81       	ld	r16, Y
+     6f8:	08 81       	ld	r16, Y
 	eor T1, M0
- 72c:	50 27       	eor	r21, r16
+     6fa:	50 27       	eor	r21, r16
 	eor T3, M0 ;1, 3, 2, 1 완료
- 72e:	70 27       	eor	r23, r16
+     6fc:	70 27       	eor	r23, r16
 
 	mov r30, ST23
- 730:	eb 2d       	mov	r30, r11
+     6fe:	eb 2d       	mov	r30, r11
 	ld  M0, Z
- 732:	00 81       	ld	r16, Z
+     700:	00 81       	ld	r16, Z
 	eor T0, M0
- 734:	40 27       	eor	r20, r16
+     702:	40 27       	eor	r20, r16
 	eor T1, M0
- 736:	50 27       	eor	r21, r16
+     704:	50 27       	eor	r21, r16
 	eor T3, M0 
- 738:	70 27       	eor	r23, r16
+     706:	70 27       	eor	r23, r16
 	mov r28, ST23
- 73a:	cb 2d       	mov	r28, r11
+     708:	cb 2d       	mov	r28, r11
 	ld  M0, Y
- 73c:	08 81       	ld	r16, Y
+     70a:	08 81       	ld	r16, Y
 	eor T3, M0
- 73e:	70 27       	eor	r23, r16
+     70c:	70 27       	eor	r23, r16
 	eor r25, M0 ;1, 1, 3, 2 완료
- 740:	90 27       	eor	r25, r16
+     70e:	90 27       	eor	r25, r16
 
 	mov ST30, T0
- 742:	c4 2e       	mov	r12, r20
+     710:	c4 2e       	mov	r12, r20
 	mov ST31, T1
- 744:	d5 2e       	mov	r13, r21
+     712:	d5 2e       	mov	r13, r21
 	mov ST32, T3
- 746:	e7 2e       	mov	r14, r23
+     714:	e7 2e       	mov	r14, r23
 	mov ST33, r25
- 748:	f9 2e       	mov	r15, r25
+     716:	f9 2e       	mov	r15, r25
 	mov ST01, M1
- 74a:	11 2e       	mov	r1, r17
+     718:	11 2e       	mov	r1, r17
 	mov ST02, M2
- 74c:	22 2e       	mov	r2, r18
+     71a:	22 2e       	mov	r2, r18
 	mov ST12, T2
- 74e:	66 2e       	mov	r6, r22
+     71c:	66 2e       	mov	r6, r22
 	mov ST23, M3
- 750:	b3 2e       	mov	r11, r19
+     71e:	b3 2e       	mov	r11, r19
 	.irp row, 0, 1, 2, 3
 		.irp col, 0, 1, 2, 3
 			ld r16, X+
 			eor ST\row\col, r16
 		.endr
 	.endr
- 752:	0d 91       	ld	r16, X+
- 754:	00 26       	eor	r0, r16
- 756:	0d 91       	ld	r16, X+
- 758:	10 26       	eor	r1, r16
- 75a:	0d 91       	ld	r16, X+
- 75c:	20 26       	eor	r2, r16
- 75e:	0d 91       	ld	r16, X+
- 760:	30 26       	eor	r3, r16
- 762:	0d 91       	ld	r16, X+
- 764:	40 26       	eor	r4, r16
- 766:	0d 91       	ld	r16, X+
- 768:	50 26       	eor	r5, r16
- 76a:	0d 91       	ld	r16, X+
- 76c:	60 26       	eor	r6, r16
- 76e:	0d 91       	ld	r16, X+
- 770:	70 26       	eor	r7, r16
- 772:	0d 91       	ld	r16, X+
- 774:	80 26       	eor	r8, r16
- 776:	0d 91       	ld	r16, X+
- 778:	90 26       	eor	r9, r16
- 77a:	0d 91       	ld	r16, X+
- 77c:	a0 26       	eor	r10, r16
- 77e:	0d 91       	ld	r16, X+
- 780:	b0 26       	eor	r11, r16
- 782:	0d 91       	ld	r16, X+
- 784:	c0 26       	eor	r12, r16
- 786:	0d 91       	ld	r16, X+
- 788:	d0 26       	eor	r13, r16
- 78a:	0d 91       	ld	r16, X+
- 78c:	e0 26       	eor	r14, r16
- 78e:	0d 91       	ld	r16, X+
- 790:	f0 26       	eor	r15, r16
+     720:	0d 91       	ld	r16, X+
+     722:	00 26       	eor	r0, r16
+     724:	0d 91       	ld	r16, X+
+     726:	10 26       	eor	r1, r16
+     728:	0d 91       	ld	r16, X+
+     72a:	20 26       	eor	r2, r16
+     72c:	0d 91       	ld	r16, X+
+     72e:	30 26       	eor	r3, r16
+     730:	0d 91       	ld	r16, X+
+     732:	40 26       	eor	r4, r16
+     734:	0d 91       	ld	r16, X+
+     736:	50 26       	eor	r5, r16
+     738:	0d 91       	ld	r16, X+
+     73a:	60 26       	eor	r6, r16
+     73c:	0d 91       	ld	r16, X+
+     73e:	70 26       	eor	r7, r16
+     740:	0d 91       	ld	r16, X+
+     742:	80 26       	eor	r8, r16
+     744:	0d 91       	ld	r16, X+
+     746:	90 26       	eor	r9, r16
+     748:	0d 91       	ld	r16, X+
+     74a:	a0 26       	eor	r10, r16
+     74c:	0d 91       	ld	r16, X+
+     74e:	b0 26       	eor	r11, r16
+     750:	0d 91       	ld	r16, X+
+     752:	c0 26       	eor	r12, r16
+     754:	0d 91       	ld	r16, X+
+     756:	d0 26       	eor	r13, r16
+     758:	0d 91       	ld	r16, X+
+     75a:	e0 26       	eor	r14, r16
+     75c:	0d 91       	ld	r16, X+
+     75e:	f0 26       	eor	r15, r16
 	
 	//5 Round------------------------------------------------------------------------------------------
 	
 	/* Shift Row and Subbyte , Mixcolumns */
 	//! 1번째 열 시작
 	mov r30, ST00 
- 792:	e0 2d       	mov	r30, r0
+     760:	e0 2d       	mov	r30, r0
 	ld  M1, Z 
- 794:	10 81       	ld	r17, Z
+     762:	10 81       	ld	r17, Z
 	mov M2, M1
- 796:	21 2f       	mov	r18, r17
+     764:	21 2f       	mov	r18, r17
 	mov M3, M2 
- 798:	32 2f       	mov	r19, r18
+     766:	32 2f       	mov	r19, r18
 	mov r28, ST00
- 79a:	c0 2d       	mov	r28, r0
+     768:	c0 2d       	mov	r28, r0
 	ld  M0, Y
- 79c:	08 81       	ld	r16, Y
+     76a:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- 79e:	30 27       	eor	r19, r16
+     76c:	30 27       	eor	r19, r16
 
 	mov r30, ST11
- 7a0:	e5 2d       	mov	r30, r5
+     76e:	e5 2d       	mov	r30, r5
 	ld  T0, Z
- 7a2:	40 81       	ld	r20, Z
+     770:	40 81       	ld	r20, Z
 	eor M0, T0
- 7a4:	04 27       	eor	r16, r20
+     772:	04 27       	eor	r16, r20
 	eor M2, T0
- 7a6:	24 27       	eor	r18, r20
+     774:	24 27       	eor	r18, r20
 	eor M3, T0 
- 7a8:	34 27       	eor	r19, r20
+     776:	34 27       	eor	r19, r20
 	mov r28, ST11
- 7aa:	c5 2d       	mov	r28, r5
+     778:	c5 2d       	mov	r28, r5
 	ld  T0, Y
- 7ac:	48 81       	ld	r20, Y
+     77a:	48 81       	ld	r20, Y
 	eor M0, T0
- 7ae:	04 27       	eor	r16, r20
+     77c:	04 27       	eor	r16, r20
 	eor M1, T0 ;3, 2, 2, 1 완료
- 7b0:	14 27       	eor	r17, r20
+     77e:	14 27       	eor	r17, r20
 
 	mov r30, ST22
- 7b2:	ea 2d       	mov	r30, r10
+     780:	ea 2d       	mov	r30, r10
 	ld  T0, Z
- 7b4:	40 81       	ld	r20, Z
+     782:	40 81       	ld	r20, Z
 	eor M0, T0
- 7b6:	04 27       	eor	r16, r20
+     784:	04 27       	eor	r16, r20
 	eor M1, T0
- 7b8:	14 27       	eor	r17, r20
+     786:	14 27       	eor	r17, r20
 	eor M3, T0
- 7ba:	34 27       	eor	r19, r20
+     788:	34 27       	eor	r19, r20
 	mov r28, ST22
- 7bc:	ca 2d       	mov	r28, r10
+     78a:	ca 2d       	mov	r28, r10
 	ld  T0, Y
- 7be:	48 81       	ld	r20, Y
+     78c:	48 81       	ld	r20, Y
 	eor M1, T0
- 7c0:	14 27       	eor	r17, r20
+     78e:	14 27       	eor	r17, r20
 	eor M2, T0 ;1, 3, 2, 1 완료
- 7c2:	24 27       	eor	r18, r20
+     790:	24 27       	eor	r18, r20
 
 	mov r30, ST33
- 7c4:	ef 2d       	mov	r30, r15
+     792:	ef 2d       	mov	r30, r15
 	ld  T0, Z
- 7c6:	40 81       	ld	r20, Z
+     794:	40 81       	ld	r20, Z
 	eor M0, T0
- 7c8:	04 27       	eor	r16, r20
+     796:	04 27       	eor	r16, r20
 	eor M1, T0
- 7ca:	14 27       	eor	r17, r20
+     798:	14 27       	eor	r17, r20
 	eor M2, T0 
- 7cc:	24 27       	eor	r18, r20
+     79a:	24 27       	eor	r18, r20
 	mov r28, ST33
- 7ce:	cf 2d       	mov	r28, r15
+     79c:	cf 2d       	mov	r28, r15
 	ld  T0, Y
- 7d0:	48 81       	ld	r20, Y
+     79e:	48 81       	ld	r20, Y
 	eor M2, T0
- 7d2:	24 27       	eor	r18, r20
+     7a0:	24 27       	eor	r18, r20
 	eor M3, T0 ;1, 1, 3, 2 완료
- 7d4:	34 27       	eor	r19, r20
+     7a2:	34 27       	eor	r19, r20
 
 	mov ST00, M0
- 7d6:	00 2e       	mov	r0, r16
+     7a4:	00 2e       	mov	r0, r16
 	//! 1번째 열 완료
 
 	//! 2번째 열 시작
 	mov r30, ST10 
- 7d8:	e4 2d       	mov	r30, r4
+     7a6:	e4 2d       	mov	r30, r4
 	ld  T1, Z 
- 7da:	50 81       	ld	r21, Z
+     7a8:	50 81       	ld	r21, Z
 	mov T2, T1
- 7dc:	65 2f       	mov	r22, r21
+     7aa:	65 2f       	mov	r22, r21
 	mov T3, T2 
- 7de:	76 2f       	mov	r23, r22
+     7ac:	76 2f       	mov	r23, r22
 	mov r28, ST10
- 7e0:	c4 2d       	mov	r28, r4
+     7ae:	c4 2d       	mov	r28, r4
 	ld  T0, Y
- 7e2:	48 81       	ld	r20, Y
+     7b0:	48 81       	ld	r20, Y
 	eor T3, T0 ; 2, 1, 1, 3 완료
- 7e4:	74 27       	eor	r23, r20
+     7b2:	74 27       	eor	r23, r20
 
 	mov r30, ST21
- 7e6:	e9 2d       	mov	r30, r9
+     7b4:	e9 2d       	mov	r30, r9
 	ld  M0, Z
- 7e8:	00 81       	ld	r16, Z
+     7b6:	00 81       	ld	r16, Z
 	eor T0, M0
- 7ea:	40 27       	eor	r20, r16
+     7b8:	40 27       	eor	r20, r16
 	eor T2, M0
- 7ec:	60 27       	eor	r22, r16
+     7ba:	60 27       	eor	r22, r16
 	eor T3, M0 
- 7ee:	70 27       	eor	r23, r16
+     7bc:	70 27       	eor	r23, r16
 	mov r28, ST21
- 7f0:	c9 2d       	mov	r28, r9
+     7be:	c9 2d       	mov	r28, r9
 	ld  M0, Y
- 7f2:	08 81       	ld	r16, Y
+     7c0:	08 81       	ld	r16, Y
 	eor T0, M0
- 7f4:	40 27       	eor	r20, r16
+     7c2:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- 7f6:	50 27       	eor	r21, r16
+     7c4:	50 27       	eor	r21, r16
 
 	mov r30, ST32
- 7f8:	ee 2d       	mov	r30, r14
+     7c6:	ee 2d       	mov	r30, r14
 	ld  M0, Z
- 7fa:	00 81       	ld	r16, Z
+     7c8:	00 81       	ld	r16, Z
 	eor T0, M0
- 7fc:	40 27       	eor	r20, r16
+     7ca:	40 27       	eor	r20, r16
 	eor T1, M0
- 7fe:	50 27       	eor	r21, r16
+     7cc:	50 27       	eor	r21, r16
 	eor T3, M0 
- 800:	70 27       	eor	r23, r16
+     7ce:	70 27       	eor	r23, r16
 	mov r28, ST32
- 802:	ce 2d       	mov	r28, r14
+     7d0:	ce 2d       	mov	r28, r14
 	ld  M0, Y
- 804:	08 81       	ld	r16, Y
+     7d2:	08 81       	ld	r16, Y
 	eor T1, M0
- 806:	50 27       	eor	r21, r16
+     7d4:	50 27       	eor	r21, r16
 	eor T2, M0 ;1, 3, 2, 1 완료
- 808:	60 27       	eor	r22, r16
+     7d6:	60 27       	eor	r22, r16
 
 	mov r30, ST03
- 80a:	e3 2d       	mov	r30, r3
+     7d8:	e3 2d       	mov	r30, r3
 	ld  M0, Z
- 80c:	00 81       	ld	r16, Z
+     7da:	00 81       	ld	r16, Z
 	eor T0, M0
- 80e:	40 27       	eor	r20, r16
+     7dc:	40 27       	eor	r20, r16
 	eor T1, M0
- 810:	50 27       	eor	r21, r16
+     7de:	50 27       	eor	r21, r16
 	eor T2, M0 
- 812:	60 27       	eor	r22, r16
+     7e0:	60 27       	eor	r22, r16
 	mov r28, ST03
- 814:	c3 2d       	mov	r28, r3
+     7e2:	c3 2d       	mov	r28, r3
 	ld  M0, Y
- 816:	08 81       	ld	r16, Y
+     7e4:	08 81       	ld	r16, Y
 	eor T2, M0
- 818:	60 27       	eor	r22, r16
+     7e6:	60 27       	eor	r22, r16
 	eor T3, M0 ;1, 1, 3, 2 완료
- 81a:	70 27       	eor	r23, r16
+     7e8:	70 27       	eor	r23, r16
 
 	mov ST10, T0
- 81c:	44 2e       	mov	r4, r20
+     7ea:	44 2e       	mov	r4, r20
 	mov ST11, T1
- 81e:	55 2e       	mov	r5, r21
+     7ec:	55 2e       	mov	r5, r21
 	mov ST03, M3
- 820:	33 2e       	mov	r3, r19
+     7ee:	33 2e       	mov	r3, r19
 	//! 2번째 열 완료
 
 	//! 3번째 열 시작
 	mov r30, ST20 
- 822:	e8 2d       	mov	r30, r8
+     7f0:	e8 2d       	mov	r30, r8
 	ld  T0, Z 
- 824:	40 81       	ld	r20, Z
+     7f2:	40 81       	ld	r20, Z
 	mov T1, T0
- 826:	54 2f       	mov	r21, r20
+     7f4:	54 2f       	mov	r21, r20
 	mov M3, T1 
- 828:	35 2f       	mov	r19, r21
+     7f6:	35 2f       	mov	r19, r21
 	mov r28, ST20
- 82a:	c8 2d       	mov	r28, r8
+     7f8:	c8 2d       	mov	r28, r8
 	ld  M0, Y
- 82c:	08 81       	ld	r16, Y
+     7fa:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- 82e:	30 27       	eor	r19, r16
+     7fc:	30 27       	eor	r19, r16
 
 	mov r30, ST31
- 830:	ed 2d       	mov	r30, r13
+     7fe:	ed 2d       	mov	r30, r13
 	ld  r25, Z
- 832:	90 81       	ld	r25, Z
+     800:	90 81       	ld	r25, Z
 	eor M0, r25
- 834:	09 27       	eor	r16, r25
+     802:	09 27       	eor	r16, r25
 	eor T1, r25
- 836:	59 27       	eor	r21, r25
+     804:	59 27       	eor	r21, r25
 	eor M3, r25
- 838:	39 27       	eor	r19, r25
+     806:	39 27       	eor	r19, r25
 	mov r28, ST31
- 83a:	cd 2d       	mov	r28, r13
+     808:	cd 2d       	mov	r28, r13
 	ld  r25, Y
- 83c:	98 81       	ld	r25, Y
+     80a:	98 81       	ld	r25, Y
 	eor M0, r25
- 83e:	09 27       	eor	r16, r25
+     80c:	09 27       	eor	r16, r25
 	eor T0, r25 ;3, 2, 2, 1 완료
- 840:	49 27       	eor	r20, r25
+     80e:	49 27       	eor	r20, r25
 
 	mov r30, ST02
- 842:	e2 2d       	mov	r30, r2
+     810:	e2 2d       	mov	r30, r2
 	ld  r25, Z
- 844:	90 81       	ld	r25, Z
+     812:	90 81       	ld	r25, Z
 	eor M0, r25
- 846:	09 27       	eor	r16, r25
+     814:	09 27       	eor	r16, r25
 	eor T0, r25
- 848:	49 27       	eor	r20, r25
+     816:	49 27       	eor	r20, r25
 	eor M3, r25
- 84a:	39 27       	eor	r19, r25
+     818:	39 27       	eor	r19, r25
 	mov r28, ST02
- 84c:	c2 2d       	mov	r28, r2
+     81a:	c2 2d       	mov	r28, r2
 	ld  r25, Y
- 84e:	98 81       	ld	r25, Y
+     81c:	98 81       	ld	r25, Y
 	eor T0, r25
- 850:	49 27       	eor	r20, r25
+     81e:	49 27       	eor	r20, r25
 	eor T1, r25;1, 3, 2, 1 완료
- 852:	59 27       	eor	r21, r25
+     820:	59 27       	eor	r21, r25
 
 	mov r30, ST13
- 854:	e7 2d       	mov	r30, r7
+     822:	e7 2d       	mov	r30, r7
 	ld  r25, Z
- 856:	90 81       	ld	r25, Z
+     824:	90 81       	ld	r25, Z
 	eor M0, r25
- 858:	09 27       	eor	r16, r25
+     826:	09 27       	eor	r16, r25
 	eor T0, r25
- 85a:	49 27       	eor	r20, r25
+     828:	49 27       	eor	r20, r25
 	eor T1, r25 
- 85c:	59 27       	eor	r21, r25
+     82a:	59 27       	eor	r21, r25
 	mov r28, ST13
- 85e:	c7 2d       	mov	r28, r7
+     82c:	c7 2d       	mov	r28, r7
 	ld  r25, Y
- 860:	98 81       	ld	r25, Y
+     82e:	98 81       	ld	r25, Y
 	eor T1, r25
- 862:	59 27       	eor	r21, r25
+     830:	59 27       	eor	r21, r25
 	eor M3, r25 ;1, 1, 3, 2 완료
- 864:	39 27       	eor	r19, r25
+     832:	39 27       	eor	r19, r25
 
 	mov ST20, M0
- 866:	80 2e       	mov	r8, r16
+     834:	80 2e       	mov	r8, r16
 	mov ST21, T0
- 868:	94 2e       	mov	r9, r20
+     836:	94 2e       	mov	r9, r20
 	mov ST22, T1
- 86a:	a5 2e       	mov	r10, r21
+     838:	a5 2e       	mov	r10, r21
 	mov ST13, T3
- 86c:	77 2e       	mov	r7, r23
+     83a:	77 2e       	mov	r7, r23
 	//! 3번째 열 완료
 
 
 
 	//! 4번째 열 시작
 	mov r30, ST30 
- 86e:	ec 2d       	mov	r30, r12
+     83c:	ec 2d       	mov	r30, r12
 	ld  T1, Z 
- 870:	50 81       	ld	r21, Z
+     83e:	50 81       	ld	r21, Z
 	mov T3, T1
- 872:	75 2f       	mov	r23, r21
+     840:	75 2f       	mov	r23, r21
 	mov r25, T3 
- 874:	97 2f       	mov	r25, r23
+     842:	97 2f       	mov	r25, r23
 	mov r28, ST30
- 876:	cc 2d       	mov	r28, r12
+     844:	cc 2d       	mov	r28, r12
 	ld  T0, Y
- 878:	48 81       	ld	r20, Y
+     846:	48 81       	ld	r20, Y
 	eor r25, T0 ; 2, 1, 1, 3 완료
- 87a:	94 27       	eor	r25, r20
+     848:	94 27       	eor	r25, r20
 
 	mov r30, ST01
- 87c:	e1 2d       	mov	r30, r1
+     84a:	e1 2d       	mov	r30, r1
 	ld  M0, Z
- 87e:	00 81       	ld	r16, Z
+     84c:	00 81       	ld	r16, Z
 	eor T0, M0
- 880:	40 27       	eor	r20, r16
+     84e:	40 27       	eor	r20, r16
 	eor T3, M0
- 882:	70 27       	eor	r23, r16
+     850:	70 27       	eor	r23, r16
 	eor r25, M0 
- 884:	90 27       	eor	r25, r16
+     852:	90 27       	eor	r25, r16
 	mov r28, ST01
- 886:	c1 2d       	mov	r28, r1
+     854:	c1 2d       	mov	r28, r1
 	ld  M0, Y
- 888:	08 81       	ld	r16, Y
+     856:	08 81       	ld	r16, Y
 	eor T0, M0
- 88a:	40 27       	eor	r20, r16
+     858:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- 88c:	50 27       	eor	r21, r16
+     85a:	50 27       	eor	r21, r16
 
 	mov r30, ST12
- 88e:	e6 2d       	mov	r30, r6
+     85c:	e6 2d       	mov	r30, r6
 	ld  M0, Z
- 890:	00 81       	ld	r16, Z
+     85e:	00 81       	ld	r16, Z
 	eor T0, M0
- 892:	40 27       	eor	r20, r16
+     860:	40 27       	eor	r20, r16
 	eor T1, M0
- 894:	50 27       	eor	r21, r16
+     862:	50 27       	eor	r21, r16
 	eor r25, M0 
- 896:	90 27       	eor	r25, r16
+     864:	90 27       	eor	r25, r16
 	mov r28, ST12
- 898:	c6 2d       	mov	r28, r6
+     866:	c6 2d       	mov	r28, r6
 	ld  M0, Y
- 89a:	08 81       	ld	r16, Y
+     868:	08 81       	ld	r16, Y
 	eor T1, M0
- 89c:	50 27       	eor	r21, r16
+     86a:	50 27       	eor	r21, r16
 	eor T3, M0 ;1, 3, 2, 1 완료
- 89e:	70 27       	eor	r23, r16
+     86c:	70 27       	eor	r23, r16
 
 	mov r30, ST23
- 8a0:	eb 2d       	mov	r30, r11
+     86e:	eb 2d       	mov	r30, r11
 	ld  M0, Z
- 8a2:	00 81       	ld	r16, Z
+     870:	00 81       	ld	r16, Z
 	eor T0, M0
- 8a4:	40 27       	eor	r20, r16
+     872:	40 27       	eor	r20, r16
 	eor T1, M0
- 8a6:	50 27       	eor	r21, r16
+     874:	50 27       	eor	r21, r16
 	eor T3, M0 
- 8a8:	70 27       	eor	r23, r16
+     876:	70 27       	eor	r23, r16
 	mov r28, ST23
- 8aa:	cb 2d       	mov	r28, r11
+     878:	cb 2d       	mov	r28, r11
 	ld  M0, Y
- 8ac:	08 81       	ld	r16, Y
+     87a:	08 81       	ld	r16, Y
 	eor T3, M0
- 8ae:	70 27       	eor	r23, r16
+     87c:	70 27       	eor	r23, r16
 	eor r25, M0 ;1, 1, 3, 2 완료
- 8b0:	90 27       	eor	r25, r16
+     87e:	90 27       	eor	r25, r16
 
 	mov ST30, T0
- 8b2:	c4 2e       	mov	r12, r20
+     880:	c4 2e       	mov	r12, r20
 	mov ST31, T1
- 8b4:	d5 2e       	mov	r13, r21
+     882:	d5 2e       	mov	r13, r21
 	mov ST32, T3
- 8b6:	e7 2e       	mov	r14, r23
+     884:	e7 2e       	mov	r14, r23
 	mov ST33, r25
- 8b8:	f9 2e       	mov	r15, r25
+     886:	f9 2e       	mov	r15, r25
 	mov ST01, M1
- 8ba:	11 2e       	mov	r1, r17
+     888:	11 2e       	mov	r1, r17
 	mov ST02, M2
- 8bc:	22 2e       	mov	r2, r18
+     88a:	22 2e       	mov	r2, r18
 	mov ST12, T2
- 8be:	66 2e       	mov	r6, r22
+     88c:	66 2e       	mov	r6, r22
 	mov ST23, M3
- 8c0:	b3 2e       	mov	r11, r19
+     88e:	b3 2e       	mov	r11, r19
 	.irp row, 0, 1, 2, 3
 		.irp col, 0, 1, 2, 3
 			ld r16, X+
 			eor ST\row\col, r16
 		.endr
 	.endr
- 8c2:	0d 91       	ld	r16, X+
- 8c4:	00 26       	eor	r0, r16
- 8c6:	0d 91       	ld	r16, X+
- 8c8:	10 26       	eor	r1, r16
- 8ca:	0d 91       	ld	r16, X+
- 8cc:	20 26       	eor	r2, r16
- 8ce:	0d 91       	ld	r16, X+
- 8d0:	30 26       	eor	r3, r16
- 8d2:	0d 91       	ld	r16, X+
- 8d4:	40 26       	eor	r4, r16
- 8d6:	0d 91       	ld	r16, X+
- 8d8:	50 26       	eor	r5, r16
- 8da:	0d 91       	ld	r16, X+
- 8dc:	60 26       	eor	r6, r16
- 8de:	0d 91       	ld	r16, X+
- 8e0:	70 26       	eor	r7, r16
- 8e2:	0d 91       	ld	r16, X+
- 8e4:	80 26       	eor	r8, r16
- 8e6:	0d 91       	ld	r16, X+
- 8e8:	90 26       	eor	r9, r16
- 8ea:	0d 91       	ld	r16, X+
- 8ec:	a0 26       	eor	r10, r16
- 8ee:	0d 91       	ld	r16, X+
- 8f0:	b0 26       	eor	r11, r16
- 8f2:	0d 91       	ld	r16, X+
- 8f4:	c0 26       	eor	r12, r16
- 8f6:	0d 91       	ld	r16, X+
- 8f8:	d0 26       	eor	r13, r16
- 8fa:	0d 91       	ld	r16, X+
- 8fc:	e0 26       	eor	r14, r16
- 8fe:	0d 91       	ld	r16, X+
- 900:	f0 26       	eor	r15, r16
+     890:	0d 91       	ld	r16, X+
+     892:	00 26       	eor	r0, r16
+     894:	0d 91       	ld	r16, X+
+     896:	10 26       	eor	r1, r16
+     898:	0d 91       	ld	r16, X+
+     89a:	20 26       	eor	r2, r16
+     89c:	0d 91       	ld	r16, X+
+     89e:	30 26       	eor	r3, r16
+     8a0:	0d 91       	ld	r16, X+
+     8a2:	40 26       	eor	r4, r16
+     8a4:	0d 91       	ld	r16, X+
+     8a6:	50 26       	eor	r5, r16
+     8a8:	0d 91       	ld	r16, X+
+     8aa:	60 26       	eor	r6, r16
+     8ac:	0d 91       	ld	r16, X+
+     8ae:	70 26       	eor	r7, r16
+     8b0:	0d 91       	ld	r16, X+
+     8b2:	80 26       	eor	r8, r16
+     8b4:	0d 91       	ld	r16, X+
+     8b6:	90 26       	eor	r9, r16
+     8b8:	0d 91       	ld	r16, X+
+     8ba:	a0 26       	eor	r10, r16
+     8bc:	0d 91       	ld	r16, X+
+     8be:	b0 26       	eor	r11, r16
+     8c0:	0d 91       	ld	r16, X+
+     8c2:	c0 26       	eor	r12, r16
+     8c4:	0d 91       	ld	r16, X+
+     8c6:	d0 26       	eor	r13, r16
+     8c8:	0d 91       	ld	r16, X+
+     8ca:	e0 26       	eor	r14, r16
+     8cc:	0d 91       	ld	r16, X+
+     8ce:	f0 26       	eor	r15, r16
 	
 	//6 Round------------------------------------------------------------------------------------------
 	
 	/* Shift Row and Subbyte , Mixcolumns */
 	//! 1번째 열 시작
 	mov r30, ST00 
- 902:	e0 2d       	mov	r30, r0
+     8d0:	e0 2d       	mov	r30, r0
 	ld  M1, Z 
- 904:	10 81       	ld	r17, Z
+     8d2:	10 81       	ld	r17, Z
 	mov M2, M1
- 906:	21 2f       	mov	r18, r17
+     8d4:	21 2f       	mov	r18, r17
 	mov M3, M2 
- 908:	32 2f       	mov	r19, r18
+     8d6:	32 2f       	mov	r19, r18
 	mov r28, ST00
- 90a:	c0 2d       	mov	r28, r0
+     8d8:	c0 2d       	mov	r28, r0
 	ld  M0, Y
- 90c:	08 81       	ld	r16, Y
+     8da:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- 90e:	30 27       	eor	r19, r16
+     8dc:	30 27       	eor	r19, r16
 
 	mov r30, ST11
- 910:	e5 2d       	mov	r30, r5
+     8de:	e5 2d       	mov	r30, r5
 	ld  T0, Z
- 912:	40 81       	ld	r20, Z
+     8e0:	40 81       	ld	r20, Z
 	eor M0, T0
- 914:	04 27       	eor	r16, r20
+     8e2:	04 27       	eor	r16, r20
 	eor M2, T0
- 916:	24 27       	eor	r18, r20
+     8e4:	24 27       	eor	r18, r20
 	eor M3, T0 
- 918:	34 27       	eor	r19, r20
+     8e6:	34 27       	eor	r19, r20
 	mov r28, ST11
- 91a:	c5 2d       	mov	r28, r5
+     8e8:	c5 2d       	mov	r28, r5
 	ld  T0, Y
- 91c:	48 81       	ld	r20, Y
+     8ea:	48 81       	ld	r20, Y
 	eor M0, T0
- 91e:	04 27       	eor	r16, r20
+     8ec:	04 27       	eor	r16, r20
 	eor M1, T0 ;3, 2, 2, 1 완료
- 920:	14 27       	eor	r17, r20
+     8ee:	14 27       	eor	r17, r20
 
 	mov r30, ST22
- 922:	ea 2d       	mov	r30, r10
+     8f0:	ea 2d       	mov	r30, r10
 	ld  T0, Z
- 924:	40 81       	ld	r20, Z
+     8f2:	40 81       	ld	r20, Z
 	eor M0, T0
- 926:	04 27       	eor	r16, r20
+     8f4:	04 27       	eor	r16, r20
 	eor M1, T0
- 928:	14 27       	eor	r17, r20
+     8f6:	14 27       	eor	r17, r20
 	eor M3, T0
- 92a:	34 27       	eor	r19, r20
+     8f8:	34 27       	eor	r19, r20
 	mov r28, ST22
- 92c:	ca 2d       	mov	r28, r10
+     8fa:	ca 2d       	mov	r28, r10
 	ld  T0, Y
- 92e:	48 81       	ld	r20, Y
+     8fc:	48 81       	ld	r20, Y
 	eor M1, T0
- 930:	14 27       	eor	r17, r20
+     8fe:	14 27       	eor	r17, r20
 	eor M2, T0 ;1, 3, 2, 1 완료
- 932:	24 27       	eor	r18, r20
+     900:	24 27       	eor	r18, r20
 
 	mov r30, ST33
- 934:	ef 2d       	mov	r30, r15
+     902:	ef 2d       	mov	r30, r15
 	ld  T0, Z
- 936:	40 81       	ld	r20, Z
+     904:	40 81       	ld	r20, Z
 	eor M0, T0
- 938:	04 27       	eor	r16, r20
+     906:	04 27       	eor	r16, r20
 	eor M1, T0
- 93a:	14 27       	eor	r17, r20
+     908:	14 27       	eor	r17, r20
 	eor M2, T0 
- 93c:	24 27       	eor	r18, r20
+     90a:	24 27       	eor	r18, r20
 	mov r28, ST33
- 93e:	cf 2d       	mov	r28, r15
+     90c:	cf 2d       	mov	r28, r15
 	ld  T0, Y
- 940:	48 81       	ld	r20, Y
+     90e:	48 81       	ld	r20, Y
 	eor M2, T0
- 942:	24 27       	eor	r18, r20
+     910:	24 27       	eor	r18, r20
 	eor M3, T0 ;1, 1, 3, 2 완료
- 944:	34 27       	eor	r19, r20
+     912:	34 27       	eor	r19, r20
 
 	mov ST00, M0
- 946:	00 2e       	mov	r0, r16
+     914:	00 2e       	mov	r0, r16
 	//! 1번째 열 완료
 
 	//! 2번째 열 시작
 	mov r30, ST10 
- 948:	e4 2d       	mov	r30, r4
+     916:	e4 2d       	mov	r30, r4
 	ld  T1, Z 
- 94a:	50 81       	ld	r21, Z
+     918:	50 81       	ld	r21, Z
 	mov T2, T1
- 94c:	65 2f       	mov	r22, r21
+     91a:	65 2f       	mov	r22, r21
 	mov T3, T2 
- 94e:	76 2f       	mov	r23, r22
+     91c:	76 2f       	mov	r23, r22
 	mov r28, ST10
- 950:	c4 2d       	mov	r28, r4
+     91e:	c4 2d       	mov	r28, r4
 	ld  T0, Y
- 952:	48 81       	ld	r20, Y
+     920:	48 81       	ld	r20, Y
 	eor T3, T0 ; 2, 1, 1, 3 완료
- 954:	74 27       	eor	r23, r20
+     922:	74 27       	eor	r23, r20
 
 	mov r30, ST21
- 956:	e9 2d       	mov	r30, r9
+     924:	e9 2d       	mov	r30, r9
 	ld  M0, Z
- 958:	00 81       	ld	r16, Z
+     926:	00 81       	ld	r16, Z
 	eor T0, M0
- 95a:	40 27       	eor	r20, r16
+     928:	40 27       	eor	r20, r16
 	eor T2, M0
- 95c:	60 27       	eor	r22, r16
+     92a:	60 27       	eor	r22, r16
 	eor T3, M0 
- 95e:	70 27       	eor	r23, r16
+     92c:	70 27       	eor	r23, r16
 	mov r28, ST21
- 960:	c9 2d       	mov	r28, r9
+     92e:	c9 2d       	mov	r28, r9
 	ld  M0, Y
- 962:	08 81       	ld	r16, Y
+     930:	08 81       	ld	r16, Y
 	eor T0, M0
- 964:	40 27       	eor	r20, r16
+     932:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- 966:	50 27       	eor	r21, r16
+     934:	50 27       	eor	r21, r16
 
 	mov r30, ST32
- 968:	ee 2d       	mov	r30, r14
+     936:	ee 2d       	mov	r30, r14
 	ld  M0, Z
- 96a:	00 81       	ld	r16, Z
+     938:	00 81       	ld	r16, Z
 	eor T0, M0
- 96c:	40 27       	eor	r20, r16
+     93a:	40 27       	eor	r20, r16
 	eor T1, M0
- 96e:	50 27       	eor	r21, r16
+     93c:	50 27       	eor	r21, r16
 	eor T3, M0 
- 970:	70 27       	eor	r23, r16
+     93e:	70 27       	eor	r23, r16
 	mov r28, ST32
- 972:	ce 2d       	mov	r28, r14
+     940:	ce 2d       	mov	r28, r14
 	ld  M0, Y
- 974:	08 81       	ld	r16, Y
+     942:	08 81       	ld	r16, Y
 	eor T1, M0
- 976:	50 27       	eor	r21, r16
+     944:	50 27       	eor	r21, r16
 	eor T2, M0 ;1, 3, 2, 1 완료
- 978:	60 27       	eor	r22, r16
+     946:	60 27       	eor	r22, r16
 
 	mov r30, ST03
- 97a:	e3 2d       	mov	r30, r3
+     948:	e3 2d       	mov	r30, r3
 	ld  M0, Z
- 97c:	00 81       	ld	r16, Z
+     94a:	00 81       	ld	r16, Z
 	eor T0, M0
- 97e:	40 27       	eor	r20, r16
+     94c:	40 27       	eor	r20, r16
 	eor T1, M0
- 980:	50 27       	eor	r21, r16
+     94e:	50 27       	eor	r21, r16
 	eor T2, M0 
- 982:	60 27       	eor	r22, r16
+     950:	60 27       	eor	r22, r16
 	mov r28, ST03
- 984:	c3 2d       	mov	r28, r3
+     952:	c3 2d       	mov	r28, r3
 	ld  M0, Y
- 986:	08 81       	ld	r16, Y
+     954:	08 81       	ld	r16, Y
 	eor T2, M0
- 988:	60 27       	eor	r22, r16
+     956:	60 27       	eor	r22, r16
 	eor T3, M0 ;1, 1, 3, 2 완료
- 98a:	70 27       	eor	r23, r16
+     958:	70 27       	eor	r23, r16
 
 	mov ST10, T0
- 98c:	44 2e       	mov	r4, r20
+     95a:	44 2e       	mov	r4, r20
 	mov ST11, T1
- 98e:	55 2e       	mov	r5, r21
+     95c:	55 2e       	mov	r5, r21
 	mov ST03, M3
- 990:	33 2e       	mov	r3, r19
+     95e:	33 2e       	mov	r3, r19
 	//! 2번째 열 완료
 
 	//! 3번째 열 시작
 	mov r30, ST20 
- 992:	e8 2d       	mov	r30, r8
+     960:	e8 2d       	mov	r30, r8
 	ld  T0, Z 
- 994:	40 81       	ld	r20, Z
+     962:	40 81       	ld	r20, Z
 	mov T1, T0
- 996:	54 2f       	mov	r21, r20
+     964:	54 2f       	mov	r21, r20
 	mov M3, T1 
- 998:	35 2f       	mov	r19, r21
+     966:	35 2f       	mov	r19, r21
 	mov r28, ST20
- 99a:	c8 2d       	mov	r28, r8
+     968:	c8 2d       	mov	r28, r8
 	ld  M0, Y
- 99c:	08 81       	ld	r16, Y
+     96a:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- 99e:	30 27       	eor	r19, r16
+     96c:	30 27       	eor	r19, r16
 
 	mov r30, ST31
- 9a0:	ed 2d       	mov	r30, r13
+     96e:	ed 2d       	mov	r30, r13
 	ld  r25, Z
- 9a2:	90 81       	ld	r25, Z
+     970:	90 81       	ld	r25, Z
 	eor M0, r25
- 9a4:	09 27       	eor	r16, r25
+     972:	09 27       	eor	r16, r25
 	eor T1, r25
- 9a6:	59 27       	eor	r21, r25
+     974:	59 27       	eor	r21, r25
 	eor M3, r25
- 9a8:	39 27       	eor	r19, r25
+     976:	39 27       	eor	r19, r25
 	mov r28, ST31
- 9aa:	cd 2d       	mov	r28, r13
+     978:	cd 2d       	mov	r28, r13
 	ld  r25, Y
- 9ac:	98 81       	ld	r25, Y
+     97a:	98 81       	ld	r25, Y
 	eor M0, r25
- 9ae:	09 27       	eor	r16, r25
+     97c:	09 27       	eor	r16, r25
 	eor T0, r25 ;3, 2, 2, 1 완료
- 9b0:	49 27       	eor	r20, r25
+     97e:	49 27       	eor	r20, r25
 
 	mov r30, ST02
- 9b2:	e2 2d       	mov	r30, r2
+     980:	e2 2d       	mov	r30, r2
 	ld  r25, Z
- 9b4:	90 81       	ld	r25, Z
+     982:	90 81       	ld	r25, Z
 	eor M0, r25
- 9b6:	09 27       	eor	r16, r25
+     984:	09 27       	eor	r16, r25
 	eor T0, r25
- 9b8:	49 27       	eor	r20, r25
+     986:	49 27       	eor	r20, r25
 	eor M3, r25
- 9ba:	39 27       	eor	r19, r25
+     988:	39 27       	eor	r19, r25
 	mov r28, ST02
- 9bc:	c2 2d       	mov	r28, r2
+     98a:	c2 2d       	mov	r28, r2
 	ld  r25, Y
- 9be:	98 81       	ld	r25, Y
+     98c:	98 81       	ld	r25, Y
 	eor T0, r25
- 9c0:	49 27       	eor	r20, r25
+     98e:	49 27       	eor	r20, r25
 	eor T1, r25;1, 3, 2, 1 완료
- 9c2:	59 27       	eor	r21, r25
+     990:	59 27       	eor	r21, r25
 
 	mov r30, ST13
- 9c4:	e7 2d       	mov	r30, r7
+     992:	e7 2d       	mov	r30, r7
 	ld  r25, Z
- 9c6:	90 81       	ld	r25, Z
+     994:	90 81       	ld	r25, Z
 	eor M0, r25
- 9c8:	09 27       	eor	r16, r25
+     996:	09 27       	eor	r16, r25
 	eor T0, r25
- 9ca:	49 27       	eor	r20, r25
+     998:	49 27       	eor	r20, r25
 	eor T1, r25 
- 9cc:	59 27       	eor	r21, r25
+     99a:	59 27       	eor	r21, r25
 	mov r28, ST13
- 9ce:	c7 2d       	mov	r28, r7
+     99c:	c7 2d       	mov	r28, r7
 	ld  r25, Y
- 9d0:	98 81       	ld	r25, Y
+     99e:	98 81       	ld	r25, Y
 	eor T1, r25
- 9d2:	59 27       	eor	r21, r25
+     9a0:	59 27       	eor	r21, r25
 	eor M3, r25 ;1, 1, 3, 2 완료
- 9d4:	39 27       	eor	r19, r25
+     9a2:	39 27       	eor	r19, r25
 
 	mov ST20, M0
- 9d6:	80 2e       	mov	r8, r16
+     9a4:	80 2e       	mov	r8, r16
 	mov ST21, T0
- 9d8:	94 2e       	mov	r9, r20
+     9a6:	94 2e       	mov	r9, r20
 	mov ST22, T1
- 9da:	a5 2e       	mov	r10, r21
+     9a8:	a5 2e       	mov	r10, r21
 	mov ST13, T3
- 9dc:	77 2e       	mov	r7, r23
+     9aa:	77 2e       	mov	r7, r23
 	//! 3번째 열 완료
 
 
 
 	//! 4번째 열 시작
 	mov r30, ST30 
- 9de:	ec 2d       	mov	r30, r12
+     9ac:	ec 2d       	mov	r30, r12
 	ld  T1, Z 
- 9e0:	50 81       	ld	r21, Z
+     9ae:	50 81       	ld	r21, Z
 	mov T3, T1
- 9e2:	75 2f       	mov	r23, r21
+     9b0:	75 2f       	mov	r23, r21
 	mov r25, T3 
- 9e4:	97 2f       	mov	r25, r23
+     9b2:	97 2f       	mov	r25, r23
 	mov r28, ST30
- 9e6:	cc 2d       	mov	r28, r12
+     9b4:	cc 2d       	mov	r28, r12
 	ld  T0, Y
- 9e8:	48 81       	ld	r20, Y
+     9b6:	48 81       	ld	r20, Y
 	eor r25, T0 ; 2, 1, 1, 3 완료
- 9ea:	94 27       	eor	r25, r20
+     9b8:	94 27       	eor	r25, r20
 
 	mov r30, ST01
- 9ec:	e1 2d       	mov	r30, r1
+     9ba:	e1 2d       	mov	r30, r1
 	ld  M0, Z
- 9ee:	00 81       	ld	r16, Z
+     9bc:	00 81       	ld	r16, Z
 	eor T0, M0
- 9f0:	40 27       	eor	r20, r16
+     9be:	40 27       	eor	r20, r16
 	eor T3, M0
- 9f2:	70 27       	eor	r23, r16
+     9c0:	70 27       	eor	r23, r16
 	eor r25, M0 
- 9f4:	90 27       	eor	r25, r16
+     9c2:	90 27       	eor	r25, r16
 	mov r28, ST01
- 9f6:	c1 2d       	mov	r28, r1
+     9c4:	c1 2d       	mov	r28, r1
 	ld  M0, Y
- 9f8:	08 81       	ld	r16, Y
+     9c6:	08 81       	ld	r16, Y
 	eor T0, M0
- 9fa:	40 27       	eor	r20, r16
+     9c8:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- 9fc:	50 27       	eor	r21, r16
+     9ca:	50 27       	eor	r21, r16
 
 	mov r30, ST12
- 9fe:	e6 2d       	mov	r30, r6
+     9cc:	e6 2d       	mov	r30, r6
 	ld  M0, Z
- a00:	00 81       	ld	r16, Z
+     9ce:	00 81       	ld	r16, Z
 	eor T0, M0
- a02:	40 27       	eor	r20, r16
+     9d0:	40 27       	eor	r20, r16
 	eor T1, M0
- a04:	50 27       	eor	r21, r16
+     9d2:	50 27       	eor	r21, r16
 	eor r25, M0 
- a06:	90 27       	eor	r25, r16
+     9d4:	90 27       	eor	r25, r16
 	mov r28, ST12
- a08:	c6 2d       	mov	r28, r6
+     9d6:	c6 2d       	mov	r28, r6
 	ld  M0, Y
- a0a:	08 81       	ld	r16, Y
+     9d8:	08 81       	ld	r16, Y
 	eor T1, M0
- a0c:	50 27       	eor	r21, r16
+     9da:	50 27       	eor	r21, r16
 	eor T3, M0 ;1, 3, 2, 1 완료
- a0e:	70 27       	eor	r23, r16
+     9dc:	70 27       	eor	r23, r16
 
 	mov r30, ST23
- a10:	eb 2d       	mov	r30, r11
+     9de:	eb 2d       	mov	r30, r11
 	ld  M0, Z
- a12:	00 81       	ld	r16, Z
+     9e0:	00 81       	ld	r16, Z
 	eor T0, M0
- a14:	40 27       	eor	r20, r16
+     9e2:	40 27       	eor	r20, r16
 	eor T1, M0
- a16:	50 27       	eor	r21, r16
+     9e4:	50 27       	eor	r21, r16
 	eor T3, M0 
- a18:	70 27       	eor	r23, r16
+     9e6:	70 27       	eor	r23, r16
 	mov r28, ST23
- a1a:	cb 2d       	mov	r28, r11
+     9e8:	cb 2d       	mov	r28, r11
 	ld  M0, Y
- a1c:	08 81       	ld	r16, Y
+     9ea:	08 81       	ld	r16, Y
 	eor T3, M0
- a1e:	70 27       	eor	r23, r16
+     9ec:	70 27       	eor	r23, r16
 	eor r25, M0 ;1, 1, 3, 2 완료
- a20:	90 27       	eor	r25, r16
+     9ee:	90 27       	eor	r25, r16
 
 	mov ST30, T0
- a22:	c4 2e       	mov	r12, r20
+     9f0:	c4 2e       	mov	r12, r20
 	mov ST31, T1
- a24:	d5 2e       	mov	r13, r21
+     9f2:	d5 2e       	mov	r13, r21
 	mov ST32, T3
- a26:	e7 2e       	mov	r14, r23
+     9f4:	e7 2e       	mov	r14, r23
 	mov ST33, r25
- a28:	f9 2e       	mov	r15, r25
+     9f6:	f9 2e       	mov	r15, r25
 	mov ST01, M1
- a2a:	11 2e       	mov	r1, r17
+     9f8:	11 2e       	mov	r1, r17
 	mov ST02, M2
- a2c:	22 2e       	mov	r2, r18
+     9fa:	22 2e       	mov	r2, r18
 	mov ST12, T2
- a2e:	66 2e       	mov	r6, r22
+     9fc:	66 2e       	mov	r6, r22
 	mov ST23, M3
- a30:	b3 2e       	mov	r11, r19
+     9fe:	b3 2e       	mov	r11, r19
 	.irp row, 0, 1, 2, 3
 		.irp col, 0, 1, 2, 3
 			ld r16, X+
 			eor ST\row\col, r16
 		.endr
 	.endr
- a32:	0d 91       	ld	r16, X+
- a34:	00 26       	eor	r0, r16
- a36:	0d 91       	ld	r16, X+
- a38:	10 26       	eor	r1, r16
- a3a:	0d 91       	ld	r16, X+
- a3c:	20 26       	eor	r2, r16
- a3e:	0d 91       	ld	r16, X+
- a40:	30 26       	eor	r3, r16
- a42:	0d 91       	ld	r16, X+
- a44:	40 26       	eor	r4, r16
- a46:	0d 91       	ld	r16, X+
- a48:	50 26       	eor	r5, r16
- a4a:	0d 91       	ld	r16, X+
- a4c:	60 26       	eor	r6, r16
- a4e:	0d 91       	ld	r16, X+
- a50:	70 26       	eor	r7, r16
- a52:	0d 91       	ld	r16, X+
- a54:	80 26       	eor	r8, r16
- a56:	0d 91       	ld	r16, X+
- a58:	90 26       	eor	r9, r16
- a5a:	0d 91       	ld	r16, X+
- a5c:	a0 26       	eor	r10, r16
- a5e:	0d 91       	ld	r16, X+
- a60:	b0 26       	eor	r11, r16
- a62:	0d 91       	ld	r16, X+
- a64:	c0 26       	eor	r12, r16
- a66:	0d 91       	ld	r16, X+
- a68:	d0 26       	eor	r13, r16
- a6a:	0d 91       	ld	r16, X+
- a6c:	e0 26       	eor	r14, r16
- a6e:	0d 91       	ld	r16, X+
- a70:	f0 26       	eor	r15, r16
+     a00:	0d 91       	ld	r16, X+
+     a02:	00 26       	eor	r0, r16
+     a04:	0d 91       	ld	r16, X+
+     a06:	10 26       	eor	r1, r16
+     a08:	0d 91       	ld	r16, X+
+     a0a:	20 26       	eor	r2, r16
+     a0c:	0d 91       	ld	r16, X+
+     a0e:	30 26       	eor	r3, r16
+     a10:	0d 91       	ld	r16, X+
+     a12:	40 26       	eor	r4, r16
+     a14:	0d 91       	ld	r16, X+
+     a16:	50 26       	eor	r5, r16
+     a18:	0d 91       	ld	r16, X+
+     a1a:	60 26       	eor	r6, r16
+     a1c:	0d 91       	ld	r16, X+
+     a1e:	70 26       	eor	r7, r16
+     a20:	0d 91       	ld	r16, X+
+     a22:	80 26       	eor	r8, r16
+     a24:	0d 91       	ld	r16, X+
+     a26:	90 26       	eor	r9, r16
+     a28:	0d 91       	ld	r16, X+
+     a2a:	a0 26       	eor	r10, r16
+     a2c:	0d 91       	ld	r16, X+
+     a2e:	b0 26       	eor	r11, r16
+     a30:	0d 91       	ld	r16, X+
+     a32:	c0 26       	eor	r12, r16
+     a34:	0d 91       	ld	r16, X+
+     a36:	d0 26       	eor	r13, r16
+     a38:	0d 91       	ld	r16, X+
+     a3a:	e0 26       	eor	r14, r16
+     a3c:	0d 91       	ld	r16, X+
+     a3e:	f0 26       	eor	r15, r16
 	
 	//7 Round------------------------------------------------------------------------------------------
 	
 	/* Shift Row and Subbyte , Mixcolumns */
 	//! 1번째 열 시작
 	mov r30, ST00 
- a72:	e0 2d       	mov	r30, r0
+     a40:	e0 2d       	mov	r30, r0
 	ld  M1, Z 
- a74:	10 81       	ld	r17, Z
+     a42:	10 81       	ld	r17, Z
 	mov M2, M1
- a76:	21 2f       	mov	r18, r17
+     a44:	21 2f       	mov	r18, r17
 	mov M3, M2 
- a78:	32 2f       	mov	r19, r18
+     a46:	32 2f       	mov	r19, r18
 	mov r28, ST00
- a7a:	c0 2d       	mov	r28, r0
+     a48:	c0 2d       	mov	r28, r0
 	ld  M0, Y
- a7c:	08 81       	ld	r16, Y
+     a4a:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- a7e:	30 27       	eor	r19, r16
+     a4c:	30 27       	eor	r19, r16
 
 	mov r30, ST11
- a80:	e5 2d       	mov	r30, r5
+     a4e:	e5 2d       	mov	r30, r5
 	ld  T0, Z
- a82:	40 81       	ld	r20, Z
+     a50:	40 81       	ld	r20, Z
 	eor M0, T0
- a84:	04 27       	eor	r16, r20
+     a52:	04 27       	eor	r16, r20
 	eor M2, T0
- a86:	24 27       	eor	r18, r20
+     a54:	24 27       	eor	r18, r20
 	eor M3, T0 
- a88:	34 27       	eor	r19, r20
+     a56:	34 27       	eor	r19, r20
 	mov r28, ST11
- a8a:	c5 2d       	mov	r28, r5
+     a58:	c5 2d       	mov	r28, r5
 	ld  T0, Y
- a8c:	48 81       	ld	r20, Y
+     a5a:	48 81       	ld	r20, Y
 	eor M0, T0
- a8e:	04 27       	eor	r16, r20
+     a5c:	04 27       	eor	r16, r20
 	eor M1, T0 ;3, 2, 2, 1 완료
- a90:	14 27       	eor	r17, r20
+     a5e:	14 27       	eor	r17, r20
 
 	mov r30, ST22
- a92:	ea 2d       	mov	r30, r10
+     a60:	ea 2d       	mov	r30, r10
 	ld  T0, Z
- a94:	40 81       	ld	r20, Z
+     a62:	40 81       	ld	r20, Z
 	eor M0, T0
- a96:	04 27       	eor	r16, r20
+     a64:	04 27       	eor	r16, r20
 	eor M1, T0
- a98:	14 27       	eor	r17, r20
+     a66:	14 27       	eor	r17, r20
 	eor M3, T0
- a9a:	34 27       	eor	r19, r20
+     a68:	34 27       	eor	r19, r20
 	mov r28, ST22
- a9c:	ca 2d       	mov	r28, r10
+     a6a:	ca 2d       	mov	r28, r10
 	ld  T0, Y
- a9e:	48 81       	ld	r20, Y
+     a6c:	48 81       	ld	r20, Y
 	eor M1, T0
- aa0:	14 27       	eor	r17, r20
+     a6e:	14 27       	eor	r17, r20
 	eor M2, T0 ;1, 3, 2, 1 완료
- aa2:	24 27       	eor	r18, r20
+     a70:	24 27       	eor	r18, r20
 
 	mov r30, ST33
- aa4:	ef 2d       	mov	r30, r15
+     a72:	ef 2d       	mov	r30, r15
 	ld  T0, Z
- aa6:	40 81       	ld	r20, Z
+     a74:	40 81       	ld	r20, Z
 	eor M0, T0
- aa8:	04 27       	eor	r16, r20
+     a76:	04 27       	eor	r16, r20
 	eor M1, T0
- aaa:	14 27       	eor	r17, r20
+     a78:	14 27       	eor	r17, r20
 	eor M2, T0 
- aac:	24 27       	eor	r18, r20
+     a7a:	24 27       	eor	r18, r20
 	mov r28, ST33
- aae:	cf 2d       	mov	r28, r15
+     a7c:	cf 2d       	mov	r28, r15
 	ld  T0, Y
- ab0:	48 81       	ld	r20, Y
+     a7e:	48 81       	ld	r20, Y
 	eor M2, T0
- ab2:	24 27       	eor	r18, r20
+     a80:	24 27       	eor	r18, r20
 	eor M3, T0 ;1, 1, 3, 2 완료
- ab4:	34 27       	eor	r19, r20
+     a82:	34 27       	eor	r19, r20
 
 	mov ST00, M0
- ab6:	00 2e       	mov	r0, r16
+     a84:	00 2e       	mov	r0, r16
 	//! 1번째 열 완료
 
 	//! 2번째 열 시작
 	mov r30, ST10 
- ab8:	e4 2d       	mov	r30, r4
+     a86:	e4 2d       	mov	r30, r4
 	ld  T1, Z 
- aba:	50 81       	ld	r21, Z
+     a88:	50 81       	ld	r21, Z
 	mov T2, T1
- abc:	65 2f       	mov	r22, r21
+     a8a:	65 2f       	mov	r22, r21
 	mov T3, T2 
- abe:	76 2f       	mov	r23, r22
+     a8c:	76 2f       	mov	r23, r22
 	mov r28, ST10
- ac0:	c4 2d       	mov	r28, r4
+     a8e:	c4 2d       	mov	r28, r4
 	ld  T0, Y
- ac2:	48 81       	ld	r20, Y
+     a90:	48 81       	ld	r20, Y
 	eor T3, T0 ; 2, 1, 1, 3 완료
- ac4:	74 27       	eor	r23, r20
+     a92:	74 27       	eor	r23, r20
 
 	mov r30, ST21
- ac6:	e9 2d       	mov	r30, r9
+     a94:	e9 2d       	mov	r30, r9
 	ld  M0, Z
- ac8:	00 81       	ld	r16, Z
+     a96:	00 81       	ld	r16, Z
 	eor T0, M0
- aca:	40 27       	eor	r20, r16
+     a98:	40 27       	eor	r20, r16
 	eor T2, M0
- acc:	60 27       	eor	r22, r16
+     a9a:	60 27       	eor	r22, r16
 	eor T3, M0 
- ace:	70 27       	eor	r23, r16
+     a9c:	70 27       	eor	r23, r16
 	mov r28, ST21
- ad0:	c9 2d       	mov	r28, r9
+     a9e:	c9 2d       	mov	r28, r9
 	ld  M0, Y
- ad2:	08 81       	ld	r16, Y
+     aa0:	08 81       	ld	r16, Y
 	eor T0, M0
- ad4:	40 27       	eor	r20, r16
+     aa2:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- ad6:	50 27       	eor	r21, r16
+     aa4:	50 27       	eor	r21, r16
 
 	mov r30, ST32
- ad8:	ee 2d       	mov	r30, r14
+     aa6:	ee 2d       	mov	r30, r14
 	ld  M0, Z
- ada:	00 81       	ld	r16, Z
+     aa8:	00 81       	ld	r16, Z
 	eor T0, M0
- adc:	40 27       	eor	r20, r16
+     aaa:	40 27       	eor	r20, r16
 	eor T1, M0
- ade:	50 27       	eor	r21, r16
+     aac:	50 27       	eor	r21, r16
 	eor T3, M0 
- ae0:	70 27       	eor	r23, r16
+     aae:	70 27       	eor	r23, r16
 	mov r28, ST32
- ae2:	ce 2d       	mov	r28, r14
+     ab0:	ce 2d       	mov	r28, r14
 	ld  M0, Y
- ae4:	08 81       	ld	r16, Y
+     ab2:	08 81       	ld	r16, Y
 	eor T1, M0
- ae6:	50 27       	eor	r21, r16
+     ab4:	50 27       	eor	r21, r16
 	eor T2, M0 ;1, 3, 2, 1 완료
- ae8:	60 27       	eor	r22, r16
+     ab6:	60 27       	eor	r22, r16
 
 	mov r30, ST03
- aea:	e3 2d       	mov	r30, r3
+     ab8:	e3 2d       	mov	r30, r3
 	ld  M0, Z
- aec:	00 81       	ld	r16, Z
+     aba:	00 81       	ld	r16, Z
 	eor T0, M0
- aee:	40 27       	eor	r20, r16
+     abc:	40 27       	eor	r20, r16
 	eor T1, M0
- af0:	50 27       	eor	r21, r16
+     abe:	50 27       	eor	r21, r16
 	eor T2, M0 
- af2:	60 27       	eor	r22, r16
+     ac0:	60 27       	eor	r22, r16
 	mov r28, ST03
- af4:	c3 2d       	mov	r28, r3
+     ac2:	c3 2d       	mov	r28, r3
 	ld  M0, Y
- af6:	08 81       	ld	r16, Y
+     ac4:	08 81       	ld	r16, Y
 	eor T2, M0
- af8:	60 27       	eor	r22, r16
+     ac6:	60 27       	eor	r22, r16
 	eor T3, M0 ;1, 1, 3, 2 완료
- afa:	70 27       	eor	r23, r16
+     ac8:	70 27       	eor	r23, r16
 
 	mov ST10, T0
- afc:	44 2e       	mov	r4, r20
+     aca:	44 2e       	mov	r4, r20
 	mov ST11, T1
- afe:	55 2e       	mov	r5, r21
+     acc:	55 2e       	mov	r5, r21
 	mov ST03, M3
- b00:	33 2e       	mov	r3, r19
+     ace:	33 2e       	mov	r3, r19
 	//! 2번째 열 완료
 
 	//! 3번째 열 시작
 	mov r30, ST20 
- b02:	e8 2d       	mov	r30, r8
+     ad0:	e8 2d       	mov	r30, r8
 	ld  T0, Z 
- b04:	40 81       	ld	r20, Z
+     ad2:	40 81       	ld	r20, Z
 	mov T1, T0
- b06:	54 2f       	mov	r21, r20
+     ad4:	54 2f       	mov	r21, r20
 	mov M3, T1 
- b08:	35 2f       	mov	r19, r21
+     ad6:	35 2f       	mov	r19, r21
 	mov r28, ST20
- b0a:	c8 2d       	mov	r28, r8
+     ad8:	c8 2d       	mov	r28, r8
 	ld  M0, Y
- b0c:	08 81       	ld	r16, Y
+     ada:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- b0e:	30 27       	eor	r19, r16
+     adc:	30 27       	eor	r19, r16
 
 	mov r30, ST31
- b10:	ed 2d       	mov	r30, r13
+     ade:	ed 2d       	mov	r30, r13
 	ld  r25, Z
- b12:	90 81       	ld	r25, Z
+     ae0:	90 81       	ld	r25, Z
 	eor M0, r25
- b14:	09 27       	eor	r16, r25
+     ae2:	09 27       	eor	r16, r25
 	eor T1, r25
- b16:	59 27       	eor	r21, r25
+     ae4:	59 27       	eor	r21, r25
 	eor M3, r25
- b18:	39 27       	eor	r19, r25
+     ae6:	39 27       	eor	r19, r25
 	mov r28, ST31
- b1a:	cd 2d       	mov	r28, r13
+     ae8:	cd 2d       	mov	r28, r13
 	ld  r25, Y
- b1c:	98 81       	ld	r25, Y
+     aea:	98 81       	ld	r25, Y
 	eor M0, r25
- b1e:	09 27       	eor	r16, r25
+     aec:	09 27       	eor	r16, r25
 	eor T0, r25 ;3, 2, 2, 1 완료
- b20:	49 27       	eor	r20, r25
+     aee:	49 27       	eor	r20, r25
 
 	mov r30, ST02
- b22:	e2 2d       	mov	r30, r2
+     af0:	e2 2d       	mov	r30, r2
 	ld  r25, Z
- b24:	90 81       	ld	r25, Z
+     af2:	90 81       	ld	r25, Z
 	eor M0, r25
- b26:	09 27       	eor	r16, r25
+     af4:	09 27       	eor	r16, r25
 	eor T0, r25
- b28:	49 27       	eor	r20, r25
+     af6:	49 27       	eor	r20, r25
 	eor M3, r25
- b2a:	39 27       	eor	r19, r25
+     af8:	39 27       	eor	r19, r25
 	mov r28, ST02
- b2c:	c2 2d       	mov	r28, r2
+     afa:	c2 2d       	mov	r28, r2
 	ld  r25, Y
- b2e:	98 81       	ld	r25, Y
+     afc:	98 81       	ld	r25, Y
 	eor T0, r25
- b30:	49 27       	eor	r20, r25
+     afe:	49 27       	eor	r20, r25
 	eor T1, r25;1, 3, 2, 1 완료
- b32:	59 27       	eor	r21, r25
+     b00:	59 27       	eor	r21, r25
 
 	mov r30, ST13
- b34:	e7 2d       	mov	r30, r7
+     b02:	e7 2d       	mov	r30, r7
 	ld  r25, Z
- b36:	90 81       	ld	r25, Z
+     b04:	90 81       	ld	r25, Z
 	eor M0, r25
- b38:	09 27       	eor	r16, r25
+     b06:	09 27       	eor	r16, r25
 	eor T0, r25
- b3a:	49 27       	eor	r20, r25
+     b08:	49 27       	eor	r20, r25
 	eor T1, r25 
- b3c:	59 27       	eor	r21, r25
+     b0a:	59 27       	eor	r21, r25
 	mov r28, ST13
- b3e:	c7 2d       	mov	r28, r7
+     b0c:	c7 2d       	mov	r28, r7
 	ld  r25, Y
- b40:	98 81       	ld	r25, Y
+     b0e:	98 81       	ld	r25, Y
 	eor T1, r25
- b42:	59 27       	eor	r21, r25
+     b10:	59 27       	eor	r21, r25
 	eor M3, r25 ;1, 1, 3, 2 완료
- b44:	39 27       	eor	r19, r25
+     b12:	39 27       	eor	r19, r25
 
 	mov ST20, M0
- b46:	80 2e       	mov	r8, r16
+     b14:	80 2e       	mov	r8, r16
 	mov ST21, T0
- b48:	94 2e       	mov	r9, r20
+     b16:	94 2e       	mov	r9, r20
 	mov ST22, T1
- b4a:	a5 2e       	mov	r10, r21
+     b18:	a5 2e       	mov	r10, r21
 	mov ST13, T3
- b4c:	77 2e       	mov	r7, r23
+     b1a:	77 2e       	mov	r7, r23
 	//! 3번째 열 완료
 
 
 
 	//! 4번째 열 시작
 	mov r30, ST30 
- b4e:	ec 2d       	mov	r30, r12
+     b1c:	ec 2d       	mov	r30, r12
 	ld  T1, Z 
- b50:	50 81       	ld	r21, Z
+     b1e:	50 81       	ld	r21, Z
 	mov T3, T1
- b52:	75 2f       	mov	r23, r21
+     b20:	75 2f       	mov	r23, r21
 	mov r25, T3 
- b54:	97 2f       	mov	r25, r23
+     b22:	97 2f       	mov	r25, r23
 	mov r28, ST30
- b56:	cc 2d       	mov	r28, r12
+     b24:	cc 2d       	mov	r28, r12
 	ld  T0, Y
- b58:	48 81       	ld	r20, Y
+     b26:	48 81       	ld	r20, Y
 	eor r25, T0 ; 2, 1, 1, 3 완료
- b5a:	94 27       	eor	r25, r20
+     b28:	94 27       	eor	r25, r20
 
 	mov r30, ST01
- b5c:	e1 2d       	mov	r30, r1
+     b2a:	e1 2d       	mov	r30, r1
 	ld  M0, Z
- b5e:	00 81       	ld	r16, Z
+     b2c:	00 81       	ld	r16, Z
 	eor T0, M0
- b60:	40 27       	eor	r20, r16
+     b2e:	40 27       	eor	r20, r16
 	eor T3, M0
- b62:	70 27       	eor	r23, r16
+     b30:	70 27       	eor	r23, r16
 	eor r25, M0 
- b64:	90 27       	eor	r25, r16
+     b32:	90 27       	eor	r25, r16
 	mov r28, ST01
- b66:	c1 2d       	mov	r28, r1
+     b34:	c1 2d       	mov	r28, r1
 	ld  M0, Y
- b68:	08 81       	ld	r16, Y
+     b36:	08 81       	ld	r16, Y
 	eor T0, M0
- b6a:	40 27       	eor	r20, r16
+     b38:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- b6c:	50 27       	eor	r21, r16
+     b3a:	50 27       	eor	r21, r16
 
 	mov r30, ST12
- b6e:	e6 2d       	mov	r30, r6
+     b3c:	e6 2d       	mov	r30, r6
 	ld  M0, Z
- b70:	00 81       	ld	r16, Z
+     b3e:	00 81       	ld	r16, Z
 	eor T0, M0
- b72:	40 27       	eor	r20, r16
+     b40:	40 27       	eor	r20, r16
 	eor T1, M0
- b74:	50 27       	eor	r21, r16
+     b42:	50 27       	eor	r21, r16
 	eor r25, M0 
- b76:	90 27       	eor	r25, r16
+     b44:	90 27       	eor	r25, r16
 	mov r28, ST12
- b78:	c6 2d       	mov	r28, r6
+     b46:	c6 2d       	mov	r28, r6
 	ld  M0, Y
- b7a:	08 81       	ld	r16, Y
+     b48:	08 81       	ld	r16, Y
 	eor T1, M0
- b7c:	50 27       	eor	r21, r16
+     b4a:	50 27       	eor	r21, r16
 	eor T3, M0 ;1, 3, 2, 1 완료
- b7e:	70 27       	eor	r23, r16
+     b4c:	70 27       	eor	r23, r16
 
 	mov r30, ST23
- b80:	eb 2d       	mov	r30, r11
+     b4e:	eb 2d       	mov	r30, r11
 	ld  M0, Z
- b82:	00 81       	ld	r16, Z
+     b50:	00 81       	ld	r16, Z
 	eor T0, M0
- b84:	40 27       	eor	r20, r16
+     b52:	40 27       	eor	r20, r16
 	eor T1, M0
- b86:	50 27       	eor	r21, r16
+     b54:	50 27       	eor	r21, r16
 	eor T3, M0 
- b88:	70 27       	eor	r23, r16
+     b56:	70 27       	eor	r23, r16
 	mov r28, ST23
- b8a:	cb 2d       	mov	r28, r11
+     b58:	cb 2d       	mov	r28, r11
 	ld  M0, Y
- b8c:	08 81       	ld	r16, Y
+     b5a:	08 81       	ld	r16, Y
 	eor T3, M0
- b8e:	70 27       	eor	r23, r16
+     b5c:	70 27       	eor	r23, r16
 	eor r25, M0 ;1, 1, 3, 2 완료
- b90:	90 27       	eor	r25, r16
+     b5e:	90 27       	eor	r25, r16
 
 	mov ST30, T0
- b92:	c4 2e       	mov	r12, r20
+     b60:	c4 2e       	mov	r12, r20
 	mov ST31, T1
- b94:	d5 2e       	mov	r13, r21
+     b62:	d5 2e       	mov	r13, r21
 	mov ST32, T3
- b96:	e7 2e       	mov	r14, r23
+     b64:	e7 2e       	mov	r14, r23
 	mov ST33, r25
- b98:	f9 2e       	mov	r15, r25
+     b66:	f9 2e       	mov	r15, r25
 	mov ST01, M1
- b9a:	11 2e       	mov	r1, r17
+     b68:	11 2e       	mov	r1, r17
 	mov ST02, M2
- b9c:	22 2e       	mov	r2, r18
+     b6a:	22 2e       	mov	r2, r18
 	mov ST12, T2
- b9e:	66 2e       	mov	r6, r22
+     b6c:	66 2e       	mov	r6, r22
 	mov ST23, M3
- ba0:	b3 2e       	mov	r11, r19
+     b6e:	b3 2e       	mov	r11, r19
 	.irp row, 0, 1, 2, 3
 		.irp col, 0, 1, 2, 3
 			ld r16, X+
 			eor ST\row\col, r16
 		.endr
 	.endr
- ba2:	0d 91       	ld	r16, X+
- ba4:	00 26       	eor	r0, r16
- ba6:	0d 91       	ld	r16, X+
- ba8:	10 26       	eor	r1, r16
- baa:	0d 91       	ld	r16, X+
- bac:	20 26       	eor	r2, r16
- bae:	0d 91       	ld	r16, X+
- bb0:	30 26       	eor	r3, r16
- bb2:	0d 91       	ld	r16, X+
- bb4:	40 26       	eor	r4, r16
- bb6:	0d 91       	ld	r16, X+
- bb8:	50 26       	eor	r5, r16
- bba:	0d 91       	ld	r16, X+
- bbc:	60 26       	eor	r6, r16
- bbe:	0d 91       	ld	r16, X+
- bc0:	70 26       	eor	r7, r16
- bc2:	0d 91       	ld	r16, X+
- bc4:	80 26       	eor	r8, r16
- bc6:	0d 91       	ld	r16, X+
- bc8:	90 26       	eor	r9, r16
- bca:	0d 91       	ld	r16, X+
- bcc:	a0 26       	eor	r10, r16
- bce:	0d 91       	ld	r16, X+
- bd0:	b0 26       	eor	r11, r16
- bd2:	0d 91       	ld	r16, X+
- bd4:	c0 26       	eor	r12, r16
- bd6:	0d 91       	ld	r16, X+
- bd8:	d0 26       	eor	r13, r16
- bda:	0d 91       	ld	r16, X+
- bdc:	e0 26       	eor	r14, r16
- bde:	0d 91       	ld	r16, X+
- be0:	f0 26       	eor	r15, r16
+     b70:	0d 91       	ld	r16, X+
+     b72:	00 26       	eor	r0, r16
+     b74:	0d 91       	ld	r16, X+
+     b76:	10 26       	eor	r1, r16
+     b78:	0d 91       	ld	r16, X+
+     b7a:	20 26       	eor	r2, r16
+     b7c:	0d 91       	ld	r16, X+
+     b7e:	30 26       	eor	r3, r16
+     b80:	0d 91       	ld	r16, X+
+     b82:	40 26       	eor	r4, r16
+     b84:	0d 91       	ld	r16, X+
+     b86:	50 26       	eor	r5, r16
+     b88:	0d 91       	ld	r16, X+
+     b8a:	60 26       	eor	r6, r16
+     b8c:	0d 91       	ld	r16, X+
+     b8e:	70 26       	eor	r7, r16
+     b90:	0d 91       	ld	r16, X+
+     b92:	80 26       	eor	r8, r16
+     b94:	0d 91       	ld	r16, X+
+     b96:	90 26       	eor	r9, r16
+     b98:	0d 91       	ld	r16, X+
+     b9a:	a0 26       	eor	r10, r16
+     b9c:	0d 91       	ld	r16, X+
+     b9e:	b0 26       	eor	r11, r16
+     ba0:	0d 91       	ld	r16, X+
+     ba2:	c0 26       	eor	r12, r16
+     ba4:	0d 91       	ld	r16, X+
+     ba6:	d0 26       	eor	r13, r16
+     ba8:	0d 91       	ld	r16, X+
+     baa:	e0 26       	eor	r14, r16
+     bac:	0d 91       	ld	r16, X+
+     bae:	f0 26       	eor	r15, r16
 	
 	//8 Round------------------------------------------------------------------------------------------
 	
 	/* Shift Row and Subbyte , Mixcolumns */
 	//! 1번째 열 시작
 	mov r30, ST00 
- be2:	e0 2d       	mov	r30, r0
+     bb0:	e0 2d       	mov	r30, r0
 	ld  M1, Z 
- be4:	10 81       	ld	r17, Z
+     bb2:	10 81       	ld	r17, Z
 	mov M2, M1
- be6:	21 2f       	mov	r18, r17
+     bb4:	21 2f       	mov	r18, r17
 	mov M3, M2 
- be8:	32 2f       	mov	r19, r18
+     bb6:	32 2f       	mov	r19, r18
 	mov r28, ST00
- bea:	c0 2d       	mov	r28, r0
+     bb8:	c0 2d       	mov	r28, r0
 	ld  M0, Y
- bec:	08 81       	ld	r16, Y
+     bba:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- bee:	30 27       	eor	r19, r16
+     bbc:	30 27       	eor	r19, r16
 
 	mov r30, ST11
- bf0:	e5 2d       	mov	r30, r5
+     bbe:	e5 2d       	mov	r30, r5
 	ld  T0, Z
- bf2:	40 81       	ld	r20, Z
+     bc0:	40 81       	ld	r20, Z
 	eor M0, T0
- bf4:	04 27       	eor	r16, r20
+     bc2:	04 27       	eor	r16, r20
 	eor M2, T0
- bf6:	24 27       	eor	r18, r20
+     bc4:	24 27       	eor	r18, r20
 	eor M3, T0 
- bf8:	34 27       	eor	r19, r20
+     bc6:	34 27       	eor	r19, r20
 	mov r28, ST11
- bfa:	c5 2d       	mov	r28, r5
+     bc8:	c5 2d       	mov	r28, r5
 	ld  T0, Y
- bfc:	48 81       	ld	r20, Y
+     bca:	48 81       	ld	r20, Y
 	eor M0, T0
- bfe:	04 27       	eor	r16, r20
+     bcc:	04 27       	eor	r16, r20
 	eor M1, T0 ;3, 2, 2, 1 완료
- c00:	14 27       	eor	r17, r20
+     bce:	14 27       	eor	r17, r20
 
 	mov r30, ST22
- c02:	ea 2d       	mov	r30, r10
+     bd0:	ea 2d       	mov	r30, r10
 	ld  T0, Z
- c04:	40 81       	ld	r20, Z
+     bd2:	40 81       	ld	r20, Z
 	eor M0, T0
- c06:	04 27       	eor	r16, r20
+     bd4:	04 27       	eor	r16, r20
 	eor M1, T0
- c08:	14 27       	eor	r17, r20
+     bd6:	14 27       	eor	r17, r20
 	eor M3, T0
- c0a:	34 27       	eor	r19, r20
+     bd8:	34 27       	eor	r19, r20
 	mov r28, ST22
- c0c:	ca 2d       	mov	r28, r10
+     bda:	ca 2d       	mov	r28, r10
 	ld  T0, Y
- c0e:	48 81       	ld	r20, Y
+     bdc:	48 81       	ld	r20, Y
 	eor M1, T0
- c10:	14 27       	eor	r17, r20
+     bde:	14 27       	eor	r17, r20
 	eor M2, T0 ;1, 3, 2, 1 완료
- c12:	24 27       	eor	r18, r20
+     be0:	24 27       	eor	r18, r20
 
 	mov r30, ST33
- c14:	ef 2d       	mov	r30, r15
+     be2:	ef 2d       	mov	r30, r15
 	ld  T0, Z
- c16:	40 81       	ld	r20, Z
+     be4:	40 81       	ld	r20, Z
 	eor M0, T0
- c18:	04 27       	eor	r16, r20
+     be6:	04 27       	eor	r16, r20
 	eor M1, T0
- c1a:	14 27       	eor	r17, r20
+     be8:	14 27       	eor	r17, r20
 	eor M2, T0 
- c1c:	24 27       	eor	r18, r20
+     bea:	24 27       	eor	r18, r20
 	mov r28, ST33
- c1e:	cf 2d       	mov	r28, r15
+     bec:	cf 2d       	mov	r28, r15
 	ld  T0, Y
- c20:	48 81       	ld	r20, Y
+     bee:	48 81       	ld	r20, Y
 	eor M2, T0
- c22:	24 27       	eor	r18, r20
+     bf0:	24 27       	eor	r18, r20
 	eor M3, T0 ;1, 1, 3, 2 완료
- c24:	34 27       	eor	r19, r20
+     bf2:	34 27       	eor	r19, r20
 
 	mov ST00, M0
- c26:	00 2e       	mov	r0, r16
+     bf4:	00 2e       	mov	r0, r16
 	//! 1번째 열 완료
 
 	//! 2번째 열 시작
 	mov r30, ST10 
- c28:	e4 2d       	mov	r30, r4
+     bf6:	e4 2d       	mov	r30, r4
 	ld  T1, Z 
- c2a:	50 81       	ld	r21, Z
+     bf8:	50 81       	ld	r21, Z
 	mov T2, T1
- c2c:	65 2f       	mov	r22, r21
+     bfa:	65 2f       	mov	r22, r21
 	mov T3, T2 
- c2e:	76 2f       	mov	r23, r22
+     bfc:	76 2f       	mov	r23, r22
 	mov r28, ST10
- c30:	c4 2d       	mov	r28, r4
+     bfe:	c4 2d       	mov	r28, r4
 	ld  T0, Y
- c32:	48 81       	ld	r20, Y
+     c00:	48 81       	ld	r20, Y
 	eor T3, T0 ; 2, 1, 1, 3 완료
- c34:	74 27       	eor	r23, r20
+     c02:	74 27       	eor	r23, r20
 
 	mov r30, ST21
- c36:	e9 2d       	mov	r30, r9
+     c04:	e9 2d       	mov	r30, r9
 	ld  M0, Z
- c38:	00 81       	ld	r16, Z
+     c06:	00 81       	ld	r16, Z
 	eor T0, M0
- c3a:	40 27       	eor	r20, r16
+     c08:	40 27       	eor	r20, r16
 	eor T2, M0
- c3c:	60 27       	eor	r22, r16
+     c0a:	60 27       	eor	r22, r16
 	eor T3, M0 
- c3e:	70 27       	eor	r23, r16
+     c0c:	70 27       	eor	r23, r16
 	mov r28, ST21
- c40:	c9 2d       	mov	r28, r9
+     c0e:	c9 2d       	mov	r28, r9
 	ld  M0, Y
- c42:	08 81       	ld	r16, Y
+     c10:	08 81       	ld	r16, Y
 	eor T0, M0
- c44:	40 27       	eor	r20, r16
+     c12:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- c46:	50 27       	eor	r21, r16
+     c14:	50 27       	eor	r21, r16
 
 	mov r30, ST32
- c48:	ee 2d       	mov	r30, r14
+     c16:	ee 2d       	mov	r30, r14
 	ld  M0, Z
- c4a:	00 81       	ld	r16, Z
+     c18:	00 81       	ld	r16, Z
 	eor T0, M0
- c4c:	40 27       	eor	r20, r16
+     c1a:	40 27       	eor	r20, r16
 	eor T1, M0
- c4e:	50 27       	eor	r21, r16
+     c1c:	50 27       	eor	r21, r16
 	eor T3, M0 
- c50:	70 27       	eor	r23, r16
+     c1e:	70 27       	eor	r23, r16
 	mov r28, ST32
- c52:	ce 2d       	mov	r28, r14
+     c20:	ce 2d       	mov	r28, r14
 	ld  M0, Y
- c54:	08 81       	ld	r16, Y
+     c22:	08 81       	ld	r16, Y
 	eor T1, M0
- c56:	50 27       	eor	r21, r16
+     c24:	50 27       	eor	r21, r16
 	eor T2, M0 ;1, 3, 2, 1 완료
- c58:	60 27       	eor	r22, r16
+     c26:	60 27       	eor	r22, r16
 
 	mov r30, ST03
- c5a:	e3 2d       	mov	r30, r3
+     c28:	e3 2d       	mov	r30, r3
 	ld  M0, Z
- c5c:	00 81       	ld	r16, Z
+     c2a:	00 81       	ld	r16, Z
 	eor T0, M0
- c5e:	40 27       	eor	r20, r16
+     c2c:	40 27       	eor	r20, r16
 	eor T1, M0
- c60:	50 27       	eor	r21, r16
+     c2e:	50 27       	eor	r21, r16
 	eor T2, M0 
- c62:	60 27       	eor	r22, r16
+     c30:	60 27       	eor	r22, r16
 	mov r28, ST03
- c64:	c3 2d       	mov	r28, r3
+     c32:	c3 2d       	mov	r28, r3
 	ld  M0, Y
- c66:	08 81       	ld	r16, Y
+     c34:	08 81       	ld	r16, Y
 	eor T2, M0
- c68:	60 27       	eor	r22, r16
+     c36:	60 27       	eor	r22, r16
 	eor T3, M0 ;1, 1, 3, 2 완료
- c6a:	70 27       	eor	r23, r16
+     c38:	70 27       	eor	r23, r16
 
 	mov ST10, T0
- c6c:	44 2e       	mov	r4, r20
+     c3a:	44 2e       	mov	r4, r20
 	mov ST11, T1
- c6e:	55 2e       	mov	r5, r21
+     c3c:	55 2e       	mov	r5, r21
 	mov ST03, M3
- c70:	33 2e       	mov	r3, r19
+     c3e:	33 2e       	mov	r3, r19
 	//! 2번째 열 완료
 
 	//! 3번째 열 시작
 	mov r30, ST20 
- c72:	e8 2d       	mov	r30, r8
+     c40:	e8 2d       	mov	r30, r8
 	ld  T0, Z 
- c74:	40 81       	ld	r20, Z
+     c42:	40 81       	ld	r20, Z
 	mov T1, T0
- c76:	54 2f       	mov	r21, r20
+     c44:	54 2f       	mov	r21, r20
 	mov M3, T1 
- c78:	35 2f       	mov	r19, r21
+     c46:	35 2f       	mov	r19, r21
 	mov r28, ST20
- c7a:	c8 2d       	mov	r28, r8
+     c48:	c8 2d       	mov	r28, r8
 	ld  M0, Y
- c7c:	08 81       	ld	r16, Y
+     c4a:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- c7e:	30 27       	eor	r19, r16
+     c4c:	30 27       	eor	r19, r16
 
 	mov r30, ST31
- c80:	ed 2d       	mov	r30, r13
+     c4e:	ed 2d       	mov	r30, r13
 	ld  r25, Z
- c82:	90 81       	ld	r25, Z
+     c50:	90 81       	ld	r25, Z
 	eor M0, r25
- c84:	09 27       	eor	r16, r25
+     c52:	09 27       	eor	r16, r25
 	eor T1, r25
- c86:	59 27       	eor	r21, r25
+     c54:	59 27       	eor	r21, r25
 	eor M3, r25
- c88:	39 27       	eor	r19, r25
+     c56:	39 27       	eor	r19, r25
 	mov r28, ST31
- c8a:	cd 2d       	mov	r28, r13
+     c58:	cd 2d       	mov	r28, r13
 	ld  r25, Y
- c8c:	98 81       	ld	r25, Y
+     c5a:	98 81       	ld	r25, Y
 	eor M0, r25
- c8e:	09 27       	eor	r16, r25
+     c5c:	09 27       	eor	r16, r25
 	eor T0, r25 ;3, 2, 2, 1 완료
- c90:	49 27       	eor	r20, r25
+     c5e:	49 27       	eor	r20, r25
 
 	mov r30, ST02
- c92:	e2 2d       	mov	r30, r2
+     c60:	e2 2d       	mov	r30, r2
 	ld  r25, Z
- c94:	90 81       	ld	r25, Z
+     c62:	90 81       	ld	r25, Z
 	eor M0, r25
- c96:	09 27       	eor	r16, r25
+     c64:	09 27       	eor	r16, r25
 	eor T0, r25
- c98:	49 27       	eor	r20, r25
+     c66:	49 27       	eor	r20, r25
 	eor M3, r25
- c9a:	39 27       	eor	r19, r25
+     c68:	39 27       	eor	r19, r25
 	mov r28, ST02
- c9c:	c2 2d       	mov	r28, r2
+     c6a:	c2 2d       	mov	r28, r2
 	ld  r25, Y
- c9e:	98 81       	ld	r25, Y
+     c6c:	98 81       	ld	r25, Y
 	eor T0, r25
- ca0:	49 27       	eor	r20, r25
+     c6e:	49 27       	eor	r20, r25
 	eor T1, r25;1, 3, 2, 1 완료
- ca2:	59 27       	eor	r21, r25
+     c70:	59 27       	eor	r21, r25
 
 	mov r30, ST13
- ca4:	e7 2d       	mov	r30, r7
+     c72:	e7 2d       	mov	r30, r7
 	ld  r25, Z
- ca6:	90 81       	ld	r25, Z
+     c74:	90 81       	ld	r25, Z
 	eor M0, r25
- ca8:	09 27       	eor	r16, r25
+     c76:	09 27       	eor	r16, r25
 	eor T0, r25
- caa:	49 27       	eor	r20, r25
+     c78:	49 27       	eor	r20, r25
 	eor T1, r25 
- cac:	59 27       	eor	r21, r25
+     c7a:	59 27       	eor	r21, r25
 	mov r28, ST13
- cae:	c7 2d       	mov	r28, r7
+     c7c:	c7 2d       	mov	r28, r7
 	ld  r25, Y
- cb0:	98 81       	ld	r25, Y
+     c7e:	98 81       	ld	r25, Y
 	eor T1, r25
- cb2:	59 27       	eor	r21, r25
+     c80:	59 27       	eor	r21, r25
 	eor M3, r25 ;1, 1, 3, 2 완료
- cb4:	39 27       	eor	r19, r25
+     c82:	39 27       	eor	r19, r25
 
 	mov ST20, M0
- cb6:	80 2e       	mov	r8, r16
+     c84:	80 2e       	mov	r8, r16
 	mov ST21, T0
- cb8:	94 2e       	mov	r9, r20
+     c86:	94 2e       	mov	r9, r20
 	mov ST22, T1
- cba:	a5 2e       	mov	r10, r21
+     c88:	a5 2e       	mov	r10, r21
 	mov ST13, T3
- cbc:	77 2e       	mov	r7, r23
+     c8a:	77 2e       	mov	r7, r23
 	//! 3번째 열 완료
 
 
 
 	//! 4번째 열 시작
 	mov r30, ST30 
- cbe:	ec 2d       	mov	r30, r12
+     c8c:	ec 2d       	mov	r30, r12
 	ld  T1, Z 
- cc0:	50 81       	ld	r21, Z
+     c8e:	50 81       	ld	r21, Z
 	mov T3, T1
- cc2:	75 2f       	mov	r23, r21
+     c90:	75 2f       	mov	r23, r21
 	mov r25, T3 
- cc4:	97 2f       	mov	r25, r23
+     c92:	97 2f       	mov	r25, r23
 	mov r28, ST30
- cc6:	cc 2d       	mov	r28, r12
+     c94:	cc 2d       	mov	r28, r12
 	ld  T0, Y
- cc8:	48 81       	ld	r20, Y
+     c96:	48 81       	ld	r20, Y
 	eor r25, T0 ; 2, 1, 1, 3 완료
- cca:	94 27       	eor	r25, r20
+     c98:	94 27       	eor	r25, r20
 
 	mov r30, ST01
- ccc:	e1 2d       	mov	r30, r1
+     c9a:	e1 2d       	mov	r30, r1
 	ld  M0, Z
- cce:	00 81       	ld	r16, Z
+     c9c:	00 81       	ld	r16, Z
 	eor T0, M0
- cd0:	40 27       	eor	r20, r16
+     c9e:	40 27       	eor	r20, r16
 	eor T3, M0
- cd2:	70 27       	eor	r23, r16
+     ca0:	70 27       	eor	r23, r16
 	eor r25, M0 
- cd4:	90 27       	eor	r25, r16
+     ca2:	90 27       	eor	r25, r16
 	mov r28, ST01
- cd6:	c1 2d       	mov	r28, r1
+     ca4:	c1 2d       	mov	r28, r1
 	ld  M0, Y
- cd8:	08 81       	ld	r16, Y
+     ca6:	08 81       	ld	r16, Y
 	eor T0, M0
- cda:	40 27       	eor	r20, r16
+     ca8:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- cdc:	50 27       	eor	r21, r16
+     caa:	50 27       	eor	r21, r16
 
 	mov r30, ST12
- cde:	e6 2d       	mov	r30, r6
+     cac:	e6 2d       	mov	r30, r6
 	ld  M0, Z
- ce0:	00 81       	ld	r16, Z
+     cae:	00 81       	ld	r16, Z
 	eor T0, M0
- ce2:	40 27       	eor	r20, r16
+     cb0:	40 27       	eor	r20, r16
 	eor T1, M0
- ce4:	50 27       	eor	r21, r16
+     cb2:	50 27       	eor	r21, r16
 	eor r25, M0 
- ce6:	90 27       	eor	r25, r16
+     cb4:	90 27       	eor	r25, r16
 	mov r28, ST12
- ce8:	c6 2d       	mov	r28, r6
+     cb6:	c6 2d       	mov	r28, r6
 	ld  M0, Y
- cea:	08 81       	ld	r16, Y
+     cb8:	08 81       	ld	r16, Y
 	eor T1, M0
- cec:	50 27       	eor	r21, r16
+     cba:	50 27       	eor	r21, r16
 	eor T3, M0 ;1, 3, 2, 1 완료
- cee:	70 27       	eor	r23, r16
+     cbc:	70 27       	eor	r23, r16
 
 	mov r30, ST23
- cf0:	eb 2d       	mov	r30, r11
+     cbe:	eb 2d       	mov	r30, r11
 	ld  M0, Z
- cf2:	00 81       	ld	r16, Z
+     cc0:	00 81       	ld	r16, Z
 	eor T0, M0
- cf4:	40 27       	eor	r20, r16
+     cc2:	40 27       	eor	r20, r16
 	eor T1, M0
- cf6:	50 27       	eor	r21, r16
+     cc4:	50 27       	eor	r21, r16
 	eor T3, M0 
- cf8:	70 27       	eor	r23, r16
+     cc6:	70 27       	eor	r23, r16
 	mov r28, ST23
- cfa:	cb 2d       	mov	r28, r11
+     cc8:	cb 2d       	mov	r28, r11
 	ld  M0, Y
- cfc:	08 81       	ld	r16, Y
+     cca:	08 81       	ld	r16, Y
 	eor T3, M0
- cfe:	70 27       	eor	r23, r16
+     ccc:	70 27       	eor	r23, r16
 	eor r25, M0 ;1, 1, 3, 2 완료
- d00:	90 27       	eor	r25, r16
+     cce:	90 27       	eor	r25, r16
 
 	mov ST30, T0
- d02:	c4 2e       	mov	r12, r20
+     cd0:	c4 2e       	mov	r12, r20
 	mov ST31, T1
- d04:	d5 2e       	mov	r13, r21
+     cd2:	d5 2e       	mov	r13, r21
 	mov ST32, T3
- d06:	e7 2e       	mov	r14, r23
+     cd4:	e7 2e       	mov	r14, r23
 	mov ST33, r25
- d08:	f9 2e       	mov	r15, r25
+     cd6:	f9 2e       	mov	r15, r25
 	mov ST01, M1
- d0a:	11 2e       	mov	r1, r17
+     cd8:	11 2e       	mov	r1, r17
 	mov ST02, M2
- d0c:	22 2e       	mov	r2, r18
+     cda:	22 2e       	mov	r2, r18
 	mov ST12, T2
- d0e:	66 2e       	mov	r6, r22
+     cdc:	66 2e       	mov	r6, r22
 	mov ST23, M3
- d10:	b3 2e       	mov	r11, r19
+     cde:	b3 2e       	mov	r11, r19
 	.irp row, 0, 1, 2, 3
 		.irp col, 0, 1, 2, 3
 			ld r16, X+
 			eor ST\row\col, r16
 		.endr
 	.endr
- d12:	0d 91       	ld	r16, X+
- d14:	00 26       	eor	r0, r16
- d16:	0d 91       	ld	r16, X+
- d18:	10 26       	eor	r1, r16
- d1a:	0d 91       	ld	r16, X+
- d1c:	20 26       	eor	r2, r16
- d1e:	0d 91       	ld	r16, X+
- d20:	30 26       	eor	r3, r16
- d22:	0d 91       	ld	r16, X+
- d24:	40 26       	eor	r4, r16
- d26:	0d 91       	ld	r16, X+
- d28:	50 26       	eor	r5, r16
- d2a:	0d 91       	ld	r16, X+
- d2c:	60 26       	eor	r6, r16
- d2e:	0d 91       	ld	r16, X+
- d30:	70 26       	eor	r7, r16
- d32:	0d 91       	ld	r16, X+
- d34:	80 26       	eor	r8, r16
- d36:	0d 91       	ld	r16, X+
- d38:	90 26       	eor	r9, r16
- d3a:	0d 91       	ld	r16, X+
- d3c:	a0 26       	eor	r10, r16
- d3e:	0d 91       	ld	r16, X+
- d40:	b0 26       	eor	r11, r16
- d42:	0d 91       	ld	r16, X+
- d44:	c0 26       	eor	r12, r16
- d46:	0d 91       	ld	r16, X+
- d48:	d0 26       	eor	r13, r16
- d4a:	0d 91       	ld	r16, X+
- d4c:	e0 26       	eor	r14, r16
- d4e:	0d 91       	ld	r16, X+
- d50:	f0 26       	eor	r15, r16
+     ce0:	0d 91       	ld	r16, X+
+     ce2:	00 26       	eor	r0, r16
+     ce4:	0d 91       	ld	r16, X+
+     ce6:	10 26       	eor	r1, r16
+     ce8:	0d 91       	ld	r16, X+
+     cea:	20 26       	eor	r2, r16
+     cec:	0d 91       	ld	r16, X+
+     cee:	30 26       	eor	r3, r16
+     cf0:	0d 91       	ld	r16, X+
+     cf2:	40 26       	eor	r4, r16
+     cf4:	0d 91       	ld	r16, X+
+     cf6:	50 26       	eor	r5, r16
+     cf8:	0d 91       	ld	r16, X+
+     cfa:	60 26       	eor	r6, r16
+     cfc:	0d 91       	ld	r16, X+
+     cfe:	70 26       	eor	r7, r16
+     d00:	0d 91       	ld	r16, X+
+     d02:	80 26       	eor	r8, r16
+     d04:	0d 91       	ld	r16, X+
+     d06:	90 26       	eor	r9, r16
+     d08:	0d 91       	ld	r16, X+
+     d0a:	a0 26       	eor	r10, r16
+     d0c:	0d 91       	ld	r16, X+
+     d0e:	b0 26       	eor	r11, r16
+     d10:	0d 91       	ld	r16, X+
+     d12:	c0 26       	eor	r12, r16
+     d14:	0d 91       	ld	r16, X+
+     d16:	d0 26       	eor	r13, r16
+     d18:	0d 91       	ld	r16, X+
+     d1a:	e0 26       	eor	r14, r16
+     d1c:	0d 91       	ld	r16, X+
+     d1e:	f0 26       	eor	r15, r16
 	
 	//9 Round------------------------------------------------------------------------------------------
 	
 	/* Shift Row and Subbyte , Mixcolumns */
 	//! 1번째 열 시작
 	mov r30, ST00 
- d52:	e0 2d       	mov	r30, r0
+     d20:	e0 2d       	mov	r30, r0
 	ld  M1, Z 
- d54:	10 81       	ld	r17, Z
+     d22:	10 81       	ld	r17, Z
 	mov M2, M1
- d56:	21 2f       	mov	r18, r17
+     d24:	21 2f       	mov	r18, r17
 	mov M3, M2 
- d58:	32 2f       	mov	r19, r18
+     d26:	32 2f       	mov	r19, r18
 	mov r28, ST00
- d5a:	c0 2d       	mov	r28, r0
+     d28:	c0 2d       	mov	r28, r0
 	ld  M0, Y
- d5c:	08 81       	ld	r16, Y
+     d2a:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- d5e:	30 27       	eor	r19, r16
+     d2c:	30 27       	eor	r19, r16
 
 	mov r30, ST11
- d60:	e5 2d       	mov	r30, r5
+     d2e:	e5 2d       	mov	r30, r5
 	ld  T0, Z
- d62:	40 81       	ld	r20, Z
+     d30:	40 81       	ld	r20, Z
 	eor M0, T0
- d64:	04 27       	eor	r16, r20
+     d32:	04 27       	eor	r16, r20
 	eor M2, T0
- d66:	24 27       	eor	r18, r20
+     d34:	24 27       	eor	r18, r20
 	eor M3, T0 
- d68:	34 27       	eor	r19, r20
+     d36:	34 27       	eor	r19, r20
 	mov r28, ST11
- d6a:	c5 2d       	mov	r28, r5
+     d38:	c5 2d       	mov	r28, r5
 	ld  T0, Y
- d6c:	48 81       	ld	r20, Y
+     d3a:	48 81       	ld	r20, Y
 	eor M0, T0
- d6e:	04 27       	eor	r16, r20
+     d3c:	04 27       	eor	r16, r20
 	eor M1, T0 ;3, 2, 2, 1 완료
- d70:	14 27       	eor	r17, r20
+     d3e:	14 27       	eor	r17, r20
 
 	mov r30, ST22
- d72:	ea 2d       	mov	r30, r10
+     d40:	ea 2d       	mov	r30, r10
 	ld  T0, Z
- d74:	40 81       	ld	r20, Z
+     d42:	40 81       	ld	r20, Z
 	eor M0, T0
- d76:	04 27       	eor	r16, r20
+     d44:	04 27       	eor	r16, r20
 	eor M1, T0
- d78:	14 27       	eor	r17, r20
+     d46:	14 27       	eor	r17, r20
 	eor M3, T0
- d7a:	34 27       	eor	r19, r20
+     d48:	34 27       	eor	r19, r20
 	mov r28, ST22
- d7c:	ca 2d       	mov	r28, r10
+     d4a:	ca 2d       	mov	r28, r10
 	ld  T0, Y
- d7e:	48 81       	ld	r20, Y
+     d4c:	48 81       	ld	r20, Y
 	eor M1, T0
- d80:	14 27       	eor	r17, r20
+     d4e:	14 27       	eor	r17, r20
 	eor M2, T0 ;1, 3, 2, 1 완료
- d82:	24 27       	eor	r18, r20
+     d50:	24 27       	eor	r18, r20
 
 	mov r30, ST33
- d84:	ef 2d       	mov	r30, r15
+     d52:	ef 2d       	mov	r30, r15
 	ld  T0, Z
- d86:	40 81       	ld	r20, Z
+     d54:	40 81       	ld	r20, Z
 	eor M0, T0
- d88:	04 27       	eor	r16, r20
+     d56:	04 27       	eor	r16, r20
 	eor M1, T0
- d8a:	14 27       	eor	r17, r20
+     d58:	14 27       	eor	r17, r20
 	eor M2, T0 
- d8c:	24 27       	eor	r18, r20
+     d5a:	24 27       	eor	r18, r20
 	mov r28, ST33
- d8e:	cf 2d       	mov	r28, r15
+     d5c:	cf 2d       	mov	r28, r15
 	ld  T0, Y
- d90:	48 81       	ld	r20, Y
+     d5e:	48 81       	ld	r20, Y
 	eor M2, T0
- d92:	24 27       	eor	r18, r20
+     d60:	24 27       	eor	r18, r20
 	eor M3, T0 ;1, 1, 3, 2 완료
- d94:	34 27       	eor	r19, r20
+     d62:	34 27       	eor	r19, r20
 
 	mov ST00, M0
- d96:	00 2e       	mov	r0, r16
+     d64:	00 2e       	mov	r0, r16
 	//! 1번째 열 완료
 
 	//! 2번째 열 시작
 	mov r30, ST10 
- d98:	e4 2d       	mov	r30, r4
+     d66:	e4 2d       	mov	r30, r4
 	ld  T1, Z 
- d9a:	50 81       	ld	r21, Z
+     d68:	50 81       	ld	r21, Z
 	mov T2, T1
- d9c:	65 2f       	mov	r22, r21
+     d6a:	65 2f       	mov	r22, r21
 	mov T3, T2 
- d9e:	76 2f       	mov	r23, r22
+     d6c:	76 2f       	mov	r23, r22
 	mov r28, ST10
- da0:	c4 2d       	mov	r28, r4
+     d6e:	c4 2d       	mov	r28, r4
 	ld  T0, Y
- da2:	48 81       	ld	r20, Y
+     d70:	48 81       	ld	r20, Y
 	eor T3, T0 ; 2, 1, 1, 3 완료
- da4:	74 27       	eor	r23, r20
+     d72:	74 27       	eor	r23, r20
 
 	mov r30, ST21
- da6:	e9 2d       	mov	r30, r9
+     d74:	e9 2d       	mov	r30, r9
 	ld  M0, Z
- da8:	00 81       	ld	r16, Z
+     d76:	00 81       	ld	r16, Z
 	eor T0, M0
- daa:	40 27       	eor	r20, r16
+     d78:	40 27       	eor	r20, r16
 	eor T2, M0
- dac:	60 27       	eor	r22, r16
+     d7a:	60 27       	eor	r22, r16
 	eor T3, M0 
- dae:	70 27       	eor	r23, r16
+     d7c:	70 27       	eor	r23, r16
 	mov r28, ST21
- db0:	c9 2d       	mov	r28, r9
+     d7e:	c9 2d       	mov	r28, r9
 	ld  M0, Y
- db2:	08 81       	ld	r16, Y
+     d80:	08 81       	ld	r16, Y
 	eor T0, M0
- db4:	40 27       	eor	r20, r16
+     d82:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- db6:	50 27       	eor	r21, r16
+     d84:	50 27       	eor	r21, r16
 
 	mov r30, ST32
- db8:	ee 2d       	mov	r30, r14
+     d86:	ee 2d       	mov	r30, r14
 	ld  M0, Z
- dba:	00 81       	ld	r16, Z
+     d88:	00 81       	ld	r16, Z
 	eor T0, M0
- dbc:	40 27       	eor	r20, r16
+     d8a:	40 27       	eor	r20, r16
 	eor T1, M0
- dbe:	50 27       	eor	r21, r16
+     d8c:	50 27       	eor	r21, r16
 	eor T3, M0 
- dc0:	70 27       	eor	r23, r16
+     d8e:	70 27       	eor	r23, r16
 	mov r28, ST32
- dc2:	ce 2d       	mov	r28, r14
+     d90:	ce 2d       	mov	r28, r14
 	ld  M0, Y
- dc4:	08 81       	ld	r16, Y
+     d92:	08 81       	ld	r16, Y
 	eor T1, M0
- dc6:	50 27       	eor	r21, r16
+     d94:	50 27       	eor	r21, r16
 	eor T2, M0 ;1, 3, 2, 1 완료
- dc8:	60 27       	eor	r22, r16
+     d96:	60 27       	eor	r22, r16
 
 	mov r30, ST03
- dca:	e3 2d       	mov	r30, r3
+     d98:	e3 2d       	mov	r30, r3
 	ld  M0, Z
- dcc:	00 81       	ld	r16, Z
+     d9a:	00 81       	ld	r16, Z
 	eor T0, M0
- dce:	40 27       	eor	r20, r16
+     d9c:	40 27       	eor	r20, r16
 	eor T1, M0
- dd0:	50 27       	eor	r21, r16
+     d9e:	50 27       	eor	r21, r16
 	eor T2, M0 
- dd2:	60 27       	eor	r22, r16
+     da0:	60 27       	eor	r22, r16
 	mov r28, ST03
- dd4:	c3 2d       	mov	r28, r3
+     da2:	c3 2d       	mov	r28, r3
 	ld  M0, Y
- dd6:	08 81       	ld	r16, Y
+     da4:	08 81       	ld	r16, Y
 	eor T2, M0
- dd8:	60 27       	eor	r22, r16
+     da6:	60 27       	eor	r22, r16
 	eor T3, M0 ;1, 1, 3, 2 완료
- dda:	70 27       	eor	r23, r16
+     da8:	70 27       	eor	r23, r16
 
 	mov ST10, T0
- ddc:	44 2e       	mov	r4, r20
+     daa:	44 2e       	mov	r4, r20
 	mov ST11, T1
- dde:	55 2e       	mov	r5, r21
+     dac:	55 2e       	mov	r5, r21
 	mov ST03, M3
- de0:	33 2e       	mov	r3, r19
+     dae:	33 2e       	mov	r3, r19
 	//! 2번째 열 완료
 
 	//! 3번째 열 시작
 	mov r30, ST20 
- de2:	e8 2d       	mov	r30, r8
+     db0:	e8 2d       	mov	r30, r8
 	ld  T0, Z 
- de4:	40 81       	ld	r20, Z
+     db2:	40 81       	ld	r20, Z
 	mov T1, T0
- de6:	54 2f       	mov	r21, r20
+     db4:	54 2f       	mov	r21, r20
 	mov M3, T1 
- de8:	35 2f       	mov	r19, r21
+     db6:	35 2f       	mov	r19, r21
 	mov r28, ST20
- dea:	c8 2d       	mov	r28, r8
+     db8:	c8 2d       	mov	r28, r8
 	ld  M0, Y
- dec:	08 81       	ld	r16, Y
+     dba:	08 81       	ld	r16, Y
 	eor M3, M0 ; 2, 1, 1, 3 완료
- dee:	30 27       	eor	r19, r16
+     dbc:	30 27       	eor	r19, r16
 
 	mov r30, ST31
- df0:	ed 2d       	mov	r30, r13
+     dbe:	ed 2d       	mov	r30, r13
 	ld  r25, Z
- df2:	90 81       	ld	r25, Z
+     dc0:	90 81       	ld	r25, Z
 	eor M0, r25
- df4:	09 27       	eor	r16, r25
+     dc2:	09 27       	eor	r16, r25
 	eor T1, r25
- df6:	59 27       	eor	r21, r25
+     dc4:	59 27       	eor	r21, r25
 	eor M3, r25
- df8:	39 27       	eor	r19, r25
+     dc6:	39 27       	eor	r19, r25
 	mov r28, ST31
- dfa:	cd 2d       	mov	r28, r13
+     dc8:	cd 2d       	mov	r28, r13
 	ld  r25, Y
- dfc:	98 81       	ld	r25, Y
+     dca:	98 81       	ld	r25, Y
 	eor M0, r25
- dfe:	09 27       	eor	r16, r25
+     dcc:	09 27       	eor	r16, r25
 	eor T0, r25 ;3, 2, 2, 1 완료
- e00:	49 27       	eor	r20, r25
+     dce:	49 27       	eor	r20, r25
 
 	mov r30, ST02
- e02:	e2 2d       	mov	r30, r2
+     dd0:	e2 2d       	mov	r30, r2
 	ld  r25, Z
- e04:	90 81       	ld	r25, Z
+     dd2:	90 81       	ld	r25, Z
 	eor M0, r25
- e06:	09 27       	eor	r16, r25
+     dd4:	09 27       	eor	r16, r25
 	eor T0, r25
- e08:	49 27       	eor	r20, r25
+     dd6:	49 27       	eor	r20, r25
 	eor M3, r25
- e0a:	39 27       	eor	r19, r25
+     dd8:	39 27       	eor	r19, r25
 	mov r28, ST02
- e0c:	c2 2d       	mov	r28, r2
+     dda:	c2 2d       	mov	r28, r2
 	ld  r25, Y
- e0e:	98 81       	ld	r25, Y
+     ddc:	98 81       	ld	r25, Y
 	eor T0, r25
- e10:	49 27       	eor	r20, r25
+     dde:	49 27       	eor	r20, r25
 	eor T1, r25;1, 3, 2, 1 완료
- e12:	59 27       	eor	r21, r25
+     de0:	59 27       	eor	r21, r25
 
 	mov r30, ST13
- e14:	e7 2d       	mov	r30, r7
+     de2:	e7 2d       	mov	r30, r7
 	ld  r25, Z
- e16:	90 81       	ld	r25, Z
+     de4:	90 81       	ld	r25, Z
 	eor M0, r25
- e18:	09 27       	eor	r16, r25
+     de6:	09 27       	eor	r16, r25
 	eor T0, r25
- e1a:	49 27       	eor	r20, r25
+     de8:	49 27       	eor	r20, r25
 	eor T1, r25 
- e1c:	59 27       	eor	r21, r25
+     dea:	59 27       	eor	r21, r25
 	mov r28, ST13
- e1e:	c7 2d       	mov	r28, r7
+     dec:	c7 2d       	mov	r28, r7
 	ld  r25, Y
- e20:	98 81       	ld	r25, Y
+     dee:	98 81       	ld	r25, Y
 	eor T1, r25
- e22:	59 27       	eor	r21, r25
+     df0:	59 27       	eor	r21, r25
 	eor M3, r25 ;1, 1, 3, 2 완료
- e24:	39 27       	eor	r19, r25
+     df2:	39 27       	eor	r19, r25
 
 	mov ST20, M0
- e26:	80 2e       	mov	r8, r16
+     df4:	80 2e       	mov	r8, r16
 	mov ST21, T0
- e28:	94 2e       	mov	r9, r20
+     df6:	94 2e       	mov	r9, r20
 	mov ST22, T1
- e2a:	a5 2e       	mov	r10, r21
+     df8:	a5 2e       	mov	r10, r21
 	mov ST13, T3
- e2c:	77 2e       	mov	r7, r23
+     dfa:	77 2e       	mov	r7, r23
 	//! 3번째 열 완료
 
 
 
 	//! 4번째 열 시작
 	mov r30, ST30 
- e2e:	ec 2d       	mov	r30, r12
+     dfc:	ec 2d       	mov	r30, r12
 	ld  T1, Z 
- e30:	50 81       	ld	r21, Z
+     dfe:	50 81       	ld	r21, Z
 	mov T3, T1
- e32:	75 2f       	mov	r23, r21
+     e00:	75 2f       	mov	r23, r21
 	mov r25, T3 
- e34:	97 2f       	mov	r25, r23
+     e02:	97 2f       	mov	r25, r23
 	mov r28, ST30
- e36:	cc 2d       	mov	r28, r12
+     e04:	cc 2d       	mov	r28, r12
 	ld  T0, Y
- e38:	48 81       	ld	r20, Y
+     e06:	48 81       	ld	r20, Y
 	eor r25, T0 ; 2, 1, 1, 3 완료
- e3a:	94 27       	eor	r25, r20
+     e08:	94 27       	eor	r25, r20
 
 	mov r30, ST01
- e3c:	e1 2d       	mov	r30, r1
+     e0a:	e1 2d       	mov	r30, r1
 	ld  M0, Z
- e3e:	00 81       	ld	r16, Z
+     e0c:	00 81       	ld	r16, Z
 	eor T0, M0
- e40:	40 27       	eor	r20, r16
+     e0e:	40 27       	eor	r20, r16
 	eor T3, M0
- e42:	70 27       	eor	r23, r16
+     e10:	70 27       	eor	r23, r16
 	eor r25, M0 
- e44:	90 27       	eor	r25, r16
+     e12:	90 27       	eor	r25, r16
 	mov r28, ST01
- e46:	c1 2d       	mov	r28, r1
+     e14:	c1 2d       	mov	r28, r1
 	ld  M0, Y
- e48:	08 81       	ld	r16, Y
+     e16:	08 81       	ld	r16, Y
 	eor T0, M0
- e4a:	40 27       	eor	r20, r16
+     e18:	40 27       	eor	r20, r16
 	eor T1, M0 ;3, 2, 2, 1 완료
- e4c:	50 27       	eor	r21, r16
+     e1a:	50 27       	eor	r21, r16
 
 	mov r30, ST12
- e4e:	e6 2d       	mov	r30, r6
+     e1c:	e6 2d       	mov	r30, r6
 	ld  M0, Z
- e50:	00 81       	ld	r16, Z
+     e1e:	00 81       	ld	r16, Z
 	eor T0, M0
- e52:	40 27       	eor	r20, r16
+     e20:	40 27       	eor	r20, r16
 	eor T1, M0
- e54:	50 27       	eor	r21, r16
+     e22:	50 27       	eor	r21, r16
 	eor r25, M0 
- e56:	90 27       	eor	r25, r16
+     e24:	90 27       	eor	r25, r16
 	mov r28, ST12
- e58:	c6 2d       	mov	r28, r6
+     e26:	c6 2d       	mov	r28, r6
 	ld  M0, Y
- e5a:	08 81       	ld	r16, Y
+     e28:	08 81       	ld	r16, Y
 	eor T1, M0
- e5c:	50 27       	eor	r21, r16
+     e2a:	50 27       	eor	r21, r16
 	eor T3, M0 ;1, 3, 2, 1 완료
- e5e:	70 27       	eor	r23, r16
+     e2c:	70 27       	eor	r23, r16
 
 	mov r30, ST23
- e60:	eb 2d       	mov	r30, r11
+     e2e:	eb 2d       	mov	r30, r11
 	ld  M0, Z
- e62:	00 81       	ld	r16, Z
+     e30:	00 81       	ld	r16, Z
 	eor T0, M0
- e64:	40 27       	eor	r20, r16
+     e32:	40 27       	eor	r20, r16
 	eor T1, M0
- e66:	50 27       	eor	r21, r16
+     e34:	50 27       	eor	r21, r16
 	eor T3, M0 
- e68:	70 27       	eor	r23, r16
+     e36:	70 27       	eor	r23, r16
 	mov r28, ST23
- e6a:	cb 2d       	mov	r28, r11
+     e38:	cb 2d       	mov	r28, r11
 	ld  M0, Y
- e6c:	08 81       	ld	r16, Y
+     e3a:	08 81       	ld	r16, Y
 	eor T3, M0
- e6e:	70 27       	eor	r23, r16
+     e3c:	70 27       	eor	r23, r16
 	eor r25, M0 ;1, 1, 3, 2 완료
- e70:	90 27       	eor	r25, r16
+     e3e:	90 27       	eor	r25, r16
 
 	mov ST30, T0
- e72:	c4 2e       	mov	r12, r20
+     e40:	c4 2e       	mov	r12, r20
 	mov ST31, T1
- e74:	d5 2e       	mov	r13, r21
+     e42:	d5 2e       	mov	r13, r21
 	mov ST32, T3
- e76:	e7 2e       	mov	r14, r23
+     e44:	e7 2e       	mov	r14, r23
 	mov ST33, r25
- e78:	f9 2e       	mov	r15, r25
+     e46:	f9 2e       	mov	r15, r25
 	mov ST01, M1
- e7a:	11 2e       	mov	r1, r17
+     e48:	11 2e       	mov	r1, r17
 	mov ST02, M2
- e7c:	22 2e       	mov	r2, r18
+     e4a:	22 2e       	mov	r2, r18
 	mov ST12, T2
- e7e:	66 2e       	mov	r6, r22
+     e4c:	66 2e       	mov	r6, r22
 	mov ST23, M3
- e80:	b3 2e       	mov	r11, r19
+     e4e:	b3 2e       	mov	r11, r19
 	.irp row, 0, 1, 2, 3
 		.irp col, 0, 1, 2, 3
 			ld r16, X+
 			eor ST\row\col, r16
 		.endr
 	.endr
- e82:	0d 91       	ld	r16, X+
- e84:	00 26       	eor	r0, r16
- e86:	0d 91       	ld	r16, X+
- e88:	10 26       	eor	r1, r16
- e8a:	0d 91       	ld	r16, X+
- e8c:	20 26       	eor	r2, r16
- e8e:	0d 91       	ld	r16, X+
- e90:	30 26       	eor	r3, r16
- e92:	0d 91       	ld	r16, X+
- e94:	40 26       	eor	r4, r16
- e96:	0d 91       	ld	r16, X+
- e98:	50 26       	eor	r5, r16
- e9a:	0d 91       	ld	r16, X+
- e9c:	60 26       	eor	r6, r16
- e9e:	0d 91       	ld	r16, X+
- ea0:	70 26       	eor	r7, r16
- ea2:	0d 91       	ld	r16, X+
- ea4:	80 26       	eor	r8, r16
- ea6:	0d 91       	ld	r16, X+
- ea8:	90 26       	eor	r9, r16
- eaa:	0d 91       	ld	r16, X+
- eac:	a0 26       	eor	r10, r16
- eae:	0d 91       	ld	r16, X+
- eb0:	b0 26       	eor	r11, r16
- eb2:	0d 91       	ld	r16, X+
- eb4:	c0 26       	eor	r12, r16
- eb6:	0d 91       	ld	r16, X+
- eb8:	d0 26       	eor	r13, r16
- eba:	0d 91       	ld	r16, X+
- ebc:	e0 26       	eor	r14, r16
- ebe:	0d 91       	ld	r16, X+
- ec0:	f0 26       	eor	r15, r16
+     e50:	0d 91       	ld	r16, X+
+     e52:	00 26       	eor	r0, r16
+     e54:	0d 91       	ld	r16, X+
+     e56:	10 26       	eor	r1, r16
+     e58:	0d 91       	ld	r16, X+
+     e5a:	20 26       	eor	r2, r16
+     e5c:	0d 91       	ld	r16, X+
+     e5e:	30 26       	eor	r3, r16
+     e60:	0d 91       	ld	r16, X+
+     e62:	40 26       	eor	r4, r16
+     e64:	0d 91       	ld	r16, X+
+     e66:	50 26       	eor	r5, r16
+     e68:	0d 91       	ld	r16, X+
+     e6a:	60 26       	eor	r6, r16
+     e6c:	0d 91       	ld	r16, X+
+     e6e:	70 26       	eor	r7, r16
+     e70:	0d 91       	ld	r16, X+
+     e72:	80 26       	eor	r8, r16
+     e74:	0d 91       	ld	r16, X+
+     e76:	90 26       	eor	r9, r16
+     e78:	0d 91       	ld	r16, X+
+     e7a:	a0 26       	eor	r10, r16
+     e7c:	0d 91       	ld	r16, X+
+     e7e:	b0 26       	eor	r11, r16
+     e80:	0d 91       	ld	r16, X+
+     e82:	c0 26       	eor	r12, r16
+     e84:	0d 91       	ld	r16, X+
+     e86:	d0 26       	eor	r13, r16
+     e88:	0d 91       	ld	r16, X+
+     e8a:	e0 26       	eor	r14, r16
+     e8c:	0d 91       	ld	r16, X+
+     e8e:	f0 26       	eor	r15, r16
+	
+	//10 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+     e90:	e0 2d       	mov	r30, r0
+	ld  M1, Z 
+     e92:	10 81       	ld	r17, Z
+	mov M2, M1
+     e94:	21 2f       	mov	r18, r17
+	mov M3, M2 
+     e96:	32 2f       	mov	r19, r18
+	mov r28, ST00
+     e98:	c0 2d       	mov	r28, r0
+	ld  M0, Y
+     e9a:	08 81       	ld	r16, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+     e9c:	30 27       	eor	r19, r16
+
+	mov r30, ST11
+     e9e:	e5 2d       	mov	r30, r5
+	ld  T0, Z
+     ea0:	40 81       	ld	r20, Z
+	eor M0, T0
+     ea2:	04 27       	eor	r16, r20
+	eor M2, T0
+     ea4:	24 27       	eor	r18, r20
+	eor M3, T0 
+     ea6:	34 27       	eor	r19, r20
+	mov r28, ST11
+     ea8:	c5 2d       	mov	r28, r5
+	ld  T0, Y
+     eaa:	48 81       	ld	r20, Y
+	eor M0, T0
+     eac:	04 27       	eor	r16, r20
+	eor M1, T0 ;3, 2, 2, 1 완료
+     eae:	14 27       	eor	r17, r20
+
+	mov r30, ST22
+     eb0:	ea 2d       	mov	r30, r10
+	ld  T0, Z
+     eb2:	40 81       	ld	r20, Z
+	eor M0, T0
+     eb4:	04 27       	eor	r16, r20
+	eor M1, T0
+     eb6:	14 27       	eor	r17, r20
+	eor M3, T0
+     eb8:	34 27       	eor	r19, r20
+	mov r28, ST22
+     eba:	ca 2d       	mov	r28, r10
+	ld  T0, Y
+     ebc:	48 81       	ld	r20, Y
+	eor M1, T0
+     ebe:	14 27       	eor	r17, r20
+	eor M2, T0 ;1, 3, 2, 1 완료
+     ec0:	24 27       	eor	r18, r20
+
+	mov r30, ST33
+     ec2:	ef 2d       	mov	r30, r15
+	ld  T0, Z
+     ec4:	40 81       	ld	r20, Z
+	eor M0, T0
+     ec6:	04 27       	eor	r16, r20
+	eor M1, T0
+     ec8:	14 27       	eor	r17, r20
+	eor M2, T0 
+     eca:	24 27       	eor	r18, r20
+	mov r28, ST33
+     ecc:	cf 2d       	mov	r28, r15
+	ld  T0, Y
+     ece:	48 81       	ld	r20, Y
+	eor M2, T0
+     ed0:	24 27       	eor	r18, r20
+	eor M3, T0 ;1, 1, 3, 2 완료
+     ed2:	34 27       	eor	r19, r20
+
+	mov ST00, M0
+     ed4:	00 2e       	mov	r0, r16
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+     ed6:	e4 2d       	mov	r30, r4
+	ld  T1, Z 
+     ed8:	50 81       	ld	r21, Z
+	mov T2, T1
+     eda:	65 2f       	mov	r22, r21
+	mov T3, T2 
+     edc:	76 2f       	mov	r23, r22
+	mov r28, ST10
+     ede:	c4 2d       	mov	r28, r4
+	ld  T0, Y
+     ee0:	48 81       	ld	r20, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+     ee2:	74 27       	eor	r23, r20
+
+	mov r30, ST21
+     ee4:	e9 2d       	mov	r30, r9
+	ld  M0, Z
+     ee6:	00 81       	ld	r16, Z
+	eor T0, M0
+     ee8:	40 27       	eor	r20, r16
+	eor T2, M0
+     eea:	60 27       	eor	r22, r16
+	eor T3, M0 
+     eec:	70 27       	eor	r23, r16
+	mov r28, ST21
+     eee:	c9 2d       	mov	r28, r9
+	ld  M0, Y
+     ef0:	08 81       	ld	r16, Y
+	eor T0, M0
+     ef2:	40 27       	eor	r20, r16
+	eor T1, M0 ;3, 2, 2, 1 완료
+     ef4:	50 27       	eor	r21, r16
+
+	mov r30, ST32
+     ef6:	ee 2d       	mov	r30, r14
+	ld  M0, Z
+     ef8:	00 81       	ld	r16, Z
+	eor T0, M0
+     efa:	40 27       	eor	r20, r16
+	eor T1, M0
+     efc:	50 27       	eor	r21, r16
+	eor T3, M0 
+     efe:	70 27       	eor	r23, r16
+	mov r28, ST32
+     f00:	ce 2d       	mov	r28, r14
+	ld  M0, Y
+     f02:	08 81       	ld	r16, Y
+	eor T1, M0
+     f04:	50 27       	eor	r21, r16
+	eor T2, M0 ;1, 3, 2, 1 완료
+     f06:	60 27       	eor	r22, r16
+
+	mov r30, ST03
+     f08:	e3 2d       	mov	r30, r3
+	ld  M0, Z
+     f0a:	00 81       	ld	r16, Z
+	eor T0, M0
+     f0c:	40 27       	eor	r20, r16
+	eor T1, M0
+     f0e:	50 27       	eor	r21, r16
+	eor T2, M0 
+     f10:	60 27       	eor	r22, r16
+	mov r28, ST03
+     f12:	c3 2d       	mov	r28, r3
+	ld  M0, Y
+     f14:	08 81       	ld	r16, Y
+	eor T2, M0
+     f16:	60 27       	eor	r22, r16
+	eor T3, M0 ;1, 1, 3, 2 완료
+     f18:	70 27       	eor	r23, r16
+
+	mov ST10, T0
+     f1a:	44 2e       	mov	r4, r20
+	mov ST11, T1
+     f1c:	55 2e       	mov	r5, r21
+	mov ST03, M3
+     f1e:	33 2e       	mov	r3, r19
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+     f20:	e8 2d       	mov	r30, r8
+	ld  T0, Z 
+     f22:	40 81       	ld	r20, Z
+	mov T1, T0
+     f24:	54 2f       	mov	r21, r20
+	mov M3, T1 
+     f26:	35 2f       	mov	r19, r21
+	mov r28, ST20
+     f28:	c8 2d       	mov	r28, r8
+	ld  M0, Y
+     f2a:	08 81       	ld	r16, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+     f2c:	30 27       	eor	r19, r16
+
+	mov r30, ST31
+     f2e:	ed 2d       	mov	r30, r13
+	ld  r25, Z
+     f30:	90 81       	ld	r25, Z
+	eor M0, r25
+     f32:	09 27       	eor	r16, r25
+	eor T1, r25
+     f34:	59 27       	eor	r21, r25
+	eor M3, r25
+     f36:	39 27       	eor	r19, r25
+	mov r28, ST31
+     f38:	cd 2d       	mov	r28, r13
+	ld  r25, Y
+     f3a:	98 81       	ld	r25, Y
+	eor M0, r25
+     f3c:	09 27       	eor	r16, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+     f3e:	49 27       	eor	r20, r25
+
+	mov r30, ST02
+     f40:	e2 2d       	mov	r30, r2
+	ld  r25, Z
+     f42:	90 81       	ld	r25, Z
+	eor M0, r25
+     f44:	09 27       	eor	r16, r25
+	eor T0, r25
+     f46:	49 27       	eor	r20, r25
+	eor M3, r25
+     f48:	39 27       	eor	r19, r25
+	mov r28, ST02
+     f4a:	c2 2d       	mov	r28, r2
+	ld  r25, Y
+     f4c:	98 81       	ld	r25, Y
+	eor T0, r25
+     f4e:	49 27       	eor	r20, r25
+	eor T1, r25;1, 3, 2, 1 완료
+     f50:	59 27       	eor	r21, r25
+
+	mov r30, ST13
+     f52:	e7 2d       	mov	r30, r7
+	ld  r25, Z
+     f54:	90 81       	ld	r25, Z
+	eor M0, r25
+     f56:	09 27       	eor	r16, r25
+	eor T0, r25
+     f58:	49 27       	eor	r20, r25
+	eor T1, r25 
+     f5a:	59 27       	eor	r21, r25
+	mov r28, ST13
+     f5c:	c7 2d       	mov	r28, r7
+	ld  r25, Y
+     f5e:	98 81       	ld	r25, Y
+	eor T1, r25
+     f60:	59 27       	eor	r21, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+     f62:	39 27       	eor	r19, r25
+
+	mov ST20, M0
+     f64:	80 2e       	mov	r8, r16
+	mov ST21, T0
+     f66:	94 2e       	mov	r9, r20
+	mov ST22, T1
+     f68:	a5 2e       	mov	r10, r21
+	mov ST13, T3
+     f6a:	77 2e       	mov	r7, r23
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+     f6c:	ec 2d       	mov	r30, r12
+	ld  T1, Z 
+     f6e:	50 81       	ld	r21, Z
+	mov T3, T1
+     f70:	75 2f       	mov	r23, r21
+	mov r25, T3 
+     f72:	97 2f       	mov	r25, r23
+	mov r28, ST30
+     f74:	cc 2d       	mov	r28, r12
+	ld  T0, Y
+     f76:	48 81       	ld	r20, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+     f78:	94 27       	eor	r25, r20
+
+	mov r30, ST01
+     f7a:	e1 2d       	mov	r30, r1
+	ld  M0, Z
+     f7c:	00 81       	ld	r16, Z
+	eor T0, M0
+     f7e:	40 27       	eor	r20, r16
+	eor T3, M0
+     f80:	70 27       	eor	r23, r16
+	eor r25, M0 
+     f82:	90 27       	eor	r25, r16
+	mov r28, ST01
+     f84:	c1 2d       	mov	r28, r1
+	ld  M0, Y
+     f86:	08 81       	ld	r16, Y
+	eor T0, M0
+     f88:	40 27       	eor	r20, r16
+	eor T1, M0 ;3, 2, 2, 1 완료
+     f8a:	50 27       	eor	r21, r16
+
+	mov r30, ST12
+     f8c:	e6 2d       	mov	r30, r6
+	ld  M0, Z
+     f8e:	00 81       	ld	r16, Z
+	eor T0, M0
+     f90:	40 27       	eor	r20, r16
+	eor T1, M0
+     f92:	50 27       	eor	r21, r16
+	eor r25, M0 
+     f94:	90 27       	eor	r25, r16
+	mov r28, ST12
+     f96:	c6 2d       	mov	r28, r6
+	ld  M0, Y
+     f98:	08 81       	ld	r16, Y
+	eor T1, M0
+     f9a:	50 27       	eor	r21, r16
+	eor T3, M0 ;1, 3, 2, 1 완료
+     f9c:	70 27       	eor	r23, r16
+
+	mov r30, ST23
+     f9e:	eb 2d       	mov	r30, r11
+	ld  M0, Z
+     fa0:	00 81       	ld	r16, Z
+	eor T0, M0
+     fa2:	40 27       	eor	r20, r16
+	eor T1, M0
+     fa4:	50 27       	eor	r21, r16
+	eor T3, M0 
+     fa6:	70 27       	eor	r23, r16
+	mov r28, ST23
+     fa8:	cb 2d       	mov	r28, r11
+	ld  M0, Y
+     faa:	08 81       	ld	r16, Y
+	eor T3, M0
+     fac:	70 27       	eor	r23, r16
+	eor r25, M0 ;1, 1, 3, 2 완료
+     fae:	90 27       	eor	r25, r16
+
+	mov ST30, T0
+     fb0:	c4 2e       	mov	r12, r20
+	mov ST31, T1
+     fb2:	d5 2e       	mov	r13, r21
+	mov ST32, T3
+     fb4:	e7 2e       	mov	r14, r23
+	mov ST33, r25
+     fb6:	f9 2e       	mov	r15, r25
+	mov ST01, M1
+     fb8:	11 2e       	mov	r1, r17
+	mov ST02, M2
+     fba:	22 2e       	mov	r2, r18
+	mov ST12, T2
+     fbc:	66 2e       	mov	r6, r22
+	mov ST23, M3
+     fbe:	b3 2e       	mov	r11, r19
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+     fc0:	0d 91       	ld	r16, X+
+     fc2:	00 26       	eor	r0, r16
+     fc4:	0d 91       	ld	r16, X+
+     fc6:	10 26       	eor	r1, r16
+     fc8:	0d 91       	ld	r16, X+
+     fca:	20 26       	eor	r2, r16
+     fcc:	0d 91       	ld	r16, X+
+     fce:	30 26       	eor	r3, r16
+     fd0:	0d 91       	ld	r16, X+
+     fd2:	40 26       	eor	r4, r16
+     fd4:	0d 91       	ld	r16, X+
+     fd6:	50 26       	eor	r5, r16
+     fd8:	0d 91       	ld	r16, X+
+     fda:	60 26       	eor	r6, r16
+     fdc:	0d 91       	ld	r16, X+
+     fde:	70 26       	eor	r7, r16
+     fe0:	0d 91       	ld	r16, X+
+     fe2:	80 26       	eor	r8, r16
+     fe4:	0d 91       	ld	r16, X+
+     fe6:	90 26       	eor	r9, r16
+     fe8:	0d 91       	ld	r16, X+
+     fea:	a0 26       	eor	r10, r16
+     fec:	0d 91       	ld	r16, X+
+     fee:	b0 26       	eor	r11, r16
+     ff0:	0d 91       	ld	r16, X+
+     ff2:	c0 26       	eor	r12, r16
+     ff4:	0d 91       	ld	r16, X+
+     ff6:	d0 26       	eor	r13, r16
+     ff8:	0d 91       	ld	r16, X+
+     ffa:	e0 26       	eor	r14, r16
+     ffc:	0d 91       	ld	r16, X+
+     ffe:	f0 26       	eor	r15, r16
+	
+	//11 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+    1000:	e0 2d       	mov	r30, r0
+	ld  M1, Z 
+    1002:	10 81       	ld	r17, Z
+	mov M2, M1
+    1004:	21 2f       	mov	r18, r17
+	mov M3, M2 
+    1006:	32 2f       	mov	r19, r18
+	mov r28, ST00
+    1008:	c0 2d       	mov	r28, r0
+	ld  M0, Y
+    100a:	08 81       	ld	r16, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+    100c:	30 27       	eor	r19, r16
+
+	mov r30, ST11
+    100e:	e5 2d       	mov	r30, r5
+	ld  T0, Z
+    1010:	40 81       	ld	r20, Z
+	eor M0, T0
+    1012:	04 27       	eor	r16, r20
+	eor M2, T0
+    1014:	24 27       	eor	r18, r20
+	eor M3, T0 
+    1016:	34 27       	eor	r19, r20
+	mov r28, ST11
+    1018:	c5 2d       	mov	r28, r5
+	ld  T0, Y
+    101a:	48 81       	ld	r20, Y
+	eor M0, T0
+    101c:	04 27       	eor	r16, r20
+	eor M1, T0 ;3, 2, 2, 1 완료
+    101e:	14 27       	eor	r17, r20
+
+	mov r30, ST22
+    1020:	ea 2d       	mov	r30, r10
+	ld  T0, Z
+    1022:	40 81       	ld	r20, Z
+	eor M0, T0
+    1024:	04 27       	eor	r16, r20
+	eor M1, T0
+    1026:	14 27       	eor	r17, r20
+	eor M3, T0
+    1028:	34 27       	eor	r19, r20
+	mov r28, ST22
+    102a:	ca 2d       	mov	r28, r10
+	ld  T0, Y
+    102c:	48 81       	ld	r20, Y
+	eor M1, T0
+    102e:	14 27       	eor	r17, r20
+	eor M2, T0 ;1, 3, 2, 1 완료
+    1030:	24 27       	eor	r18, r20
+
+	mov r30, ST33
+    1032:	ef 2d       	mov	r30, r15
+	ld  T0, Z
+    1034:	40 81       	ld	r20, Z
+	eor M0, T0
+    1036:	04 27       	eor	r16, r20
+	eor M1, T0
+    1038:	14 27       	eor	r17, r20
+	eor M2, T0 
+    103a:	24 27       	eor	r18, r20
+	mov r28, ST33
+    103c:	cf 2d       	mov	r28, r15
+	ld  T0, Y
+    103e:	48 81       	ld	r20, Y
+	eor M2, T0
+    1040:	24 27       	eor	r18, r20
+	eor M3, T0 ;1, 1, 3, 2 완료
+    1042:	34 27       	eor	r19, r20
+
+	mov ST00, M0
+    1044:	00 2e       	mov	r0, r16
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+    1046:	e4 2d       	mov	r30, r4
+	ld  T1, Z 
+    1048:	50 81       	ld	r21, Z
+	mov T2, T1
+    104a:	65 2f       	mov	r22, r21
+	mov T3, T2 
+    104c:	76 2f       	mov	r23, r22
+	mov r28, ST10
+    104e:	c4 2d       	mov	r28, r4
+	ld  T0, Y
+    1050:	48 81       	ld	r20, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+    1052:	74 27       	eor	r23, r20
+
+	mov r30, ST21
+    1054:	e9 2d       	mov	r30, r9
+	ld  M0, Z
+    1056:	00 81       	ld	r16, Z
+	eor T0, M0
+    1058:	40 27       	eor	r20, r16
+	eor T2, M0
+    105a:	60 27       	eor	r22, r16
+	eor T3, M0 
+    105c:	70 27       	eor	r23, r16
+	mov r28, ST21
+    105e:	c9 2d       	mov	r28, r9
+	ld  M0, Y
+    1060:	08 81       	ld	r16, Y
+	eor T0, M0
+    1062:	40 27       	eor	r20, r16
+	eor T1, M0 ;3, 2, 2, 1 완료
+    1064:	50 27       	eor	r21, r16
+
+	mov r30, ST32
+    1066:	ee 2d       	mov	r30, r14
+	ld  M0, Z
+    1068:	00 81       	ld	r16, Z
+	eor T0, M0
+    106a:	40 27       	eor	r20, r16
+	eor T1, M0
+    106c:	50 27       	eor	r21, r16
+	eor T3, M0 
+    106e:	70 27       	eor	r23, r16
+	mov r28, ST32
+    1070:	ce 2d       	mov	r28, r14
+	ld  M0, Y
+    1072:	08 81       	ld	r16, Y
+	eor T1, M0
+    1074:	50 27       	eor	r21, r16
+	eor T2, M0 ;1, 3, 2, 1 완료
+    1076:	60 27       	eor	r22, r16
+
+	mov r30, ST03
+    1078:	e3 2d       	mov	r30, r3
+	ld  M0, Z
+    107a:	00 81       	ld	r16, Z
+	eor T0, M0
+    107c:	40 27       	eor	r20, r16
+	eor T1, M0
+    107e:	50 27       	eor	r21, r16
+	eor T2, M0 
+    1080:	60 27       	eor	r22, r16
+	mov r28, ST03
+    1082:	c3 2d       	mov	r28, r3
+	ld  M0, Y
+    1084:	08 81       	ld	r16, Y
+	eor T2, M0
+    1086:	60 27       	eor	r22, r16
+	eor T3, M0 ;1, 1, 3, 2 완료
+    1088:	70 27       	eor	r23, r16
+
+	mov ST10, T0
+    108a:	44 2e       	mov	r4, r20
+	mov ST11, T1
+    108c:	55 2e       	mov	r5, r21
+	mov ST03, M3
+    108e:	33 2e       	mov	r3, r19
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+    1090:	e8 2d       	mov	r30, r8
+	ld  T0, Z 
+    1092:	40 81       	ld	r20, Z
+	mov T1, T0
+    1094:	54 2f       	mov	r21, r20
+	mov M3, T1 
+    1096:	35 2f       	mov	r19, r21
+	mov r28, ST20
+    1098:	c8 2d       	mov	r28, r8
+	ld  M0, Y
+    109a:	08 81       	ld	r16, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+    109c:	30 27       	eor	r19, r16
+
+	mov r30, ST31
+    109e:	ed 2d       	mov	r30, r13
+	ld  r25, Z
+    10a0:	90 81       	ld	r25, Z
+	eor M0, r25
+    10a2:	09 27       	eor	r16, r25
+	eor T1, r25
+    10a4:	59 27       	eor	r21, r25
+	eor M3, r25
+    10a6:	39 27       	eor	r19, r25
+	mov r28, ST31
+    10a8:	cd 2d       	mov	r28, r13
+	ld  r25, Y
+    10aa:	98 81       	ld	r25, Y
+	eor M0, r25
+    10ac:	09 27       	eor	r16, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+    10ae:	49 27       	eor	r20, r25
+
+	mov r30, ST02
+    10b0:	e2 2d       	mov	r30, r2
+	ld  r25, Z
+    10b2:	90 81       	ld	r25, Z
+	eor M0, r25
+    10b4:	09 27       	eor	r16, r25
+	eor T0, r25
+    10b6:	49 27       	eor	r20, r25
+	eor M3, r25
+    10b8:	39 27       	eor	r19, r25
+	mov r28, ST02
+    10ba:	c2 2d       	mov	r28, r2
+	ld  r25, Y
+    10bc:	98 81       	ld	r25, Y
+	eor T0, r25
+    10be:	49 27       	eor	r20, r25
+	eor T1, r25;1, 3, 2, 1 완료
+    10c0:	59 27       	eor	r21, r25
+
+	mov r30, ST13
+    10c2:	e7 2d       	mov	r30, r7
+	ld  r25, Z
+    10c4:	90 81       	ld	r25, Z
+	eor M0, r25
+    10c6:	09 27       	eor	r16, r25
+	eor T0, r25
+    10c8:	49 27       	eor	r20, r25
+	eor T1, r25 
+    10ca:	59 27       	eor	r21, r25
+	mov r28, ST13
+    10cc:	c7 2d       	mov	r28, r7
+	ld  r25, Y
+    10ce:	98 81       	ld	r25, Y
+	eor T1, r25
+    10d0:	59 27       	eor	r21, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+    10d2:	39 27       	eor	r19, r25
+
+	mov ST20, M0
+    10d4:	80 2e       	mov	r8, r16
+	mov ST21, T0
+    10d6:	94 2e       	mov	r9, r20
+	mov ST22, T1
+    10d8:	a5 2e       	mov	r10, r21
+	mov ST13, T3
+    10da:	77 2e       	mov	r7, r23
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+    10dc:	ec 2d       	mov	r30, r12
+	ld  T1, Z 
+    10de:	50 81       	ld	r21, Z
+	mov T3, T1
+    10e0:	75 2f       	mov	r23, r21
+	mov r25, T3 
+    10e2:	97 2f       	mov	r25, r23
+	mov r28, ST30
+    10e4:	cc 2d       	mov	r28, r12
+	ld  T0, Y
+    10e6:	48 81       	ld	r20, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+    10e8:	94 27       	eor	r25, r20
+
+	mov r30, ST01
+    10ea:	e1 2d       	mov	r30, r1
+	ld  M0, Z
+    10ec:	00 81       	ld	r16, Z
+	eor T0, M0
+    10ee:	40 27       	eor	r20, r16
+	eor T3, M0
+    10f0:	70 27       	eor	r23, r16
+	eor r25, M0 
+    10f2:	90 27       	eor	r25, r16
+	mov r28, ST01
+    10f4:	c1 2d       	mov	r28, r1
+	ld  M0, Y
+    10f6:	08 81       	ld	r16, Y
+	eor T0, M0
+    10f8:	40 27       	eor	r20, r16
+	eor T1, M0 ;3, 2, 2, 1 완료
+    10fa:	50 27       	eor	r21, r16
+
+	mov r30, ST12
+    10fc:	e6 2d       	mov	r30, r6
+	ld  M0, Z
+    10fe:	00 81       	ld	r16, Z
+	eor T0, M0
+    1100:	40 27       	eor	r20, r16
+	eor T1, M0
+    1102:	50 27       	eor	r21, r16
+	eor r25, M0 
+    1104:	90 27       	eor	r25, r16
+	mov r28, ST12
+    1106:	c6 2d       	mov	r28, r6
+	ld  M0, Y
+    1108:	08 81       	ld	r16, Y
+	eor T1, M0
+    110a:	50 27       	eor	r21, r16
+	eor T3, M0 ;1, 3, 2, 1 완료
+    110c:	70 27       	eor	r23, r16
+
+	mov r30, ST23
+    110e:	eb 2d       	mov	r30, r11
+	ld  M0, Z
+    1110:	00 81       	ld	r16, Z
+	eor T0, M0
+    1112:	40 27       	eor	r20, r16
+	eor T1, M0
+    1114:	50 27       	eor	r21, r16
+	eor T3, M0 
+    1116:	70 27       	eor	r23, r16
+	mov r28, ST23
+    1118:	cb 2d       	mov	r28, r11
+	ld  M0, Y
+    111a:	08 81       	ld	r16, Y
+	eor T3, M0
+    111c:	70 27       	eor	r23, r16
+	eor r25, M0 ;1, 1, 3, 2 완료
+    111e:	90 27       	eor	r25, r16
+
+	mov ST30, T0
+    1120:	c4 2e       	mov	r12, r20
+	mov ST31, T1
+    1122:	d5 2e       	mov	r13, r21
+	mov ST32, T3
+    1124:	e7 2e       	mov	r14, r23
+	mov ST33, r25
+    1126:	f9 2e       	mov	r15, r25
+	mov ST01, M1
+    1128:	11 2e       	mov	r1, r17
+	mov ST02, M2
+    112a:	22 2e       	mov	r2, r18
+	mov ST12, T2
+    112c:	66 2e       	mov	r6, r22
+	mov ST23, M3
+    112e:	b3 2e       	mov	r11, r19
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+    1130:	0d 91       	ld	r16, X+
+    1132:	00 26       	eor	r0, r16
+    1134:	0d 91       	ld	r16, X+
+    1136:	10 26       	eor	r1, r16
+    1138:	0d 91       	ld	r16, X+
+    113a:	20 26       	eor	r2, r16
+    113c:	0d 91       	ld	r16, X+
+    113e:	30 26       	eor	r3, r16
+    1140:	0d 91       	ld	r16, X+
+    1142:	40 26       	eor	r4, r16
+    1144:	0d 91       	ld	r16, X+
+    1146:	50 26       	eor	r5, r16
+    1148:	0d 91       	ld	r16, X+
+    114a:	60 26       	eor	r6, r16
+    114c:	0d 91       	ld	r16, X+
+    114e:	70 26       	eor	r7, r16
+    1150:	0d 91       	ld	r16, X+
+    1152:	80 26       	eor	r8, r16
+    1154:	0d 91       	ld	r16, X+
+    1156:	90 26       	eor	r9, r16
+    1158:	0d 91       	ld	r16, X+
+    115a:	a0 26       	eor	r10, r16
+    115c:	0d 91       	ld	r16, X+
+    115e:	b0 26       	eor	r11, r16
+    1160:	0d 91       	ld	r16, X+
+    1162:	c0 26       	eor	r12, r16
+    1164:	0d 91       	ld	r16, X+
+    1166:	d0 26       	eor	r13, r16
+    1168:	0d 91       	ld	r16, X+
+    116a:	e0 26       	eor	r14, r16
+    116c:	0d 91       	ld	r16, X+
+    116e:	f0 26       	eor	r15, r16
 	
 
 
-	// 10 Round--------------------------------------------------------------------------------------------
+	// 12 Round--------------------------------------------------------------------------------------------
 	// Shift Row + Subbyte
 	mov r30, ST00
- ec2:	e0 2d       	mov	r30, r0
+    1170:	e0 2d       	mov	r30, r0
 	ld ST00, Z
- ec4:	00 80       	ld	r0, Z
+    1172:	00 80       	ld	r0, Z
 	mov r30, ST10
- ec6:	e4 2d       	mov	r30, r4
+    1174:	e4 2d       	mov	r30, r4
 	ld ST10, Z
- ec8:	40 80       	ld	r4, Z
+    1176:	40 80       	ld	r4, Z
 	mov r30, ST20
- eca:	e8 2d       	mov	r30, r8
+    1178:	e8 2d       	mov	r30, r8
 	ld ST20, Z
- ecc:	80 80       	ld	r8, Z
+    117a:	80 80       	ld	r8, Z
 	mov r30, ST30
- ece:	ec 2d       	mov	r30, r12
+    117c:	ec 2d       	mov	r30, r12
 	ld ST30, Z
- ed0:	c0 80       	ld	r12, Z
+    117e:	c0 80       	ld	r12, Z
 
 	mov r30, ST01
- ed2:	e1 2d       	mov	r30, r1
+    1180:	e1 2d       	mov	r30, r1
 	ld T0, Z
- ed4:	40 81       	ld	r20, Z
+    1182:	40 81       	ld	r20, Z
 	mov r30, ST11
- ed6:	e5 2d       	mov	r30, r5
+    1184:	e5 2d       	mov	r30, r5
 	ld ST01, Z
- ed8:	10 80       	ld	r1, Z
+    1186:	10 80       	ld	r1, Z
 	mov r30, ST21
- eda:	e9 2d       	mov	r30, r9
+    1188:	e9 2d       	mov	r30, r9
 	ld ST11, Z
- edc:	50 80       	ld	r5, Z
+    118a:	50 80       	ld	r5, Z
 	mov r30, ST31
- ede:	ed 2d       	mov	r30, r13
+    118c:	ed 2d       	mov	r30, r13
 	ld ST21, Z
- ee0:	90 80       	ld	r9, Z
+    118e:	90 80       	ld	r9, Z
 	mov ST31, T0
- ee2:	d4 2e       	mov	r13, r20
+    1190:	d4 2e       	mov	r13, r20
 
 	mov r30, ST02
- ee4:	e2 2d       	mov	r30, r2
+    1192:	e2 2d       	mov	r30, r2
 	ld T0, Z
- ee6:	40 81       	ld	r20, Z
+    1194:	40 81       	ld	r20, Z
 	mov r30, ST12
- ee8:	e6 2d       	mov	r30, r6
+    1196:	e6 2d       	mov	r30, r6
 	ld T1, Z
- eea:	50 81       	ld	r21, Z
+    1198:	50 81       	ld	r21, Z
 	mov r30, ST22
- eec:	ea 2d       	mov	r30, r10
+    119a:	ea 2d       	mov	r30, r10
 	ld ST02, Z
- eee:	20 80       	ld	r2, Z
+    119c:	20 80       	ld	r2, Z
 	mov r30, ST32
- ef0:	ee 2d       	mov	r30, r14
+    119e:	ee 2d       	mov	r30, r14
 	ld ST12, Z
- ef2:	60 80       	ld	r6, Z
+    11a0:	60 80       	ld	r6, Z
 	mov ST22, T0
- ef4:	a4 2e       	mov	r10, r20
+    11a2:	a4 2e       	mov	r10, r20
 	mov ST32, T1
- ef6:	e5 2e       	mov	r14, r21
+    11a4:	e5 2e       	mov	r14, r21
 
 	mov r30, ST03
- ef8:	e3 2d       	mov	r30, r3
+    11a6:	e3 2d       	mov	r30, r3
 	ld T0, Z
- efa:	40 81       	ld	r20, Z
+    11a8:	40 81       	ld	r20, Z
 	mov r30, ST33
- efc:	ef 2d       	mov	r30, r15
+    11aa:	ef 2d       	mov	r30, r15
 	ld  ST03, Z
- efe:	30 80       	ld	r3, Z
+    11ac:	30 80       	ld	r3, Z
 	mov r30, ST23
- f00:	eb 2d       	mov	r30, r11
+    11ae:	eb 2d       	mov	r30, r11
 	ld ST33, Z
- f02:	f0 80       	ld	r15, Z
+    11b0:	f0 80       	ld	r15, Z
 	mov r30, ST13
- f04:	e7 2d       	mov	r30, r7
+    11b2:	e7 2d       	mov	r30, r7
 	ld ST23, Z
- f06:	b0 80       	ld	r11, Z
+    11b4:	b0 80       	ld	r11, Z
 	mov ST13, T0
- f08:	74 2e       	mov	r7, r20
+    11b6:	74 2e       	mov	r7, r20
 	.irp row, 0, 1, 2, 3
 		.irp col, 0, 1, 2, 3
 			ld r16, X+
 			eor ST\row\col, r16
 		.endr
 	.endr
- f0a:	0d 91       	ld	r16, X+
- f0c:	00 26       	eor	r0, r16
- f0e:	0d 91       	ld	r16, X+
- f10:	10 26       	eor	r1, r16
- f12:	0d 91       	ld	r16, X+
- f14:	20 26       	eor	r2, r16
- f16:	0d 91       	ld	r16, X+
- f18:	30 26       	eor	r3, r16
- f1a:	0d 91       	ld	r16, X+
- f1c:	40 26       	eor	r4, r16
- f1e:	0d 91       	ld	r16, X+
- f20:	50 26       	eor	r5, r16
- f22:	0d 91       	ld	r16, X+
- f24:	60 26       	eor	r6, r16
- f26:	0d 91       	ld	r16, X+
- f28:	70 26       	eor	r7, r16
- f2a:	0d 91       	ld	r16, X+
- f2c:	80 26       	eor	r8, r16
- f2e:	0d 91       	ld	r16, X+
- f30:	90 26       	eor	r9, r16
- f32:	0d 91       	ld	r16, X+
- f34:	a0 26       	eor	r10, r16
- f36:	0d 91       	ld	r16, X+
- f38:	b0 26       	eor	r11, r16
- f3a:	0d 91       	ld	r16, X+
- f3c:	c0 26       	eor	r12, r16
- f3e:	0d 91       	ld	r16, X+
- f40:	d0 26       	eor	r13, r16
- f42:	0d 91       	ld	r16, X+
- f44:	e0 26       	eor	r14, r16
- f46:	0d 91       	ld	r16, X+
- f48:	f0 26       	eor	r15, r16
+    11b8:	0d 91       	ld	r16, X+
+    11ba:	00 26       	eor	r0, r16
+    11bc:	0d 91       	ld	r16, X+
+    11be:	10 26       	eor	r1, r16
+    11c0:	0d 91       	ld	r16, X+
+    11c2:	20 26       	eor	r2, r16
+    11c4:	0d 91       	ld	r16, X+
+    11c6:	30 26       	eor	r3, r16
+    11c8:	0d 91       	ld	r16, X+
+    11ca:	40 26       	eor	r4, r16
+    11cc:	0d 91       	ld	r16, X+
+    11ce:	50 26       	eor	r5, r16
+    11d0:	0d 91       	ld	r16, X+
+    11d2:	60 26       	eor	r6, r16
+    11d4:	0d 91       	ld	r16, X+
+    11d6:	70 26       	eor	r7, r16
+    11d8:	0d 91       	ld	r16, X+
+    11da:	80 26       	eor	r8, r16
+    11dc:	0d 91       	ld	r16, X+
+    11de:	90 26       	eor	r9, r16
+    11e0:	0d 91       	ld	r16, X+
+    11e2:	a0 26       	eor	r10, r16
+    11e4:	0d 91       	ld	r16, X+
+    11e6:	b0 26       	eor	r11, r16
+    11e8:	0d 91       	ld	r16, X+
+    11ea:	c0 26       	eor	r12, r16
+    11ec:	0d 91       	ld	r16, X+
+    11ee:	d0 26       	eor	r13, r16
+    11f0:	0d 91       	ld	r16, X+
+    11f2:	e0 26       	eor	r14, r16
+    11f4:	0d 91       	ld	r16, X+
+    11f6:	f0 26       	eor	r15, r16
 
 	//ST
 	pop r31
- f4a:	ff 91       	pop	r31
+    11f8:	ff 91       	pop	r31
 	pop r30
- f4c:	ef 91       	pop	r30
+    11fa:	ef 91       	pop	r30
 	.irp row, 0, 1, 2, 3
 			.irp col, 0, 1, 2, 3
 			st Z+, ST\row\col
 		.endr
 	.endr
- f4e:	01 92       	st	Z+, r0
- f50:	11 92       	st	Z+, r1
- f52:	21 92       	st	Z+, r2
- f54:	31 92       	st	Z+, r3
- f56:	41 92       	st	Z+, r4
- f58:	51 92       	st	Z+, r5
- f5a:	61 92       	st	Z+, r6
- f5c:	71 92       	st	Z+, r7
- f5e:	81 92       	st	Z+, r8
- f60:	91 92       	st	Z+, r9
- f62:	a1 92       	st	Z+, r10
- f64:	b1 92       	st	Z+, r11
- f66:	c1 92       	st	Z+, r12
- f68:	d1 92       	st	Z+, r13
- f6a:	e1 92       	st	Z+, r14
- f6c:	f1 92       	st	Z+, r15
+    11fc:	01 92       	st	Z+, r0
+    11fe:	11 92       	st	Z+, r1
+    1200:	21 92       	st	Z+, r2
+    1202:	31 92       	st	Z+, r3
+    1204:	41 92       	st	Z+, r4
+    1206:	51 92       	st	Z+, r5
+    1208:	61 92       	st	Z+, r6
+    120a:	71 92       	st	Z+, r7
+    120c:	81 92       	st	Z+, r8
+    120e:	91 92       	st	Z+, r9
+    1210:	a1 92       	st	Z+, r10
+    1212:	b1 92       	st	Z+, r11
+    1214:	c1 92       	st	Z+, r12
+    1216:	d1 92       	st	Z+, r13
+    1218:	e1 92       	st	Z+, r14
+    121a:	f1 92       	st	Z+, r15
 	pop r29
- f6e:	df 91       	pop	r29
+    121c:	df 91       	pop	r29
 	pop r28
- f70:	cf 91       	pop	r28
+    121e:	cf 91       	pop	r28
 	ret
- f72:	08 95       	ret
+    1220:	08 95       	ret
 
-00000f74 <main>:
+00001222 <main>:
 void aes192_enc_nobr(void *buffer, aes128_ctx_t *ctx);
 void aes256_enc_nobr(void *buffer, aes128_ctx_t *ctx);
 
 
 int main(void)
 {
- f74:	cf 93       	push	r28
- f76:	df 93       	push	r29
- f78:	cd b7       	in	r28, 0x3d	; 61
- f7a:	de b7       	in	r29, 0x3e	; 62
- f7c:	c0 5d       	subi	r28, 0xD0	; 208
- f7e:	d1 09       	sbc	r29, r1
- f80:	0f b6       	in	r0, 0x3f	; 63
- f82:	f8 94       	cli
- f84:	de bf       	out	0x3e, r29	; 62
- f86:	0f be       	out	0x3f, r0	; 63
- f88:	cd bf       	out	0x3d, r28	; 61
+    1222:	cf 93       	push	r28
+    1224:	df 93       	push	r29
+    1226:	cd b7       	in	r28, 0x3d	; 61
+    1228:	de b7       	in	r29, 0x3e	; 62
+    122a:	da 95       	dec	r29
+    122c:	0f b6       	in	r0, 0x3f	; 63
+    122e:	f8 94       	cli
+    1230:	de bf       	out	0x3e, r29	; 62
+    1232:	0f be       	out	0x3f, r0	; 63
+    1234:	cd bf       	out	0x3d, r28	; 61
 	/* Replace with your application code */
 
 	u8 key[16] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
- f8a:	20 e1       	ldi	r18, 0x10	; 16
- f8c:	e0 e0       	ldi	r30, 0x00	; 0
- f8e:	f4 e0       	ldi	r31, 0x04	; 4
- f90:	ce 01       	movw	r24, r28
- f92:	01 96       	adiw	r24, 0x01	; 1
- f94:	dc 01       	movw	r26, r24
- f96:	01 90       	ld	r0, Z+
- f98:	0d 92       	st	X+, r0
- f9a:	2a 95       	dec	r18
- f9c:	e1 f7       	brne	.-8      	; 0xf96 <main+0x22>
-	u8 IV[16] = {0,};
- f9e:	20 e1       	ldi	r18, 0x10	; 16
- fa0:	ce 01       	movw	r24, r28
- fa2:	41 96       	adiw	r24, 0x11	; 17
- fa4:	fc 01       	movw	r30, r24
- fa6:	32 2f       	mov	r19, r18
- fa8:	11 92       	st	Z+, r1
- faa:	3a 95       	dec	r19
- fac:	e9 f7       	brne	.-6      	; 0xfa8 <main+0x34>
-	//u8 key[16] = {0x2b,0x7e,0x15,0x16,0x28,0xae,0xd2,0xa6,0xab,0xf7,0x15,0x88,0x09,0xcf,0x4f,0x3c};
-	//u8 IV[16] = {0x32,0x43,0xf6,0xa8,0x88,0x5a,0x30,0x8d,0x31,0x31,0x98,0xa2,0xe0,0x37,0x07,0x34};
-	aes128_ctx_t aes_test;
-	aes128_init(key, &aes_test);
- fae:	ce 01       	movw	r24, r28
- fb0:	81 96       	adiw	r24, 0x21	; 33
- fb2:	bc 01       	movw	r22, r24
- fb4:	ce 01       	movw	r24, r28
- fb6:	01 96       	adiw	r24, 0x01	; 1
- fb8:	73 d8       	rcall	.-3866   	; 0xa0 <aes128_init>
+    1236:	20 e1       	ldi	r18, 0x10	; 16
+    1238:	e0 e0       	ldi	r30, 0x00	; 0
+    123a:	f4 e0       	ldi	r31, 0x04	; 4
+    123c:	ce 01       	movw	r24, r28
+    123e:	01 96       	adiw	r24, 0x01	; 1
+    1240:	dc 01       	movw	r26, r24
+    1242:	01 90       	ld	r0, Z+
+    1244:	0d 92       	st	X+, r0
+    1246:	2a 95       	dec	r18
+    1248:	e1 f7       	brne	.-8      	; 0x1242 <main+0x20>
+	u8 IV[16] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+    124a:	20 e1       	ldi	r18, 0x10	; 16
+    124c:	ce 01       	movw	r24, r28
+    124e:	41 96       	adiw	r24, 0x11	; 17
+    1250:	fc 01       	movw	r30, r24
+    1252:	32 2f       	mov	r19, r18
+    1254:	11 92       	st	Z+, r1
+    1256:	3a 95       	dec	r19
+    1258:	e9 f7       	brne	.-6      	; 0x1254 <main+0x32>
+    125a:	81 e0       	ldi	r24, 0x01	; 1
+    125c:	8a 8b       	std	Y+18, r24	; 0x12
+    125e:	82 e0       	ldi	r24, 0x02	; 2
+    1260:	8b 8b       	std	Y+19, r24	; 0x13
+    1262:	83 e0       	ldi	r24, 0x03	; 3
+    1264:	8c 8b       	std	Y+20, r24	; 0x14
+    1266:	84 e0       	ldi	r24, 0x04	; 4
+    1268:	8d 8b       	std	Y+21, r24	; 0x15
+    126a:	85 e0       	ldi	r24, 0x05	; 5
+    126c:	8e 8b       	std	Y+22, r24	; 0x16
+    126e:	86 e0       	ldi	r24, 0x06	; 6
+    1270:	8f 8b       	std	Y+23, r24	; 0x17
+    1272:	87 e0       	ldi	r24, 0x07	; 7
+    1274:	88 8f       	std	Y+24, r24	; 0x18
+    1276:	88 e0       	ldi	r24, 0x08	; 8
+    1278:	89 8f       	std	Y+25, r24	; 0x19
+    127a:	89 e0       	ldi	r24, 0x09	; 9
+    127c:	8a 8f       	std	Y+26, r24	; 0x1a
+    127e:	8a e0       	ldi	r24, 0x0A	; 10
+    1280:	8b 8f       	std	Y+27, r24	; 0x1b
+    1282:	8b e0       	ldi	r24, 0x0B	; 11
+    1284:	8c 8f       	std	Y+28, r24	; 0x1c
+    1286:	8c e0       	ldi	r24, 0x0C	; 12
+    1288:	8d 8f       	std	Y+29, r24	; 0x1d
+    128a:	8d e0       	ldi	r24, 0x0D	; 13
+    128c:	8e 8f       	std	Y+30, r24	; 0x1e
+	u8 IV2[16]  = {0,};
+    128e:	20 e1       	ldi	r18, 0x10	; 16
+    1290:	ce 01       	movw	r24, r28
+    1292:	81 96       	adiw	r24, 0x21	; 33
+    1294:	fc 01       	movw	r30, r24
+    1296:	32 2f       	mov	r19, r18
+    1298:	11 92       	st	Z+, r1
+    129a:	3a 95       	dec	r19
+    129c:	e9 f7       	brne	.-6      	; 0x1298 <main+0x76>
 	//aes128_enc(IV,&aes_test);
-	aes128_enc_nobr(IV,&aes_test);
- fba:	9e 01       	movw	r18, r28
- fbc:	2f 5d       	subi	r18, 0xDF	; 223
- fbe:	3f 4f       	sbci	r19, 0xFF	; 255
- fc0:	ce 01       	movw	r24, r28
- fc2:	41 96       	adiw	r24, 0x11	; 17
- fc4:	b9 01       	movw	r22, r18
- fc6:	cc d8       	rcall	.-3688   	; 0x160 <aes128_enc_nobr>
- fc8:	80 e0       	ldi	r24, 0x00	; 0
- fca:	90 e0       	ldi	r25, 0x00	; 0
-	//aes256_enc(IV,&aes_test);
+	//aes128_enc_nobr(IV,&aes_test);
+	//aes128_enc_origin(IV,&aes_test);
+	
+	aes192_ctx_t aes_test;
+	aes192_init(key, &aes_test);
+    129e:	ce 01       	movw	r24, r28
+    12a0:	c1 96       	adiw	r24, 0x31	; 49
+    12a2:	bc 01       	movw	r22, r24
+    12a4:	ce 01       	movw	r24, r28
+    12a6:	01 96       	adiw	r24, 0x01	; 1
+    12a8:	0e 94 4e 00 	call	0x9c	; 0x9c <aes192_init>
+	//aes192_enc(IV2,&aes_test);
+	aes192_enc_nobr(IV,&aes_test);
+    12ac:	9e 01       	movw	r18, r28
+    12ae:	2f 5c       	subi	r18, 0xCF	; 207
+    12b0:	3f 4f       	sbci	r19, 0xFF	; 255
+    12b2:	ce 01       	movw	r24, r28
+    12b4:	41 96       	adiw	r24, 0x11	; 17
+    12b6:	b9 01       	movw	r22, r18
+    12b8:	0e 94 b2 00 	call	0x164	; 0x164 <aes192_enc_nobr>
+    12bc:	80 e0       	ldi	r24, 0x00	; 0
+    12be:	90 e0       	ldi	r25, 0x00	; 0
+	//aes256_enc(IV2,&aes_test);
 	//aes256_enc_nobr(IV,&aes_test);
 	//aes256_enc_origin(IV,&aes_test);
 
 	
 }
- fcc:	c0 53       	subi	r28, 0x30	; 48
- fce:	df 4f       	sbci	r29, 0xFF	; 255
- fd0:	0f b6       	in	r0, 0x3f	; 63
- fd2:	f8 94       	cli
- fd4:	de bf       	out	0x3e, r29	; 62
- fd6:	0f be       	out	0x3f, r0	; 63
- fd8:	cd bf       	out	0x3d, r28	; 61
- fda:	df 91       	pop	r29
- fdc:	cf 91       	pop	r28
- fde:	08 95       	ret
+    12c0:	d3 95       	inc	r29
+    12c2:	0f b6       	in	r0, 0x3f	; 63
+    12c4:	f8 94       	cli
+    12c6:	de bf       	out	0x3e, r29	; 62
+    12c8:	0f be       	out	0x3f, r0	; 63
+    12ca:	cd bf       	out	0x3d, r28	; 61
+    12cc:	df 91       	pop	r29
+    12ce:	cf 91       	pop	r28
+    12d0:	08 95       	ret
 
-00000fe0 <_exit>:
- fe0:	f8 94       	cli
+000012d2 <_exit>:
+    12d2:	f8 94       	cli
 
-00000fe2 <__stop_program>:
- fe2:	ff cf       	rjmp	.-2      	; 0xfe2 <__stop_program>
+000012d4 <__stop_program>:
+    12d4:	ff cf       	rjmp	.-2      	; 0x12d4 <__stop_program>

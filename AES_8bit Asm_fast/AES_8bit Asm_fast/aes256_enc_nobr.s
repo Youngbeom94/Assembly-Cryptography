@@ -82,12 +82,10 @@ T0 = 20
 T1 = 21
 T2 = 22
 T3 = 23
-CTR = 24
 
 /*
  * param state:  r24:r25
  * param ks:     r22:r23
- * param rounds: r20   
  */
 	//push_range 0, 15
 	push r28
@@ -96,7 +94,6 @@ CTR = 24
 	push r25
 	movw r26, r22
 	movw r30, r24
-	mov  CTR, r20
 	
 	//State Set
 	.irp row, 0, 1, 2, 3
@@ -107,14 +104,30 @@ CTR = 24
 
 	ldi r31, hi8(SBOX_TABLE)	
 	ldi r29, hi8(MIX2_TABLE)
+
+	ldi r20, 14 ;!!-------
+	add r26, r20 ;!!------
+
+	;2297 --> 14개 copy
+	;2303 --> 10개 copy
 	
 	// 0Round----------------------------------------------------------------------------------------
-	.irp row, 0, 1, 2, 3
+	/*.irp row, 0, 1, 2, 3
 		.irp col, 0, 1, 2, 3
 			ld r16, X+
 			eor ST\row\col, r16
 		.endr
-	.endr
+	.endr*/
+
+	/*ld r16,	X+ ;------
+	eor ST30, r16  ;------
+	ld r16,	X+     ;------
+	eor ST31, r16*/;------
+
+	ld r16,	X+     ;------
+	eor ST32, r16  ;------
+	ld r16,	X+     ;------
+	eor ST33, r16  ;------
 
 	//1 Round------------------------------------------------------------------------------------------
 	
