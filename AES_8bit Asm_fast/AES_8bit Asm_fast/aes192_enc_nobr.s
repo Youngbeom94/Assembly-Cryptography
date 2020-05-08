@@ -82,7 +82,6 @@ T0 = 20
 T1 = 21
 T2 = 22
 T3 = 23
-CTR = 24
 
 /*
  * param state:  r24:r25
