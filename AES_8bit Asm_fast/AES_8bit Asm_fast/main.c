@@ -40,16 +40,16 @@ int main(void)
 	//aes128_enc_nobr(IV,&aes_test);
 	//aes128_enc_origin(IV,&aes_test);
 	
-	aes192_ctx_t aes_test;
-	aes192_init(key, &aes_test);
+	//aes192_ctx_t aes_test;
+	//aes192_init(key, &aes_test);
 	//aes192_enc(IV2,&aes_test);
-	aes192_enc_nobr(IV,&aes_test);
+	//aes192_enc_nobr(IV,&aes_test);
 	//aes192_enc_origin(IV,&aes_test);
 	
-	//aes256_ctx_t aes_test;
-	//aes256_init(key, &aes_test);
+	aes256_ctx_t aes_test;
+	aes256_init(key, &aes_test);
 	//aes256_enc(IV2,&aes_test);
-	//aes256_enc_nobr(IV,&aes_test);
+	aes256_enc_nobr(IV,&aes_test);
 	//aes256_enc_origin(IV,&aes_test);
 
 	

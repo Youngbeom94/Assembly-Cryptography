@@ -58,31 +58,30 @@ MIX2_TABLE:
 .global aes192_enc_nobr
 aes192_enc_nobr:
 
-ST00 =	0
-ST01 =  1
-ST02 =  2
-ST03 =  3
+ST00 =	1
+ST01 =  2
+ST02 =  3
+ST03 =  0
 ST10 =  4
 ST11 =  5
 ST12 =  6
-ST13 =  7
+ST13 =  11
 ST20 =  8
 ST21 =  9
 ST22 = 10
-ST23 = 11
+ST23 = 7
 ST30 = 12
 ST31 = 13
 ST32 = 14
 ST33 = 15
-M0 = 16
-M1 = 17
-M2 = 18
-M3 = 19
+M0 = 19
+M1 = 16
+M2 = 17
+M3 = 23
 T0 = 20
 T1 = 21
 T2 = 22
-T3 = 23
-
+T3 = 24
 /*
  * param state:  r24:r25
  * param ks:     r22:r23
@@ -214,8 +213,7 @@ T3 = 23
 	eor T2, M0
 	eor T3, M0 ;1, 1, 3, 2 완료
 
-	mov ST10, T0
-	mov ST11, T1
+	movw ST10, T0
 	mov ST03, M3
 	//! 2번째 열 완료
 
@@ -305,14 +303,10 @@ T3 = 23
 	eor T3, M0
 	eor r25, M0 ;1, 1, 3, 2 완료
 
-	mov ST30, T0
-	mov ST31, T1
-	mov ST32, T3
-	mov ST33, r25
-	mov ST01, M1
-	mov ST02, M2
-	mov ST12, T2
-	mov ST23, M3
+	movw ST30, T0
+	movw ST32, T3
+	movw ST01, M1
+	movw ST12, T2
 	//! 4번째 열 완료
 
 	/* 1Round Key*/
@@ -408,8 +402,8 @@ T3 = 23
 	eor T2, M0
 	eor T3, M0 ;1, 1, 3, 2 완료
 
-	mov ST10, T0
-	mov ST11, T1
+	movw ST10, T0
+	;mov ST11, T1
 	mov ST03, M3
 	//! 2번째 열 완료
 
@@ -499,14 +493,10 @@ T3 = 23
 	eor T3, M0
 	eor r25, M0 ;1, 1, 3, 2 완료
 
-	mov ST30, T0
-	mov ST31, T1
-	mov ST32, T3
-	mov ST33, r25
-	mov ST01, M1
-	mov ST02, M2
-	mov ST12, T2
-	mov ST23, M3
+	movw ST30, T0
+	movw ST32, T3
+	movw ST01, M1
+	movw ST12, T2
 	//! 4번째 열 완료
 
 	/* 2Round Key*/
@@ -602,8 +592,8 @@ T3 = 23
 	eor T2, M0
 	eor T3, M0 ;1, 1, 3, 2 완료
 
-	mov ST10, T0
-	mov ST11, T1
+	movw ST10, T0
+	;mov ST11, T1
 	mov ST03, M3
 	//! 2번째 열 완료
 
@@ -693,14 +683,10 @@ T3 = 23
 	eor T3, M0
 	eor r25, M0 ;1, 1, 3, 2 완료
 
-	mov ST30, T0
-	mov ST31, T1
-	mov ST32, T3
-	mov ST33, r25
-	mov ST01, M1
-	mov ST02, M2
-	mov ST12, T2
-	mov ST23, M3
+	movw ST30, T0
+	movw ST32, T3
+	movw ST01, M1
+	movw ST12, T2
 	//! 4번째 열 완료
 
 	/* 3Round Key*/
@@ -795,8 +781,8 @@ T3 = 23
 	eor T2, M0
 	eor T3, M0 ;1, 1, 3, 2 완료
 
-	mov ST10, T0
-	mov ST11, T1
+	movw ST10, T0
+	;mov ST11, T1
 	mov ST03, M3
 	//! 2번째 열 완료
 
@@ -886,14 +872,10 @@ T3 = 23
 	eor T3, M0
 	eor r25, M0 ;1, 1, 3, 2 완료
 
-	mov ST30, T0
-	mov ST31, T1
-	mov ST32, T3
-	mov ST33, r25
-	mov ST01, M1
-	mov ST02, M2
-	mov ST12, T2
-	mov ST23, M3
+	movw ST30, T0
+	movw ST32, T3
+	movw ST01, M1
+	movw ST12, T2
 	//! 4번째 열 완료
 
 	/* 4Round Key*/
@@ -988,8 +970,8 @@ T3 = 23
 	eor T2, M0
 	eor T3, M0 ;1, 1, 3, 2 완료
 
-	mov ST10, T0
-	mov ST11, T1
+	movw ST10, T0
+	
 	mov ST03, M3
 	//! 2번째 열 완료
 
@@ -1079,14 +1061,10 @@ T3 = 23
 	eor T3, M0
 	eor r25, M0 ;1, 1, 3, 2 완료
 
-	mov ST30, T0
-	mov ST31, T1
-	mov ST32, T3
-	mov ST33, r25
-	mov ST01, M1
-	mov ST02, M2
-	mov ST12, T2
-	mov ST23, M3
+	movw ST30, T0
+	movw ST32, T3
+	movw ST01, M1
+	movw ST12, T2
 	//! 4번째 열 완료
 
 	/* 5Round Key*/
@@ -1181,8 +1159,7 @@ T3 = 23
 	eor T2, M0
 	eor T3, M0 ;1, 1, 3, 2 완료
 
-	mov ST10, T0
-	mov ST11, T1
+	movw ST10, T0
 	mov ST03, M3
 	//! 2번째 열 완료
 
@@ -1272,14 +1249,10 @@ T3 = 23
 	eor T3, M0
 	eor r25, M0 ;1, 1, 3, 2 완료
 
-	mov ST30, T0
-	mov ST31, T1
-	mov ST32, T3
-	mov ST33, r25
-	mov ST01, M1
-	mov ST02, M2
-	mov ST12, T2
-	mov ST23, M3
+	movw ST30, T0
+	movw ST32, T3
+	movw ST01, M1
+	movw ST12, T2
 	//! 4번째 열 완료
 
 	/* 6Round Key*/
@@ -1374,8 +1347,7 @@ T3 = 23
 	eor T2, M0
 	eor T3, M0 ;1, 1, 3, 2 완료
 
-	mov ST10, T0
-	mov ST11, T1
+	movw ST10, T0
 	mov ST03, M3
 	//! 2번째 열 완료
 
@@ -1465,14 +1437,10 @@ T3 = 23
 	eor T3, M0
 	eor r25, M0 ;1, 1, 3, 2 완료
 
-	mov ST30, T0
-	mov ST31, T1
-	mov ST32, T3
-	mov ST33, r25
-	mov ST01, M1
-	mov ST02, M2
-	mov ST12, T2
-	mov ST23, M3
+	movw ST30, T0
+	movw ST32, T3
+	movw ST01, M1
+	movw ST12, T2
 	//! 4번째 열 완료
 
 	/* 7Round Key*/
@@ -1568,8 +1536,7 @@ T3 = 23
 	eor T2, M0
 	eor T3, M0 ;1, 1, 3, 2 완료
 
-	mov ST10, T0
-	mov ST11, T1
+	movw ST10, T0
 	mov ST03, M3
 	//! 2번째 열 완료
 
@@ -1659,14 +1626,10 @@ T3 = 23
 	eor T3, M0
 	eor r25, M0 ;1, 1, 3, 2 완료
 
-	mov ST30, T0
-	mov ST31, T1
-	mov ST32, T3
-	mov ST33, r25
-	mov ST01, M1
-	mov ST02, M2
-	mov ST12, T2
-	mov ST23, M3
+	movw ST30, T0
+	movw ST32, T3
+	movw ST01, M1
+	movw ST12, T2
 	//! 4번째 열 완료
 
 	/* 8Round Key*/
@@ -1761,8 +1724,7 @@ T3 = 23
 	eor T2, M0
 	eor T3, M0 ;1, 1, 3, 2 완료
 
-	mov ST10, T0
-	mov ST11, T1
+	movw ST10, T0
 	mov ST03, M3
 	//! 2번째 열 완료
 
@@ -1852,14 +1814,10 @@ T3 = 23
 	eor T3, M0
 	eor r25, M0 ;1, 1, 3, 2 완료
 
-	mov ST30, T0
-	mov ST31, T1
-	mov ST32, T3
-	mov ST33, r25
-	mov ST01, M1
-	mov ST02, M2
-	mov ST12, T2
-	mov ST23, M3
+	movw ST30, T0
+	movw ST32, T3
+	movw ST01, M1
+	movw ST12, T2
 	//! 4번째 열 완료
 
 	/* 9Round Key*/
@@ -1954,8 +1912,7 @@ T3 = 23
 	eor T2, M0
 	eor T3, M0 ;1, 1, 3, 2 완료
 
-	mov ST10, T0
-	mov ST11, T1
+	movw ST10, T0
 	mov ST03, M3
 	//! 2번째 열 완료
 
@@ -2045,14 +2002,10 @@ T3 = 23
 	eor T3, M0
 	eor r25, M0 ;1, 1, 3, 2 완료
 
-	mov ST30, T0
-	mov ST31, T1
-	mov ST32, T3
-	mov ST33, r25
-	mov ST01, M1
-	mov ST02, M2
-	mov ST12, T2
-	mov ST23, M3
+	movw ST30, T0
+	movw ST32, T3
+	movw ST01, M1
+	movw ST12, T2
 	//! 4번째 열 완료
 
 	/* 10Round Key*/
@@ -2147,8 +2100,7 @@ T3 = 23
 	eor T2, M0
 	eor T3, M0 ;1, 1, 3, 2 완료
 
-	mov ST10, T0
-	mov ST11, T1
+	movw ST10, T0
 	mov ST03, M3
 	//! 2번째 열 완료
 
@@ -2238,14 +2190,10 @@ T3 = 23
 	eor T3, M0
 	eor r25, M0 ;1, 1, 3, 2 완료
 
-	mov ST30, T0
-	mov ST31, T1
-	mov ST32, T3
-	mov ST33, r25
-	mov ST01, M1
-	mov ST02, M2
-	mov ST12, T2
-	mov ST23, M3
+	movw ST30, T0
+	movw ST32, T3
+	movw ST01, M1
+	movw ST12, T2
 	//! 4번째 열 완료
 
 	/* 11Round Key*/
