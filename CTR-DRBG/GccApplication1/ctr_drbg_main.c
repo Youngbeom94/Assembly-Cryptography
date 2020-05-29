@@ -8,10 +8,10 @@
 
 int main(void)
 {
-	
+
 	/* Replace with your application code */
-	volatile st_state INSTATE = {0x00};
-	volatile st_state *in_state = &INSTATE;
+	st_state INSTATE = {0x00};
+	st_state *in_state = &INSTATE;
 	st_len st_LEN = {0x00};
 	st_len *len = &st_LEN;
 
@@ -23,7 +23,7 @@ int main(void)
 	u8 re_Entrophy[16] = {0x4E, 0xE9, 0xA2, 0xCF, 0x6E, 0x8B, 0xFA, 0x48, 0xBB, 0xBE, 0x56, 0x99, 0xDD, 0x5A, 0xBA, 0x02};
 
 	in_state->prediction_flag = FALSE;
-	len->add_data = 16;
+	len->add_data_len = 0;
 	len->general_len = 16;
 	len->re_adddata = 16;
 	len->re_Entrophy = 16;

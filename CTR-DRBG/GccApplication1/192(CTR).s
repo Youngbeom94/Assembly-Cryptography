@@ -49,12 +49,6 @@ MIX2_TABLE:
 
 
 #include "avr-asm-macros.S"
-/*
- * param a: r24
- * param b: r22
- * param reducer: r0
- */
-
 .global aes192_enc_CTR_asm
 aes192_enc_CTR_asm:
 
@@ -82,29 +76,34 @@ T0 = 20
 T1 = 21
 T2 = 22
 T3 = 23
+CTR = 24
 
 /*
  * param state:  r24:r25
  * param ks:     r22:r23
  * param rounds: r20   
  */
-	//push_range 0, 15
+	push_range 0, 19
 	push r28
 	push r29
 	push r24
 	push r25
 	movw r26, r22
 	movw r30, r24
-		
+	
 	//State Set
 	.irp row, 0, 1, 2, 3
 		.irp col, 0, 1, 2, 3
 			ld ST\row\col, Z+
 		.endr
 	.endr
-
+	push r26
+	push r27
+	push r20
+	push r21
 	ldi r31, hi8(SBOX_TABLE)	
 	ldi r29, hi8(MIX2_TABLE)
+
 	
 	// 0Round----------------------------------------------------------------------------------------
 	.irp row, 0, 1, 2, 3
@@ -118,6 +117,7 @@ T3 = 23
 	
 	/* Shift Row and Subbyte , Mixcolumns */
 	//! 1번째 열 시작
+	Inc ST33
 	mov r30, ST00 
 	ld  M1, Z 
 	mov M2, M1
@@ -307,6 +307,23 @@ T3 = 23
 		.endr
 	.endr
 	
+	pop r21
+	pop r20
+	movw r30, r20
+	push r20
+	push r21
+	st Z+, ST10
+	st Z+, ST11
+	st Z+, ST12
+	st Z+, ST13
+	st Z+, ST20
+	st Z+, ST21
+	st Z+, ST22
+	st Z+, ST23
+	st Z+, ST30
+	st Z+, ST31
+	st Z+, ST32
+	st Z+, ST33
 	
 	//2 Round------------------------------------------------------------------------------------------
 	
@@ -1853,7 +1870,7 @@ T3 = 23
 			eor ST\row\col, r16
 		.endr
 	.endr
-	
+
 	//10 Round------------------------------------------------------------------------------------------
 	
 	/* Shift Row and Subbyte , Mixcolumns */
@@ -2240,8 +2257,4167 @@ T3 = 23
 		.endr
 	.endr
 	
+	// 12 Round-----------------------------------------------------------------------------------------------
+	// Shift Row + Subbyte
+	mov r30, ST00
+	ld ST00, Z
+	mov r30, ST10
+	ld ST10, Z
+	mov r30, ST20
+	ld ST20, Z
+	mov r30, ST30
+	ld ST30, Z
+
+	mov r30, ST01
+	ld T0, Z
+	mov r30, ST11
+	ld ST01, Z
+	mov r30, ST21
+	ld ST11, Z
+	mov r30, ST31
+	ld ST21, Z
+	mov ST31, T0
+
+	mov r30, ST02
+	ld T0, Z
+	mov r30, ST12
+	ld T1, Z
+	mov r30, ST22
+	ld ST02, Z
+	mov r30, ST32
+	ld ST12, Z
+	mov ST22, T0
+	mov ST32, T1
+
+	mov r30, ST03
+	ld T0, Z
+	mov r30, ST33
+	ld  ST03, Z
+	mov r30, ST23
+	ld ST33, Z
+	mov r30, ST13
+	ld ST23, Z
+	mov ST13, T0
+
+	//12Round key
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+	pop r21
+	pop r20
+	pop r27
+	pop r26
+	pop r31
+	pop r30
+	movw r16, r30
+
+	.irp row, 0, 1, 2, 3
+			.irp col, 0, 1, 2, 3
+			st Z+, ST\row\col
+		.endr
+	.endr
+	movw r30, r16
+	ld r16, Z
+	inc r16
+	st Z, r16
+	movw r16, r30
+
+	.irp row, 0, 1, 2, 3
+			.irp col, 0, 1, 2, 3
+			ld ST\row\col ,Z+
+		.endr
+	.endr
+	movw r30, r16
+
+	push r30
+	push r31
+	push r26
+	push r27
+	push r20
+	push r21
+
+	ldi r16, 12
+	add r26, r16
+
+	ld r16, X+
+	eor ST30, r16
+	ld r16, X+
+	eor ST31, r16
+	ld r16, X+
+	eor ST32, r16
+	ld r16, X+
+	eor ST33, r16
+	;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	//1 Round------------------------------------------------------------------------------------------
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	ldi r31, hi8(SBOX_TABLE)	
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	mov ST01, M1
+	mov ST02, M2
+	mov ST03, M3
+
+	ld r16, X+
+	eor ST00, r16
+	ld r16, X+
+	eor ST01, r16
+	ld r16, X+
+	eor ST02, r16
+	ld r16, X+
+	eor ST03, r16
+
+	pop r31
+	pop r30
+	movw r16, r30
+	
+	ld ST10, Z+
+	ld ST11, Z+
+	ld ST12, Z+
+	ld ST13, Z+
+	ld ST20, Z+
+	ld ST21, Z+
+	ld ST22, Z+
+	ld ST23, Z+
+	ld ST30, Z+
+	ld ST31, Z+
+	ld ST32, Z+
+	ld ST33, Z+
+	push r16
+	push r17
+	ldi r31, hi8(SBOX_TABLE)	
+
+	//2 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
 
 
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 2Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+
+	
+	//3 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 3Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+	
+	//4 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 4Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+	
+	//5 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 5Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+	
+	//6 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 6Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+	
+	//7 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 7Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+	
+	
+	//8 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 8Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+	
+	//9 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 9Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+
+		//10 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 10Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+	
+	//11 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 11Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+	
+	// 12 Round--------------------------------------------------------------------------------------------
+	// Shift Row + Subbyte
+	mov r30, ST00
+	ld ST00, Z
+	mov r30, ST10
+	ld ST10, Z
+	mov r30, ST20
+	ld ST20, Z
+	mov r30, ST30
+	ld ST30, Z
+
+	mov r30, ST01
+	ld T0, Z
+	mov r30, ST11
+	ld ST01, Z
+	mov r30, ST21
+	ld ST11, Z
+	mov r30, ST31
+	ld ST21, Z
+	mov ST31, T0
+
+	mov r30, ST02
+	ld T0, Z
+	mov r30, ST12
+	ld T1, Z
+	mov r30, ST22
+	ld ST02, Z
+	mov r30, ST32
+	ld ST12, Z
+	mov ST22, T0
+	mov ST32, T1
+
+	mov r30, ST03
+	ld T0, Z
+	mov r30, ST33
+	ld  ST03, Z
+	mov r30, ST23
+	ld ST33, Z
+	mov r30, ST13
+	ld ST23, Z
+	mov ST13, T0
+
+	//12Round key
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+
+	;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	//1 Round------------------------------------------------------------------------------------------
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	ldi r31, hi8(SBOX_TABLE)	
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	mov ST01, M1
+	mov ST02, M2
+	mov ST03, M3
+
+	ld r16, X+
+	eor ST00, r16
+	ld r16, X+
+	eor ST01, r16
+	ld r16, X+
+	eor ST02, r16
+	ld r16, X+
+	eor ST03, r16
+
+	pop r31
+	pop r30
+	movw r16, r30
+	
+	ld ST10, Z+
+	ld ST11, Z+
+	ld ST12, Z+
+	ld ST13, Z+
+	ld ST20, Z+
+	ld ST21, Z+
+	ld ST22, Z+
+	ld ST23, Z+
+	ld ST30, Z+
+	ld ST31, Z+
+	ld ST32, Z+
+	ld ST33, Z+
+	push r16
+	push r17
+	ldi r31, hi8(SBOX_TABLE)	
+
+	//2 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 2Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+
+	
+	//3 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 3Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+	
+	//4 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 4Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+	
+	//5 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 5Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+	
+	//6 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 6Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+	
+	//7 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 7Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+	
+	
+	//8 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 8Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+	
+	//9 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 9Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+
+		//10 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 10Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+	
+	//11 Round------------------------------------------------------------------------------------------
+	
+	/* Shift Row and Subbyte , Mixcolumns */
+	//! 1번째 열 시작
+	mov r30, ST00 
+	ld  M1, Z 
+	mov M2, M1
+	mov M3, M2 
+	mov r28, ST00
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST11
+	ld  T0, Z
+	eor M0, T0
+	eor M2, T0
+	eor M3, T0 
+	mov r28, ST11
+	ld  T0, Y
+	eor M0, T0
+	eor M1, T0 ;3, 2, 2, 1 완료
+
+	mov r30, ST22
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M3, T0
+	mov r28, ST22
+	ld  T0, Y
+	eor M1, T0
+	eor M2, T0 ;1, 3, 2, 1 완료
+
+	mov r30, ST33
+	ld  T0, Z
+	eor M0, T0
+	eor M1, T0
+	eor M2, T0 
+	mov r28, ST33
+	ld  T0, Y
+	eor M2, T0
+	eor M3, T0 ;1, 1, 3, 2 완료
+
+	mov ST00, M0
+	//! 1번째 열 완료
+
+	//! 2번째 열 시작
+	mov r30, ST10 
+	ld  T1, Z 
+	mov T2, T1
+	mov T3, T2 
+	mov r28, ST10
+	ld  T0, Y
+	eor T3, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST21
+	ld  M0, Z
+	eor T0, M0
+	eor T2, M0
+	eor T3, M0 
+	mov r28, ST21
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST32
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST32
+	ld  M0, Y
+	eor T1, M0
+	eor T2, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST03
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T2, M0 
+	mov r28, ST03
+	ld  M0, Y
+	eor T2, M0
+	eor T3, M0 ;1, 1, 3, 2 완료
+
+	mov ST10, T0
+	mov ST11, T1
+	mov ST03, M3
+	//! 2번째 열 완료
+
+	//! 3번째 열 시작
+	mov r30, ST20 
+	ld  T0, Z 
+	mov T1, T0
+	mov M3, T1 
+	mov r28, ST20
+	ld  M0, Y
+	eor M3, M0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST31
+	ld  r25, Z
+	eor M0, r25
+	eor T1, r25
+	eor M3, r25
+	mov r28, ST31
+	ld  r25, Y
+	eor M0, r25
+	eor T0, r25 ;3, 2, 2, 1 완료
+
+	mov r30, ST02
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor M3, r25
+	mov r28, ST02
+	ld  r25, Y
+	eor T0, r25
+	eor T1, r25;1, 3, 2, 1 완료
+
+	mov r30, ST13
+	ld  r25, Z
+	eor M0, r25
+	eor T0, r25
+	eor T1, r25 
+	mov r28, ST13
+	ld  r25, Y
+	eor T1, r25
+	eor M3, r25 ;1, 1, 3, 2 완료
+
+	mov ST20, M0
+	mov ST21, T0
+	mov ST22, T1
+	mov ST13, T3
+	//! 3번째 열 완료
+
+
+
+	//! 4번째 열 시작
+	mov r30, ST30 
+	ld  T1, Z 
+	mov T3, T1
+	mov r25, T3 
+	mov r28, ST30
+	ld  T0, Y
+	eor r25, T0 ; 2, 1, 1, 3 완료
+
+	mov r30, ST01
+	ld  M0, Z
+	eor T0, M0
+	eor T3, M0
+	eor r25, M0 
+	mov r28, ST01
+	ld  M0, Y
+	eor T0, M0
+	eor T1, M0 ;3, 2, 2, 1 완료
+
+	mov r30, ST12
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor r25, M0 
+	mov r28, ST12
+	ld  M0, Y
+	eor T1, M0
+	eor T3, M0 ;1, 3, 2, 1 완료
+
+	mov r30, ST23
+	ld  M0, Z
+	eor T0, M0
+	eor T1, M0
+	eor T3, M0 
+	mov r28, ST23
+	ld  M0, Y
+	eor T3, M0
+	eor r25, M0 ;1, 1, 3, 2 완료
+
+	mov ST30, T0
+	mov ST31, T1
+	mov ST32, T3
+	mov ST33, r25
+	mov ST01, M1
+	mov ST02, M2
+	mov ST12, T2
+	mov ST23, M3
+	//! 4번째 열 완료
+
+	/* 11Round Key*/
+	.irp row, 0, 1, 2, 3
+		.irp col, 0, 1, 2, 3
+			ld r16, X+
+			eor ST\row\col, r16
+		.endr
+	.endr
+	
 	// 12 Round--------------------------------------------------------------------------------------------
 	// Shift Row + Subbyte
 	mov r30, ST00
@@ -2293,6 +6469,10 @@ T3 = 23
 	.endr
 
 	//ST
+	pop r21
+	pop r20
+	pop r27
+	pop r26
 	pop r31
 	pop r30
 	.irp row, 0, 1, 2, 3
@@ -2302,6 +6482,15 @@ T3 = 23
 	.endr
 	pop r29
 	pop r28
+
+	pop_range 0, 19
 	ret
+	
+	
+	
+
+
+	
+
 
 

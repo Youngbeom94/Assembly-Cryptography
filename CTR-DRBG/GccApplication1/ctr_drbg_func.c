@@ -43,9 +43,12 @@ void clear(u8 *src, int len)
 }
 void derived_function(u8 *input_data, u8 *seed, u8 *input_len)
 {
-	volatile char cnt_i, cnt_j, cnt_k = 0;
-	u8 len = 25 + *input_len;
-	u8 temp = len % BLOCK_SIZE;
+	volatile char cnt_i = 0;
+	volatile char cnt_j = 0;
+	volatile char cnt_k = 0;
+
+	volatile u8 len = 25 + *input_len;
+	volatile u8 temp = len % BLOCK_SIZE;
 	u8 CBC_KEY[16] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f};
 	u8 chain_value[16] = {0x00};
 	u8 seed_temp[SEED_LEN] = {0x00};
@@ -70,6 +73,8 @@ void derived_function(u8 *input_data, u8 *seed, u8 *input_len)
 	in[23] = N_DF;
 	for (cnt_i = 24; cnt_i < 24 + *input_len; cnt_i++)
 	{
+		if(input_data == NULL)
+			continue;
 		in[cnt_i] = input_data[cnt_i - 24];
 	}
 	in[cnt_i] = 0x80;
@@ -94,6 +99,7 @@ void derived_function(u8 *input_data, u8 *seed, u8 *input_len)
 		clear(chain_value, BLOCK_SIZE);
 		in[3]++;
 	}
+	free(in);
 
 	//! step2
 	u8 key[16] = {0x00};
@@ -129,7 +135,7 @@ void derived_function(u8 *input_data, u8 *seed, u8 *input_len)
 				break;
 		}
 	}
-	free(in);
+	
 }
 
 void update(st_state *state, u8 *seed)
@@ -149,12 +155,13 @@ void update(st_state *state, u8 *seed)
 		temp[cnt_i] = state->V[cnt_i];
 	}
 
-#if key_bit == 128
+	
+#if KEY_BIT == 128
 	aes128_ctx_t aes_test;
 	aes128_init(state->key, &aes_test);
 	aes128_enc_CTR_asm(temp, &aes_test, temp2);
 
-#elif key_bit == 192
+#elif KEY_BIT == 192
 	aes192_ctx_t aes_test;
 	aes192_init(state->key, &aes_test);
 	aes128_enc_CTR_asm(temp, &aes_test, temp2);
@@ -179,13 +186,13 @@ void update(st_state *state, u8 *seed)
 void generate_Random(st_state *state, u8 *random, u8 *add_data, u8 *re_Entrophy, u8 *re_add_data, st_len *LEN)
 {
 
-	volatile char cnt_i, cnt_j, cnt_k = 0;
+	volatile char cnt_i = 0, cnt_j = 0, cnt_k = 0;
 	u8 round_key[16 * 17] = {0x00};
 	u8 a_data[16] = {0x00};
 	u8 seed[SEED_LEN] = {0x00};
 	u8 key[KEY_BIT / 8] = {0x00};
 	u8 temp[SEED_LEN] = {0x00};
-	u8 result[BLOCK_SIZE] = {0x00};
+	u8 result[SEED_LEN] = {0x00};
 
 	for (cnt_i = 0; cnt_i < KEY_BIT / 8; cnt_i++)
 	{
@@ -251,7 +258,7 @@ void generate_Random(st_state *state, u8 *random, u8 *add_data, u8 *re_Entrophy,
 		{
 			state->key[cnt_i] = temp[cnt_i] ^ seed[cnt_i];
 		}
-		for (cnt_i = 0; KEY_BIT / 8 < LEN_SEED; cnt_i++)
+		for (cnt_i = 0; cnt_i< LEN_SEED - (KEY_BIT / 8); cnt_i++)
 		{
 			state->V[cnt_i] = temp[16 + cnt_i] ^ seed[16 + cnt_i];
 		}
@@ -299,7 +306,7 @@ void generate_Random(st_state *state, u8 *random, u8 *add_data, u8 *re_Entrophy,
 		{
 			state->key[cnt_i] = temp[cnt_i] ^ seed[cnt_i];
 		}
-		for (cnt_i = 0; KEY_BIT / 8 < LEN_SEED; cnt_i++)
+		for (cnt_i = 0; cnt_i< LEN_SEED - (KEY_BIT / 8); cnt_i++)
 		{
 			state->V[cnt_i] = temp[16 + cnt_i] ^ seed[16 + cnt_i];
 		}
@@ -307,7 +314,7 @@ void generate_Random(st_state *state, u8 *random, u8 *add_data, u8 *re_Entrophy,
 
 	else
 	{
-		derived_function(a_data, seed, &(LEN->general_len));
+		//derived_function(a_data, seed, &(LEN->add_data_len));
 		for (cnt_i = 0; cnt_i < LEN_SEED; cnt_i++)
 		{
 			state->V[15]++;
@@ -347,7 +354,7 @@ void generate_Random(st_state *state, u8 *random, u8 *add_data, u8 *re_Entrophy,
 		{
 			state->key[cnt_i] = temp[cnt_i] ^ seed[cnt_i];
 		}
-		for (cnt_i = 0; KEY_BIT / 8 < LEN_SEED; cnt_i++)
+		for (cnt_i = 0; cnt_i< LEN_SEED - (KEY_BIT / 8); cnt_i++)
 		{
 			state->V[cnt_i] = temp[16 + cnt_i] ^ seed[16 + cnt_i];
 		}
