@@ -6,37 +6,37 @@
 */
 #include "ctr_drbg.h"
 
-void XoR(u8 *drc, u8 *src, int len)
+void XoR(u8 *drc, u8 *src, char len)
 {
-	for (int cnt_i = 0; cnt_i < len; cnt_i++)
+	for (char cnt_i = 0; cnt_i < len; cnt_i++)
 	{
 		drc[cnt_i] ^= src[cnt_i];
 	}
 }
-void set_state(u8 *drc, u8 *src, int start)
+void set_state(u8 *drc, u8 *src, char start)
 {
-	for (int cnt_i = 0; cnt_i < BLOCK_SIZE; cnt_i++)
+	for (char cnt_i = 0; cnt_i < BLOCK_SIZE; cnt_i++)
 	{
 		drc[cnt_i] = src[start + cnt_i];
 	}
 }
-void copy_state(u8 drc[LEN_SEED][BLOCK_SIZE], u8 *src, int len)
+void copy_state(u8 drc[LEN_SEED][BLOCK_SIZE], u8 *src, char len)
 {
-	for (int cnt_i = 0; cnt_i < BLOCK_SIZE; cnt_i++)
+	for (char cnt_i = 0; cnt_i < BLOCK_SIZE; cnt_i++)
 	{
 		drc[len][cnt_i] = src[cnt_i];
 	}
 }
 void copy(u8 *drc, u8 *src)
 {
-	for (int cnt_i = 0; cnt_i < BLOCK_SIZE; cnt_i++)
+	for (char cnt_i = 0; cnt_i < BLOCK_SIZE; cnt_i++)
 	{
 		drc[cnt_i] = src[cnt_i];
 	}
 }
-void clear(u8 *src, int len)
+void clear(u8 *src, char len)
 {
-	for (int cnt_i = 0; cnt_i < len; cnt_i++)
+	for (char cnt_i = 0; cnt_i < len; cnt_i++)
 	{
 		src[cnt_i] = 0x00;
 	}
@@ -46,7 +46,6 @@ void derived_function(u8 *input_data, u8 *seed, u8 *input_len)
 	volatile char cnt_i = 0;
 	volatile char cnt_j = 0;
 	volatile char cnt_k = 0;
-
 	volatile u8 len = 25 + *input_len;
 	volatile u8 temp = len % BLOCK_SIZE;
 	u8 CBC_KEY[16] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f};
@@ -64,7 +63,6 @@ void derived_function(u8 *input_data, u8 *seed, u8 *input_len)
 	aes256_ctx_t aes_test;
 	aes256_init(CBC_KEY, &aes_test);
 #endif
-
 	if (temp != 0)
 		len += BLOCK_SIZE - temp;
 
@@ -74,15 +72,15 @@ void derived_function(u8 *input_data, u8 *seed, u8 *input_len)
 	for (cnt_i = 24; cnt_i < 24 + *input_len; cnt_i++)
 	{
 		if(input_data == NULL)
-			continue;
+		continue;
 		in[cnt_i] = input_data[cnt_i - 24];
 	}
 	in[cnt_i] = 0x80;
-
+	len = len/16;
 	u8 state[16] = {0x00};
 	for (cnt_j = 0; cnt_j < LEN_SEED; cnt_j++)
 	{
-		for (cnt_i = 0; cnt_i < len / 16; cnt_i++)
+		for (cnt_i = 0; cnt_i < len; cnt_i++)
 		{
 			set_state(state, in, 16 * cnt_i);
 			XoR(state, chain_value, BLOCK_SIZE);
@@ -103,7 +101,8 @@ void derived_function(u8 *input_data, u8 *seed, u8 *input_len)
 
 	//! step2
 	u8 key[16] = {0x00};
-	for (cnt_i = 0; cnt_i < KEY_BIT / 8; cnt_i++)
+	len = KEY_BIT/8;
+	for (cnt_i = 0; cnt_i < len; cnt_i++)
 	{
 		key[cnt_i] = *(KEYandV + cnt_i);
 	}
@@ -128,6 +127,7 @@ void derived_function(u8 *input_data, u8 *seed, u8 *input_len)
 #else //KEY_BIT ==256
 		aes256_enc_CBC_asm(state, &aes_test);
 #endif
+
 		for (cnt_j = 0; cnt_j < BLOCK_SIZE; cnt_j++)
 		{
 			seed[cnt_i * 16 + cnt_j] = state[cnt_j];
@@ -144,8 +144,9 @@ void update(st_state *state, u8 *seed)
 	u8 key[KEY_BIT / 8] = {0x00};
 	u8 temp[SEED_LEN] = {0x00};
 	u8 temp2[12] = {0x00};
+	cnt_j = KEY_BIT/8;
 
-	for (cnt_i = 0; cnt_i < KEY_BIT / 8; cnt_i++)
+	for (cnt_i = 0; cnt_i < cnt_j; cnt_i++)
 	{
 		key[cnt_i] = state->key[cnt_i];
 	}
@@ -154,8 +155,6 @@ void update(st_state *state, u8 *seed)
 	{
 		temp[cnt_i] = state->V[cnt_i];
 	}
-
-	
 #if KEY_BIT == 128
 	aes128_ctx_t aes_test;
 	aes128_init(state->key, &aes_test);
@@ -170,16 +169,15 @@ void update(st_state *state, u8 *seed)
 	aes256_ctx_t aes_test;
 	aes256_init(state->key, &aes_test);
 	aes128_enc_CTR_asm(temp, &aes_test, temp2);
-
 #endif
-
-	for (cnt_i = 0; cnt_i < SEED_LEN - BLOCK_SIZE; cnt_i++)
+	cnt_j =  SEED_LEN - BLOCK_SIZE;
+	for (cnt_i = 0; cnt_i <cnt_j; cnt_i++)
 	{
 		state->key[cnt_i] = temp[cnt_i] ^ seed[cnt_i];
 	}
 	for (cnt_i = 0; cnt_i < BLOCK_SIZE; cnt_i++)
 	{
-		state->V[cnt_i] = temp[SEED_LEN - BLOCK_SIZE + cnt_i] ^ seed[SEED_LEN - BLOCK_SIZE + cnt_i];
+		state->V[cnt_i] = temp[cnt_j + cnt_i] ^ seed[cnt_j + cnt_i];
 	}
 }
 
@@ -193,15 +191,15 @@ void generate_Random(st_state *state, u8 *random, u8 *add_data, u8 *re_Entrophy,
 	u8 key[KEY_BIT / 8] = {0x00};
 	u8 temp[SEED_LEN] = {0x00};
 	u8 result[SEED_LEN] = {0x00};
-
-	for (cnt_i = 0; cnt_i < KEY_BIT / 8; cnt_i++)
+	cnt_j = KEY_BIT / 8;
+	for (cnt_i = 0; cnt_i <cnt_j; cnt_i++)
 	{
 		key[cnt_i] = state->key[cnt_i];
 	}
 	copy(temp, state->V);
 	for (cnt_i = 0; cnt_i < BLOCK_SIZE; cnt_i++)
 	{
-		result[cnt_i] = state->V[(KEY_BIT / 8) + cnt_i];
+		result[cnt_i] = state->V[(cnt_j) + cnt_i];
 	}
 #if KEY_BIT == 128
 	aes128_ctx_t aes_test;
@@ -314,7 +312,7 @@ void generate_Random(st_state *state, u8 *random, u8 *add_data, u8 *re_Entrophy,
 
 	else
 	{
-		//derived_function(a_data, seed, &(LEN->add_data_len));
+		derived_function(a_data, seed, &(LEN->add_data_len));
 		for (cnt_i = 0; cnt_i < LEN_SEED; cnt_i++)
 		{
 			state->V[15]++;
@@ -346,15 +344,17 @@ void generate_Random(st_state *state, u8 *random, u8 *add_data, u8 *re_Entrophy,
 				temp[cnt_i * 16 + cnt_j] = result[cnt_j];
 			}
 		}
+		cnt_j = KEY_BIT / 8;
 		for (cnt_i = 0; cnt_i < LEN_SEED; cnt_i++)
 		{
 			temp[cnt_i] ^= seed[cnt_i];
 		}
-		for (cnt_i = 0; cnt_i < KEY_BIT / 8; cnt_i++)
+		for (cnt_i = 0; cnt_i < cnt_j; cnt_i++)
 		{
 			state->key[cnt_i] = temp[cnt_i] ^ seed[cnt_i];
 		}
-		for (cnt_i = 0; cnt_i< LEN_SEED - (KEY_BIT / 8); cnt_i++)
+		cnt_j = LEN_SEED - cnt_j;
+		for (cnt_i = 0; cnt_i< cnt_j; cnt_i++)
 		{
 			state->V[cnt_i] = temp[16 + cnt_i] ^ seed[16 + cnt_i];
 		}

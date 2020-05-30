@@ -16,7 +16,7 @@
 #include <stdlib.h>
 
 
-#define KEY_BIT 256
+#define KEY_BIT 192
 #define BLOCK_BIT 128
 #define BLOCK_SIZE 16
 #define SEED_LEN (KEY_BIT + BLOCK_BIT)/8
@@ -68,11 +68,11 @@ typedef struct LEN {
 	u8 input_len;
 } st_len;
 
-void XoR(u8* drc, u8* src, int len);
-void set_state(u8* drc, u8* src , int start);
-void copy_state(u8 drc[LEN_SEED][BLOCK_SIZE], u8 * src, int len);
+void XoR(u8* drc, u8* src, char len);
+void set_state(u8* drc, u8* src , char start);
+void copy_state(u8 drc[LEN_SEED][BLOCK_SIZE], u8 * src, char len);
 void copy(u8 *drc, u8 * src);
-void clear(u8 *src, int len);
+void clear(u8 *src, char len);
 
 void derived_function(u8 *input_data,u8* seed, u8 *input_len);
 void update(st_state* state,u8* seed);
@@ -105,8 +105,16 @@ void aes256_enc_CTR_asm(void *buffer, aes256_ctx_t *ctx,u8* temp);
 #define xtime(x) ((x << 1) ^ (((x >> 7) & 1) * 0x1b))
 #define Nb 4
 #define Nk 4 //Number of 32-bit words comprising the Cipher Key
+#if KEY_BIT == 128
 #define AES_MAXNR 10 //10 round
 #define AES_KEY_BIT 128 // 128 bit
+#elif KEY_BIT ==192 
+#define AES_MAXNR 12 //10 round
+#define AES_KEY_BIT 192 // 128 bit
+#else
+#define AES_MAXNR 14 //10 round
+#define AES_KEY_BIT 256 // 128 bit
+#endif
 #define BLOCKSIZE 1
 
 void SubByte(u8 *state);
@@ -123,6 +131,4 @@ void MixColumns_asm(u8 *state);
 void MixColumns_asm_Progm(u8 *state);
 
 void AES_encrypt_asm(u8* inp, u8* out, u8* usrkey);
-
-
 #endif
