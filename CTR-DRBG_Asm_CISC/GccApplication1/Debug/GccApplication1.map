@@ -9,7 +9,7 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(malloc.o)
                               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(calloc.o) (malloc)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(memset.o)
-                              c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(calloc.o) (memset)
+                              ctr_drbg_func.o (memset)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_clear_bss.o)
                               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(malloc.o) (__do_clear_bss)
 
@@ -50,11 +50,11 @@ Discarded input sections
  .bss           0x00000000        0x0 ctr_drbg_func.o
  .text.XoR      0x00000000       0x26 ctr_drbg_func.o
  .text.set_state
-                0x00000000       0x1a ctr_drbg_func.o
+                0x00000000       0x84 ctr_drbg_func.o
  .text.copy_state
-                0x00000000       0x20 ctr_drbg_func.o
- .text.copy     0x00000000       0x16 ctr_drbg_func.o
- .text.clear    0x00000000       0x1c ctr_drbg_func.o
+                0x00000000       0x8a ctr_drbg_func.o
+ .text.copy     0x00000000       0x80 ctr_drbg_func.o
+ .text.clear    0x00000000       0x18 ctr_drbg_func.o
  .text          0x00000000        0x0 ctr_drbg_main.o
  .data          0x00000000        0x0 ctr_drbg_main.o
  .bss           0x00000000        0x0 ctr_drbg_main.o
@@ -66,31 +66,31 @@ Discarded input sections
  .text          0x00000000        0x0 test_fun.o
  .data          0x00000000        0x0 test_fun.o
  .bss           0x00000000        0x0 test_fun.o
- .text.SubByte  0x00000000       0x1c test_fun.o
+ .text.SubByte  0x00000000       0xc4 test_fun.o
  .text.ShiftRow
                 0x00000000       0x34 test_fun.o
  .text.MixColumns
-                0x00000000       0xdc test_fun.o
+                0x00000000      0x1fe test_fun.o
  .text.AddRoundKey
-                0x00000000       0x1a test_fun.o
+                0x00000000       0xc0 test_fun.o
  .text.keyScheduling
                 0x00000000      0x140 test_fun.o
  .text.AES_encrypt_asm
-                0x00000000      0x194 test_fun.o
+                0x00000000      0x370 test_fun.o
  .text.AES_encrypt
                 0x00000000        0x4 test_fun.o
  .rodata.sbox   0x00000000      0x100 test_fun.o
  .rodata.Rcon   0x00000000        0xd test_fun.o
- .debug_info    0x00000000      0x55e test_fun.o
- .debug_abbrev  0x00000000      0x185 test_fun.o
- .debug_loc     0x00000000      0x6ce test_fun.o
+ .debug_info    0x00000000      0x52e test_fun.o
+ .debug_abbrev  0x00000000      0x1b3 test_fun.o
+ .debug_loc     0x00000000      0xd0b test_fun.o
  .debug_aranges
                 0x00000000       0x48 test_fun.o
- .debug_ranges  0x00000000       0x38 test_fun.o
- .debug_line    0x00000000      0x3c7 test_fun.o
+ .debug_ranges  0x00000000       0x60 test_fun.o
+ .debug_line    0x00000000      0x2d2 test_fun.o
  .debug_str     0x00000000      0x1f3 test_fun.o
  .comment       0x00000000       0x31 test_fun.o
- .debug_frame   0x00000000      0x104 test_fun.o
+ .debug_frame   0x00000000       0xdc test_fun.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
@@ -283,7 +283,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x387c
+.text           0x00000000     0x39d6
  *(.vectors)
  .vectors       0x00000000       0x8c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
                 0x00000000                __vector_default
@@ -395,37 +395,37 @@ END GROUP
                 0x00002100                . = ALIGN (0x2)
  *(.text.*)
  .text.derived_function
-                0x00002100      0x570 ctr_drbg_func.o
+                0x00002100      0x6fa ctr_drbg_func.o
                 0x00002100                derived_function
- .text.update   0x00002670      0x2a4 ctr_drbg_func.o
-                0x00002670                update
+ .text.update   0x000027fa      0x2a0 ctr_drbg_func.o
+                0x000027fa                update
  .text.Reseed_Function
-                0x00002914       0xe8 ctr_drbg_func.o
-                0x00002914                Reseed_Function
+                0x00002a9a       0xe8 ctr_drbg_func.o
+                0x00002a9a                Reseed_Function
  .text.generate_Random
-                0x000029fc      0xabc ctr_drbg_func.o
-                0x000029fc                generate_Random
+                0x00002b82      0xa8e ctr_drbg_func.o
+                0x00002b82                generate_Random
  .text.CTR_DRBG
-                0x000034b8       0x6c ctr_drbg_func.o
-                0x000034b8                CTR_DRBG
+                0x00003610       0x6c ctr_drbg_func.o
+                0x00003610                CTR_DRBG
  .text.startup.main
-                0x00003524       0xd0 ctr_drbg_main.o
-                0x00003524                main
+                0x0000367c       0xd2 ctr_drbg_main.o
+                0x0000367c                main
  .text.avr-libc
-                0x000035f4       0x34 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(calloc.o)
-                0x000035f4                calloc
+                0x0000374e       0x34 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(calloc.o)
+                0x0000374e                calloc
  .text.avr-libc
-                0x00003628      0x242 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(malloc.o)
-                0x00003628                malloc
-                0x00003758                free
+                0x00003782      0x242 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(malloc.o)
+                0x00003782                malloc
+                0x000038b2                free
  .text.avr-libc
-                0x0000386a        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(memset.o)
-                0x0000386a                memset
-                0x00003878                . = ALIGN (0x2)
+                0x000039c4        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(memset.o)
+                0x000039c4                memset
+                0x000039d2                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00003878        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
-                0x00003878                _exit
-                0x00003878                exit
+ .fini9         0x000039d2        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+                0x000039d2                _exit
+                0x000039d2                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -444,11 +444,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00003878        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ .fini0         0x000039d2        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000387c                _etext = .
+                0x000039d6                _etext = .
 
-.data           0x00800100      0x216 load address 0x0000387c
+.data           0x00800100      0x216 load address 0x000039d6
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100      0x200 128(CTR).o
@@ -475,8 +475,8 @@ END GROUP
                 0x00800316                __brkval
                 0x00800318                __flp
                 0x0080031a                PROVIDE (__bss_end, .)
-                0x0000387c                __data_load_start = LOADADDR (.data)
-                0x00003a92                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000039d6                __data_load_start = LOADADDR (.data)
+                0x00003bec                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0080031a        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -566,50 +566,50 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1a08
+.debug_info     0x00000000     0x19b1
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x780 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
  .debug_info    0x00000780       0x65 Origin.o
  .debug_info    0x000007e5       0x67 128(CTR).o
- .debug_info    0x0000084c      0xe46 ctr_drbg_func.o
- .debug_info    0x00001692      0x30b ctr_drbg_main.o
- .debug_info    0x0000199d       0x6b Key_Schedule.o
+ .debug_info    0x0000084c      0xdde ctr_drbg_func.o
+ .debug_info    0x0000162a      0x31c ctr_drbg_main.o
+ .debug_info    0x00001946       0x6b Key_Schedule.o
 
-.debug_abbrev   0x00000000      0xb06
+.debug_abbrev   0x00000000      0xb49
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x718 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
  .debug_abbrev  0x00000718       0x14 Origin.o
  .debug_abbrev  0x0000072c       0x14 128(CTR).o
- .debug_abbrev  0x00000740      0x289 ctr_drbg_func.o
- .debug_abbrev  0x000009c9      0x129 ctr_drbg_main.o
- .debug_abbrev  0x00000af2       0x14 Key_Schedule.o
+ .debug_abbrev  0x00000740      0x2cc ctr_drbg_func.o
+ .debug_abbrev  0x00000a0c      0x129 ctr_drbg_main.o
+ .debug_abbrev  0x00000b35       0x14 Key_Schedule.o
 
-.debug_line     0x00000000     0x5083
+.debug_line     0x00000000     0x4fe9
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x169 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
  .debug_line    0x00000169      0x1d3 Origin.o
  .debug_line    0x0000033c     0x4232 128(CTR).o
- .debug_line    0x0000456e      0x73c ctr_drbg_func.o
- .debug_line    0x00004caa       0xfa ctr_drbg_main.o
- .debug_line    0x00004da4      0x2df Key_Schedule.o
+ .debug_line    0x0000456e      0x6a2 ctr_drbg_func.o
+ .debug_line    0x00004c10       0xfa ctr_drbg_main.o
+ .debug_line    0x00004d0a      0x2df Key_Schedule.o
 
 .debug_frame    0x00000000      0x2b4
  *(.debug_frame)
  .debug_frame   0x00000000      0x24c ctr_drbg_func.o
  .debug_frame   0x0000024c       0x68 ctr_drbg_main.o
 
-.debug_str      0x00000000      0x5a8
+.debug_str      0x00000000      0x5af
  *(.debug_str)
  .debug_str     0x00000000      0x27d C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
- .debug_str     0x0000027d      0x302 ctr_drbg_func.o
-                                0x34f (size before relaxing)
- .debug_str     0x0000057f       0x29 ctr_drbg_main.o
+ .debug_str     0x0000027d      0x309 ctr_drbg_func.o
+                                0x356 (size before relaxing)
+ .debug_str     0x00000586       0x29 ctr_drbg_main.o
                                 0x256 (size before relaxing)
 
-.debug_loc      0x00000000      0xdff
+.debug_loc      0x00000000     0x1827
  *(.debug_loc)
- .debug_loc     0x00000000      0xd35 ctr_drbg_func.o
- .debug_loc     0x00000d35       0xca ctr_drbg_main.o
+ .debug_loc     0x00000000     0x175d ctr_drbg_func.o
+ .debug_loc     0x0000175d       0xca ctr_drbg_main.o
 
 .debug_macinfo
  *(.debug_macinfo)

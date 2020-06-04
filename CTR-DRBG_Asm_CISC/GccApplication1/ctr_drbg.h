@@ -16,7 +16,7 @@
 #include <stdlib.h>
 
 
-#define KEY_BIT 192
+#define KEY_BIT 256
 #define BLOCK_BIT 128
 #define BLOCK_SIZE 16
 #define SEED_LEN (KEY_BIT + BLOCK_BIT)/8
