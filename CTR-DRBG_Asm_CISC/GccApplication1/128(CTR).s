@@ -1937,25 +1937,15 @@ CTR = 24
 	pop r31
 	pop r30
 	movw r16, r30
-
-	.irp row, 0, 1, 2, 3
-			.irp col, 0, 1, 2, 3
-			st Z+, ST\row\col
-		.endr
-	.endr
-	movw r30, r16
-	ld r16, Z
-	inc r16
-	st Z, r16
-	movw r16, r30
-
+	inc ST33
+	
 	.irp row, 0, 1, 2, 3
 			.irp col, 0, 1, 2, 3
 			ld ST\row\col ,Z+
 		.endr
 	.endr
 	movw r30, r16
-
+	
 	push r30
 	push r31
 	push r26
