@@ -1,0 +1,33 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.7</VERSION>
+ <DEVICE>"ATtiny45"</DEVICE>
+ <WORKING_DIR>C:\Asm_programing\SHA-3\SHA-3\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.229\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Asm_programing\SHA-3\SHA-3\hash_main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.229\avrasm\inc\tn45def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Asm_programing\SHA-3\SHA-3\Debug\SHA-3.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>SHA-3.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>SHA-3.map</FILE>
+  <FILE>SHA-3.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <main><FILE>C:\Asm_programing\SHA-3\SHA-3\hash_main.asm</FILE><LINE>74</LINE></main>
+  <copy_word><FILE>C:\Asm_programing\SHA-3\SHA-3\hash_main.asm</FILE><LINE>65</LINE></copy_word>
+  <hashed_size><FILE>C:\Asm_programing\SHA-3\SHA-3\hash_main.asm</FILE><LINE>132</LINE></hashed_size>
+  <main_hash_loop><FILE>C:\Asm_programing\SHA-3\SHA-3\hash_main.asm</FILE><LINE>82</LINE></main_hash_loop>
+  <msg2hash><FILE>C:\Asm_programing\SHA-3\SHA-3\hash_main.asm</FILE><LINE>126</LINE></msg2hash>
+  <main_upd_call><FILE>C:\Asm_programing\SHA-3\SHA-3\hash_main.asm</FILE><LINE>115</LINE></main_upd_call>
+  <main_final_call><FILE>C:\Asm_programing\SHA-3\SHA-3\hash_main.asm</FILE><LINE>119</LINE></main_final_call>
+ </LABELS>
+</ASSEMBLER_INFO>

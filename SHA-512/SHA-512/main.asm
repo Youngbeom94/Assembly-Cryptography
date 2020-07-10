@@ -25,7 +25,7 @@
 .include "tn45def.inc"
 
 #define blake ;TO_UPD specify which hash function will be included
-.equ msg_size = 500	;TO_UPD specify lenght of message to hash
+.equ msg_size = 1	;TO_UPD specify lenght of message to hash
 
 .ORG 0x0000
 ; global interrupt disable
@@ -57,6 +57,7 @@
 
 
 .cseg
+
 
 ;******************** MAIN (START) *******************************
 main:
