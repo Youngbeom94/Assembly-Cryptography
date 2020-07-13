@@ -1,25 +1,19 @@
 Archive member included to satisfy reference by file (symbol)
 
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
-                              C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o (exit)
+                              C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o (exit)
 
 Discarded input sections
 
- .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
- .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
- .data          0x00000000        0x0 KeccakP-1600-avr8-fast.o
- .bss           0x00000000        0x0 KeccakP-1600-avr8-fast.o
+ .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
- .text          0x00000000       0x14 test.o
- .data          0x00000000        0x0 test.o
+ .text          0x00000000        0x0 macro.o
+ .data          0x00000000        0x0 macro.o
+ .bss           0x00000000        0x0 macro.o
  .bss           0x00000000        0x0 test.o
- .debug_line    0x00000000       0x6f test.o
- .debug_info    0x00000000       0x62 test.o
- .debug_abbrev  0x00000000       0x14 test.o
- .debug_aranges
-                0x00000000       0x20 test.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
@@ -52,9 +46,9 @@ user_signatures  0x00850000         0x00000400         rw !x
 Linker script and memory map
 
 Address of section .data set to 0x800100
-LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
-LOAD KeccakP-1600-avr8-fast.o
+LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
 LOAD main.o
+LOAD macro.o
 LOAD test.o
 START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a
@@ -63,7 +57,7 @@ START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a
-LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51\libatmega128.a
+LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51\libatmega1284.a
 END GROUP
                 0x00000000                __TEXT_REGION_ORIGIN__ = DEFINED (__TEXT_REGION_ORIGIN__)?__TEXT_REGION_ORIGIN__:0x0
                 0x00800100                __DATA_REGION_ORIGIN__ = DEFINED (__DATA_REGION_ORIGIN__)?__DATA_REGION_ORIGIN__:0x800100
@@ -165,9 +159,9 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x7a0
+.text           0x00000000       0xf8
  *(.vectors)
- .vectors       0x00000000       0x8c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
+ .vectors       0x00000000       0x8c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
                 0x00000000                __vector_default
                 0x00000000                __vectors
  *(.vectors)
@@ -195,13 +189,13 @@ END GROUP
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x0000008c        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
+ .init0         0x0000008c        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
                 0x0000008c                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x0000008c        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
+ .init2         0x0000008c        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
  *(.init2)
  *(.init3)
  *(.init3)
@@ -216,10 +210,10 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000098        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
+ .init9         0x00000098        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
  *(.init9)
  *(.text)
- .text          0x0000009c        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
+ .text          0x0000009c        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
                 0x0000009c                __vector_22
                 0x0000009c                __vector_28
                 0x0000009c                __vector_1
@@ -255,27 +249,18 @@ END GROUP
                 0x0000009c                __vector_16
                 0x0000009c                __vector_18
                 0x0000009c                __vector_20
- .text          0x0000009e      0x6aa KeccakP-1600-avr8-fast.o
-                0x0000009e                KeccakP1600_Initialize
-                0x000000b6                KeccakP1600_StaticInitialize
-                0x000000b8                KeccakP1600_AddByte
-                0x000000c6                KeccakP1600_AddBytes
-                0x0000012a                KeccakP1600_OverwriteBytes
-                0x0000016a                KeccakP1600_OverwriteWithZeroes
-                0x00000196                KeccakP1600_ExtractBytes
-                0x000001d6                KeccakP1600_ExtractAndAddBytes
-                0x00000356                KeccakP1600_Permute_Nrounds
-                0x00000368                KeccakP1600_Permute_24rounds
-                0x0000036e                KeccakP1600_Permute_12rounds
-                0x00000748                . = ALIGN (0x2)
+ .text          0x0000009e       0x18 test.o
+                0x0000009e                test
+                0x000000aa                test2
+                0x000000b6                . = ALIGN (0x2)
  *(.text.*)
- .text.main     0x00000748       0x54 main.o
-                0x00000748                main
-                0x0000079c                . = ALIGN (0x2)
+ .text.main     0x000000b6       0x3e main.o
+                0x000000b6                main
+                0x000000f4                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000079c        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
-                0x0000079c                _exit
-                0x0000079c                exit
+ .fini9         0x000000f4        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+                0x000000f4                _exit
+                0x000000f4                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -294,36 +279,37 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000079c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ .fini0         0x000000f4        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  *(.fini0)
-                0x000007a0                _etext = .
+                0x000000f8                _etext = .
 
-.data           0x00800100        0x0 load address 0x000007a0
+.data           0x00800100      0x278 load address 0x000000f8
                 [!provide]                PROVIDE (__data_start, .)
  *(.data)
+ .data          0x00800100      0x278 test.o
  *(.data*)
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.r*)
-                0x00800100                . = ALIGN (0x2)
-                0x00800100                _edata = .
+                0x00800378                . = ALIGN (0x2)
+                0x00800378                _edata = .
                 [!provide]                PROVIDE (__data_end, .)
 
-.bss            0x00800100        0x0
+.bss            0x00800378        0x0
                 [!provide]                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
-                0x000007a0                __data_load_start = LOADADDR (.data)
-                0x000007a0                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000000f8                __data_load_start = LOADADDR (.data)
+                0x00000370                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800100        0x0
+.noinit         0x00800378        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800100                _end = .
+                0x00800378                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -369,9 +355,9 @@ END GROUP
                                  0x31 (size before relaxing)
 
 .note.gnu.avr.deviceinfo
-                0x00000000       0x3c
+                0x00000000       0x40
  .note.gnu.avr.deviceinfo
-                0x00000000       0x3c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
+                0x00000000       0x40 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
 
 .note.gnu.build-id
  *(.note.gnu.build-id)
@@ -391,44 +377,44 @@ END GROUP
 .debug_aranges  0x00000000       0x40
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x20 KeccakP-1600-avr8-fast.o
+                0x00000000       0x20 main.o
  .debug_aranges
-                0x00000020       0x20 main.o
+                0x00000020       0x20 test.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0x9a9
+.debug_info     0x00000000      0x8d1
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x780 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
- .debug_info    0x00000780       0x74 KeccakP-1600-avr8-fast.o
- .debug_info    0x000007f4      0x1b5 main.o
+ .debug_info    0x00000000      0x792 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .debug_info    0x00000792       0xe3 main.o
+ .debug_info    0x00000875       0x5c test.o
 
-.debug_abbrev   0x00000000      0x819
+.debug_abbrev   0x00000000      0x7e3
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x718 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
- .debug_abbrev  0x00000718       0x14 KeccakP-1600-avr8-fast.o
- .debug_abbrev  0x0000072c       0xed main.o
+ .debug_abbrev  0x00000000      0x729 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .debug_abbrev  0x00000729       0xa6 main.o
+ .debug_abbrev  0x000007cf       0x14 test.o
 
-.debug_line     0x00000000     0x12e6
+.debug_line     0x00000000      0x230
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000      0x169 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
- .debug_line    0x00000169     0x1126 KeccakP-1600-avr8-fast.o
- .debug_line    0x0000128f       0x57 main.o
+ .debug_line    0x00000000      0x169 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .debug_line    0x00000169       0x4b main.o
+ .debug_line    0x000001b4       0x7c test.o
 
-.debug_frame    0x00000000       0x40
+.debug_frame    0x00000000       0x38
  *(.debug_frame)
- .debug_frame   0x00000000       0x40 main.o
+ .debug_frame   0x00000000       0x38 main.o
 
-.debug_str      0x00000000      0x40c
+.debug_str      0x00000000      0x3cc
  *(.debug_str)
- .debug_str     0x00000000      0x27d C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128/avr51/crtatmega128.o
- .debug_str     0x0000027d      0x18f main.o
-                                0x1c3 (size before relaxing)
+ .debug_str     0x00000000      0x296 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .debug_str     0x00000296      0x136 main.o
+                                0x16a (size before relaxing)
 
-.debug_loc      0x00000000       0x62
+.debug_loc      0x00000000       0x48
  *(.debug_loc)
- .debug_loc     0x00000000       0x62 main.o
+ .debug_loc     0x00000000       0x48 main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -454,5 +440,5 @@ END GROUP
 
 .debug_macro
  *(.debug_macro)
-OUTPUT(test_keccak.elf elf32-avr)
+OUTPUT(studying.elf elf32-avr)
 LOAD linker stubs

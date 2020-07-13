@@ -3,29 +3,29 @@ test_keccak.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  00000166  2**0
+  0 .data         00000000  00800100  00800100  000007f4  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000112  00000000  00000000  00000054  2**1
+  1 .text         000007a0  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  00000166  2**0
+  2 .comment      00000030  00000000  00000000  000007f4  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000198  2**2
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000824  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000040  00000000  00000000  000001d8  2**3
+  4 .debug_aranges 00000040  00000000  00000000  00000860  2**3
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   000008d6  00000000  00000000  00000218  2**0
+  5 .debug_info   000009a9  00000000  00000000  000008a0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000007be  00000000  00000000  00000aee  2**0
+  6 .debug_abbrev 00000819  00000000  00000000  00001249  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   0000022f  00000000  00000000  000012ac  2**0
+  7 .debug_line   000012e6  00000000  00000000  00001a62  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000034  00000000  00000000  000014dc  2**2
+  8 .debug_frame  00000040  00000000  00000000  00002d48  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000003b3  00000000  00000000  00001510  2**0
+  9 .debug_str    0000040c  00000000  00000000  00002d88  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000047  00000000  00000000  000018c3  2**0
+ 10 .debug_loc    00000062  00000000  00000000  00003194  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000010  00000000  00000000  0000190a  2**0
+ 11 .debug_ranges 00000010  00000000  00000000  000031f6  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -109,104 +109,1970 @@ Disassembly of section .text:
   92:	d0 e1       	ldi	r29, 0x10	; 16
   94:	de bf       	out	0x3e, r29	; 62
   96:	cd bf       	out	0x3d, r28	; 61
-  98:	0c d0       	rcall	.+24     	; 0xb2 <main>
-  9a:	39 c0       	rjmp	.+114    	; 0x10e <_exit>
+  98:	57 d3       	rcall	.+1710   	; 0x748 <main>
+  9a:	80 c3       	rjmp	.+1792   	; 0x79c <_exit>
 
 0000009c <__bad_interrupt>:
   9c:	b1 cf       	rjmp	.-158    	; 0x0 <__vectors>
 
-0000009e <test>:
-#define rY      28
-#define rZ      30
+0000009e <KeccakP1600_Initialize>:
+;
+; argument state   is passed in r24:r25
+;
+.global KeccakP1600_Initialize
+KeccakP1600_Initialize:
+    movw    rZ, r24
+  9e:	fc 01       	movw	r30, r24
+    ldi     r23, 5*5        ; clear state (8 bytes/1 lane per iteration)
+  a0:	79 e1       	ldi	r23, 0x19	; 25
 
- .global test
- test:
-    movw    r26, r24
-  9e:	dc 01       	movw	r26, r24
-	movw	r28, r22
-  a0:	eb 01       	movw	r28, r22
-	movw	r30, r20
-  a2:	fa 01       	movw	r30, r20
-	ld		r6, Z
-  a4:	60 80       	ld	r6, Z
-	ld		r7,	Y
-  a6:	78 80       	ld	r7, Y
-	ld		r7,	X
-  a8:	7c 90       	ld	r7, X
-	adc		rZ,	r7
-  aa:	e7 1d       	adc	r30, r7
-	adc		rZ+1,r7
-  ac:	f7 1d       	adc	r31, r7
+000000a2 <KeccakP1600_Initialize_Loop>:
+KeccakP1600_Initialize_Loop:
+    st      z+, zero
+  a2:	11 92       	st	Z+, r1
+    st      z+, zero
+  a4:	11 92       	st	Z+, r1
+    st      z+, zero
+  a6:	11 92       	st	Z+, r1
+    st      z+, zero
+  a8:	11 92       	st	Z+, r1
+    st      z+, zero
+  aa:	11 92       	st	Z+, r1
+    st      z+, zero
+  ac:	11 92       	st	Z+, r1
+    st      z+, zero
+  ae:	11 92       	st	Z+, r1
+    st      z+, zero
+  b0:	11 92       	st	Z+, r1
+    dec     r23
+  b2:	7a 95       	dec	r23
+    brne    KeccakP1600_Initialize_Loop
+  b4:	b1 f7       	brne	.-20     	; 0xa2 <KeccakP1600_Initialize_Loop>
 
-    ldi     r23, 5*5   
-  ae:	79 e1       	ldi	r23, 0x19	; 25
+000000b6 <KeccakP1600_StaticInitialize>:
+KeccakP1600_StaticInitialize:
+    ret
+  b6:	08 95       	ret
 
-	ret
-  b0:	08 95       	ret
+000000b8 <KeccakP1600_AddByte>:
+; argument data      is passed in r22:r23, only LSB (r22) is used
+; argument offset    is passed in r20:r21, only LSB (r20) is used
+;
+.global KeccakP1600_AddByte
+KeccakP1600_AddByte:
+    movw    rZ, r24
+  b8:	fc 01       	movw	r30, r24
+    add     rZ, r20
+  ba:	e4 0f       	add	r30, r20
+    adc     rZ+1, zero
+  bc:	f1 1d       	adc	r31, r1
+    ld      r0, Z
+  be:	00 80       	ld	r0, Z
+    eor     r0, r22
+  c0:	06 26       	eor	r0, r22
+    st      Z, r0
+  c2:	00 82       	st	Z, r0
+    ret
+  c4:	08 95       	ret
 
-000000b2 <main>:
-#include <avr/io.h>
+000000c6 <KeccakP1600_AddBytes>:
+; argument offset    is passed in r20:r21, only LSB (r20) is used
+; argument length    is passed in r18:r19, only LSB (r18) is used
+;
+.global KeccakP1600_AddBytes
+KeccakP1600_AddBytes:
+    movw    rZ, r24
+  c6:	fc 01       	movw	r30, r24
+    add     rZ, r20
+  c8:	e4 0f       	add	r30, r20
+    adc     rZ+1, zero
+  ca:	f1 1d       	adc	r31, r1
+    movw    rX, r22
+  cc:	db 01       	movw	r26, r22
+    subi    r18, 8
+  ce:	28 50       	subi	r18, 0x08	; 8
+    brcs    KeccakP1600_AddBytes_Byte
+  d0:	10 f1       	brcs	.+68     	; 0x116 <KeccakP1600_AddBytes_Byte>
 
+000000d2 <KeccakP1600_AddBytes_Loop8>:
+    ;do 8 bytes per iteration
+KeccakP1600_AddBytes_Loop8:
+    ld      r21, X+
+  d2:	5d 91       	ld	r21, X+
+    ld      r0, Z
+  d4:	00 80       	ld	r0, Z
+    eor     r0, r21
+  d6:	05 26       	eor	r0, r21
+    st      Z+, r0
+  d8:	01 92       	st	Z+, r0
+    ld      r21, X+
+  da:	5d 91       	ld	r21, X+
+    ld      r0, Z
+  dc:	00 80       	ld	r0, Z
+    eor     r0, r21
+  de:	05 26       	eor	r0, r21
+    st      Z+, r0
+  e0:	01 92       	st	Z+, r0
+    ld      r21, X+
+  e2:	5d 91       	ld	r21, X+
+    ld      r0, Z
+  e4:	00 80       	ld	r0, Z
+    eor     r0, r21
+  e6:	05 26       	eor	r0, r21
+    st      Z+, r0
+  e8:	01 92       	st	Z+, r0
+    ld      r21, X+
+  ea:	5d 91       	ld	r21, X+
+    ld      r0, Z
+  ec:	00 80       	ld	r0, Z
+    eor     r0, r21
+  ee:	05 26       	eor	r0, r21
+    st      Z+, r0
+  f0:	01 92       	st	Z+, r0
+    ld      r21, X+
+  f2:	5d 91       	ld	r21, X+
+    ld      r0, Z
+  f4:	00 80       	ld	r0, Z
+    eor     r0, r21
+  f6:	05 26       	eor	r0, r21
+    st      Z+, r0
+  f8:	01 92       	st	Z+, r0
+    ld      r21, X+
+  fa:	5d 91       	ld	r21, X+
+    ld      r0, Z
+  fc:	00 80       	ld	r0, Z
+    eor     r0, r21
+  fe:	05 26       	eor	r0, r21
+    st      Z+, r0
+ 100:	01 92       	st	Z+, r0
+    ld      r21, X+
+ 102:	5d 91       	ld	r21, X+
+    ld      r0, Z
+ 104:	00 80       	ld	r0, Z
+    eor     r0, r21
+ 106:	05 26       	eor	r0, r21
+    st      Z+, r0
+ 108:	01 92       	st	Z+, r0
+    ld      r21, X+
+ 10a:	5d 91       	ld	r21, X+
+    ld      r0, Z
+ 10c:	00 80       	ld	r0, Z
+    eor     r0, r21
+ 10e:	05 26       	eor	r0, r21
+    st      Z+, r0
+ 110:	01 92       	st	Z+, r0
+    subi    r18, 8
+ 112:	28 50       	subi	r18, 0x08	; 8
+    brcc    KeccakP1600_AddBytes_Loop8
+ 114:	f0 f6       	brcc	.-68     	; 0xd2 <KeccakP1600_AddBytes_Loop8>
+
+00000116 <KeccakP1600_AddBytes_Byte>:
+KeccakP1600_AddBytes_Byte:
+    ldi     r19, 8
+ 116:	38 e0       	ldi	r19, 0x08	; 8
+    add     r18, r19
+ 118:	23 0f       	add	r18, r19
+    breq    KeccakP1600_AddBytes_End
+ 11a:	31 f0       	breq	.+12     	; 0x128 <KeccakP1600_AddBytes_End>
+
+0000011c <KeccakP1600_AddBytes_Loop1>:
+KeccakP1600_AddBytes_Loop1:
+    ld      r21, X+
+ 11c:	5d 91       	ld	r21, X+
+    ld      r0, Z
+ 11e:	00 80       	ld	r0, Z
+    eor     r0, r21
+ 120:	05 26       	eor	r0, r21
+    st      Z+, r0
+ 122:	01 92       	st	Z+, r0
+    dec     r18
+ 124:	2a 95       	dec	r18
+    brne    KeccakP1600_AddBytes_Loop1
+ 126:	d1 f7       	brne	.-12     	; 0x11c <KeccakP1600_AddBytes_Loop1>
+
+00000128 <KeccakP1600_AddBytes_End>:
+KeccakP1600_AddBytes_End:
+    ret
+ 128:	08 95       	ret
+
+0000012a <KeccakP1600_OverwriteBytes>:
+; argument offset    is passed in r20:r21, only LSB (r20) is used
+; argument length    is passed in r18:r19, only LSB (r18) is used
+;
+.global KeccakP1600_OverwriteBytes
+KeccakP1600_OverwriteBytes:
+    movw    rZ, r24
+ 12a:	fc 01       	movw	r30, r24
+    add     rZ, r20
+ 12c:	e4 0f       	add	r30, r20
+    adc     rZ+1, zero
+ 12e:	f1 1d       	adc	r31, r1
+    movw    rX, r22
+ 130:	db 01       	movw	r26, r22
+    subi    r18, 8
+ 132:	28 50       	subi	r18, 0x08	; 8
+    brcs    KeccakP1600_OverwriteBytes_Byte
+ 134:	90 f0       	brcs	.+36     	; 0x15a <KeccakP1600_OverwriteBytes_Byte>
+
+00000136 <KeccakP1600_OverwriteBytes_Loop8>:
+    ;do 8 bytes per iteration
+KeccakP1600_OverwriteBytes_Loop8:
+    ld      r0, X+
+ 136:	0d 90       	ld	r0, X+
+    st      Z+, r0
+ 138:	01 92       	st	Z+, r0
+    ld      r0, X+
+ 13a:	0d 90       	ld	r0, X+
+    st      Z+, r0
+ 13c:	01 92       	st	Z+, r0
+    ld      r0, X+
+ 13e:	0d 90       	ld	r0, X+
+    st      Z+, r0
+ 140:	01 92       	st	Z+, r0
+    ld      r0, X+
+ 142:	0d 90       	ld	r0, X+
+    st      Z+, r0
+ 144:	01 92       	st	Z+, r0
+    ld      r0, X+
+ 146:	0d 90       	ld	r0, X+
+    st      Z+, r0
+ 148:	01 92       	st	Z+, r0
+    ld      r0, X+
+ 14a:	0d 90       	ld	r0, X+
+    st      Z+, r0
+ 14c:	01 92       	st	Z+, r0
+    ld      r0, X+
+ 14e:	0d 90       	ld	r0, X+
+    st      Z+, r0
+ 150:	01 92       	st	Z+, r0
+    ld      r0, X+
+ 152:	0d 90       	ld	r0, X+
+    st      Z+, r0
+ 154:	01 92       	st	Z+, r0
+    subi    r18, 8
+ 156:	28 50       	subi	r18, 0x08	; 8
+    brcc    KeccakP1600_OverwriteBytes_Loop8
+ 158:	70 f7       	brcc	.-36     	; 0x136 <KeccakP1600_OverwriteBytes_Loop8>
+
+0000015a <KeccakP1600_OverwriteBytes_Byte>:
+KeccakP1600_OverwriteBytes_Byte:
+    ldi     r19, 8
+ 15a:	38 e0       	ldi	r19, 0x08	; 8
+    add     r18, r19
+ 15c:	23 0f       	add	r18, r19
+    breq    KeccakP1600_OverwriteBytes_End
+ 15e:	21 f0       	breq	.+8      	; 0x168 <KeccakP1600_OverwriteBytes_End>
+
+00000160 <KeccakP1600_OverwriteBytes_Loop1>:
+KeccakP1600_OverwriteBytes_Loop1:
+    ld      r0, X+
+ 160:	0d 90       	ld	r0, X+
+    st      Z+, r0
+ 162:	01 92       	st	Z+, r0
+    dec     r18
+ 164:	2a 95       	dec	r18
+    brne    KeccakP1600_OverwriteBytes_Loop1
+ 166:	e1 f7       	brne	.-8      	; 0x160 <KeccakP1600_OverwriteBytes_Loop1>
+
+00000168 <KeccakP1600_OverwriteBytes_End>:
+KeccakP1600_OverwriteBytes_End:
+    ret
+ 168:	08 95       	ret
+
+0000016a <KeccakP1600_OverwriteWithZeroes>:
+; argument state        is passed in r24:r25
+; argument byteCount    is passed in r22:r23, only LSB (r22) is used
+;
+.global KeccakP1600_OverwriteWithZeroes
+KeccakP1600_OverwriteWithZeroes:
+    movw    rZ, r24         ; rZ = state
+ 16a:	fc 01       	movw	r30, r24
+    mov     r23, r22
+ 16c:	76 2f       	mov	r23, r22
+    lsr     r23
+ 16e:	76 95       	lsr	r23
+    lsr     r23
+ 170:	76 95       	lsr	r23
+    lsr     r23
+ 172:	76 95       	lsr	r23
+    breq    KeccakP1600_OverwriteWithZeroes_Bytes
+ 174:	51 f0       	breq	.+20     	; 0x18a <KeccakP1600_OverwriteWithZeroes_Bytes>
+
+00000176 <KeccakP1600_OverwriteWithZeroes_LoopLanes>:
+KeccakP1600_OverwriteWithZeroes_LoopLanes:
+    st      Z+, r1
+ 176:	11 92       	st	Z+, r1
+    st      Z+, r1
+ 178:	11 92       	st	Z+, r1
+    st      Z+, r1
+ 17a:	11 92       	st	Z+, r1
+    st      Z+, r1
+ 17c:	11 92       	st	Z+, r1
+    st      Z+, r1
+ 17e:	11 92       	st	Z+, r1
+    st      Z+, r1
+ 180:	11 92       	st	Z+, r1
+    st      Z+, r1
+ 182:	11 92       	st	Z+, r1
+    st      Z+, r1
+ 184:	11 92       	st	Z+, r1
+    dec     r23
+ 186:	7a 95       	dec	r23
+    brne    KeccakP1600_OverwriteWithZeroes_LoopLanes
+ 188:	b1 f7       	brne	.-20     	; 0x176 <KeccakP1600_OverwriteWithZeroes_LoopLanes>
+
+0000018a <KeccakP1600_OverwriteWithZeroes_Bytes>:
+KeccakP1600_OverwriteWithZeroes_Bytes:
+    andi    r22, 7
+ 18a:	67 70       	andi	r22, 0x07	; 7
+    breq    KeccakP1600_OverwriteWithZeroes_End
+ 18c:	19 f0       	breq	.+6      	; 0x194 <KeccakP1600_OverwriteWithZeroes_End>
+
+0000018e <KeccakP1600_OverwriteWithZeroes_LoopBytes>:
+KeccakP1600_OverwriteWithZeroes_LoopBytes:
+    st      Z+, r1
+ 18e:	11 92       	st	Z+, r1
+    dec     r22
+ 190:	6a 95       	dec	r22
+    brne    KeccakP1600_OverwriteWithZeroes_LoopBytes
+ 192:	e9 f7       	brne	.-6      	; 0x18e <KeccakP1600_OverwriteWithZeroes_LoopBytes>
+
+00000194 <KeccakP1600_OverwriteWithZeroes_End>:
+KeccakP1600_OverwriteWithZeroes_End:
+    ret
+ 194:	08 95       	ret
+
+00000196 <KeccakP1600_ExtractBytes>:
+; argument offset    is passed in r20:r21, only LSB (r20) is used
+; argument length    is passed in r18:r19, only LSB (r18) is used
+;
+.global KeccakP1600_ExtractBytes
+KeccakP1600_ExtractBytes:
+    movw    rZ, r24
+ 196:	fc 01       	movw	r30, r24
+    add     rZ, r20
+ 198:	e4 0f       	add	r30, r20
+    adc     rZ+1, zero
+ 19a:	f1 1d       	adc	r31, r1
+    movw    rX, r22
+ 19c:	db 01       	movw	r26, r22
+    subi    r18, 8
+ 19e:	28 50       	subi	r18, 0x08	; 8
+    brcs    KeccakP1600_ExtractBytes_Byte
+ 1a0:	90 f0       	brcs	.+36     	; 0x1c6 <KeccakP1600_ExtractBytes_Byte>
+
+000001a2 <KeccakP1600_ExtractBytes_Loop8>:
+    ;do 8 bytes per iteration
+KeccakP1600_ExtractBytes_Loop8:
+    ld      r0, Z+
+ 1a2:	01 90       	ld	r0, Z+
+    st      X+, r0
+ 1a4:	0d 92       	st	X+, r0
+    ld      r0, Z+
+ 1a6:	01 90       	ld	r0, Z+
+    st      X+, r0
+ 1a8:	0d 92       	st	X+, r0
+    ld      r0, Z+
+ 1aa:	01 90       	ld	r0, Z+
+    st      X+, r0
+ 1ac:	0d 92       	st	X+, r0
+    ld      r0, Z+
+ 1ae:	01 90       	ld	r0, Z+
+    st      X+, r0
+ 1b0:	0d 92       	st	X+, r0
+    ld      r0, Z+
+ 1b2:	01 90       	ld	r0, Z+
+    st      X+, r0
+ 1b4:	0d 92       	st	X+, r0
+    ld      r0, Z+
+ 1b6:	01 90       	ld	r0, Z+
+    st      X+, r0
+ 1b8:	0d 92       	st	X+, r0
+    ld      r0, Z+
+ 1ba:	01 90       	ld	r0, Z+
+    st      X+, r0
+ 1bc:	0d 92       	st	X+, r0
+    ld      r0, Z+
+ 1be:	01 90       	ld	r0, Z+
+    st      X+, r0
+ 1c0:	0d 92       	st	X+, r0
+    subi    r18, 8
+ 1c2:	28 50       	subi	r18, 0x08	; 8
+    brcc    KeccakP1600_ExtractBytes_Loop8
+ 1c4:	70 f7       	brcc	.-36     	; 0x1a2 <KeccakP1600_ExtractBytes_Loop8>
+
+000001c6 <KeccakP1600_ExtractBytes_Byte>:
+KeccakP1600_ExtractBytes_Byte:
+    ldi     r19, 8
+ 1c6:	38 e0       	ldi	r19, 0x08	; 8
+    add     r18, r19
+ 1c8:	23 0f       	add	r18, r19
+    breq    KeccakP1600_ExtractBytes_End
+ 1ca:	21 f0       	breq	.+8      	; 0x1d4 <KeccakP1600_ExtractBytes_End>
+
+000001cc <KeccakP1600_ExtractBytes_Loop1>:
+KeccakP1600_ExtractBytes_Loop1:
+    ld      r0, Z+
+ 1cc:	01 90       	ld	r0, Z+
+    st      X+, r0
+ 1ce:	0d 92       	st	X+, r0
+    dec     r18
+ 1d0:	2a 95       	dec	r18
+    brne    KeccakP1600_ExtractBytes_Loop1
+ 1d2:	e1 f7       	brne	.-8      	; 0x1cc <KeccakP1600_ExtractBytes_Loop1>
+
+000001d4 <KeccakP1600_ExtractBytes_End>:
+KeccakP1600_ExtractBytes_End:
+    ret
+ 1d4:	08 95       	ret
+
+000001d6 <KeccakP1600_ExtractAndAddBytes>:
+; argument offset    is passed in r18:r19, only LSB (r18) is used
+; argument length    is passed in r16:r17, only LSB (r16) is used
+;
+.global KeccakP1600_ExtractAndAddBytes
+KeccakP1600_ExtractAndAddBytes:
+    tst     r16
+ 1d6:	00 23       	and	r16, r16
+    breq    KeccakP1600_ExtractAndAddBytes_End
+ 1d8:	c1 f1       	breq	.+112    	; 0x24a <KeccakP1600_ExtractAndAddBytes_End>
+    push    r16
+ 1da:	0f 93       	push	r16
+    push    r28
+ 1dc:	cf 93       	push	r28
+    push    r29
+ 1de:	df 93       	push	r29
+    movw    rZ, r24
+ 1e0:	fc 01       	movw	r30, r24
+    add     rZ, r18
+ 1e2:	e2 0f       	add	r30, r18
+    adc     rZ+1, zero
+ 1e4:	f1 1d       	adc	r31, r1
+    movw    rX, r22
+ 1e6:	db 01       	movw	r26, r22
+    movw    rY, r20
+ 1e8:	ea 01       	movw	r28, r20
+    subi    r16, 8
+ 1ea:	08 50       	subi	r16, 0x08	; 8
+    brcs    KeccakP1600_ExtractAndAddBytes_Byte
+ 1ec:	10 f1       	brcs	.+68     	; 0x232 <KeccakP1600_ExtractAndAddBytes_Byte>
+
+000001ee <KeccakP1600_ExtractAndAddBytes_LoopLane>:
+KeccakP1600_ExtractAndAddBytes_LoopLane:
+    ld      r21, Z+
+ 1ee:	51 91       	ld	r21, Z+
+    ld      r0, X+
+ 1f0:	0d 90       	ld	r0, X+
+    eor     r0, r21
+ 1f2:	05 26       	eor	r0, r21
+    st      Y+, r0
+ 1f4:	09 92       	st	Y+, r0
+    ld      r21, Z+
+ 1f6:	51 91       	ld	r21, Z+
+    ld      r0, X+
+ 1f8:	0d 90       	ld	r0, X+
+    eor     r0, r21
+ 1fa:	05 26       	eor	r0, r21
+    st      Y+, r0
+ 1fc:	09 92       	st	Y+, r0
+    ld      r21, Z+
+ 1fe:	51 91       	ld	r21, Z+
+    ld      r0, X+
+ 200:	0d 90       	ld	r0, X+
+    eor     r0, r21
+ 202:	05 26       	eor	r0, r21
+    st      Y+, r0
+ 204:	09 92       	st	Y+, r0
+    ld      r21, Z+
+ 206:	51 91       	ld	r21, Z+
+    ld      r0, X+
+ 208:	0d 90       	ld	r0, X+
+    eor     r0, r21
+ 20a:	05 26       	eor	r0, r21
+    st      Y+, r0
+ 20c:	09 92       	st	Y+, r0
+    ld      r21, Z+
+ 20e:	51 91       	ld	r21, Z+
+    ld      r0, X+
+ 210:	0d 90       	ld	r0, X+
+    eor     r0, r21
+ 212:	05 26       	eor	r0, r21
+    st      Y+, r0
+ 214:	09 92       	st	Y+, r0
+    ld      r21, Z+
+ 216:	51 91       	ld	r21, Z+
+    ld      r0, X+
+ 218:	0d 90       	ld	r0, X+
+    eor     r0, r21
+ 21a:	05 26       	eor	r0, r21
+    st      Y+, r0
+ 21c:	09 92       	st	Y+, r0
+    ld      r21, Z+
+ 21e:	51 91       	ld	r21, Z+
+    ld      r0, X+
+ 220:	0d 90       	ld	r0, X+
+    eor     r0, r21
+ 222:	05 26       	eor	r0, r21
+    st      Y+, r0
+ 224:	09 92       	st	Y+, r0
+    ld      r21, Z+
+ 226:	51 91       	ld	r21, Z+
+    ld      r0, X+
+ 228:	0d 90       	ld	r0, X+
+    eor     r0, r21
+ 22a:	05 26       	eor	r0, r21
+    st      Y+, r0
+ 22c:	09 92       	st	Y+, r0
+    subi    r16, 8
+ 22e:	08 50       	subi	r16, 0x08	; 8
+    brcc    KeccakP1600_ExtractAndAddBytes_LoopLane
+ 230:	f0 f6       	brcc	.-68     	; 0x1ee <KeccakP1600_ExtractAndAddBytes_LoopLane>
+
+00000232 <KeccakP1600_ExtractAndAddBytes_Byte>:
+KeccakP1600_ExtractAndAddBytes_Byte:
+    ldi     r19, 8
+ 232:	38 e0       	ldi	r19, 0x08	; 8
+    add     r16, r19
+ 234:	03 0f       	add	r16, r19
+    breq    KeccakP1600_ExtractAndAddBytes_Done
+ 236:	31 f0       	breq	.+12     	; 0x244 <KeccakP1600_ExtractAndAddBytes_Done>
+
+00000238 <KeccakP1600_ExtractAndAddBytes_Loop1>:
+KeccakP1600_ExtractAndAddBytes_Loop1:
+    ld      r21, Z+
+ 238:	51 91       	ld	r21, Z+
+    ld      r0, X+
+ 23a:	0d 90       	ld	r0, X+
+    eor     r0, r21
+ 23c:	05 26       	eor	r0, r21
+    st      Y+, r0
+ 23e:	09 92       	st	Y+, r0
+    dec     r16
+ 240:	0a 95       	dec	r16
+    brne    KeccakP1600_ExtractAndAddBytes_Loop1
+ 242:	d1 f7       	brne	.-12     	; 0x238 <KeccakP1600_ExtractAndAddBytes_Loop1>
+
+00000244 <KeccakP1600_ExtractAndAddBytes_Done>:
+KeccakP1600_ExtractAndAddBytes_Done:
+    pop     r29
+ 244:	df 91       	pop	r29
+    pop     r28
+ 246:	cf 91       	pop	r28
+    pop     r16
+ 248:	0f 91       	pop	r16
+
+0000024a <KeccakP1600_ExtractAndAddBytes_End>:
+KeccakP1600_ExtractAndAddBytes_End:
+    ret
+ 24a:	08 95       	ret
+
+0000024c <KeccakP1600_RhoPiConstants>:
+ 24c:	01 00       	.word	0x0001	; ????
+ 24e:	50 03       	mulsu	r21, r16
+ 250:	09 38       	cpi	r16, 0x89	; 137
+ 252:	06 09       	sbc	r16, r6
+ 254:	58 02       	muls	r21, r24
+ 256:	12 88       	ldd	r1, Z+18	; 0x12
+ 258:	07 1b       	sub	r16, r23
+ 25a:	90 05       	cpc	r25, r0
+ 25c:	1b 18       	sub	r1, r11
+ 25e:	04 24       	eor	r0, r4
+ 260:	28 04       	cpc	r2, r8
+ 262:	36 80       	ldd	r3, Z+6	; 0x06
+ 264:	05 3f       	cpi	r16, 0xF5	; 245
+ 266:	40 07       	cpc	r20, r16
+ 268:	00 a8       	ldd	r0, Z+48	; 0x30
+ 26a:	02 12       	cpse	r0, r18
+ 26c:	c0 06       	cpc	r12, r16
+ 26e:	1b 20       	and	r1, r11
+ 270:	03 2d       	mov	r16, r3
+ 272:	78 01       	movw	r14, r16
+ 274:	3f b8       	out	0x0f, r3	; 15
+ 276:	00 09       	sbc	r16, r0
+ 278:	98 00       	.word	0x0098	; ????
+ 27a:	1b 68       	ori	r17, 0x8B	; 139
+ 27c:	01 2d       	mov	r16, r1
+ 27e:	60 03       	mulsu	r22, r16
+ 280:	00 10       	cpse	r0, r0
+ 282:	06 12       	cpse	r0, r22
+ 284:	a0 02       	muls	r26, r16
+ 286:	2d 70       	andi	r18, 0x0D	; 13
+ 288:	07 00       	.word	0x0007	; ????
+ 28a:	b0 05       	cpc	r27, r0
+ 28c:	12 48       	sbci	r17, 0x82	; 130
+ 28e:	04 2d       	mov	r16, r4
+ 290:	30 04       	cpc	r3, r0
+ 292:	00 08       	sbc	r0, r0
+
+00000294 <KeccakP1600_RoundConstants_24>:
+ 294:	01 00       	.word	0x0001	; ????
+ 296:	00 00       	nop
+ 298:	00 00       	nop
+ 29a:	00 00       	nop
+ 29c:	82 80       	ldd	r8, Z+2	; 0x02
+ 29e:	00 00       	nop
+ 2a0:	00 00       	nop
+ 2a2:	00 00       	nop
+ 2a4:	8a 80       	ldd	r8, Y+2	; 0x02
+ 2a6:	00 00       	nop
+ 2a8:	00 00       	nop
+ 2aa:	00 80       	ld	r0, Z
+ 2ac:	00 80       	ld	r0, Z
+ 2ae:	00 80       	ld	r0, Z
+ 2b0:	00 00       	nop
+ 2b2:	00 80       	ld	r0, Z
+ 2b4:	8b 80       	ldd	r8, Y+3	; 0x03
+ 2b6:	00 00       	nop
+ 2b8:	00 00       	nop
+ 2ba:	00 00       	nop
+ 2bc:	01 00       	.word	0x0001	; ????
+ 2be:	00 80       	ld	r0, Z
+ 2c0:	00 00       	nop
+ 2c2:	00 00       	nop
+ 2c4:	81 80       	ldd	r8, Z+1	; 0x01
+ 2c6:	00 80       	ld	r0, Z
+ 2c8:	00 00       	nop
+ 2ca:	00 80       	ld	r0, Z
+ 2cc:	09 80       	ldd	r0, Y+1	; 0x01
+ 2ce:	00 00       	nop
+ 2d0:	00 00       	nop
+ 2d2:	00 80       	ld	r0, Z
+ 2d4:	8a 00       	.word	0x008a	; ????
+ 2d6:	00 00       	nop
+ 2d8:	00 00       	nop
+ 2da:	00 00       	nop
+ 2dc:	88 00       	.word	0x0088	; ????
+ 2de:	00 00       	nop
+ 2e0:	00 00       	nop
+ 2e2:	00 00       	nop
+ 2e4:	09 80       	ldd	r0, Y+1	; 0x01
+ 2e6:	00 80       	ld	r0, Z
+ 2e8:	00 00       	nop
+ 2ea:	00 00       	nop
+ 2ec:	0a 00       	.word	0x000a	; ????
+ 2ee:	00 80       	ld	r0, Z
+ 2f0:	00 00       	nop
+	...
+
+000002f4 <KeccakP1600_RoundConstants_12>:
+ 2f4:	8b 80       	ldd	r8, Y+3	; 0x03
+ 2f6:	00 80       	ld	r0, Z
+ 2f8:	00 00       	nop
+ 2fa:	00 00       	nop
+ 2fc:	8b 00       	.word	0x008b	; ????
+ 2fe:	00 00       	nop
+ 300:	00 00       	nop
+ 302:	00 80       	ld	r0, Z
+ 304:	89 80       	ldd	r8, Y+1	; 0x01
+ 306:	00 00       	nop
+ 308:	00 00       	nop
+ 30a:	00 80       	ld	r0, Z
+ 30c:	03 80       	ldd	r0, Z+3	; 0x03
+ 30e:	00 00       	nop
+ 310:	00 00       	nop
+ 312:	00 80       	ld	r0, Z
+ 314:	02 80       	ldd	r0, Z+2	; 0x02
+ 316:	00 00       	nop
+ 318:	00 00       	nop
+ 31a:	00 80       	ld	r0, Z
+ 31c:	80 00       	.word	0x0080	; ????
+ 31e:	00 00       	nop
+ 320:	00 00       	nop
+ 322:	00 80       	ld	r0, Z
+ 324:	0a 80       	ldd	r0, Y+2	; 0x02
+ 326:	00 00       	nop
+ 328:	00 00       	nop
+ 32a:	00 00       	nop
+ 32c:	0a 00       	.word	0x000a	; ????
+ 32e:	00 80       	ld	r0, Z
+ 330:	00 00       	nop
+ 332:	00 80       	ld	r0, Z
+ 334:	81 80       	ldd	r8, Z+1	; 0x01
+ 336:	00 80       	ld	r0, Z
+ 338:	00 00       	nop
+ 33a:	00 80       	ld	r0, Z
+ 33c:	80 80       	ld	r8, Z
+ 33e:	00 00       	nop
+ 340:	00 00       	nop
+ 342:	00 80       	ld	r0, Z
+ 344:	01 00       	.word	0x0001	; ????
+ 346:	00 80       	ld	r0, Z
+ 348:	00 00       	nop
+ 34a:	00 00       	nop
+ 34c:	08 80       	ld	r0, Y
+ 34e:	00 80       	ld	r0, Z
+ 350:	00 00       	nop
+ 352:	00 80       	ld	r0, Z
+
+00000354 <KeccakP1600_RoundConstants_0>:
+ 354:	ff 00       	.word	0x00ff	; ????
+
+00000356 <KeccakP1600_Permute_Nrounds>:
+; argument state     is passed in r24:r25
+; argument nrounds   is passed in r22:r23 (only LSB (r22) is used)
+;
+.global KeccakP1600_Permute_Nrounds
+KeccakP1600_Permute_Nrounds:
+	mov		r26, r22
+ 356:	a6 2f       	mov	r26, r22
+    ldi     pRound,   lo8(KeccakP1600_RoundConstants_12)
+ 358:	64 ef       	ldi	r22, 0xF4	; 244
+    ldi     pRound+1, hi8(KeccakP1600_RoundConstants_12)
+ 35a:	72 e0       	ldi	r23, 0x02	; 2
+	lsl		r26
+ 35c:	aa 0f       	add	r26, r26
+	lsl		r26
+ 35e:	aa 0f       	add	r26, r26
+	lsl		r26
+ 360:	aa 0f       	add	r26, r26
+    sub     pRound, r26
+ 362:	6a 1b       	sub	r22, r26
+    sbc     pRound+1, zero
+ 364:	71 09       	sbc	r23, r1
+    rjmp    KeccakP1600_Permute
+ 366:	05 c0       	rjmp	.+10     	; 0x372 <KeccakP1600_Permute>
+
+00000368 <KeccakP1600_Permute_24rounds>:
+;
+; void KeccakP1600_Permute_24rounds( void *state )
+;
+.global KeccakP1600_Permute_24rounds
+KeccakP1600_Permute_24rounds:
+    ldi     pRound,   lo8(KeccakP1600_RoundConstants_24)
+ 368:	64 e9       	ldi	r22, 0x94	; 148
+    ldi     pRound+1, hi8(KeccakP1600_RoundConstants_24)
+ 36a:	72 e0       	ldi	r23, 0x02	; 2
+    rjmp    KeccakP1600_Permute
+ 36c:	02 c0       	rjmp	.+4      	; 0x372 <KeccakP1600_Permute>
+
+0000036e <KeccakP1600_Permute_12rounds>:
+;
+; void KeccakP1600_Permute_12rounds( void *state )
+;
+.global KeccakP1600_Permute_12rounds
+KeccakP1600_Permute_12rounds:
+    ldi     pRound,   lo8(KeccakP1600_RoundConstants_12)
+ 36e:	64 ef       	ldi	r22, 0xF4	; 244
+    ldi     pRound+1, hi8(KeccakP1600_RoundConstants_12)
+ 370:	72 e0       	ldi	r23, 0x02	; 2
+
+00000372 <KeccakP1600_Permute>:
+KeccakP1600_Permute:
+    push    r2
+ 372:	2f 92       	push	r2
+    push    r3
+ 374:	3f 92       	push	r3
+    push    r4
+ 376:	4f 92       	push	r4
+    push    r5
+ 378:	5f 92       	push	r5
+    push    r6
+ 37a:	6f 92       	push	r6
+    push    r7
+ 37c:	7f 92       	push	r7
+    push    r8
+ 37e:	8f 92       	push	r8
+    push    r9
+ 380:	9f 92       	push	r9
+    push    r10
+ 382:	af 92       	push	r10
+    push    r11
+ 384:	bf 92       	push	r11
+    push    r12
+ 386:	cf 92       	push	r12
+    push    r13
+ 388:	df 92       	push	r13
+    push    r14
+ 38a:	ef 92       	push	r14
+    push    r15
+ 38c:	ff 92       	push	r15
+    push    r16
+ 38e:	0f 93       	push	r16
+    push    r17
+ 390:	1f 93       	push	r17
+    push    r28
+ 392:	cf 93       	push	r28
+    push    r29
+ 394:	df 93       	push	r29
+
+    ; Allocate C variables (5*8)
+    in      rZ,   sp
+ 396:	ed b7       	in	r30, 0x3d	; 61
+    in      rZ+1, sp+1
+ 398:	fe b7       	in	r31, 0x3e	; 62
+    sbiw     rZ, 40
+ 39a:	b8 97       	sbiw	r30, 0x28	; 40
+    in      r0, 0x3F
+ 39c:	0f b6       	in	r0, 0x3f	; 63
+    cli
+ 39e:	f8 94       	cli
+    out     sp+1, rZ+1
+ 3a0:	fe bf       	out	0x3e, r31	; 62
+    out     sp, rZ          ; Z points to 5 C lanes
+ 3a2:	ed bf       	out	0x3d, r30	; 61
+    out     0x3F, r0
+ 3a4:	0f be       	out	0x3f, r0	; 63
+    #define rTempTer    18        // 4 regs (18-21)
+
+    ; Initial Prepare Theta
+    #define TCIPx        rTempTer
+
+    ldi     TCIPx, 5
+ 3a6:	25 e0       	ldi	r18, 0x05	; 5
+    movw    rY, rpState
+ 3a8:	ec 01       	movw	r28, r24
+
+000003aa <KeccakInitialPrepTheta_Loop>:
+KeccakInitialPrepTheta_Loop:
+    ld      rTemp+0, Y+     ; state[x]
+ 3aa:	29 90       	ld	r2, Y+
+    ld      rTemp+1, Y+
+ 3ac:	39 90       	ld	r3, Y+
+    ld      rTemp+2, Y+
+ 3ae:	49 90       	ld	r4, Y+
+    ld      rTemp+3, Y+
+ 3b0:	59 90       	ld	r5, Y+
+    ld      rTemp+4, Y+
+ 3b2:	69 90       	ld	r6, Y+
+    ld      rTemp+5, Y+
+ 3b4:	79 90       	ld	r7, Y+
+    ld      rTemp+6, Y+
+ 3b6:	89 90       	ld	r8, Y+
+    ld      rTemp+7, Y+
+ 3b8:	99 90       	ld	r9, Y+
+
+    adiw    rY, 32
+ 3ba:	a0 96       	adiw	r28, 0x20	; 32
+    ld      r0, Y+          ; state[5+x]
+ 3bc:	09 90       	ld	r0, Y+
+    eor     rTemp+0, r0
+ 3be:	20 24       	eor	r2, r0
+    ld      r0, Y+
+ 3c0:	09 90       	ld	r0, Y+
+    eor     rTemp+1, r0
+ 3c2:	30 24       	eor	r3, r0
+    ld      r0, Y+
+ 3c4:	09 90       	ld	r0, Y+
+    eor     rTemp+2, r0
+ 3c6:	40 24       	eor	r4, r0
+    ld      r0, Y+
+ 3c8:	09 90       	ld	r0, Y+
+    eor     rTemp+3, r0
+ 3ca:	50 24       	eor	r5, r0
+    ld      r0, Y+
+ 3cc:	09 90       	ld	r0, Y+
+    eor     rTemp+4, r0
+ 3ce:	60 24       	eor	r6, r0
+    ld      r0, Y+
+ 3d0:	09 90       	ld	r0, Y+
+    eor     rTemp+5, r0
+ 3d2:	70 24       	eor	r7, r0
+    ld      r0, Y+
+ 3d4:	09 90       	ld	r0, Y+
+    eor     rTemp+6, r0
+ 3d6:	80 24       	eor	r8, r0
+    ld      r0, Y+
+ 3d8:	09 90       	ld	r0, Y+
+    eor     rTemp+7, r0
+ 3da:	90 24       	eor	r9, r0
+
+    adiw    rY, 32
+ 3dc:	a0 96       	adiw	r28, 0x20	; 32
+    ld      r0, Y+          ; state[10+x]
+ 3de:	09 90       	ld	r0, Y+
+    eor     rTemp+0, r0
+ 3e0:	20 24       	eor	r2, r0
+    ld      r0, Y+
+ 3e2:	09 90       	ld	r0, Y+
+    eor     rTemp+1, r0
+ 3e4:	30 24       	eor	r3, r0
+    ld      r0, Y+
+ 3e6:	09 90       	ld	r0, Y+
+    eor     rTemp+2, r0
+ 3e8:	40 24       	eor	r4, r0
+    ld      r0, Y+
+ 3ea:	09 90       	ld	r0, Y+
+    eor     rTemp+3, r0
+ 3ec:	50 24       	eor	r5, r0
+    ld      r0, Y+
+ 3ee:	09 90       	ld	r0, Y+
+    eor     rTemp+4, r0
+ 3f0:	60 24       	eor	r6, r0
+    ld      r0, Y+
+ 3f2:	09 90       	ld	r0, Y+
+    eor     rTemp+5, r0
+ 3f4:	70 24       	eor	r7, r0
+    ld      r0, Y+
+ 3f6:	09 90       	ld	r0, Y+
+    eor     rTemp+6, r0
+ 3f8:	80 24       	eor	r8, r0
+    ld      r0, Y+
+ 3fa:	09 90       	ld	r0, Y+
+    eor     rTemp+7, r0
+ 3fc:	90 24       	eor	r9, r0
+
+    adiw    rY, 32
+ 3fe:	a0 96       	adiw	r28, 0x20	; 32
+    ld      r0, Y+          ; state[15+x]
+ 400:	09 90       	ld	r0, Y+
+    eor     rTemp+0, r0
+ 402:	20 24       	eor	r2, r0
+    ld      r0, Y+
+ 404:	09 90       	ld	r0, Y+
+    eor     rTemp+1, r0
+ 406:	30 24       	eor	r3, r0
+    ld      r0, Y+
+ 408:	09 90       	ld	r0, Y+
+    eor     rTemp+2, r0
+ 40a:	40 24       	eor	r4, r0
+    ld      r0, Y+
+ 40c:	09 90       	ld	r0, Y+
+    eor     rTemp+3, r0
+ 40e:	50 24       	eor	r5, r0
+    ld      r0, Y+
+ 410:	09 90       	ld	r0, Y+
+    eor     rTemp+4, r0
+ 412:	60 24       	eor	r6, r0
+    ld      r0, Y+
+ 414:	09 90       	ld	r0, Y+
+    eor     rTemp+5, r0
+ 416:	70 24       	eor	r7, r0
+    ld      r0, Y+
+ 418:	09 90       	ld	r0, Y+
+    eor     rTemp+6, r0
+ 41a:	80 24       	eor	r8, r0
+    ld      r0, Y+
+ 41c:	09 90       	ld	r0, Y+
+    eor     rTemp+7, r0
+ 41e:	90 24       	eor	r9, r0
+
+    adiw    rY, 32
+ 420:	a0 96       	adiw	r28, 0x20	; 32
+    ld      r0, Y+          ; state[20+x]
+ 422:	09 90       	ld	r0, Y+
+    eor     rTemp+0, r0
+ 424:	20 24       	eor	r2, r0
+    ld      r0, Y+
+ 426:	09 90       	ld	r0, Y+
+    eor     rTemp+1, r0
+ 428:	30 24       	eor	r3, r0
+    ld      r0, Y+
+ 42a:	09 90       	ld	r0, Y+
+    eor     rTemp+2, r0
+ 42c:	40 24       	eor	r4, r0
+    ld      r0, Y+
+ 42e:	09 90       	ld	r0, Y+
+    eor     rTemp+3, r0
+ 430:	50 24       	eor	r5, r0
+    ld      r0, Y+
+ 432:	09 90       	ld	r0, Y+
+    eor     rTemp+4, r0
+ 434:	60 24       	eor	r6, r0
+    ld      r0, Y+
+ 436:	09 90       	ld	r0, Y+
+    eor     rTemp+5, r0
+ 438:	70 24       	eor	r7, r0
+    ld      r0, Y+
+ 43a:	09 90       	ld	r0, Y+
+    eor     rTemp+6, r0
+ 43c:	80 24       	eor	r8, r0
+    ld      r0, Y+
+ 43e:	09 90       	ld	r0, Y+
+    eor     rTemp+7, r0
+ 440:	90 24       	eor	r9, r0
+
+    st      Z+, rTemp+0
+ 442:	21 92       	st	Z+, r2
+    st      Z+, rTemp+1
+ 444:	31 92       	st	Z+, r3
+    st      Z+, rTemp+2
+ 446:	41 92       	st	Z+, r4
+    st      Z+, rTemp+3
+ 448:	51 92       	st	Z+, r5
+    st      Z+, rTemp+4
+ 44a:	61 92       	st	Z+, r6
+    st      Z+, rTemp+5
+ 44c:	71 92       	st	Z+, r7
+    st      Z+, rTemp+6
+ 44e:	81 92       	st	Z+, r8
+    st      Z+, rTemp+7
+ 450:	91 92       	st	Z+, r9
+
+    subi    rY, 160
+ 452:	c0 5a       	subi	r28, 0xA0	; 160
+    sbc     rY+1, zero
+ 454:	d1 09       	sbc	r29, r1
+
+    subi    TCIPx,                 1
+ 456:	21 50       	subi	r18, 0x01	; 1
+    breq    KeccakInitialPrepTheta_Done
+ 458:	09 f0       	breq	.+2      	; 0x45c <KeccakInitialPrepTheta_Done>
+    rjmp    KeccakInitialPrepTheta_Loop
+ 45a:	a7 cf       	rjmp	.-178    	; 0x3aa <KeccakInitialPrepTheta_Loop>
+
+0000045c <KeccakInitialPrepTheta_Done>:
+    #define TCplus          rX
+    #define TCminus         rZ
+    #define TCcoordX        rTempTer
+    #define TCcoordY        rTempTer+1
+
+    in      TCminus,   sp
+ 45c:	ed b7       	in	r30, 0x3d	; 61
+    in      TCminus+1, sp+1
+ 45e:	fe b7       	in	r31, 0x3e	; 62
+    movw    TCplus,  TCminus
+ 460:	df 01       	movw	r26, r30
+    adiw    TCminus, 4*8
+ 462:	b0 96       	adiw	r30, 0x20	; 32
+    adiw    TCplus,  1*8
+ 464:	18 96       	adiw	r26, 0x08	; 8
+    movw    rY, rpState
+ 466:	ec 01       	movw	r28, r24
+
+    ldi     TCcoordX, 0x16
+ 468:	26 e1       	ldi	r18, 0x16	; 22
+
+0000046a <KeccakTheta_Loop1>:
+KeccakTheta_Loop1:
+    ld      rTemp+0, X+
+ 46a:	2d 90       	ld	r2, X+
+    ld      rTemp+1, X+
+ 46c:	3d 90       	ld	r3, X+
+    ld      rTemp+2, X+
+ 46e:	4d 90       	ld	r4, X+
+    ld      rTemp+3, X+
+ 470:	5d 90       	ld	r5, X+
+    ld      rTemp+4, X+
+ 472:	6d 90       	ld	r6, X+
+    ld      rTemp+5, X+
+ 474:	7d 90       	ld	r7, X+
+    ld      rTemp+6, X+
+ 476:	8d 90       	ld	r8, X+
+    ld      rTemp+7, X+
+ 478:	9d 90       	ld	r9, X+
+
+    lsl     rTemp+0
+ 47a:	22 0c       	add	r2, r2
+    rol     rTemp+1
+ 47c:	33 1c       	adc	r3, r3
+    rol     rTemp+2
+ 47e:	44 1c       	adc	r4, r4
+    rol     rTemp+3
+ 480:	55 1c       	adc	r5, r5
+    rol     rTemp+4
+ 482:	66 1c       	adc	r6, r6
+    rol     rTemp+5
+ 484:	77 1c       	adc	r7, r7
+    rol     rTemp+6
+ 486:	88 1c       	adc	r8, r8
+    rol     rTemp+7
+ 488:	99 1c       	adc	r9, r9
+    adc     rTemp+0, zero
+ 48a:	21 1c       	adc	r2, r1
+
+    ld      r0, Z+
+ 48c:	01 90       	ld	r0, Z+
+    eor     rTemp+0, r0
+ 48e:	20 24       	eor	r2, r0
+    ld      r0, Z+
+ 490:	01 90       	ld	r0, Z+
+    eor     rTemp+1, r0
+ 492:	30 24       	eor	r3, r0
+    ld      r0, Z+
+ 494:	01 90       	ld	r0, Z+
+    eor     rTemp+2, r0
+ 496:	40 24       	eor	r4, r0
+    ld      r0, Z+
+ 498:	01 90       	ld	r0, Z+
+    eor     rTemp+3, r0
+ 49a:	50 24       	eor	r5, r0
+    ld      r0, Z+
+ 49c:	01 90       	ld	r0, Z+
+    eor     rTemp+4, r0
+ 49e:	60 24       	eor	r6, r0
+    ld      r0, Z+
+ 4a0:	01 90       	ld	r0, Z+
+    eor     rTemp+5, r0
+ 4a2:	70 24       	eor	r7, r0
+    ld      r0, Z+
+ 4a4:	01 90       	ld	r0, Z+
+    eor     rTemp+6, r0
+ 4a6:	80 24       	eor	r8, r0
+    ld      r0, Z+
+ 4a8:	01 90       	ld	r0, Z+
+    eor     rTemp+7, r0
+ 4aa:	90 24       	eor	r9, r0
+
+    ldi     TCcoordY, 5
+ 4ac:	35 e0       	ldi	r19, 0x05	; 5
+
+000004ae <KeccakTheta_Loop2>:
+KeccakTheta_Loop2:
+    ld      r0, Y
+ 4ae:	08 80       	ld	r0, Y
+    eor     r0, rTemp+0
+ 4b0:	02 24       	eor	r0, r2
+    st      Y+, r0
+ 4b2:	09 92       	st	Y+, r0
+    ld      r0, Y
+ 4b4:	08 80       	ld	r0, Y
+    eor     r0, rTemp+1
+ 4b6:	03 24       	eor	r0, r3
+    st      Y+, r0
+ 4b8:	09 92       	st	Y+, r0
+    ld      r0, Y
+ 4ba:	08 80       	ld	r0, Y
+    eor     r0, rTemp+2
+ 4bc:	04 24       	eor	r0, r4
+    st      Y+, r0
+ 4be:	09 92       	st	Y+, r0
+    ld      r0, Y
+ 4c0:	08 80       	ld	r0, Y
+    eor     r0, rTemp+3
+ 4c2:	05 24       	eor	r0, r5
+    st      Y+, r0
+ 4c4:	09 92       	st	Y+, r0
+    ld      r0, Y
+ 4c6:	08 80       	ld	r0, Y
+    eor     r0, rTemp+4
+ 4c8:	06 24       	eor	r0, r6
+    st      Y+, r0
+ 4ca:	09 92       	st	Y+, r0
+    ld      r0, Y
+ 4cc:	08 80       	ld	r0, Y
+    eor     r0, rTemp+5
+ 4ce:	07 24       	eor	r0, r7
+    st      Y+, r0
+ 4d0:	09 92       	st	Y+, r0
+    ld      r0, Y
+ 4d2:	08 80       	ld	r0, Y
+    eor     r0, rTemp+6
+ 4d4:	08 24       	eor	r0, r8
+    st      Y+, r0
+ 4d6:	09 92       	st	Y+, r0
+    ld      r0, Y
+ 4d8:	08 80       	ld	r0, Y
+    eor     r0, rTemp+7
+ 4da:	09 24       	eor	r0, r9
+    st      Y+, r0
+ 4dc:	09 92       	st	Y+, r0
+    adiw    rY, 32
+ 4de:	a0 96       	adiw	r28, 0x20	; 32
+
+    dec     TCcoordY
+ 4e0:	3a 95       	dec	r19
+    brne    KeccakTheta_Loop2
+ 4e2:	29 f7       	brne	.-54     	; 0x4ae <KeccakTheta_Loop2>
+
+    subi    rY, 200-8
+ 4e4:	c0 5c       	subi	r28, 0xC0	; 192
+    sbc     rY+1, zero
+ 4e6:	d1 09       	sbc	r29, r1
+
+    lsr     TCcoordX
+ 4e8:	26 95       	lsr	r18
+    brcc    1f
+ 4ea:	10 f4       	brcc	.+4      	; 0x4f0 <KeccakTheta_Loop2+0x42>
+    breq    KeccakTheta_End
+ 4ec:	39 f0       	breq	.+14     	; 0x4fc <KeccakTheta_End>
+    rjmp    KeccakTheta_Loop1
+ 4ee:	bd cf       	rjmp	.-134    	; 0x46a <KeccakTheta_Loop1>
+1:
+    cpi     TCcoordX, 0x0B
+ 4f0:	2b 30       	cpi	r18, 0x0B	; 11
+    brne    2f
+ 4f2:	11 f4       	brne	.+4      	; 0x4f8 <KeccakTheta_Loop2+0x4a>
+    sbiw    TCminus, 40
+ 4f4:	b8 97       	sbiw	r30, 0x28	; 40
+    rjmp    KeccakTheta_Loop1
+ 4f6:	b9 cf       	rjmp	.-142    	; 0x46a <KeccakTheta_Loop1>
+2:
+    sbiw    TCplus, 40
+ 4f8:	98 97       	sbiw	r26, 0x28	; 40
+    rjmp    KeccakTheta_Loop1
+ 4fa:	b7 cf       	rjmp	.-146    	; 0x46a <KeccakTheta_Loop1>
+
+000004fc <KeccakTheta_End>:
+    #define RPpConst    rTempTer        // 2 regs
+    #define RPindex     rTempTer+2
+    #define RPpBitRot   rX
+    #define RPpByteRot  pRound
+
+    sbiw    rY, 32
+ 4fc:	a0 97       	sbiw	r28, 0x20	; 32
+
+    ld      rTemp+0, Y+
+ 4fe:	29 90       	ld	r2, Y+
+    ld      rTemp+1, Y+
+ 500:	39 90       	ld	r3, Y+
+    ld      rTemp+2, Y+
+ 502:	49 90       	ld	r4, Y+
+    ld      rTemp+3, Y+
+ 504:	59 90       	ld	r5, Y+
+    ld      rTemp+4, Y+
+ 506:	69 90       	ld	r6, Y+
+    ld      rTemp+5, Y+
+ 508:	79 90       	ld	r7, Y+
+    ld      rTemp+6, Y+
+ 50a:	89 90       	ld	r8, Y+
+    ld      rTemp+7, Y+
+ 50c:	99 90       	ld	r9, Y+
+
+    push    pRound
+ 50e:	6f 93       	push	r22
+    push    pRound+1
+ 510:	7f 93       	push	r23
+    ldi     RPpConst,   lo8(KeccakP1600_RhoPiConstants)
+ 512:	2c e4       	ldi	r18, 0x4C	; 76
+    ldi     RPpConst+1, hi8(KeccakP1600_RhoPiConstants)
+ 514:	32 e0       	ldi	r19, 0x02	; 2
+    ldi     RPpBitRot,   pm_lo8(bit_rot_jmp_table)
+ 516:	a0 e1       	ldi	r26, 0x10	; 16
+    ldi     RPpBitRot+1, pm_hi8(bit_rot_jmp_table)
+ 518:	b3 e0       	ldi	r27, 0x03	; 3
+    ldi     RPpByteRot,   pm_lo8(rotate64_0byte_left)
+ 51a:	6c e5       	ldi	r22, 0x5C	; 92
+    ldi     RPpByteRot+1, pm_hi8(rotate64_0byte_left)
+ 51c:	73 e0       	ldi	r23, 0x03	; 3
+
+0000051e <KeccakRhoPi_Loop>:
+
+KeccakRhoPi_Loop:
+    ; get rotation codes and state index
+    movw    rZ, RPpConst
+ 51e:	f9 01       	movw	r30, r18
+    lpm     r0, Z+          ; bits
+ 520:	05 90       	lpm	r0, Z+
+    lpm     rTempBis, Z+    ; bytes
+ 522:	a5 90       	lpm	r10, Z+
+    lpm     RPindex, Z+
+ 524:	45 91       	lpm	r20, Z+
+    movw    RPpConst, rZ
+ 526:	9f 01       	movw	r18, r30
+
+    ; do bit rotation
+    movw    rZ, RPpBitRot
+ 528:	fd 01       	movw	r30, r26
+    add     rZ, r0
+ 52a:	e0 0d       	add	r30, r0
+    adc     rZ+1, zero
+ 52c:	f1 1d       	adc	r31, r1
+    ijmp
+ 52e:	09 94       	ijmp
+
+00000530 <KeccakRhoPi_RhoBitRotateDone>:
+
+KeccakRhoPi_RhoBitRotateDone:
+    movw    rY, rpState
+ 530:	ec 01       	movw	r28, r24
+    add     rY, RPindex
+ 532:	c4 0f       	add	r28, r20
+    adc     rY+1, zero
+ 534:	d1 1d       	adc	r29, r1
+
+    movw    rZ, RPpByteRot
+ 536:	fb 01       	movw	r30, r22
+    add     rZ, rTempBis
+ 538:	ea 0d       	add	r30, r10
+    adc     rZ+1, zero
+ 53a:	f1 1d       	adc	r31, r1
+    ijmp
+ 53c:	09 94       	ijmp
+
+0000053e <KeccakRhoPi_PiStore>:
+
+KeccakRhoPi_PiStore:
+    sbiw    rY, 8
+ 53e:	28 97       	sbiw	r28, 0x08	; 8
+    st      Y+, rTemp+0
+ 540:	29 92       	st	Y+, r2
+    st      Y+, rTemp+1
+ 542:	39 92       	st	Y+, r3
+    st      Y+, rTemp+2
+ 544:	49 92       	st	Y+, r4
+    st      Y+, rTemp+3
+ 546:	59 92       	st	Y+, r5
+    st      Y+, rTemp+4
+ 548:	69 92       	st	Y+, r6
+    st      Y+, rTemp+5
+ 54a:	79 92       	st	Y+, r7
+    st      Y+, rTemp+6
+ 54c:	89 92       	st	Y+, r8
+    st      Y+, rTemp+7
+ 54e:	99 92       	st	Y+, r9
+
+    movw    rTemp+0, rTempBis+0
+ 550:	15 01       	movw	r2, r10
+    movw    rTemp+2, rTempBis+2
+ 552:	26 01       	movw	r4, r12
+    movw    rTemp+4, rTempBis+4
+ 554:	37 01       	movw	r6, r14
+    movw    rTemp+6, rTempBis+6
+ 556:	48 01       	movw	r8, r16
+
+00000558 <KeccakRhoPi_RhoDone>:
+KeccakRhoPi_RhoDone:
+    subi    RPindex, 8
+ 558:	48 50       	subi	r20, 0x08	; 8
+    brne    KeccakRhoPi_Loop
+ 55a:	09 f7       	brne	.-62     	; 0x51e <KeccakRhoPi_Loop>
+    pop     pRound+1
+ 55c:	7f 91       	pop	r23
+    pop     pRound
+ 55e:	6f 91       	pop	r22
+    #define CIPTc3          rTempBis+3
+    #define CIPTc4          rTempBis+4
+    #define CIPTz           rTempBis+6
+    #define CIPTy           rTempBis+7
+
+    in      rX, sp          ; 5 * C
+ 560:	ad b7       	in	r26, 0x3d	; 61
+    in      rX+1, sp+1
+ 562:	be b7       	in	r27, 0x3e	; 62
+    movw    rY, rpState
+ 564:	ec 01       	movw	r28, r24
+    movw    rZ, pRound
+ 566:	fb 01       	movw	r30, r22
+
+    ldi     CIPTz, 8
+ 568:	08 e0       	ldi	r16, 0x08	; 8
+
+0000056a <KeccakChiIotaPrepareTheta_zLoop>:
+KeccakChiIotaPrepareTheta_zLoop:
+    mov     CIPTc0, zero
+ 56a:	a1 2c       	mov	r10, r1
+    mov     CIPTc1, zero
+ 56c:	b1 2c       	mov	r11, r1
+    movw    CIPTc2, CIPTc0
+ 56e:	65 01       	movw	r12, r10
+    mov     CIPTc4, zero
+ 570:	e1 2c       	mov	r14, r1
+
+    ldi     CIPTy, 5
+ 572:	15 e0       	ldi	r17, 0x05	; 5
+
+00000574 <KeccakChiIotaPrepareTheta_yLoop>:
+KeccakChiIotaPrepareTheta_yLoop:
+    ld      CIPTa0, Y
+ 574:	28 80       	ld	r2, Y
+    ldd     CIPTa1, Y+8
+ 576:	38 84       	ldd	r3, Y+8	; 0x08
+    ldd     CIPTa2, Y+16
+ 578:	48 88       	ldd	r4, Y+16	; 0x10
+    ldd     CIPTa3, Y+24
+ 57a:	58 8c       	ldd	r5, Y+24	; 0x18
+    ldd     CIPTa4, Y+32
+ 57c:	68 a0       	ldd	r6, Y+32	; 0x20
+
+    ;*p = t = a0 ^ ((~a1) & a2); c0 ^= t;
+    mov     r0, CIPTa1
+ 57e:	03 2c       	mov	r0, r3
+    com     r0
+ 580:	00 94       	com	r0
+    and     r0, CIPTa2
+ 582:	04 20       	and	r0, r4
+    eor     r0, CIPTa0
+ 584:	02 24       	eor	r0, r2
+    eor     CIPTc0, r0
+ 586:	a0 24       	eor	r10, r0
+    st      Y, r0
+ 588:	08 82       	st	Y, r0
+
+    ;*(p+8) = t = a1 ^ ((~a2) & a3); c1 ^= t;
+    mov     r0, CIPTa2
+ 58a:	04 2c       	mov	r0, r4
+    com     r0
+ 58c:	00 94       	com	r0
+    and     r0, CIPTa3
+ 58e:	05 20       	and	r0, r5
+    eor     r0, CIPTa1
+ 590:	03 24       	eor	r0, r3
+    eor     CIPTc1, r0
+ 592:	b0 24       	eor	r11, r0
+    std     Y+8, r0
+ 594:	08 86       	std	Y+8, r0	; 0x08
+
+    ;*(p+16) = a2 ^= ((~a3) & a4); c2 ^= a2;
+    mov     r0, CIPTa3
+ 596:	05 2c       	mov	r0, r5
+    com     r0
+ 598:	00 94       	com	r0
+    and     r0, CIPTa4
+ 59a:	06 20       	and	r0, r6
+    eor     r0, CIPTa2
+ 59c:	04 24       	eor	r0, r4
+    eor     CIPTc2, r0
+ 59e:	c0 24       	eor	r12, r0
+    std     Y+16, r0
+ 5a0:	08 8a       	std	Y+16, r0	; 0x10
+
+    ;*(p+24) = a3 ^= ((~a4) & a0); c3 ^= a3;
+    mov     r0, CIPTa4
+ 5a2:	06 2c       	mov	r0, r6
+    com     r0
+ 5a4:	00 94       	com	r0
+    and     r0, CIPTa0
+ 5a6:	02 20       	and	r0, r2
+    eor     r0, CIPTa3
+ 5a8:	05 24       	eor	r0, r5
+    eor     CIPTc3, r0
+ 5aa:	d0 24       	eor	r13, r0
+    std     Y+24, r0
+ 5ac:	08 8e       	std	Y+24, r0	; 0x18
+
+    ;*(p+32) = a4 ^= ((~a0) & a1); c4 ^= a4;
+    com     CIPTa0
+ 5ae:	20 94       	com	r2
+    and     CIPTa0, CIPTa1
+ 5b0:	23 20       	and	r2, r3
+    eor     CIPTa0, CIPTa4
+ 5b2:	26 24       	eor	r2, r6
+    eor     CIPTc4, CIPTa0
+ 5b4:	e2 24       	eor	r14, r2
+    std     Y+32, CIPTa0
+ 5b6:	28 a2       	std	Y+32, r2	; 0x20
+
+    adiw    rY, 40
+ 5b8:	a8 96       	adiw	r28, 0x28	; 40
+    dec     CIPTy
+ 5ba:	1a 95       	dec	r17
+    brne    KeccakChiIotaPrepareTheta_yLoop
+ 5bc:	d9 f6       	brne	.-74     	; 0x574 <KeccakChiIotaPrepareTheta_yLoop>
+
+    subi    rY, 200
+ 5be:	c8 5c       	subi	r28, 0xC8	; 200
+    sbc     rY+1, zero
+ 5c0:	d1 09       	sbc	r29, r1
+
+    lpm     r0, Z+            ;Round Constant
+ 5c2:	05 90       	lpm	r0, Z+
+    ld      CIPTa0, Y
+ 5c4:	28 80       	ld	r2, Y
+    eor     CIPTa0, r0
+ 5c6:	20 24       	eor	r2, r0
+    st      Y+, CIPTa0
+ 5c8:	29 92       	st	Y+, r2
+
+    movw    pRound, rZ
+ 5ca:	bf 01       	movw	r22, r30
+    movw    rZ, rX
+ 5cc:	fd 01       	movw	r30, r26
+    eor     CIPTc0, r0
+ 5ce:	a0 24       	eor	r10, r0
+    st      Z+, CIPTc0
+ 5d0:	a1 92       	st	Z+, r10
+    std     Z+7, CIPTc1
+ 5d2:	b7 82       	std	Z+7, r11	; 0x07
+    std     Z+15, CIPTc2
+ 5d4:	c7 86       	std	Z+15, r12	; 0x0f
+    std     Z+23, CIPTc3
+ 5d6:	d7 8a       	std	Z+23, r13	; 0x17
+    std     Z+31, CIPTc4
+ 5d8:	e7 8e       	std	Z+31, r14	; 0x1f
+    movw    rX, rZ
+ 5da:	df 01       	movw	r26, r30
+    movw    rZ, pRound
+ 5dc:	fb 01       	movw	r30, r22
+
+    dec     CIPTz
+ 5de:	0a 95       	dec	r16
+    brne    KeccakChiIotaPrepareTheta_zLoop
+ 5e0:	21 f6       	brne	.-120    	; 0x56a <KeccakChiIotaPrepareTheta_zLoop>
+    #undef  CIPTc4
+    #undef  CIPTz
+    #undef  CIPTy
+
+    ;Check for terminator
+    lpm     r0, Z
+ 5e2:	04 90       	lpm	r0, Z
+    inc     r0
+ 5e4:	03 94       	inc	r0
+    breq    Keccak_Done
+ 5e6:	09 f0       	breq	.+2      	; 0x5ea <Keccak_Done>
+    rjmp    Keccak_RoundLoop
+ 5e8:	39 cf       	rjmp	.-398    	; 0x45c <KeccakInitialPrepTheta_Done>
+
+000005ea <Keccak_Done>:
+Keccak_Done:
+
+    ; Free C(on stack) and registers
+    in      rX, sp            ; free 5 C lanes
+ 5ea:	ad b7       	in	r26, 0x3d	; 61
+    in      rX+1, sp+1
+ 5ec:	be b7       	in	r27, 0x3e	; 62
+    adiw    rX, 40
+ 5ee:	98 96       	adiw	r26, 0x28	; 40
+    in      r0, 0x3F
+ 5f0:	0f b6       	in	r0, 0x3f	; 63
+    cli
+ 5f2:	f8 94       	cli
+    out     sp+1, rX+1
+ 5f4:	be bf       	out	0x3e, r27	; 62
+    out     sp, rX
+ 5f6:	ad bf       	out	0x3d, r26	; 61
+    out     0x3F, r0
+ 5f8:	0f be       	out	0x3f, r0	; 63
+
+    pop     r29
+ 5fa:	df 91       	pop	r29
+    pop     r28
+ 5fc:	cf 91       	pop	r28
+    pop     r17
+ 5fe:	1f 91       	pop	r17
+    pop     r16
+ 600:	0f 91       	pop	r16
+    pop     r15
+ 602:	ff 90       	pop	r15
+    pop     r14
+ 604:	ef 90       	pop	r14
+    pop     r13
+ 606:	df 90       	pop	r13
+    pop     r12
+ 608:	cf 90       	pop	r12
+    pop     r11
+ 60a:	bf 90       	pop	r11
+    pop     r10
+ 60c:	af 90       	pop	r10
+    pop     r9
+ 60e:	9f 90       	pop	r9
+    pop     r8
+ 610:	8f 90       	pop	r8
+    pop     r7
+ 612:	7f 90       	pop	r7
+    pop     r6
+ 614:	6f 90       	pop	r6
+    pop     r5
+ 616:	5f 90       	pop	r5
+    pop     r4
+ 618:	4f 90       	pop	r4
+    pop     r3
+ 61a:	3f 90       	pop	r3
+    pop     r2
+ 61c:	2f 90       	pop	r2
+    ret
+ 61e:	08 95       	ret
+
+00000620 <bit_rot_jmp_table>:
+
+bit_rot_jmp_table:
+    rjmp    KeccakRhoPi_RhoBitRotateDone
+ 620:	87 cf       	rjmp	.-242    	; 0x530 <KeccakRhoPi_RhoBitRotateDone>
+    rjmp    rotate64_1bit_left
+ 622:	21 c0       	rjmp	.+66     	; 0x666 <rotate64_1bit_left>
+    rjmp    rotate64_2bit_left
+ 624:	17 c0       	rjmp	.+46     	; 0x654 <rotate64_2bit_left>
+    rjmp    rotate64_3bit_left
+ 626:	0d c0       	rjmp	.+26     	; 0x642 <rotate64_3bit_left>
+    rjmp    rotate64_4bit_left
+ 628:	03 c0       	rjmp	.+6      	; 0x630 <rotate64_4bit_left>
+    rjmp    rotate64_3bit_right
+ 62a:	27 c0       	rjmp	.+78     	; 0x67a <rotate64_3bit_right>
+    rjmp    rotate64_2bit_right
+ 62c:	30 c0       	rjmp	.+96     	; 0x68e <rotate64_2bit_right>
+    rjmp    rotate64_1bit_right
+ 62e:	39 c0       	rjmp	.+114    	; 0x6a2 <rotate64_1bit_right>
+
+00000630 <rotate64_4bit_left>:
+
+rotate64_4bit_left:
+    lsl     rTemp
+ 630:	22 0c       	add	r2, r2
+    rol     rTemp+1
+ 632:	33 1c       	adc	r3, r3
+    rol     rTemp+2
+ 634:	44 1c       	adc	r4, r4
+    rol     rTemp+3
+ 636:	55 1c       	adc	r5, r5
+    rol     rTemp+4
+ 638:	66 1c       	adc	r6, r6
+    rol     rTemp+5
+ 63a:	77 1c       	adc	r7, r7
+    rol     rTemp+6
+ 63c:	88 1c       	adc	r8, r8
+    rol     rTemp+7
+ 63e:	99 1c       	adc	r9, r9
+    adc     rTemp, r1
+ 640:	21 1c       	adc	r2, r1
+
+00000642 <rotate64_3bit_left>:
+rotate64_3bit_left:
+    lsl     rTemp
+ 642:	22 0c       	add	r2, r2
+    rol     rTemp+1
+ 644:	33 1c       	adc	r3, r3
+    rol     rTemp+2
+ 646:	44 1c       	adc	r4, r4
+    rol     rTemp+3
+ 648:	55 1c       	adc	r5, r5
+    rol     rTemp+4
+ 64a:	66 1c       	adc	r6, r6
+    rol     rTemp+5
+ 64c:	77 1c       	adc	r7, r7
+    rol     rTemp+6
+ 64e:	88 1c       	adc	r8, r8
+    rol     rTemp+7
+ 650:	99 1c       	adc	r9, r9
+    adc     rTemp, r1
+ 652:	21 1c       	adc	r2, r1
+
+00000654 <rotate64_2bit_left>:
+rotate64_2bit_left:
+    lsl     rTemp
+ 654:	22 0c       	add	r2, r2
+    rol     rTemp+1
+ 656:	33 1c       	adc	r3, r3
+    rol     rTemp+2
+ 658:	44 1c       	adc	r4, r4
+    rol     rTemp+3
+ 65a:	55 1c       	adc	r5, r5
+    rol     rTemp+4
+ 65c:	66 1c       	adc	r6, r6
+    rol     rTemp+5
+ 65e:	77 1c       	adc	r7, r7
+    rol     rTemp+6
+ 660:	88 1c       	adc	r8, r8
+    rol     rTemp+7
+ 662:	99 1c       	adc	r9, r9
+    adc     rTemp, r1
+ 664:	21 1c       	adc	r2, r1
+
+00000666 <rotate64_1bit_left>:
+rotate64_1bit_left:
+    lsl     rTemp
+ 666:	22 0c       	add	r2, r2
+    rol     rTemp+1
+ 668:	33 1c       	adc	r3, r3
+    rol     rTemp+2
+ 66a:	44 1c       	adc	r4, r4
+    rol     rTemp+3
+ 66c:	55 1c       	adc	r5, r5
+    rol     rTemp+4
+ 66e:	66 1c       	adc	r6, r6
+    rol     rTemp+5
+ 670:	77 1c       	adc	r7, r7
+    rol     rTemp+6
+ 672:	88 1c       	adc	r8, r8
+    rol     rTemp+7
+ 674:	99 1c       	adc	r9, r9
+    adc     rTemp, r1
+ 676:	21 1c       	adc	r2, r1
+    rjmp    KeccakRhoPi_RhoBitRotateDone
+ 678:	5b cf       	rjmp	.-330    	; 0x530 <KeccakRhoPi_RhoBitRotateDone>
+
+0000067a <rotate64_3bit_right>:
+
+rotate64_3bit_right:
+    bst     rTemp, 0
+ 67a:	20 fa       	bst	r2, 0
+    ror     rTemp+7
+ 67c:	97 94       	ror	r9
+    ror     rTemp+6
+ 67e:	87 94       	ror	r8
+    ror     rTemp+5
+ 680:	77 94       	ror	r7
+    ror     rTemp+4
+ 682:	67 94       	ror	r6
+    ror     rTemp+3
+ 684:	57 94       	ror	r5
+    ror     rTemp+2
+ 686:	47 94       	ror	r4
+    ror     rTemp+1
+ 688:	37 94       	ror	r3
+    ror     rTemp
+ 68a:	27 94       	ror	r2
+    bld     rTemp+7, 7
+ 68c:	97 f8       	bld	r9, 7
+
+0000068e <rotate64_2bit_right>:
+rotate64_2bit_right:
+    bst     rTemp, 0
+ 68e:	20 fa       	bst	r2, 0
+    ror     rTemp+7
+ 690:	97 94       	ror	r9
+    ror     rTemp+6
+ 692:	87 94       	ror	r8
+    ror     rTemp+5
+ 694:	77 94       	ror	r7
+    ror     rTemp+4
+ 696:	67 94       	ror	r6
+    ror     rTemp+3
+ 698:	57 94       	ror	r5
+    ror     rTemp+2
+ 69a:	47 94       	ror	r4
+    ror     rTemp+1
+ 69c:	37 94       	ror	r3
+    ror     rTemp
+ 69e:	27 94       	ror	r2
+    bld     rTemp+7, 7
+ 6a0:	97 f8       	bld	r9, 7
+
+000006a2 <rotate64_1bit_right>:
+rotate64_1bit_right:
+    bst     rTemp, 0
+ 6a2:	20 fa       	bst	r2, 0
+    ror     rTemp+7
+ 6a4:	97 94       	ror	r9
+    ror     rTemp+6
+ 6a6:	87 94       	ror	r8
+    ror     rTemp+5
+ 6a8:	77 94       	ror	r7
+    ror     rTemp+4
+ 6aa:	67 94       	ror	r6
+    ror     rTemp+3
+ 6ac:	57 94       	ror	r5
+    ror     rTemp+2
+ 6ae:	47 94       	ror	r4
+    ror     rTemp+1
+ 6b0:	37 94       	ror	r3
+    ror     rTemp
+ 6b2:	27 94       	ror	r2
+    bld     rTemp+7, 7
+ 6b4:	97 f8       	bld	r9, 7
+    rjmp    KeccakRhoPi_RhoBitRotateDone
+ 6b6:	3c cf       	rjmp	.-392    	; 0x530 <KeccakRhoPi_RhoBitRotateDone>
+
+000006b8 <rotate64_0byte_left>:
+
+; Each byte rotate routine must be 9 instructions long.
+
+rotate64_0byte_left:
+    ld      rTempBis+0, Y+
+ 6b8:	a9 90       	ld	r10, Y+
+    ld      rTempBis+1, Y+
+ 6ba:	b9 90       	ld	r11, Y+
+    ld      rTempBis+2, Y+
+ 6bc:	c9 90       	ld	r12, Y+
+    ld      rTempBis+3, Y+
+ 6be:	d9 90       	ld	r13, Y+
+    ld      rTempBis+4, Y+
+ 6c0:	e9 90       	ld	r14, Y+
+    ld      rTempBis+5, Y+
+ 6c2:	f9 90       	ld	r15, Y+
+    ld      rTempBis+6, Y+
+ 6c4:	09 91       	ld	r16, Y+
+    ld      rTempBis+7, Y+
+ 6c6:	19 91       	ld	r17, Y+
+    rjmp    KeccakRhoPi_PiStore
+ 6c8:	3a cf       	rjmp	.-396    	; 0x53e <KeccakRhoPi_PiStore>
+
+000006ca <rotate64_1byte_left>:
+
+rotate64_1byte_left:
+    ld      rTempBis+1, Y+
+ 6ca:	b9 90       	ld	r11, Y+
+    ld      rTempBis+2, Y+
+ 6cc:	c9 90       	ld	r12, Y+
+    ld      rTempBis+3, Y+
+ 6ce:	d9 90       	ld	r13, Y+
+    ld      rTempBis+4, Y+
+ 6d0:	e9 90       	ld	r14, Y+
+    ld      rTempBis+5, Y+
+ 6d2:	f9 90       	ld	r15, Y+
+    ld      rTempBis+6, Y+
+ 6d4:	09 91       	ld	r16, Y+
+    ld      rTempBis+7, Y+
+ 6d6:	19 91       	ld	r17, Y+
+    ld      rTempBis+0, Y+
+ 6d8:	a9 90       	ld	r10, Y+
+    rjmp    KeccakRhoPi_PiStore
+ 6da:	31 cf       	rjmp	.-414    	; 0x53e <KeccakRhoPi_PiStore>
+
+000006dc <rotate64_2byte_left>:
+
+rotate64_2byte_left:
+    ld      rTempBis+2, Y+
+ 6dc:	c9 90       	ld	r12, Y+
+    ld      rTempBis+3, Y+
+ 6de:	d9 90       	ld	r13, Y+
+    ld      rTempBis+4, Y+
+ 6e0:	e9 90       	ld	r14, Y+
+    ld      rTempBis+5, Y+
+ 6e2:	f9 90       	ld	r15, Y+
+    ld      rTempBis+6, Y+
+ 6e4:	09 91       	ld	r16, Y+
+    ld      rTempBis+7, Y+
+ 6e6:	19 91       	ld	r17, Y+
+    ld      rTempBis+0, Y+
+ 6e8:	a9 90       	ld	r10, Y+
+    ld      rTempBis+1, Y+
+ 6ea:	b9 90       	ld	r11, Y+
+    rjmp    KeccakRhoPi_PiStore
+ 6ec:	28 cf       	rjmp	.-432    	; 0x53e <KeccakRhoPi_PiStore>
+
+000006ee <rotate64_3byte_left>:
+
+rotate64_3byte_left:
+    ld      rTempBis+3, Y+
+ 6ee:	d9 90       	ld	r13, Y+
+    ld      rTempBis+4, Y+
+ 6f0:	e9 90       	ld	r14, Y+
+    ld      rTempBis+5, Y+
+ 6f2:	f9 90       	ld	r15, Y+
+    ld      rTempBis+6, Y+
+ 6f4:	09 91       	ld	r16, Y+
+    ld      rTempBis+7, Y+
+ 6f6:	19 91       	ld	r17, Y+
+    ld      rTempBis+0, Y+
+ 6f8:	a9 90       	ld	r10, Y+
+    ld      rTempBis+1, Y+
+ 6fa:	b9 90       	ld	r11, Y+
+    ld      rTempBis+2, Y+
+ 6fc:	c9 90       	ld	r12, Y+
+    rjmp    KeccakRhoPi_PiStore
+ 6fe:	1f cf       	rjmp	.-450    	; 0x53e <KeccakRhoPi_PiStore>
+
+00000700 <rotate64_4byte_left>:
+
+rotate64_4byte_left:
+    ld      rTempBis+4, Y+
+ 700:	e9 90       	ld	r14, Y+
+    ld      rTempBis+5, Y+
+ 702:	f9 90       	ld	r15, Y+
+    ld      rTempBis+6, Y+
+ 704:	09 91       	ld	r16, Y+
+    ld      rTempBis+7, Y+
+ 706:	19 91       	ld	r17, Y+
+    ld      rTempBis+0, Y+
+ 708:	a9 90       	ld	r10, Y+
+    ld      rTempBis+1, Y+
+ 70a:	b9 90       	ld	r11, Y+
+    ld      rTempBis+2, Y+
+ 70c:	c9 90       	ld	r12, Y+
+    ld      rTempBis+3, Y+
+ 70e:	d9 90       	ld	r13, Y+
+    rjmp    KeccakRhoPi_PiStore
+ 710:	16 cf       	rjmp	.-468    	; 0x53e <KeccakRhoPi_PiStore>
+
+00000712 <rotate64_5byte_left>:
+
+rotate64_5byte_left:
+    ld      rTempBis+5, Y+
+ 712:	f9 90       	ld	r15, Y+
+    ld      rTempBis+6, Y+
+ 714:	09 91       	ld	r16, Y+
+    ld      rTempBis+7, Y+
+ 716:	19 91       	ld	r17, Y+
+    ld      rTempBis+0, Y+
+ 718:	a9 90       	ld	r10, Y+
+    ld      rTempBis+1, Y+
+ 71a:	b9 90       	ld	r11, Y+
+    ld      rTempBis+2, Y+
+ 71c:	c9 90       	ld	r12, Y+
+    ld      rTempBis+3, Y+
+ 71e:	d9 90       	ld	r13, Y+
+    ld      rTempBis+4, Y+
+ 720:	e9 90       	ld	r14, Y+
+    rjmp    KeccakRhoPi_PiStore
+ 722:	0d cf       	rjmp	.-486    	; 0x53e <KeccakRhoPi_PiStore>
+
+00000724 <rotate64_6byte_left>:
+
+rotate64_6byte_left:
+    ld      rTempBis+6, Y+
+ 724:	09 91       	ld	r16, Y+
+    ld      rTempBis+7, Y+
+ 726:	19 91       	ld	r17, Y+
+    ld      rTempBis+0, Y+
+ 728:	a9 90       	ld	r10, Y+
+    ld      rTempBis+1, Y+
+ 72a:	b9 90       	ld	r11, Y+
+    ld      rTempBis+2, Y+
+ 72c:	c9 90       	ld	r12, Y+
+    ld      rTempBis+3, Y+
+ 72e:	d9 90       	ld	r13, Y+
+    ld      rTempBis+4, Y+
+ 730:	e9 90       	ld	r14, Y+
+    ld      rTempBis+5, Y+
+ 732:	f9 90       	ld	r15, Y+
+    rjmp    KeccakRhoPi_PiStore
+ 734:	04 cf       	rjmp	.-504    	; 0x53e <KeccakRhoPi_PiStore>
+
+00000736 <rotate64_7byte_left>:
+
+rotate64_7byte_left:
+    ld      rTempBis+7, Y+
+ 736:	19 91       	ld	r17, Y+
+    ld      rTempBis+0, Y+
+ 738:	a9 90       	ld	r10, Y+
+    ld      rTempBis+1, Y+
+ 73a:	b9 90       	ld	r11, Y+
+    ld      rTempBis+2, Y+
+ 73c:	c9 90       	ld	r12, Y+
+    ld      rTempBis+3, Y+
+ 73e:	d9 90       	ld	r13, Y+
+    ld      rTempBis+4, Y+
+ 740:	e9 90       	ld	r14, Y+
+    ld      rTempBis+5, Y+
+ 742:	f9 90       	ld	r15, Y+
+    ld      rTempBis+6, Y+
+ 744:	09 91       	ld	r16, Y+
+    rjmp    KeccakRhoPi_PiStore
+ 746:	fb ce       	rjmp	.-522    	; 0x53e <KeccakRhoPi_PiStore>
+
+00000748 <main>:
+
+typedef unsigned char u8;
 void test(unsigned char *a, unsigned char *b, unsigned char *c);
 
 int main(void)
 {
-  b2:	cf 93       	push	r28
-  b4:	df 93       	push	r29
-  b6:	cd b7       	in	r28, 0x3d	; 61
-  b8:	de b7       	in	r29, 0x3e	; 62
-  ba:	29 97       	sbiw	r28, 0x09	; 9
-  bc:	0f b6       	in	r0, 0x3f	; 63
-  be:	f8 94       	cli
-  c0:	de bf       	out	0x3e, r29	; 62
-  c2:	0f be       	out	0x3f, r0	; 63
-  c4:	cd bf       	out	0x3d, r28	; 61
-	unsigned char a[3] = {9,8,7};
-  c6:	89 e0       	ldi	r24, 0x09	; 9
-  c8:	89 83       	std	Y+1, r24	; 0x01
-  ca:	88 e0       	ldi	r24, 0x08	; 8
-  cc:	8a 83       	std	Y+2, r24	; 0x02
-  ce:	97 e0       	ldi	r25, 0x07	; 7
-  d0:	9b 83       	std	Y+3, r25	; 0x03
+ 748:	0f 93       	push	r16
+ 74a:	1f 93       	push	r17
+ 74c:	cf 93       	push	r28
+ 74e:	df 93       	push	r29
+ 750:	cd b7       	in	r28, 0x3d	; 61
+ 752:	de b7       	in	r29, 0x3e	; 62
+ 754:	c8 5c       	subi	r28, 0xC8	; 200
+ 756:	d1 09       	sbc	r29, r1
+ 758:	0f b6       	in	r0, 0x3f	; 63
+ 75a:	f8 94       	cli
+ 75c:	de bf       	out	0x3e, r29	; 62
+ 75e:	0f be       	out	0x3f, r0	; 63
+ 760:	cd bf       	out	0x3d, r28	; 61
+	u8 state[25][8] = {0x00};
+ 762:	8e 01       	movw	r16, r28
+ 764:	0f 5f       	subi	r16, 0xFF	; 255
+ 766:	1f 4f       	sbci	r17, 0xFF	; 255
+ 768:	88 ec       	ldi	r24, 0xC8	; 200
+ 76a:	f8 01       	movw	r30, r16
+ 76c:	11 92       	st	Z+, r1
+ 76e:	8a 95       	dec	r24
+ 770:	e9 f7       	brne	.-6      	; 0x76c <main+0x24>
 	unsigned char b[3] = {8,2,3};
-  d2:	8c 83       	std	Y+4, r24	; 0x04
-  d4:	82 e0       	ldi	r24, 0x02	; 2
-  d6:	8d 83       	std	Y+5, r24	; 0x05
-  d8:	83 e0       	ldi	r24, 0x03	; 3
-  da:	8e 83       	std	Y+6, r24	; 0x06
 	unsigned char c[3] = {5,6,5};
-  dc:	85 e0       	ldi	r24, 0x05	; 5
-  de:	8f 83       	std	Y+7, r24	; 0x07
-  e0:	96 e0       	ldi	r25, 0x06	; 6
-  e2:	98 87       	std	Y+8, r25	; 0x08
-  e4:	89 87       	std	Y+9, r24	; 0x09
+	//test(a,b,c);
 	
-	test(a,b,c);
-  e6:	ae 01       	movw	r20, r28
-  e8:	49 5f       	subi	r20, 0xF9	; 249
-  ea:	5f 4f       	sbci	r21, 0xFF	; 255
-  ec:	be 01       	movw	r22, r28
-  ee:	6c 5f       	subi	r22, 0xFC	; 252
-  f0:	7f 4f       	sbci	r23, 0xFF	; 255
-  f2:	ce 01       	movw	r24, r28
-  f4:	01 96       	adiw	r24, 0x01	; 1
-  f6:	d3 df       	rcall	.-90     	; 0x9e <test>
+		
+	KeccakP1600_StaticInitialize();
+ 772:	a1 dc       	rcall	.-1726   	; 0xb6 <KeccakP1600_StaticInitialize>
+	KeccakP1600_Initialize(state);
+ 774:	c8 01       	movw	r24, r16
+ 776:	93 dc       	rcall	.-1754   	; 0x9e <KeccakP1600_Initialize>
+	KeccakP1600_Permute_Nrounds(state,nrounds);
+ 778:	68 e1       	ldi	r22, 0x18	; 24
+ 77a:	70 e0       	ldi	r23, 0x00	; 0
+ 77c:	c8 01       	movw	r24, r16
+ 77e:	eb dd       	rcall	.-1066   	; 0x356 <KeccakP1600_Permute_Nrounds>
+	
 
 
-  f8:	80 e0       	ldi	r24, 0x00	; 0
-  fa:	90 e0       	ldi	r25, 0x00	; 0
-  fc:	29 96       	adiw	r28, 0x09	; 9
-  fe:	0f b6       	in	r0, 0x3f	; 63
- 100:	f8 94       	cli
- 102:	de bf       	out	0x3e, r29	; 62
- 104:	0f be       	out	0x3f, r0	; 63
- 106:	cd bf       	out	0x3d, r28	; 61
- 108:	df 91       	pop	r29
- 10a:	cf 91       	pop	r28
- 10c:	08 95       	ret
+ 780:	80 e0       	ldi	r24, 0x00	; 0
+ 782:	90 e0       	ldi	r25, 0x00	; 0
+ 784:	c8 53       	subi	r28, 0x38	; 56
+ 786:	df 4f       	sbci	r29, 0xFF	; 255
+ 788:	0f b6       	in	r0, 0x3f	; 63
+ 78a:	f8 94       	cli
+ 78c:	de bf       	out	0x3e, r29	; 62
+ 78e:	0f be       	out	0x3f, r0	; 63
+ 790:	cd bf       	out	0x3d, r28	; 61
+ 792:	df 91       	pop	r29
+ 794:	cf 91       	pop	r28
+ 796:	1f 91       	pop	r17
+ 798:	0f 91       	pop	r16
+ 79a:	08 95       	ret
 
-0000010e <_exit>:
- 10e:	f8 94       	cli
+0000079c <_exit>:
+ 79c:	f8 94       	cli
 
-00000110 <__stop_program>:
- 110:	ff cf       	rjmp	.-2      	; 0x110 <__stop_program>
+0000079e <__stop_program>:
+ 79e:	ff cf       	rjmp	.-2      	; 0x79e <__stop_program>

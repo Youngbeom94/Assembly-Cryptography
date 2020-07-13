@@ -4,3 +4,7 @@
 
 main.c
 
+macro.s
+
+test.s
+
