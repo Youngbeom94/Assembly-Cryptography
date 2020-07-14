@@ -37,7 +37,7 @@ int main(void)
 	aes128_ctx_t aes_test;
 	aes128_init(key, &aes_test);
 	aes128_enc(IV,&aes_test);
-	aes128_enc_nobr(IV,&aes_test);
+	//aes128_enc_nobr(IV,&aes_test);
 	//aes128_enc_origin(IV,&aes_test);
 	
 	//aes192_ctx_t aes_test;

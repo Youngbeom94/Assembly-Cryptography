@@ -3,2368 +3,628 @@ AES_8bit Asm_fast.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000510  00800100  000011da  0000124e  2**0
+  0 .data         00000310  00800100  00000442  000004b6  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         000011da  00000000  00000000  00000074  2**1
+  1 .text         00000442  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  0000175e  2**0
+  2 .comment      00000030  00000000  00000000  000007c6  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00001790  2**2
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000007f8  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000080  00000000  00000000  000017d0  2**3
+  4 .debug_aranges 00000060  00000000  00000000  00000838  2**3
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   000008a2  00000000  00000000  00001850  2**0
+  5 .debug_info   00000829  00000000  00000000  00000898  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000693  00000000  00000000  000020f2  2**0
+  6 .debug_abbrev 0000067f  00000000  00000000  000010c1  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00002abe  00000000  00000000  00002785  2**0
+  7 .debug_line   000009e5  00000000  00000000  00001740  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000038  00000000  00000000  00005244  2**2
+  8 .debug_frame  00000038  00000000  00000000  00002128  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000371  00000000  00000000  0000527c  2**0
+  9 .debug_str    00000371  00000000  00000000  00002160  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000048  00000000  00000000  000055ed  2**0
+ 10 .debug_loc    00000048  00000000  00000000  000024d1  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000010  00000000  00000000  00005635  2**0
+ 11 .debug_ranges 00000010  00000000  00000000  00002519  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
-       0:	33 c0       	rjmp	.+102    	; 0x68 <__ctors_end>
-       2:	00 00       	nop
-       4:	46 c0       	rjmp	.+140    	; 0x92 <__bad_interrupt>
-       6:	00 00       	nop
-       8:	44 c0       	rjmp	.+136    	; 0x92 <__bad_interrupt>
-       a:	00 00       	nop
-       c:	42 c0       	rjmp	.+132    	; 0x92 <__bad_interrupt>
-       e:	00 00       	nop
-      10:	40 c0       	rjmp	.+128    	; 0x92 <__bad_interrupt>
-      12:	00 00       	nop
-      14:	3e c0       	rjmp	.+124    	; 0x92 <__bad_interrupt>
-      16:	00 00       	nop
-      18:	3c c0       	rjmp	.+120    	; 0x92 <__bad_interrupt>
-      1a:	00 00       	nop
-      1c:	3a c0       	rjmp	.+116    	; 0x92 <__bad_interrupt>
-      1e:	00 00       	nop
-      20:	38 c0       	rjmp	.+112    	; 0x92 <__bad_interrupt>
-      22:	00 00       	nop
-      24:	36 c0       	rjmp	.+108    	; 0x92 <__bad_interrupt>
-      26:	00 00       	nop
-      28:	34 c0       	rjmp	.+104    	; 0x92 <__bad_interrupt>
-      2a:	00 00       	nop
-      2c:	32 c0       	rjmp	.+100    	; 0x92 <__bad_interrupt>
-      2e:	00 00       	nop
-      30:	30 c0       	rjmp	.+96     	; 0x92 <__bad_interrupt>
-      32:	00 00       	nop
-      34:	2e c0       	rjmp	.+92     	; 0x92 <__bad_interrupt>
-      36:	00 00       	nop
-      38:	2c c0       	rjmp	.+88     	; 0x92 <__bad_interrupt>
-      3a:	00 00       	nop
-      3c:	2a c0       	rjmp	.+84     	; 0x92 <__bad_interrupt>
-      3e:	00 00       	nop
-      40:	28 c0       	rjmp	.+80     	; 0x92 <__bad_interrupt>
-      42:	00 00       	nop
-      44:	26 c0       	rjmp	.+76     	; 0x92 <__bad_interrupt>
-      46:	00 00       	nop
-      48:	24 c0       	rjmp	.+72     	; 0x92 <__bad_interrupt>
-      4a:	00 00       	nop
-      4c:	22 c0       	rjmp	.+68     	; 0x92 <__bad_interrupt>
-      4e:	00 00       	nop
-      50:	20 c0       	rjmp	.+64     	; 0x92 <__bad_interrupt>
-      52:	00 00       	nop
-      54:	1e c0       	rjmp	.+60     	; 0x92 <__bad_interrupt>
-      56:	00 00       	nop
-      58:	1c c0       	rjmp	.+56     	; 0x92 <__bad_interrupt>
-      5a:	00 00       	nop
-      5c:	1a c0       	rjmp	.+52     	; 0x92 <__bad_interrupt>
-      5e:	00 00       	nop
-      60:	18 c0       	rjmp	.+48     	; 0x92 <__bad_interrupt>
-      62:	00 00       	nop
-      64:	16 c0       	rjmp	.+44     	; 0x92 <__bad_interrupt>
+   0:	33 c0       	rjmp	.+102    	; 0x68 <__ctors_end>
+   2:	00 00       	nop
+   4:	44 c0       	rjmp	.+136    	; 0x8e <__bad_interrupt>
+   6:	00 00       	nop
+   8:	42 c0       	rjmp	.+132    	; 0x8e <__bad_interrupt>
+   a:	00 00       	nop
+   c:	40 c0       	rjmp	.+128    	; 0x8e <__bad_interrupt>
+   e:	00 00       	nop
+  10:	3e c0       	rjmp	.+124    	; 0x8e <__bad_interrupt>
+  12:	00 00       	nop
+  14:	3c c0       	rjmp	.+120    	; 0x8e <__bad_interrupt>
+  16:	00 00       	nop
+  18:	3a c0       	rjmp	.+116    	; 0x8e <__bad_interrupt>
+  1a:	00 00       	nop
+  1c:	38 c0       	rjmp	.+112    	; 0x8e <__bad_interrupt>
+  1e:	00 00       	nop
+  20:	36 c0       	rjmp	.+108    	; 0x8e <__bad_interrupt>
+  22:	00 00       	nop
+  24:	34 c0       	rjmp	.+104    	; 0x8e <__bad_interrupt>
+  26:	00 00       	nop
+  28:	32 c0       	rjmp	.+100    	; 0x8e <__bad_interrupt>
+  2a:	00 00       	nop
+  2c:	30 c0       	rjmp	.+96     	; 0x8e <__bad_interrupt>
+  2e:	00 00       	nop
+  30:	2e c0       	rjmp	.+92     	; 0x8e <__bad_interrupt>
+  32:	00 00       	nop
+  34:	2c c0       	rjmp	.+88     	; 0x8e <__bad_interrupt>
+  36:	00 00       	nop
+  38:	2a c0       	rjmp	.+84     	; 0x8e <__bad_interrupt>
+  3a:	00 00       	nop
+  3c:	28 c0       	rjmp	.+80     	; 0x8e <__bad_interrupt>
+  3e:	00 00       	nop
+  40:	26 c0       	rjmp	.+76     	; 0x8e <__bad_interrupt>
+  42:	00 00       	nop
+  44:	24 c0       	rjmp	.+72     	; 0x8e <__bad_interrupt>
+  46:	00 00       	nop
+  48:	22 c0       	rjmp	.+68     	; 0x8e <__bad_interrupt>
+  4a:	00 00       	nop
+  4c:	20 c0       	rjmp	.+64     	; 0x8e <__bad_interrupt>
+  4e:	00 00       	nop
+  50:	1e c0       	rjmp	.+60     	; 0x8e <__bad_interrupt>
+  52:	00 00       	nop
+  54:	1c c0       	rjmp	.+56     	; 0x8e <__bad_interrupt>
+  56:	00 00       	nop
+  58:	1a c0       	rjmp	.+52     	; 0x8e <__bad_interrupt>
+  5a:	00 00       	nop
+  5c:	18 c0       	rjmp	.+48     	; 0x8e <__bad_interrupt>
+  5e:	00 00       	nop
+  60:	16 c0       	rjmp	.+44     	; 0x8e <__bad_interrupt>
+  62:	00 00       	nop
+  64:	14 c0       	rjmp	.+40     	; 0x8e <__bad_interrupt>
 	...
 
 00000068 <__ctors_end>:
-      68:	11 24       	eor	r1, r1
-      6a:	1f be       	out	0x3f, r1	; 63
-      6c:	cf ef       	ldi	r28, 0xFF	; 255
-      6e:	d8 e0       	ldi	r29, 0x08	; 8
-      70:	de bf       	out	0x3e, r29	; 62
-      72:	cd bf       	out	0x3d, r28	; 61
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
 
 00000074 <__do_copy_data>:
-      74:	16 e0       	ldi	r17, 0x06	; 6
-      76:	a0 e0       	ldi	r26, 0x00	; 0
-      78:	b1 e0       	ldi	r27, 0x01	; 1
-      7a:	ea ed       	ldi	r30, 0xDA	; 218
-      7c:	f1 e1       	ldi	r31, 0x11	; 17
-      7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
-      80:	05 90       	lpm	r0, Z+
-      82:	0d 92       	st	X+, r0
-      84:	a0 31       	cpi	r26, 0x10	; 16
-      86:	b1 07       	cpc	r27, r17
-      88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
-      8a:	0e 94 8b 08 	call	0x1116	; 0x1116 <main>
-      8e:	0c 94 eb 08 	jmp	0x11d6	; 0x11d6 <_exit>
+  74:	14 e0       	ldi	r17, 0x04	; 4
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e2 e4       	ldi	r30, 0x42	; 66
+  7c:	f4 e0       	ldi	r31, 0x04	; 4
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a0 31       	cpi	r26, 0x10	; 16
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	81 d1       	rcall	.+770    	; 0x38e <main>
+  8c:	d8 c1       	rjmp	.+944    	; 0x43e <_exit>
 
-00000092 <__bad_interrupt>:
-      92:	b6 cf       	rjmp	.-148    	; 0x0 <__vectors>
+0000008e <__bad_interrupt>:
+  8e:	b8 cf       	rjmp	.-144    	; 0x0 <__vectors>
 
-00000094 <aes256_enc>:
-      94:	4e e0       	ldi	r20, 0x0E	; 14
-      96:	03 c0       	rjmp	.+6      	; 0x9e <aes_encrypt_core>
+00000090 <aes256_enc>:
+  90:	4e e0       	ldi	r20, 0x0E	; 14
+  92:	03 c0       	rjmp	.+6      	; 0x9a <aes_encrypt_core>
 
-00000098 <aes192_enc>:
-      98:	4c e0       	ldi	r20, 0x0C	; 12
-      9a:	01 c0       	rjmp	.+2      	; 0x9e <aes_encrypt_core>
+00000094 <aes192_enc>:
+  94:	4c e0       	ldi	r20, 0x0C	; 12
+  96:	01 c0       	rjmp	.+2      	; 0x9a <aes_encrypt_core>
 
-0000009c <aes128_enc>:
-      9c:	4a e0       	ldi	r20, 0x0A	; 10
+00000098 <aes128_enc>:
+  98:	4a e0       	ldi	r20, 0x0A	; 10
 
-0000009e <aes_encrypt_core>:
-      9e:	cf 93       	push	r28
-      a0:	df 93       	push	r29
-      a2:	8f 93       	push	r24
-      a4:	9f 93       	push	r25
-      a6:	db 01       	movw	r26, r22
-      a8:	fc 01       	movw	r30, r24
-      aa:	84 2f       	mov	r24, r20
-      ac:	e8 94       	clt
-      ae:	01 90       	ld	r0, Z+
-      b0:	11 90       	ld	r1, Z+
-      b2:	21 90       	ld	r2, Z+
-      b4:	31 90       	ld	r3, Z+
-      b6:	41 90       	ld	r4, Z+
-      b8:	51 90       	ld	r5, Z+
-      ba:	61 90       	ld	r6, Z+
-      bc:	71 90       	ld	r7, Z+
-      be:	81 90       	ld	r8, Z+
-      c0:	91 90       	ld	r9, Z+
-      c2:	a1 90       	ld	r10, Z+
-      c4:	b1 90       	ld	r11, Z+
-      c6:	c1 90       	ld	r12, Z+
-      c8:	d1 90       	ld	r13, Z+
-      ca:	e1 90       	ld	r14, Z+
-      cc:	f1 90       	ld	r15, Z+
-      ce:	f1 e0       	ldi	r31, 0x01	; 1
-      d0:	d2 e0       	ldi	r29, 0x02	; 2
-      d2:	0d 91       	ld	r16, X+
-      d4:	00 26       	eor	r0, r16
-      d6:	0d 91       	ld	r16, X+
-      d8:	10 26       	eor	r1, r16
-      da:	0d 91       	ld	r16, X+
-      dc:	20 26       	eor	r2, r16
-      de:	0d 91       	ld	r16, X+
-      e0:	30 26       	eor	r3, r16
-      e2:	0d 91       	ld	r16, X+
-      e4:	40 26       	eor	r4, r16
-      e6:	0d 91       	ld	r16, X+
-      e8:	50 26       	eor	r5, r16
-      ea:	0d 91       	ld	r16, X+
-      ec:	60 26       	eor	r6, r16
-      ee:	0d 91       	ld	r16, X+
-      f0:	70 26       	eor	r7, r16
-      f2:	0d 91       	ld	r16, X+
-      f4:	80 26       	eor	r8, r16
-      f6:	0d 91       	ld	r16, X+
-      f8:	90 26       	eor	r9, r16
-      fa:	0d 91       	ld	r16, X+
-      fc:	a0 26       	eor	r10, r16
-      fe:	0d 91       	ld	r16, X+
-     100:	b0 26       	eor	r11, r16
-     102:	0d 91       	ld	r16, X+
-     104:	c0 26       	eor	r12, r16
-     106:	0d 91       	ld	r16, X+
-     108:	d0 26       	eor	r13, r16
-     10a:	0d 91       	ld	r16, X+
-     10c:	e0 26       	eor	r14, r16
-     10e:	0d 91       	ld	r16, X+
-     110:	f0 26       	eor	r15, r16
-     112:	ae f4       	brtc	.+42     	; 0x13e <exit+0x2a>
+0000009a <aes_encrypt_core>:
+  9a:	cf 93       	push	r28
+  9c:	df 93       	push	r29
+  9e:	8f 93       	push	r24
+  a0:	9f 93       	push	r25
+  a2:	db 01       	movw	r26, r22
+  a4:	fc 01       	movw	r30, r24
+  a6:	84 2f       	mov	r24, r20
+  a8:	e8 94       	clt
+  aa:	01 90       	ld	r0, Z+
+  ac:	11 90       	ld	r1, Z+
+  ae:	21 90       	ld	r2, Z+
+  b0:	31 90       	ld	r3, Z+
+  b2:	41 90       	ld	r4, Z+
+  b4:	51 90       	ld	r5, Z+
+  b6:	61 90       	ld	r6, Z+
+  b8:	71 90       	ld	r7, Z+
+  ba:	81 90       	ld	r8, Z+
+  bc:	91 90       	ld	r9, Z+
+  be:	a1 90       	ld	r10, Z+
+  c0:	b1 90       	ld	r11, Z+
+  c2:	c1 90       	ld	r12, Z+
+  c4:	d1 90       	ld	r13, Z+
+  c6:	e1 90       	ld	r14, Z+
+  c8:	f1 90       	ld	r15, Z+
+  ca:	f1 e0       	ldi	r31, 0x01	; 1
+  cc:	d2 e0       	ldi	r29, 0x02	; 2
+  ce:	0d 91       	ld	r16, X+
+  d0:	00 26       	eor	r0, r16
+  d2:	0d 91       	ld	r16, X+
+  d4:	10 26       	eor	r1, r16
+  d6:	0d 91       	ld	r16, X+
+  d8:	20 26       	eor	r2, r16
+  da:	0d 91       	ld	r16, X+
+  dc:	30 26       	eor	r3, r16
+  de:	0d 91       	ld	r16, X+
+  e0:	40 26       	eor	r4, r16
+  e2:	0d 91       	ld	r16, X+
+  e4:	50 26       	eor	r5, r16
+  e6:	0d 91       	ld	r16, X+
+  e8:	60 26       	eor	r6, r16
+  ea:	0d 91       	ld	r16, X+
+  ec:	70 26       	eor	r7, r16
+  ee:	0d 91       	ld	r16, X+
+  f0:	80 26       	eor	r8, r16
+  f2:	0d 91       	ld	r16, X+
+  f4:	90 26       	eor	r9, r16
+  f6:	0d 91       	ld	r16, X+
+  f8:	a0 26       	eor	r10, r16
+  fa:	0d 91       	ld	r16, X+
+  fc:	b0 26       	eor	r11, r16
+  fe:	0d 91       	ld	r16, X+
+ 100:	c0 26       	eor	r12, r16
+ 102:	0d 91       	ld	r16, X+
+ 104:	d0 26       	eor	r13, r16
+ 106:	0d 91       	ld	r16, X+
+ 108:	e0 26       	eor	r14, r16
+ 10a:	0d 91       	ld	r16, X+
+ 10c:	f0 26       	eor	r15, r16
+ 10e:	ae f4       	brtc	.+42     	; 0x13a <exit+0x2a>
 
-00000114 <exit>:
-     114:	ff 91       	pop	r31
-     116:	ef 91       	pop	r30
-     118:	01 92       	st	Z+, r0
-     11a:	11 92       	st	Z+, r1
-     11c:	21 92       	st	Z+, r2
-     11e:	31 92       	st	Z+, r3
-     120:	41 92       	st	Z+, r4
-     122:	51 92       	st	Z+, r5
-     124:	61 92       	st	Z+, r6
-     126:	71 92       	st	Z+, r7
-     128:	81 92       	st	Z+, r8
-     12a:	91 92       	st	Z+, r9
-     12c:	a1 92       	st	Z+, r10
-     12e:	b1 92       	st	Z+, r11
-     130:	c1 92       	st	Z+, r12
-     132:	d1 92       	st	Z+, r13
-     134:	e1 92       	st	Z+, r14
-     136:	f1 92       	st	Z+, r15
-     138:	df 91       	pop	r29
-     13a:	cf 91       	pop	r28
-     13c:	08 95       	ret
-     13e:	8a 95       	dec	r24
-     140:	39 f5       	brne	.+78     	; 0x190 <exit+0x7c>
-     142:	01 f0       	breq	.+0      	; 0x144 <exit+0x30>
-     144:	e0 2d       	mov	r30, r0
-     146:	00 80       	ld	r0, Z
-     148:	e4 2d       	mov	r30, r4
-     14a:	40 80       	ld	r4, Z
-     14c:	e8 2d       	mov	r30, r8
-     14e:	80 80       	ld	r8, Z
-     150:	ec 2d       	mov	r30, r12
-     152:	c0 80       	ld	r12, Z
-     154:	e1 2d       	mov	r30, r1
-     156:	40 81       	ld	r20, Z
-     158:	e5 2d       	mov	r30, r5
-     15a:	10 80       	ld	r1, Z
-     15c:	e9 2d       	mov	r30, r9
-     15e:	50 80       	ld	r5, Z
-     160:	ed 2d       	mov	r30, r13
-     162:	90 80       	ld	r9, Z
-     164:	d4 2e       	mov	r13, r20
-     166:	e2 2d       	mov	r30, r2
-     168:	40 81       	ld	r20, Z
-     16a:	e6 2d       	mov	r30, r6
-     16c:	50 81       	ld	r21, Z
-     16e:	ea 2d       	mov	r30, r10
-     170:	20 80       	ld	r2, Z
-     172:	ee 2d       	mov	r30, r14
-     174:	60 80       	ld	r6, Z
-     176:	a4 2e       	mov	r10, r20
-     178:	e5 2e       	mov	r14, r21
-     17a:	e3 2d       	mov	r30, r3
-     17c:	40 81       	ld	r20, Z
-     17e:	ef 2d       	mov	r30, r15
-     180:	30 80       	ld	r3, Z
-     182:	eb 2d       	mov	r30, r11
-     184:	f0 80       	ld	r15, Z
-     186:	e7 2d       	mov	r30, r7
-     188:	b0 80       	ld	r11, Z
-     18a:	74 2e       	mov	r7, r20
-     18c:	68 94       	set
-     18e:	a1 cf       	rjmp	.-190    	; 0xd2 <aes_encrypt_core+0x34>
-     190:	e0 2d       	mov	r30, r0
-     192:	10 81       	ld	r17, Z
-     194:	21 2f       	mov	r18, r17
-     196:	32 2f       	mov	r19, r18
-     198:	c0 2d       	mov	r28, r0
-     19a:	08 81       	ld	r16, Y
-     19c:	30 27       	eor	r19, r16
-     19e:	e5 2d       	mov	r30, r5
-     1a0:	40 81       	ld	r20, Z
-     1a2:	04 27       	eor	r16, r20
-     1a4:	24 27       	eor	r18, r20
-     1a6:	34 27       	eor	r19, r20
-     1a8:	c5 2d       	mov	r28, r5
-     1aa:	48 81       	ld	r20, Y
-     1ac:	04 27       	eor	r16, r20
-     1ae:	14 27       	eor	r17, r20
-     1b0:	ea 2d       	mov	r30, r10
-     1b2:	40 81       	ld	r20, Z
-     1b4:	04 27       	eor	r16, r20
-     1b6:	14 27       	eor	r17, r20
-     1b8:	34 27       	eor	r19, r20
-     1ba:	ca 2d       	mov	r28, r10
-     1bc:	48 81       	ld	r20, Y
-     1be:	14 27       	eor	r17, r20
-     1c0:	24 27       	eor	r18, r20
-     1c2:	ef 2d       	mov	r30, r15
-     1c4:	40 81       	ld	r20, Z
-     1c6:	04 27       	eor	r16, r20
-     1c8:	14 27       	eor	r17, r20
-     1ca:	24 27       	eor	r18, r20
-     1cc:	cf 2d       	mov	r28, r15
-     1ce:	48 81       	ld	r20, Y
-     1d0:	24 27       	eor	r18, r20
-     1d2:	34 27       	eor	r19, r20
-     1d4:	00 2e       	mov	r0, r16
-     1d6:	e4 2d       	mov	r30, r4
-     1d8:	50 81       	ld	r21, Z
-     1da:	65 2f       	mov	r22, r21
-     1dc:	76 2f       	mov	r23, r22
-     1de:	c4 2d       	mov	r28, r4
-     1e0:	48 81       	ld	r20, Y
-     1e2:	74 27       	eor	r23, r20
-     1e4:	e9 2d       	mov	r30, r9
-     1e6:	00 81       	ld	r16, Z
-     1e8:	40 27       	eor	r20, r16
-     1ea:	60 27       	eor	r22, r16
-     1ec:	70 27       	eor	r23, r16
-     1ee:	c9 2d       	mov	r28, r9
-     1f0:	08 81       	ld	r16, Y
-     1f2:	40 27       	eor	r20, r16
-     1f4:	50 27       	eor	r21, r16
-     1f6:	ee 2d       	mov	r30, r14
-     1f8:	00 81       	ld	r16, Z
-     1fa:	40 27       	eor	r20, r16
-     1fc:	50 27       	eor	r21, r16
-     1fe:	70 27       	eor	r23, r16
-     200:	ce 2d       	mov	r28, r14
-     202:	08 81       	ld	r16, Y
-     204:	50 27       	eor	r21, r16
-     206:	60 27       	eor	r22, r16
-     208:	e3 2d       	mov	r30, r3
-     20a:	00 81       	ld	r16, Z
-     20c:	40 27       	eor	r20, r16
-     20e:	50 27       	eor	r21, r16
-     210:	60 27       	eor	r22, r16
-     212:	c3 2d       	mov	r28, r3
-     214:	08 81       	ld	r16, Y
-     216:	60 27       	eor	r22, r16
-     218:	70 27       	eor	r23, r16
-     21a:	44 2e       	mov	r4, r20
-     21c:	55 2e       	mov	r5, r21
-     21e:	33 2e       	mov	r3, r19
-     220:	e8 2d       	mov	r30, r8
-     222:	40 81       	ld	r20, Z
-     224:	54 2f       	mov	r21, r20
-     226:	35 2f       	mov	r19, r21
-     228:	c8 2d       	mov	r28, r8
-     22a:	08 81       	ld	r16, Y
-     22c:	30 27       	eor	r19, r16
-     22e:	ed 2d       	mov	r30, r13
-     230:	90 81       	ld	r25, Z
-     232:	09 27       	eor	r16, r25
-     234:	59 27       	eor	r21, r25
-     236:	39 27       	eor	r19, r25
-     238:	cd 2d       	mov	r28, r13
-     23a:	98 81       	ld	r25, Y
-     23c:	09 27       	eor	r16, r25
-     23e:	49 27       	eor	r20, r25
-     240:	e2 2d       	mov	r30, r2
-     242:	90 81       	ld	r25, Z
-     244:	09 27       	eor	r16, r25
-     246:	49 27       	eor	r20, r25
-     248:	39 27       	eor	r19, r25
-     24a:	c2 2d       	mov	r28, r2
-     24c:	98 81       	ld	r25, Y
-     24e:	49 27       	eor	r20, r25
-     250:	59 27       	eor	r21, r25
-     252:	e7 2d       	mov	r30, r7
-     254:	90 81       	ld	r25, Z
-     256:	09 27       	eor	r16, r25
-     258:	49 27       	eor	r20, r25
-     25a:	59 27       	eor	r21, r25
-     25c:	c7 2d       	mov	r28, r7
-     25e:	98 81       	ld	r25, Y
-     260:	59 27       	eor	r21, r25
-     262:	39 27       	eor	r19, r25
-     264:	80 2e       	mov	r8, r16
-     266:	94 2e       	mov	r9, r20
-     268:	a5 2e       	mov	r10, r21
-     26a:	77 2e       	mov	r7, r23
-     26c:	ec 2d       	mov	r30, r12
-     26e:	50 81       	ld	r21, Z
-     270:	75 2f       	mov	r23, r21
-     272:	97 2f       	mov	r25, r23
-     274:	cc 2d       	mov	r28, r12
-     276:	48 81       	ld	r20, Y
-     278:	94 27       	eor	r25, r20
-     27a:	e1 2d       	mov	r30, r1
-     27c:	00 81       	ld	r16, Z
-     27e:	40 27       	eor	r20, r16
-     280:	70 27       	eor	r23, r16
-     282:	90 27       	eor	r25, r16
-     284:	c1 2d       	mov	r28, r1
-     286:	08 81       	ld	r16, Y
-     288:	40 27       	eor	r20, r16
-     28a:	50 27       	eor	r21, r16
-     28c:	e6 2d       	mov	r30, r6
-     28e:	00 81       	ld	r16, Z
-     290:	40 27       	eor	r20, r16
-     292:	50 27       	eor	r21, r16
-     294:	90 27       	eor	r25, r16
-     296:	c6 2d       	mov	r28, r6
-     298:	08 81       	ld	r16, Y
-     29a:	50 27       	eor	r21, r16
-     29c:	70 27       	eor	r23, r16
-     29e:	eb 2d       	mov	r30, r11
-     2a0:	00 81       	ld	r16, Z
-     2a2:	40 27       	eor	r20, r16
-     2a4:	50 27       	eor	r21, r16
-     2a6:	70 27       	eor	r23, r16
-     2a8:	cb 2d       	mov	r28, r11
-     2aa:	08 81       	ld	r16, Y
-     2ac:	70 27       	eor	r23, r16
-     2ae:	90 27       	eor	r25, r16
-     2b0:	c4 2e       	mov	r12, r20
-     2b2:	d5 2e       	mov	r13, r21
-     2b4:	e7 2e       	mov	r14, r23
-     2b6:	f9 2e       	mov	r15, r25
-     2b8:	11 2e       	mov	r1, r17
-     2ba:	22 2e       	mov	r2, r18
-     2bc:	66 2e       	mov	r6, r22
-     2be:	b3 2e       	mov	r11, r19
-     2c0:	08 cf       	rjmp	.-496    	; 0xd2 <aes_encrypt_core+0x34>
+00000110 <exit>:
+ 110:	ff 91       	pop	r31
+ 112:	ef 91       	pop	r30
+ 114:	01 92       	st	Z+, r0
+ 116:	11 92       	st	Z+, r1
+ 118:	21 92       	st	Z+, r2
+ 11a:	31 92       	st	Z+, r3
+ 11c:	41 92       	st	Z+, r4
+ 11e:	51 92       	st	Z+, r5
+ 120:	61 92       	st	Z+, r6
+ 122:	71 92       	st	Z+, r7
+ 124:	81 92       	st	Z+, r8
+ 126:	91 92       	st	Z+, r9
+ 128:	a1 92       	st	Z+, r10
+ 12a:	b1 92       	st	Z+, r11
+ 12c:	c1 92       	st	Z+, r12
+ 12e:	d1 92       	st	Z+, r13
+ 130:	e1 92       	st	Z+, r14
+ 132:	f1 92       	st	Z+, r15
+ 134:	df 91       	pop	r29
+ 136:	cf 91       	pop	r28
+ 138:	08 95       	ret
+ 13a:	8a 95       	dec	r24
+ 13c:	39 f5       	brne	.+78     	; 0x18c <exit+0x7c>
+ 13e:	01 f0       	breq	.+0      	; 0x140 <exit+0x30>
+ 140:	e0 2d       	mov	r30, r0
+ 142:	00 80       	ld	r0, Z
+ 144:	e4 2d       	mov	r30, r4
+ 146:	40 80       	ld	r4, Z
+ 148:	e8 2d       	mov	r30, r8
+ 14a:	80 80       	ld	r8, Z
+ 14c:	ec 2d       	mov	r30, r12
+ 14e:	c0 80       	ld	r12, Z
+ 150:	e1 2d       	mov	r30, r1
+ 152:	40 81       	ld	r20, Z
+ 154:	e5 2d       	mov	r30, r5
+ 156:	10 80       	ld	r1, Z
+ 158:	e9 2d       	mov	r30, r9
+ 15a:	50 80       	ld	r5, Z
+ 15c:	ed 2d       	mov	r30, r13
+ 15e:	90 80       	ld	r9, Z
+ 160:	d4 2e       	mov	r13, r20
+ 162:	e2 2d       	mov	r30, r2
+ 164:	40 81       	ld	r20, Z
+ 166:	e6 2d       	mov	r30, r6
+ 168:	50 81       	ld	r21, Z
+ 16a:	ea 2d       	mov	r30, r10
+ 16c:	20 80       	ld	r2, Z
+ 16e:	ee 2d       	mov	r30, r14
+ 170:	60 80       	ld	r6, Z
+ 172:	a4 2e       	mov	r10, r20
+ 174:	e5 2e       	mov	r14, r21
+ 176:	e3 2d       	mov	r30, r3
+ 178:	40 81       	ld	r20, Z
+ 17a:	ef 2d       	mov	r30, r15
+ 17c:	30 80       	ld	r3, Z
+ 17e:	eb 2d       	mov	r30, r11
+ 180:	f0 80       	ld	r15, Z
+ 182:	e7 2d       	mov	r30, r7
+ 184:	b0 80       	ld	r11, Z
+ 186:	74 2e       	mov	r7, r20
+ 188:	68 94       	set
+ 18a:	a1 cf       	rjmp	.-190    	; 0xce <aes_encrypt_core+0x34>
+ 18c:	e0 2d       	mov	r30, r0
+ 18e:	10 81       	ld	r17, Z
+ 190:	21 2f       	mov	r18, r17
+ 192:	32 2f       	mov	r19, r18
+ 194:	c0 2d       	mov	r28, r0
+ 196:	08 81       	ld	r16, Y
+ 198:	30 27       	eor	r19, r16
+ 19a:	e5 2d       	mov	r30, r5
+ 19c:	40 81       	ld	r20, Z
+ 19e:	04 27       	eor	r16, r20
+ 1a0:	24 27       	eor	r18, r20
+ 1a2:	34 27       	eor	r19, r20
+ 1a4:	c5 2d       	mov	r28, r5
+ 1a6:	48 81       	ld	r20, Y
+ 1a8:	04 27       	eor	r16, r20
+ 1aa:	14 27       	eor	r17, r20
+ 1ac:	ea 2d       	mov	r30, r10
+ 1ae:	40 81       	ld	r20, Z
+ 1b0:	04 27       	eor	r16, r20
+ 1b2:	14 27       	eor	r17, r20
+ 1b4:	34 27       	eor	r19, r20
+ 1b6:	ca 2d       	mov	r28, r10
+ 1b8:	48 81       	ld	r20, Y
+ 1ba:	14 27       	eor	r17, r20
+ 1bc:	24 27       	eor	r18, r20
+ 1be:	ef 2d       	mov	r30, r15
+ 1c0:	40 81       	ld	r20, Z
+ 1c2:	04 27       	eor	r16, r20
+ 1c4:	14 27       	eor	r17, r20
+ 1c6:	24 27       	eor	r18, r20
+ 1c8:	cf 2d       	mov	r28, r15
+ 1ca:	48 81       	ld	r20, Y
+ 1cc:	24 27       	eor	r18, r20
+ 1ce:	34 27       	eor	r19, r20
+ 1d0:	00 2e       	mov	r0, r16
+ 1d2:	e4 2d       	mov	r30, r4
+ 1d4:	50 81       	ld	r21, Z
+ 1d6:	65 2f       	mov	r22, r21
+ 1d8:	76 2f       	mov	r23, r22
+ 1da:	c4 2d       	mov	r28, r4
+ 1dc:	48 81       	ld	r20, Y
+ 1de:	74 27       	eor	r23, r20
+ 1e0:	e9 2d       	mov	r30, r9
+ 1e2:	00 81       	ld	r16, Z
+ 1e4:	40 27       	eor	r20, r16
+ 1e6:	60 27       	eor	r22, r16
+ 1e8:	70 27       	eor	r23, r16
+ 1ea:	c9 2d       	mov	r28, r9
+ 1ec:	08 81       	ld	r16, Y
+ 1ee:	40 27       	eor	r20, r16
+ 1f0:	50 27       	eor	r21, r16
+ 1f2:	ee 2d       	mov	r30, r14
+ 1f4:	00 81       	ld	r16, Z
+ 1f6:	40 27       	eor	r20, r16
+ 1f8:	50 27       	eor	r21, r16
+ 1fa:	70 27       	eor	r23, r16
+ 1fc:	ce 2d       	mov	r28, r14
+ 1fe:	08 81       	ld	r16, Y
+ 200:	50 27       	eor	r21, r16
+ 202:	60 27       	eor	r22, r16
+ 204:	e3 2d       	mov	r30, r3
+ 206:	00 81       	ld	r16, Z
+ 208:	40 27       	eor	r20, r16
+ 20a:	50 27       	eor	r21, r16
+ 20c:	60 27       	eor	r22, r16
+ 20e:	c3 2d       	mov	r28, r3
+ 210:	08 81       	ld	r16, Y
+ 212:	60 27       	eor	r22, r16
+ 214:	70 27       	eor	r23, r16
+ 216:	44 2e       	mov	r4, r20
+ 218:	55 2e       	mov	r5, r21
+ 21a:	33 2e       	mov	r3, r19
+ 21c:	e8 2d       	mov	r30, r8
+ 21e:	40 81       	ld	r20, Z
+ 220:	54 2f       	mov	r21, r20
+ 222:	35 2f       	mov	r19, r21
+ 224:	c8 2d       	mov	r28, r8
+ 226:	08 81       	ld	r16, Y
+ 228:	30 27       	eor	r19, r16
+ 22a:	ed 2d       	mov	r30, r13
+ 22c:	90 81       	ld	r25, Z
+ 22e:	09 27       	eor	r16, r25
+ 230:	59 27       	eor	r21, r25
+ 232:	39 27       	eor	r19, r25
+ 234:	cd 2d       	mov	r28, r13
+ 236:	98 81       	ld	r25, Y
+ 238:	09 27       	eor	r16, r25
+ 23a:	49 27       	eor	r20, r25
+ 23c:	e2 2d       	mov	r30, r2
+ 23e:	90 81       	ld	r25, Z
+ 240:	09 27       	eor	r16, r25
+ 242:	49 27       	eor	r20, r25
+ 244:	39 27       	eor	r19, r25
+ 246:	c2 2d       	mov	r28, r2
+ 248:	98 81       	ld	r25, Y
+ 24a:	49 27       	eor	r20, r25
+ 24c:	59 27       	eor	r21, r25
+ 24e:	e7 2d       	mov	r30, r7
+ 250:	90 81       	ld	r25, Z
+ 252:	09 27       	eor	r16, r25
+ 254:	49 27       	eor	r20, r25
+ 256:	59 27       	eor	r21, r25
+ 258:	c7 2d       	mov	r28, r7
+ 25a:	98 81       	ld	r25, Y
+ 25c:	59 27       	eor	r21, r25
+ 25e:	39 27       	eor	r19, r25
+ 260:	80 2e       	mov	r8, r16
+ 262:	94 2e       	mov	r9, r20
+ 264:	a5 2e       	mov	r10, r21
+ 266:	77 2e       	mov	r7, r23
+ 268:	ec 2d       	mov	r30, r12
+ 26a:	50 81       	ld	r21, Z
+ 26c:	75 2f       	mov	r23, r21
+ 26e:	97 2f       	mov	r25, r23
+ 270:	cc 2d       	mov	r28, r12
+ 272:	48 81       	ld	r20, Y
+ 274:	94 27       	eor	r25, r20
+ 276:	e1 2d       	mov	r30, r1
+ 278:	00 81       	ld	r16, Z
+ 27a:	40 27       	eor	r20, r16
+ 27c:	70 27       	eor	r23, r16
+ 27e:	90 27       	eor	r25, r16
+ 280:	c1 2d       	mov	r28, r1
+ 282:	08 81       	ld	r16, Y
+ 284:	40 27       	eor	r20, r16
+ 286:	50 27       	eor	r21, r16
+ 288:	e6 2d       	mov	r30, r6
+ 28a:	00 81       	ld	r16, Z
+ 28c:	40 27       	eor	r20, r16
+ 28e:	50 27       	eor	r21, r16
+ 290:	90 27       	eor	r25, r16
+ 292:	c6 2d       	mov	r28, r6
+ 294:	08 81       	ld	r16, Y
+ 296:	50 27       	eor	r21, r16
+ 298:	70 27       	eor	r23, r16
+ 29a:	eb 2d       	mov	r30, r11
+ 29c:	00 81       	ld	r16, Z
+ 29e:	40 27       	eor	r20, r16
+ 2a0:	50 27       	eor	r21, r16
+ 2a2:	70 27       	eor	r23, r16
+ 2a4:	cb 2d       	mov	r28, r11
+ 2a6:	08 81       	ld	r16, Y
+ 2a8:	70 27       	eor	r23, r16
+ 2aa:	90 27       	eor	r25, r16
+ 2ac:	c4 2e       	mov	r12, r20
+ 2ae:	d5 2e       	mov	r13, r21
+ 2b0:	e7 2e       	mov	r14, r23
+ 2b2:	f9 2e       	mov	r15, r25
+ 2b4:	11 2e       	mov	r1, r17
+ 2b6:	22 2e       	mov	r2, r18
+ 2b8:	66 2e       	mov	r6, r22
+ 2ba:	b3 2e       	mov	r11, r19
+ 2bc:	08 cf       	rjmp	.-496    	; 0xce <aes_encrypt_core+0x34>
 
-000002c2 <aes256_init>:
-     2c2:	ab 01       	movw	r20, r22
-     2c4:	71 e0       	ldi	r23, 0x01	; 1
-     2c6:	60 e0       	ldi	r22, 0x00	; 0
-     2c8:	07 c0       	rjmp	.+14     	; 0x2d8 <aes_init>
+000002be <aes256_init>:
+ 2be:	ab 01       	movw	r20, r22
+ 2c0:	71 e0       	ldi	r23, 0x01	; 1
+ 2c2:	60 e0       	ldi	r22, 0x00	; 0
+ 2c4:	07 c0       	rjmp	.+14     	; 0x2d4 <aes_init>
 
-000002ca <aes192_init>:
-     2ca:	ab 01       	movw	r20, r22
-     2cc:	70 e0       	ldi	r23, 0x00	; 0
-     2ce:	60 ec       	ldi	r22, 0xC0	; 192
-     2d0:	03 c0       	rjmp	.+6      	; 0x2d8 <aes_init>
+000002c6 <aes192_init>:
+ 2c6:	ab 01       	movw	r20, r22
+ 2c8:	70 e0       	ldi	r23, 0x00	; 0
+ 2ca:	60 ec       	ldi	r22, 0xC0	; 192
+ 2cc:	03 c0       	rjmp	.+6      	; 0x2d4 <aes_init>
 
-000002d2 <aes128_init>:
-     2d2:	ab 01       	movw	r20, r22
-     2d4:	77 27       	eor	r23, r23
-     2d6:	60 e8       	ldi	r22, 0x80	; 128
+000002ce <aes128_init>:
+ 2ce:	ab 01       	movw	r20, r22
+ 2d0:	77 27       	eor	r23, r23
+ 2d2:	60 e8       	ldi	r22, 0x80	; 128
 
-000002d8 <aes_init>:
-     2d8:	ef 92       	push	r14
-     2da:	ff 92       	push	r15
-     2dc:	0f 93       	push	r16
-     2de:	1f 93       	push	r17
-     2e0:	cf 93       	push	r28
-     2e2:	df 93       	push	r29
-     2e4:	fa 01       	movw	r30, r20
-     2e6:	ea 01       	movw	r28, r20
-     2e8:	dc 01       	movw	r26, r24
-     2ea:	76 95       	lsr	r23
-     2ec:	67 95       	ror	r22
-     2ee:	66 95       	lsr	r22
-     2f0:	66 95       	lsr	r22
-     2f2:	26 2f       	mov	r18, r22
-     2f4:	0d 90       	ld	r0, X+
-     2f6:	01 92       	st	Z+, r0
-     2f8:	2a 95       	dec	r18
-     2fa:	e1 f7       	brne	.-8      	; 0x2f4 <aes_init+0x1c>
-     2fc:	66 95       	lsr	r22
-     2fe:	66 95       	lsr	r22
-     300:	63 fb       	bst	r22, 3
-     302:	36 2f       	mov	r19, r22
-     304:	76 2f       	mov	r23, r22
-     306:	79 5f       	subi	r23, 0xF9	; 249
-     308:	77 0f       	add	r23, r23
-     30a:	77 0f       	add	r23, r23
-     30c:	df 01       	movw	r26, r30
-     30e:	14 97       	sbiw	r26, 0x04	; 4
-     310:	26 2f       	mov	r18, r22
-     312:	f3 e0       	ldi	r31, 0x03	; 3
-     314:	7f 01       	movw	r14, r30
-     316:	11 e0       	ldi	r17, 0x01	; 1
-     318:	4d 91       	ld	r20, X+
-     31a:	5d 91       	ld	r21, X+
-     31c:	8d 91       	ld	r24, X+
-     31e:	9d 91       	ld	r25, X+
-     320:	32 17       	cp	r19, r18
-     322:	79 f0       	breq	.+30     	; 0x342 <aes_init+0x6a>
-     324:	ee f4       	brtc	.+58     	; 0x360 <aes_init+0x88>
-     326:	02 2f       	mov	r16, r18
-     328:	07 70       	andi	r16, 0x07	; 7
-     32a:	04 30       	cpi	r16, 0x04	; 4
-     32c:	c9 f4       	brne	.+50     	; 0x360 <aes_init+0x88>
-     32e:	f7 01       	movw	r30, r14
-     330:	e4 2f       	mov	r30, r20
-     332:	40 81       	ld	r20, Z
-     334:	e5 2f       	mov	r30, r21
-     336:	50 81       	ld	r21, Z
-     338:	e8 2f       	mov	r30, r24
-     33a:	80 81       	ld	r24, Z
-     33c:	e9 2f       	mov	r30, r25
-     33e:	90 81       	ld	r25, Z
-     340:	0f c0       	rjmp	.+30     	; 0x360 <aes_init+0x88>
-     342:	36 0f       	add	r19, r22
-     344:	f7 01       	movw	r30, r14
-     346:	e4 2f       	mov	r30, r20
-     348:	00 81       	ld	r16, Z
-     34a:	e5 2f       	mov	r30, r21
-     34c:	40 81       	ld	r20, Z
-     34e:	e8 2f       	mov	r30, r24
-     350:	50 81       	ld	r21, Z
-     352:	e9 2f       	mov	r30, r25
-     354:	80 81       	ld	r24, Z
-     356:	90 2f       	mov	r25, r16
-     358:	41 27       	eor	r20, r17
-     35a:	11 0f       	add	r17, r17
-     35c:	08 f4       	brcc	.+2      	; 0x360 <aes_init+0x88>
-     35e:	1b e1       	ldi	r17, 0x1B	; 27
-     360:	fd 01       	movw	r30, r26
-     362:	09 90       	ld	r0, Y+
-     364:	04 26       	eor	r0, r20
-     366:	01 92       	st	Z+, r0
-     368:	09 90       	ld	r0, Y+
-     36a:	05 26       	eor	r0, r21
-     36c:	01 92       	st	Z+, r0
-     36e:	09 90       	ld	r0, Y+
-     370:	08 26       	eor	r0, r24
-     372:	01 92       	st	Z+, r0
-     374:	09 90       	ld	r0, Y+
-     376:	09 26       	eor	r0, r25
-     378:	01 92       	st	Z+, r0
-     37a:	23 95       	inc	r18
-     37c:	27 17       	cp	r18, r23
-     37e:	09 f0       	breq	.+2      	; 0x382 <aes_init+0xaa>
-     380:	cb cf       	rjmp	.-106    	; 0x318 <aes_init+0x40>
-     382:	e8 94       	clt
-     384:	df 91       	pop	r29
-     386:	cf 91       	pop	r28
-     388:	1f 91       	pop	r17
-     38a:	0f 91       	pop	r16
-     38c:	ff 90       	pop	r15
-     38e:	ef 90       	pop	r14
-     390:	08 95       	ret
+000002d4 <aes_init>:
+ 2d4:	ef 92       	push	r14
+ 2d6:	ff 92       	push	r15
+ 2d8:	0f 93       	push	r16
+ 2da:	1f 93       	push	r17
+ 2dc:	cf 93       	push	r28
+ 2de:	df 93       	push	r29
+ 2e0:	fa 01       	movw	r30, r20
+ 2e2:	ea 01       	movw	r28, r20
+ 2e4:	dc 01       	movw	r26, r24
+ 2e6:	76 95       	lsr	r23
+ 2e8:	67 95       	ror	r22
+ 2ea:	66 95       	lsr	r22
+ 2ec:	66 95       	lsr	r22
+ 2ee:	26 2f       	mov	r18, r22
+ 2f0:	0d 90       	ld	r0, X+
+ 2f2:	01 92       	st	Z+, r0
+ 2f4:	2a 95       	dec	r18
+ 2f6:	e1 f7       	brne	.-8      	; 0x2f0 <aes_init+0x1c>
+ 2f8:	66 95       	lsr	r22
+ 2fa:	66 95       	lsr	r22
+ 2fc:	63 fb       	bst	r22, 3
+ 2fe:	36 2f       	mov	r19, r22
+ 300:	76 2f       	mov	r23, r22
+ 302:	79 5f       	subi	r23, 0xF9	; 249
+ 304:	77 0f       	add	r23, r23
+ 306:	77 0f       	add	r23, r23
+ 308:	df 01       	movw	r26, r30
+ 30a:	14 97       	sbiw	r26, 0x04	; 4
+ 30c:	26 2f       	mov	r18, r22
+ 30e:	f3 e0       	ldi	r31, 0x03	; 3
+ 310:	7f 01       	movw	r14, r30
+ 312:	11 e0       	ldi	r17, 0x01	; 1
+ 314:	4d 91       	ld	r20, X+
+ 316:	5d 91       	ld	r21, X+
+ 318:	8d 91       	ld	r24, X+
+ 31a:	9d 91       	ld	r25, X+
+ 31c:	32 17       	cp	r19, r18
+ 31e:	79 f0       	breq	.+30     	; 0x33e <aes_init+0x6a>
+ 320:	ee f4       	brtc	.+58     	; 0x35c <aes_init+0x88>
+ 322:	02 2f       	mov	r16, r18
+ 324:	07 70       	andi	r16, 0x07	; 7
+ 326:	04 30       	cpi	r16, 0x04	; 4
+ 328:	c9 f4       	brne	.+50     	; 0x35c <aes_init+0x88>
+ 32a:	f7 01       	movw	r30, r14
+ 32c:	e4 2f       	mov	r30, r20
+ 32e:	40 81       	ld	r20, Z
+ 330:	e5 2f       	mov	r30, r21
+ 332:	50 81       	ld	r21, Z
+ 334:	e8 2f       	mov	r30, r24
+ 336:	80 81       	ld	r24, Z
+ 338:	e9 2f       	mov	r30, r25
+ 33a:	90 81       	ld	r25, Z
+ 33c:	0f c0       	rjmp	.+30     	; 0x35c <aes_init+0x88>
+ 33e:	36 0f       	add	r19, r22
+ 340:	f7 01       	movw	r30, r14
+ 342:	e4 2f       	mov	r30, r20
+ 344:	00 81       	ld	r16, Z
+ 346:	e5 2f       	mov	r30, r21
+ 348:	40 81       	ld	r20, Z
+ 34a:	e8 2f       	mov	r30, r24
+ 34c:	50 81       	ld	r21, Z
+ 34e:	e9 2f       	mov	r30, r25
+ 350:	80 81       	ld	r24, Z
+ 352:	90 2f       	mov	r25, r16
+ 354:	41 27       	eor	r20, r17
+ 356:	11 0f       	add	r17, r17
+ 358:	08 f4       	brcc	.+2      	; 0x35c <aes_init+0x88>
+ 35a:	1b e1       	ldi	r17, 0x1B	; 27
+ 35c:	fd 01       	movw	r30, r26
+ 35e:	09 90       	ld	r0, Y+
+ 360:	04 26       	eor	r0, r20
+ 362:	01 92       	st	Z+, r0
+ 364:	09 90       	ld	r0, Y+
+ 366:	05 26       	eor	r0, r21
+ 368:	01 92       	st	Z+, r0
+ 36a:	09 90       	ld	r0, Y+
+ 36c:	08 26       	eor	r0, r24
+ 36e:	01 92       	st	Z+, r0
+ 370:	09 90       	ld	r0, Y+
+ 372:	09 26       	eor	r0, r25
+ 374:	01 92       	st	Z+, r0
+ 376:	23 95       	inc	r18
+ 378:	27 17       	cp	r18, r23
+ 37a:	09 f0       	breq	.+2      	; 0x37e <aes_init+0xaa>
+ 37c:	cb cf       	rjmp	.-106    	; 0x314 <aes_init+0x40>
+ 37e:	e8 94       	clt
+ 380:	df 91       	pop	r29
+ 382:	cf 91       	pop	r28
+ 384:	1f 91       	pop	r17
+ 386:	0f 91       	pop	r16
+ 388:	ff 90       	pop	r15
+ 38a:	ef 90       	pop	r14
+ 38c:	08 95       	ret
 
-00000392 <aes128_enc_nobr>:
-     392:	cf 93       	push	r28
-     394:	df 93       	push	r29
-     396:	8f 93       	push	r24
-     398:	9f 93       	push	r25
-     39a:	db 01       	movw	r26, r22
-     39c:	fc 01       	movw	r30, r24
-     39e:	11 90       	ld	r1, Z+
-     3a0:	21 90       	ld	r2, Z+
-     3a2:	31 90       	ld	r3, Z+
-     3a4:	01 90       	ld	r0, Z+
-     3a6:	41 90       	ld	r4, Z+
-     3a8:	51 90       	ld	r5, Z+
-     3aa:	61 90       	ld	r6, Z+
-     3ac:	b1 90       	ld	r11, Z+
-     3ae:	81 90       	ld	r8, Z+
-     3b0:	91 90       	ld	r9, Z+
-     3b2:	a1 90       	ld	r10, Z+
-     3b4:	71 90       	ld	r7, Z+
-     3b6:	c1 90       	ld	r12, Z+
-     3b8:	d1 90       	ld	r13, Z+
-     3ba:	e1 90       	ld	r14, Z+
-     3bc:	f1 90       	ld	r15, Z+
-     3be:	f4 e0       	ldi	r31, 0x04	; 4
-     3c0:	d5 e0       	ldi	r29, 0x05	; 5
-     3c2:	4e e0       	ldi	r20, 0x0E	; 14
-     3c4:	a4 0f       	add	r26, r20
-     3c6:	0d 91       	ld	r16, X+
-     3c8:	e0 26       	eor	r14, r16
-     3ca:	0d 91       	ld	r16, X+
-     3cc:	f0 26       	eor	r15, r16
-     3ce:	e1 2d       	mov	r30, r1
-     3d0:	00 81       	ld	r16, Z
-     3d2:	10 2f       	mov	r17, r16
-     3d4:	71 2f       	mov	r23, r17
-     3d6:	c1 2d       	mov	r28, r1
-     3d8:	38 81       	ld	r19, Y
-     3da:	73 27       	eor	r23, r19
-     3dc:	e5 2d       	mov	r30, r5
-     3de:	40 81       	ld	r20, Z
-     3e0:	34 27       	eor	r19, r20
-     3e2:	14 27       	eor	r17, r20
-     3e4:	74 27       	eor	r23, r20
-     3e6:	c5 2d       	mov	r28, r5
-     3e8:	48 81       	ld	r20, Y
-     3ea:	34 27       	eor	r19, r20
-     3ec:	04 27       	eor	r16, r20
-     3ee:	ea 2d       	mov	r30, r10
-     3f0:	40 81       	ld	r20, Z
-     3f2:	34 27       	eor	r19, r20
-     3f4:	04 27       	eor	r16, r20
-     3f6:	74 27       	eor	r23, r20
-     3f8:	ca 2d       	mov	r28, r10
-     3fa:	48 81       	ld	r20, Y
-     3fc:	04 27       	eor	r16, r20
-     3fe:	14 27       	eor	r17, r20
-     400:	ef 2d       	mov	r30, r15
-     402:	40 81       	ld	r20, Z
-     404:	34 27       	eor	r19, r20
-     406:	04 27       	eor	r16, r20
-     408:	14 27       	eor	r17, r20
-     40a:	cf 2d       	mov	r28, r15
-     40c:	48 81       	ld	r20, Y
-     40e:	14 27       	eor	r17, r20
-     410:	74 27       	eor	r23, r20
-     412:	13 2e       	mov	r1, r19
-     414:	e4 2d       	mov	r30, r4
-     416:	50 81       	ld	r21, Z
-     418:	65 2f       	mov	r22, r21
-     41a:	86 2f       	mov	r24, r22
-     41c:	c4 2d       	mov	r28, r4
-     41e:	48 81       	ld	r20, Y
-     420:	84 27       	eor	r24, r20
-     422:	e9 2d       	mov	r30, r9
-     424:	30 81       	ld	r19, Z
-     426:	43 27       	eor	r20, r19
-     428:	63 27       	eor	r22, r19
-     42a:	83 27       	eor	r24, r19
-     42c:	c9 2d       	mov	r28, r9
-     42e:	38 81       	ld	r19, Y
-     430:	43 27       	eor	r20, r19
-     432:	53 27       	eor	r21, r19
-     434:	ee 2d       	mov	r30, r14
-     436:	30 81       	ld	r19, Z
-     438:	43 27       	eor	r20, r19
-     43a:	53 27       	eor	r21, r19
-     43c:	83 27       	eor	r24, r19
-     43e:	ce 2d       	mov	r28, r14
-     440:	38 81       	ld	r19, Y
-     442:	53 27       	eor	r21, r19
-     444:	63 27       	eor	r22, r19
-     446:	e0 2d       	mov	r30, r0
-     448:	30 81       	ld	r19, Z
-     44a:	43 27       	eor	r20, r19
-     44c:	53 27       	eor	r21, r19
-     44e:	63 27       	eor	r22, r19
-     450:	c0 2d       	mov	r28, r0
-     452:	38 81       	ld	r19, Y
-     454:	63 27       	eor	r22, r19
-     456:	83 27       	eor	r24, r19
-     458:	2a 01       	movw	r4, r20
-     45a:	07 2e       	mov	r0, r23
-     45c:	e8 2d       	mov	r30, r8
-     45e:	40 81       	ld	r20, Z
-     460:	54 2f       	mov	r21, r20
-     462:	75 2f       	mov	r23, r21
-     464:	c8 2d       	mov	r28, r8
-     466:	38 81       	ld	r19, Y
-     468:	73 27       	eor	r23, r19
-     46a:	ed 2d       	mov	r30, r13
-     46c:	90 81       	ld	r25, Z
-     46e:	39 27       	eor	r19, r25
-     470:	59 27       	eor	r21, r25
-     472:	79 27       	eor	r23, r25
-     474:	cd 2d       	mov	r28, r13
-     476:	98 81       	ld	r25, Y
-     478:	39 27       	eor	r19, r25
-     47a:	49 27       	eor	r20, r25
-     47c:	e3 2d       	mov	r30, r3
-     47e:	90 81       	ld	r25, Z
-     480:	39 27       	eor	r19, r25
-     482:	49 27       	eor	r20, r25
-     484:	79 27       	eor	r23, r25
-     486:	c3 2d       	mov	r28, r3
-     488:	98 81       	ld	r25, Y
-     48a:	49 27       	eor	r20, r25
-     48c:	59 27       	eor	r21, r25
-     48e:	eb 2d       	mov	r30, r11
-     490:	90 81       	ld	r25, Z
-     492:	39 27       	eor	r19, r25
-     494:	49 27       	eor	r20, r25
-     496:	59 27       	eor	r21, r25
-     498:	cb 2d       	mov	r28, r11
-     49a:	98 81       	ld	r25, Y
-     49c:	59 27       	eor	r21, r25
-     49e:	79 27       	eor	r23, r25
-     4a0:	83 2e       	mov	r8, r19
-     4a2:	94 2e       	mov	r9, r20
-     4a4:	a5 2e       	mov	r10, r21
-     4a6:	b8 2e       	mov	r11, r24
-     4a8:	ec 2d       	mov	r30, r12
-     4aa:	50 81       	ld	r21, Z
-     4ac:	85 2f       	mov	r24, r21
-     4ae:	98 2f       	mov	r25, r24
-     4b0:	cc 2d       	mov	r28, r12
-     4b2:	48 81       	ld	r20, Y
-     4b4:	94 27       	eor	r25, r20
-     4b6:	e2 2d       	mov	r30, r2
-     4b8:	30 81       	ld	r19, Z
-     4ba:	43 27       	eor	r20, r19
-     4bc:	83 27       	eor	r24, r19
-     4be:	93 27       	eor	r25, r19
-     4c0:	c2 2d       	mov	r28, r2
-     4c2:	38 81       	ld	r19, Y
-     4c4:	43 27       	eor	r20, r19
-     4c6:	53 27       	eor	r21, r19
-     4c8:	e6 2d       	mov	r30, r6
-     4ca:	30 81       	ld	r19, Z
-     4cc:	43 27       	eor	r20, r19
-     4ce:	53 27       	eor	r21, r19
-     4d0:	93 27       	eor	r25, r19
-     4d2:	c6 2d       	mov	r28, r6
-     4d4:	38 81       	ld	r19, Y
-     4d6:	53 27       	eor	r21, r19
-     4d8:	83 27       	eor	r24, r19
-     4da:	e7 2d       	mov	r30, r7
-     4dc:	30 81       	ld	r19, Z
-     4de:	43 27       	eor	r20, r19
-     4e0:	53 27       	eor	r21, r19
-     4e2:	83 27       	eor	r24, r19
-     4e4:	c7 2d       	mov	r28, r7
-     4e6:	38 81       	ld	r19, Y
-     4e8:	83 27       	eor	r24, r19
-     4ea:	93 27       	eor	r25, r19
-     4ec:	6a 01       	movw	r12, r20
-     4ee:	7c 01       	movw	r14, r24
-     4f0:	18 01       	movw	r2, r16
-     4f2:	3b 01       	movw	r6, r22
-     4f4:	0d 91       	ld	r16, X+
-     4f6:	10 26       	eor	r1, r16
-     4f8:	0d 91       	ld	r16, X+
-     4fa:	20 26       	eor	r2, r16
-     4fc:	0d 91       	ld	r16, X+
-     4fe:	30 26       	eor	r3, r16
-     500:	0d 91       	ld	r16, X+
-     502:	00 26       	eor	r0, r16
-     504:	0d 91       	ld	r16, X+
-     506:	40 26       	eor	r4, r16
-     508:	0d 91       	ld	r16, X+
-     50a:	50 26       	eor	r5, r16
-     50c:	0d 91       	ld	r16, X+
-     50e:	60 26       	eor	r6, r16
-     510:	0d 91       	ld	r16, X+
-     512:	b0 26       	eor	r11, r16
-     514:	0d 91       	ld	r16, X+
-     516:	80 26       	eor	r8, r16
-     518:	0d 91       	ld	r16, X+
-     51a:	90 26       	eor	r9, r16
-     51c:	0d 91       	ld	r16, X+
-     51e:	a0 26       	eor	r10, r16
-     520:	0d 91       	ld	r16, X+
-     522:	70 26       	eor	r7, r16
-     524:	0d 91       	ld	r16, X+
-     526:	c0 26       	eor	r12, r16
-     528:	0d 91       	ld	r16, X+
-     52a:	d0 26       	eor	r13, r16
-     52c:	0d 91       	ld	r16, X+
-     52e:	e0 26       	eor	r14, r16
-     530:	0d 91       	ld	r16, X+
-     532:	f0 26       	eor	r15, r16
-     534:	e1 2d       	mov	r30, r1
-     536:	00 81       	ld	r16, Z
-     538:	10 2f       	mov	r17, r16
-     53a:	71 2f       	mov	r23, r17
-     53c:	c1 2d       	mov	r28, r1
-     53e:	38 81       	ld	r19, Y
-     540:	73 27       	eor	r23, r19
-     542:	e5 2d       	mov	r30, r5
-     544:	40 81       	ld	r20, Z
-     546:	34 27       	eor	r19, r20
-     548:	14 27       	eor	r17, r20
-     54a:	74 27       	eor	r23, r20
-     54c:	c5 2d       	mov	r28, r5
-     54e:	48 81       	ld	r20, Y
-     550:	34 27       	eor	r19, r20
-     552:	04 27       	eor	r16, r20
-     554:	ea 2d       	mov	r30, r10
-     556:	40 81       	ld	r20, Z
-     558:	34 27       	eor	r19, r20
-     55a:	04 27       	eor	r16, r20
-     55c:	74 27       	eor	r23, r20
-     55e:	ca 2d       	mov	r28, r10
-     560:	48 81       	ld	r20, Y
-     562:	04 27       	eor	r16, r20
-     564:	14 27       	eor	r17, r20
-     566:	ef 2d       	mov	r30, r15
-     568:	40 81       	ld	r20, Z
-     56a:	34 27       	eor	r19, r20
-     56c:	04 27       	eor	r16, r20
-     56e:	14 27       	eor	r17, r20
-     570:	cf 2d       	mov	r28, r15
-     572:	48 81       	ld	r20, Y
-     574:	14 27       	eor	r17, r20
-     576:	74 27       	eor	r23, r20
-     578:	13 2e       	mov	r1, r19
-     57a:	e4 2d       	mov	r30, r4
-     57c:	50 81       	ld	r21, Z
-     57e:	65 2f       	mov	r22, r21
-     580:	86 2f       	mov	r24, r22
-     582:	c4 2d       	mov	r28, r4
-     584:	48 81       	ld	r20, Y
-     586:	84 27       	eor	r24, r20
-     588:	e9 2d       	mov	r30, r9
-     58a:	30 81       	ld	r19, Z
-     58c:	43 27       	eor	r20, r19
-     58e:	63 27       	eor	r22, r19
-     590:	83 27       	eor	r24, r19
-     592:	c9 2d       	mov	r28, r9
-     594:	38 81       	ld	r19, Y
-     596:	43 27       	eor	r20, r19
-     598:	53 27       	eor	r21, r19
-     59a:	ee 2d       	mov	r30, r14
-     59c:	30 81       	ld	r19, Z
-     59e:	43 27       	eor	r20, r19
-     5a0:	53 27       	eor	r21, r19
-     5a2:	83 27       	eor	r24, r19
-     5a4:	ce 2d       	mov	r28, r14
-     5a6:	38 81       	ld	r19, Y
-     5a8:	53 27       	eor	r21, r19
-     5aa:	63 27       	eor	r22, r19
-     5ac:	e0 2d       	mov	r30, r0
-     5ae:	30 81       	ld	r19, Z
-     5b0:	43 27       	eor	r20, r19
-     5b2:	53 27       	eor	r21, r19
-     5b4:	63 27       	eor	r22, r19
-     5b6:	c0 2d       	mov	r28, r0
-     5b8:	38 81       	ld	r19, Y
-     5ba:	63 27       	eor	r22, r19
-     5bc:	83 27       	eor	r24, r19
-     5be:	2a 01       	movw	r4, r20
-     5c0:	07 2e       	mov	r0, r23
-     5c2:	e8 2d       	mov	r30, r8
-     5c4:	40 81       	ld	r20, Z
-     5c6:	54 2f       	mov	r21, r20
-     5c8:	75 2f       	mov	r23, r21
-     5ca:	c8 2d       	mov	r28, r8
-     5cc:	38 81       	ld	r19, Y
-     5ce:	73 27       	eor	r23, r19
-     5d0:	ed 2d       	mov	r30, r13
-     5d2:	90 81       	ld	r25, Z
-     5d4:	39 27       	eor	r19, r25
-     5d6:	59 27       	eor	r21, r25
-     5d8:	79 27       	eor	r23, r25
-     5da:	cd 2d       	mov	r28, r13
-     5dc:	98 81       	ld	r25, Y
-     5de:	39 27       	eor	r19, r25
-     5e0:	49 27       	eor	r20, r25
-     5e2:	e3 2d       	mov	r30, r3
-     5e4:	90 81       	ld	r25, Z
-     5e6:	39 27       	eor	r19, r25
-     5e8:	49 27       	eor	r20, r25
-     5ea:	79 27       	eor	r23, r25
-     5ec:	c3 2d       	mov	r28, r3
-     5ee:	98 81       	ld	r25, Y
-     5f0:	49 27       	eor	r20, r25
-     5f2:	59 27       	eor	r21, r25
-     5f4:	eb 2d       	mov	r30, r11
-     5f6:	90 81       	ld	r25, Z
-     5f8:	39 27       	eor	r19, r25
-     5fa:	49 27       	eor	r20, r25
-     5fc:	59 27       	eor	r21, r25
-     5fe:	cb 2d       	mov	r28, r11
-     600:	98 81       	ld	r25, Y
-     602:	59 27       	eor	r21, r25
-     604:	79 27       	eor	r23, r25
-     606:	83 2e       	mov	r8, r19
-     608:	94 2e       	mov	r9, r20
-     60a:	a5 2e       	mov	r10, r21
-     60c:	b8 2e       	mov	r11, r24
-     60e:	ec 2d       	mov	r30, r12
-     610:	50 81       	ld	r21, Z
-     612:	85 2f       	mov	r24, r21
-     614:	98 2f       	mov	r25, r24
-     616:	cc 2d       	mov	r28, r12
-     618:	48 81       	ld	r20, Y
-     61a:	94 27       	eor	r25, r20
-     61c:	e2 2d       	mov	r30, r2
-     61e:	30 81       	ld	r19, Z
-     620:	43 27       	eor	r20, r19
-     622:	83 27       	eor	r24, r19
-     624:	93 27       	eor	r25, r19
-     626:	c2 2d       	mov	r28, r2
-     628:	38 81       	ld	r19, Y
-     62a:	43 27       	eor	r20, r19
-     62c:	53 27       	eor	r21, r19
-     62e:	e6 2d       	mov	r30, r6
-     630:	30 81       	ld	r19, Z
-     632:	43 27       	eor	r20, r19
-     634:	53 27       	eor	r21, r19
-     636:	93 27       	eor	r25, r19
-     638:	c6 2d       	mov	r28, r6
-     63a:	38 81       	ld	r19, Y
-     63c:	53 27       	eor	r21, r19
-     63e:	83 27       	eor	r24, r19
-     640:	e7 2d       	mov	r30, r7
-     642:	30 81       	ld	r19, Z
-     644:	43 27       	eor	r20, r19
-     646:	53 27       	eor	r21, r19
-     648:	83 27       	eor	r24, r19
-     64a:	c7 2d       	mov	r28, r7
-     64c:	38 81       	ld	r19, Y
-     64e:	83 27       	eor	r24, r19
-     650:	93 27       	eor	r25, r19
-     652:	6a 01       	movw	r12, r20
-     654:	7c 01       	movw	r14, r24
-     656:	18 01       	movw	r2, r16
-     658:	3b 01       	movw	r6, r22
-     65a:	0d 91       	ld	r16, X+
-     65c:	10 26       	eor	r1, r16
-     65e:	0d 91       	ld	r16, X+
-     660:	20 26       	eor	r2, r16
-     662:	0d 91       	ld	r16, X+
-     664:	30 26       	eor	r3, r16
-     666:	0d 91       	ld	r16, X+
-     668:	00 26       	eor	r0, r16
-     66a:	0d 91       	ld	r16, X+
-     66c:	40 26       	eor	r4, r16
-     66e:	0d 91       	ld	r16, X+
-     670:	50 26       	eor	r5, r16
-     672:	0d 91       	ld	r16, X+
-     674:	60 26       	eor	r6, r16
-     676:	0d 91       	ld	r16, X+
-     678:	b0 26       	eor	r11, r16
-     67a:	0d 91       	ld	r16, X+
-     67c:	80 26       	eor	r8, r16
-     67e:	0d 91       	ld	r16, X+
-     680:	90 26       	eor	r9, r16
-     682:	0d 91       	ld	r16, X+
-     684:	a0 26       	eor	r10, r16
-     686:	0d 91       	ld	r16, X+
-     688:	70 26       	eor	r7, r16
-     68a:	0d 91       	ld	r16, X+
-     68c:	c0 26       	eor	r12, r16
-     68e:	0d 91       	ld	r16, X+
-     690:	d0 26       	eor	r13, r16
-     692:	0d 91       	ld	r16, X+
-     694:	e0 26       	eor	r14, r16
-     696:	0d 91       	ld	r16, X+
-     698:	f0 26       	eor	r15, r16
-     69a:	e1 2d       	mov	r30, r1
-     69c:	00 81       	ld	r16, Z
-     69e:	10 2f       	mov	r17, r16
-     6a0:	71 2f       	mov	r23, r17
-     6a2:	c1 2d       	mov	r28, r1
-     6a4:	38 81       	ld	r19, Y
-     6a6:	73 27       	eor	r23, r19
-     6a8:	e5 2d       	mov	r30, r5
-     6aa:	40 81       	ld	r20, Z
-     6ac:	34 27       	eor	r19, r20
-     6ae:	14 27       	eor	r17, r20
-     6b0:	74 27       	eor	r23, r20
-     6b2:	c5 2d       	mov	r28, r5
-     6b4:	48 81       	ld	r20, Y
-     6b6:	34 27       	eor	r19, r20
-     6b8:	04 27       	eor	r16, r20
-     6ba:	ea 2d       	mov	r30, r10
-     6bc:	40 81       	ld	r20, Z
-     6be:	34 27       	eor	r19, r20
-     6c0:	04 27       	eor	r16, r20
-     6c2:	74 27       	eor	r23, r20
-     6c4:	ca 2d       	mov	r28, r10
-     6c6:	48 81       	ld	r20, Y
-     6c8:	04 27       	eor	r16, r20
-     6ca:	14 27       	eor	r17, r20
-     6cc:	ef 2d       	mov	r30, r15
-     6ce:	40 81       	ld	r20, Z
-     6d0:	34 27       	eor	r19, r20
-     6d2:	04 27       	eor	r16, r20
-     6d4:	14 27       	eor	r17, r20
-     6d6:	cf 2d       	mov	r28, r15
-     6d8:	48 81       	ld	r20, Y
-     6da:	14 27       	eor	r17, r20
-     6dc:	74 27       	eor	r23, r20
-     6de:	13 2e       	mov	r1, r19
-     6e0:	e4 2d       	mov	r30, r4
-     6e2:	50 81       	ld	r21, Z
-     6e4:	65 2f       	mov	r22, r21
-     6e6:	86 2f       	mov	r24, r22
-     6e8:	c4 2d       	mov	r28, r4
-     6ea:	48 81       	ld	r20, Y
-     6ec:	84 27       	eor	r24, r20
-     6ee:	e9 2d       	mov	r30, r9
-     6f0:	30 81       	ld	r19, Z
-     6f2:	43 27       	eor	r20, r19
-     6f4:	63 27       	eor	r22, r19
-     6f6:	83 27       	eor	r24, r19
-     6f8:	c9 2d       	mov	r28, r9
-     6fa:	38 81       	ld	r19, Y
-     6fc:	43 27       	eor	r20, r19
-     6fe:	53 27       	eor	r21, r19
-     700:	ee 2d       	mov	r30, r14
-     702:	30 81       	ld	r19, Z
-     704:	43 27       	eor	r20, r19
-     706:	53 27       	eor	r21, r19
-     708:	83 27       	eor	r24, r19
-     70a:	ce 2d       	mov	r28, r14
-     70c:	38 81       	ld	r19, Y
-     70e:	53 27       	eor	r21, r19
-     710:	63 27       	eor	r22, r19
-     712:	e0 2d       	mov	r30, r0
-     714:	30 81       	ld	r19, Z
-     716:	43 27       	eor	r20, r19
-     718:	53 27       	eor	r21, r19
-     71a:	63 27       	eor	r22, r19
-     71c:	c0 2d       	mov	r28, r0
-     71e:	38 81       	ld	r19, Y
-     720:	63 27       	eor	r22, r19
-     722:	83 27       	eor	r24, r19
-     724:	2a 01       	movw	r4, r20
-     726:	07 2e       	mov	r0, r23
-     728:	e8 2d       	mov	r30, r8
-     72a:	40 81       	ld	r20, Z
-     72c:	54 2f       	mov	r21, r20
-     72e:	75 2f       	mov	r23, r21
-     730:	c8 2d       	mov	r28, r8
-     732:	38 81       	ld	r19, Y
-     734:	73 27       	eor	r23, r19
-     736:	ed 2d       	mov	r30, r13
-     738:	90 81       	ld	r25, Z
-     73a:	39 27       	eor	r19, r25
-     73c:	59 27       	eor	r21, r25
-     73e:	79 27       	eor	r23, r25
-     740:	cd 2d       	mov	r28, r13
-     742:	98 81       	ld	r25, Y
-     744:	39 27       	eor	r19, r25
-     746:	49 27       	eor	r20, r25
-     748:	e3 2d       	mov	r30, r3
-     74a:	90 81       	ld	r25, Z
-     74c:	39 27       	eor	r19, r25
-     74e:	49 27       	eor	r20, r25
-     750:	79 27       	eor	r23, r25
-     752:	c3 2d       	mov	r28, r3
-     754:	98 81       	ld	r25, Y
-     756:	49 27       	eor	r20, r25
-     758:	59 27       	eor	r21, r25
-     75a:	eb 2d       	mov	r30, r11
-     75c:	90 81       	ld	r25, Z
-     75e:	39 27       	eor	r19, r25
-     760:	49 27       	eor	r20, r25
-     762:	59 27       	eor	r21, r25
-     764:	cb 2d       	mov	r28, r11
-     766:	98 81       	ld	r25, Y
-     768:	59 27       	eor	r21, r25
-     76a:	79 27       	eor	r23, r25
-     76c:	83 2e       	mov	r8, r19
-     76e:	94 2e       	mov	r9, r20
-     770:	a5 2e       	mov	r10, r21
-     772:	b8 2e       	mov	r11, r24
-     774:	ec 2d       	mov	r30, r12
-     776:	50 81       	ld	r21, Z
-     778:	85 2f       	mov	r24, r21
-     77a:	98 2f       	mov	r25, r24
-     77c:	cc 2d       	mov	r28, r12
-     77e:	48 81       	ld	r20, Y
-     780:	94 27       	eor	r25, r20
-     782:	e2 2d       	mov	r30, r2
-     784:	30 81       	ld	r19, Z
-     786:	43 27       	eor	r20, r19
-     788:	83 27       	eor	r24, r19
-     78a:	93 27       	eor	r25, r19
-     78c:	c2 2d       	mov	r28, r2
-     78e:	38 81       	ld	r19, Y
-     790:	43 27       	eor	r20, r19
-     792:	53 27       	eor	r21, r19
-     794:	e6 2d       	mov	r30, r6
-     796:	30 81       	ld	r19, Z
-     798:	43 27       	eor	r20, r19
-     79a:	53 27       	eor	r21, r19
-     79c:	93 27       	eor	r25, r19
-     79e:	c6 2d       	mov	r28, r6
-     7a0:	38 81       	ld	r19, Y
-     7a2:	53 27       	eor	r21, r19
-     7a4:	83 27       	eor	r24, r19
-     7a6:	e7 2d       	mov	r30, r7
-     7a8:	30 81       	ld	r19, Z
-     7aa:	43 27       	eor	r20, r19
-     7ac:	53 27       	eor	r21, r19
-     7ae:	83 27       	eor	r24, r19
-     7b0:	c7 2d       	mov	r28, r7
-     7b2:	38 81       	ld	r19, Y
-     7b4:	83 27       	eor	r24, r19
-     7b6:	93 27       	eor	r25, r19
-     7b8:	6a 01       	movw	r12, r20
-     7ba:	7c 01       	movw	r14, r24
-     7bc:	18 01       	movw	r2, r16
-     7be:	3b 01       	movw	r6, r22
-     7c0:	0d 91       	ld	r16, X+
-     7c2:	10 26       	eor	r1, r16
-     7c4:	0d 91       	ld	r16, X+
-     7c6:	20 26       	eor	r2, r16
-     7c8:	0d 91       	ld	r16, X+
-     7ca:	30 26       	eor	r3, r16
-     7cc:	0d 91       	ld	r16, X+
-     7ce:	00 26       	eor	r0, r16
-     7d0:	0d 91       	ld	r16, X+
-     7d2:	40 26       	eor	r4, r16
-     7d4:	0d 91       	ld	r16, X+
-     7d6:	50 26       	eor	r5, r16
-     7d8:	0d 91       	ld	r16, X+
-     7da:	60 26       	eor	r6, r16
-     7dc:	0d 91       	ld	r16, X+
-     7de:	b0 26       	eor	r11, r16
-     7e0:	0d 91       	ld	r16, X+
-     7e2:	80 26       	eor	r8, r16
-     7e4:	0d 91       	ld	r16, X+
-     7e6:	90 26       	eor	r9, r16
-     7e8:	0d 91       	ld	r16, X+
-     7ea:	a0 26       	eor	r10, r16
-     7ec:	0d 91       	ld	r16, X+
-     7ee:	70 26       	eor	r7, r16
-     7f0:	0d 91       	ld	r16, X+
-     7f2:	c0 26       	eor	r12, r16
-     7f4:	0d 91       	ld	r16, X+
-     7f6:	d0 26       	eor	r13, r16
-     7f8:	0d 91       	ld	r16, X+
-     7fa:	e0 26       	eor	r14, r16
-     7fc:	0d 91       	ld	r16, X+
-     7fe:	f0 26       	eor	r15, r16
-     800:	e1 2d       	mov	r30, r1
-     802:	00 81       	ld	r16, Z
-     804:	10 2f       	mov	r17, r16
-     806:	71 2f       	mov	r23, r17
-     808:	c1 2d       	mov	r28, r1
-     80a:	38 81       	ld	r19, Y
-     80c:	73 27       	eor	r23, r19
-     80e:	e5 2d       	mov	r30, r5
-     810:	40 81       	ld	r20, Z
-     812:	34 27       	eor	r19, r20
-     814:	14 27       	eor	r17, r20
-     816:	74 27       	eor	r23, r20
-     818:	c5 2d       	mov	r28, r5
-     81a:	48 81       	ld	r20, Y
-     81c:	34 27       	eor	r19, r20
-     81e:	04 27       	eor	r16, r20
-     820:	ea 2d       	mov	r30, r10
-     822:	40 81       	ld	r20, Z
-     824:	34 27       	eor	r19, r20
-     826:	04 27       	eor	r16, r20
-     828:	74 27       	eor	r23, r20
-     82a:	ca 2d       	mov	r28, r10
-     82c:	48 81       	ld	r20, Y
-     82e:	04 27       	eor	r16, r20
-     830:	14 27       	eor	r17, r20
-     832:	ef 2d       	mov	r30, r15
-     834:	40 81       	ld	r20, Z
-     836:	34 27       	eor	r19, r20
-     838:	04 27       	eor	r16, r20
-     83a:	14 27       	eor	r17, r20
-     83c:	cf 2d       	mov	r28, r15
-     83e:	48 81       	ld	r20, Y
-     840:	14 27       	eor	r17, r20
-     842:	74 27       	eor	r23, r20
-     844:	13 2e       	mov	r1, r19
-     846:	e4 2d       	mov	r30, r4
-     848:	50 81       	ld	r21, Z
-     84a:	65 2f       	mov	r22, r21
-     84c:	86 2f       	mov	r24, r22
-     84e:	c4 2d       	mov	r28, r4
-     850:	48 81       	ld	r20, Y
-     852:	84 27       	eor	r24, r20
-     854:	e9 2d       	mov	r30, r9
-     856:	30 81       	ld	r19, Z
-     858:	43 27       	eor	r20, r19
-     85a:	63 27       	eor	r22, r19
-     85c:	83 27       	eor	r24, r19
-     85e:	c9 2d       	mov	r28, r9
-     860:	38 81       	ld	r19, Y
-     862:	43 27       	eor	r20, r19
-     864:	53 27       	eor	r21, r19
-     866:	ee 2d       	mov	r30, r14
-     868:	30 81       	ld	r19, Z
-     86a:	43 27       	eor	r20, r19
-     86c:	53 27       	eor	r21, r19
-     86e:	83 27       	eor	r24, r19
-     870:	ce 2d       	mov	r28, r14
-     872:	38 81       	ld	r19, Y
-     874:	53 27       	eor	r21, r19
-     876:	63 27       	eor	r22, r19
-     878:	e0 2d       	mov	r30, r0
-     87a:	30 81       	ld	r19, Z
-     87c:	43 27       	eor	r20, r19
-     87e:	53 27       	eor	r21, r19
-     880:	63 27       	eor	r22, r19
-     882:	c0 2d       	mov	r28, r0
-     884:	38 81       	ld	r19, Y
-     886:	63 27       	eor	r22, r19
-     888:	83 27       	eor	r24, r19
-     88a:	2a 01       	movw	r4, r20
-     88c:	07 2e       	mov	r0, r23
-     88e:	e8 2d       	mov	r30, r8
-     890:	40 81       	ld	r20, Z
-     892:	54 2f       	mov	r21, r20
-     894:	75 2f       	mov	r23, r21
-     896:	c8 2d       	mov	r28, r8
-     898:	38 81       	ld	r19, Y
-     89a:	73 27       	eor	r23, r19
-     89c:	ed 2d       	mov	r30, r13
-     89e:	90 81       	ld	r25, Z
-     8a0:	39 27       	eor	r19, r25
-     8a2:	59 27       	eor	r21, r25
-     8a4:	79 27       	eor	r23, r25
-     8a6:	cd 2d       	mov	r28, r13
-     8a8:	98 81       	ld	r25, Y
-     8aa:	39 27       	eor	r19, r25
-     8ac:	49 27       	eor	r20, r25
-     8ae:	e3 2d       	mov	r30, r3
-     8b0:	90 81       	ld	r25, Z
-     8b2:	39 27       	eor	r19, r25
-     8b4:	49 27       	eor	r20, r25
-     8b6:	79 27       	eor	r23, r25
-     8b8:	c3 2d       	mov	r28, r3
-     8ba:	98 81       	ld	r25, Y
-     8bc:	49 27       	eor	r20, r25
-     8be:	59 27       	eor	r21, r25
-     8c0:	eb 2d       	mov	r30, r11
-     8c2:	90 81       	ld	r25, Z
-     8c4:	39 27       	eor	r19, r25
-     8c6:	49 27       	eor	r20, r25
-     8c8:	59 27       	eor	r21, r25
-     8ca:	cb 2d       	mov	r28, r11
-     8cc:	98 81       	ld	r25, Y
-     8ce:	59 27       	eor	r21, r25
-     8d0:	79 27       	eor	r23, r25
-     8d2:	83 2e       	mov	r8, r19
-     8d4:	94 2e       	mov	r9, r20
-     8d6:	a5 2e       	mov	r10, r21
-     8d8:	b8 2e       	mov	r11, r24
-     8da:	ec 2d       	mov	r30, r12
-     8dc:	50 81       	ld	r21, Z
-     8de:	85 2f       	mov	r24, r21
-     8e0:	98 2f       	mov	r25, r24
-     8e2:	cc 2d       	mov	r28, r12
-     8e4:	48 81       	ld	r20, Y
-     8e6:	94 27       	eor	r25, r20
-     8e8:	e2 2d       	mov	r30, r2
-     8ea:	30 81       	ld	r19, Z
-     8ec:	43 27       	eor	r20, r19
-     8ee:	83 27       	eor	r24, r19
-     8f0:	93 27       	eor	r25, r19
-     8f2:	c2 2d       	mov	r28, r2
-     8f4:	38 81       	ld	r19, Y
-     8f6:	43 27       	eor	r20, r19
-     8f8:	53 27       	eor	r21, r19
-     8fa:	e6 2d       	mov	r30, r6
-     8fc:	30 81       	ld	r19, Z
-     8fe:	43 27       	eor	r20, r19
-     900:	53 27       	eor	r21, r19
-     902:	93 27       	eor	r25, r19
-     904:	c6 2d       	mov	r28, r6
-     906:	38 81       	ld	r19, Y
-     908:	53 27       	eor	r21, r19
-     90a:	83 27       	eor	r24, r19
-     90c:	e7 2d       	mov	r30, r7
-     90e:	30 81       	ld	r19, Z
-     910:	43 27       	eor	r20, r19
-     912:	53 27       	eor	r21, r19
-     914:	83 27       	eor	r24, r19
-     916:	c7 2d       	mov	r28, r7
-     918:	38 81       	ld	r19, Y
-     91a:	83 27       	eor	r24, r19
-     91c:	93 27       	eor	r25, r19
-     91e:	6a 01       	movw	r12, r20
-     920:	7c 01       	movw	r14, r24
-     922:	18 01       	movw	r2, r16
-     924:	3b 01       	movw	r6, r22
-     926:	0d 91       	ld	r16, X+
-     928:	10 26       	eor	r1, r16
-     92a:	0d 91       	ld	r16, X+
-     92c:	20 26       	eor	r2, r16
-     92e:	0d 91       	ld	r16, X+
-     930:	30 26       	eor	r3, r16
-     932:	0d 91       	ld	r16, X+
-     934:	00 26       	eor	r0, r16
-     936:	0d 91       	ld	r16, X+
-     938:	40 26       	eor	r4, r16
-     93a:	0d 91       	ld	r16, X+
-     93c:	50 26       	eor	r5, r16
-     93e:	0d 91       	ld	r16, X+
-     940:	60 26       	eor	r6, r16
-     942:	0d 91       	ld	r16, X+
-     944:	b0 26       	eor	r11, r16
-     946:	0d 91       	ld	r16, X+
-     948:	80 26       	eor	r8, r16
-     94a:	0d 91       	ld	r16, X+
-     94c:	90 26       	eor	r9, r16
-     94e:	0d 91       	ld	r16, X+
-     950:	a0 26       	eor	r10, r16
-     952:	0d 91       	ld	r16, X+
-     954:	70 26       	eor	r7, r16
-     956:	0d 91       	ld	r16, X+
-     958:	c0 26       	eor	r12, r16
-     95a:	0d 91       	ld	r16, X+
-     95c:	d0 26       	eor	r13, r16
-     95e:	0d 91       	ld	r16, X+
-     960:	e0 26       	eor	r14, r16
-     962:	0d 91       	ld	r16, X+
-     964:	f0 26       	eor	r15, r16
-     966:	e1 2d       	mov	r30, r1
-     968:	00 81       	ld	r16, Z
-     96a:	10 2f       	mov	r17, r16
-     96c:	71 2f       	mov	r23, r17
-     96e:	c1 2d       	mov	r28, r1
-     970:	38 81       	ld	r19, Y
-     972:	73 27       	eor	r23, r19
-     974:	e5 2d       	mov	r30, r5
-     976:	40 81       	ld	r20, Z
-     978:	34 27       	eor	r19, r20
-     97a:	14 27       	eor	r17, r20
-     97c:	74 27       	eor	r23, r20
-     97e:	c5 2d       	mov	r28, r5
-     980:	48 81       	ld	r20, Y
-     982:	34 27       	eor	r19, r20
-     984:	04 27       	eor	r16, r20
-     986:	ea 2d       	mov	r30, r10
-     988:	40 81       	ld	r20, Z
-     98a:	34 27       	eor	r19, r20
-     98c:	04 27       	eor	r16, r20
-     98e:	74 27       	eor	r23, r20
-     990:	ca 2d       	mov	r28, r10
-     992:	48 81       	ld	r20, Y
-     994:	04 27       	eor	r16, r20
-     996:	14 27       	eor	r17, r20
-     998:	ef 2d       	mov	r30, r15
-     99a:	40 81       	ld	r20, Z
-     99c:	34 27       	eor	r19, r20
-     99e:	04 27       	eor	r16, r20
-     9a0:	14 27       	eor	r17, r20
-     9a2:	cf 2d       	mov	r28, r15
-     9a4:	48 81       	ld	r20, Y
-     9a6:	14 27       	eor	r17, r20
-     9a8:	74 27       	eor	r23, r20
-     9aa:	13 2e       	mov	r1, r19
-     9ac:	e4 2d       	mov	r30, r4
-     9ae:	50 81       	ld	r21, Z
-     9b0:	65 2f       	mov	r22, r21
-     9b2:	86 2f       	mov	r24, r22
-     9b4:	c4 2d       	mov	r28, r4
-     9b6:	48 81       	ld	r20, Y
-     9b8:	84 27       	eor	r24, r20
-     9ba:	e9 2d       	mov	r30, r9
-     9bc:	30 81       	ld	r19, Z
-     9be:	43 27       	eor	r20, r19
-     9c0:	63 27       	eor	r22, r19
-     9c2:	83 27       	eor	r24, r19
-     9c4:	c9 2d       	mov	r28, r9
-     9c6:	38 81       	ld	r19, Y
-     9c8:	43 27       	eor	r20, r19
-     9ca:	53 27       	eor	r21, r19
-     9cc:	ee 2d       	mov	r30, r14
-     9ce:	30 81       	ld	r19, Z
-     9d0:	43 27       	eor	r20, r19
-     9d2:	53 27       	eor	r21, r19
-     9d4:	83 27       	eor	r24, r19
-     9d6:	ce 2d       	mov	r28, r14
-     9d8:	38 81       	ld	r19, Y
-     9da:	53 27       	eor	r21, r19
-     9dc:	63 27       	eor	r22, r19
-     9de:	e0 2d       	mov	r30, r0
-     9e0:	30 81       	ld	r19, Z
-     9e2:	43 27       	eor	r20, r19
-     9e4:	53 27       	eor	r21, r19
-     9e6:	63 27       	eor	r22, r19
-     9e8:	c0 2d       	mov	r28, r0
-     9ea:	38 81       	ld	r19, Y
-     9ec:	63 27       	eor	r22, r19
-     9ee:	83 27       	eor	r24, r19
-     9f0:	2a 01       	movw	r4, r20
-     9f2:	07 2e       	mov	r0, r23
-     9f4:	e8 2d       	mov	r30, r8
-     9f6:	40 81       	ld	r20, Z
-     9f8:	54 2f       	mov	r21, r20
-     9fa:	75 2f       	mov	r23, r21
-     9fc:	c8 2d       	mov	r28, r8
-     9fe:	38 81       	ld	r19, Y
-     a00:	73 27       	eor	r23, r19
-     a02:	ed 2d       	mov	r30, r13
-     a04:	90 81       	ld	r25, Z
-     a06:	39 27       	eor	r19, r25
-     a08:	59 27       	eor	r21, r25
-     a0a:	79 27       	eor	r23, r25
-     a0c:	cd 2d       	mov	r28, r13
-     a0e:	98 81       	ld	r25, Y
-     a10:	39 27       	eor	r19, r25
-     a12:	49 27       	eor	r20, r25
-     a14:	e3 2d       	mov	r30, r3
-     a16:	90 81       	ld	r25, Z
-     a18:	39 27       	eor	r19, r25
-     a1a:	49 27       	eor	r20, r25
-     a1c:	79 27       	eor	r23, r25
-     a1e:	c3 2d       	mov	r28, r3
-     a20:	98 81       	ld	r25, Y
-     a22:	49 27       	eor	r20, r25
-     a24:	59 27       	eor	r21, r25
-     a26:	eb 2d       	mov	r30, r11
-     a28:	90 81       	ld	r25, Z
-     a2a:	39 27       	eor	r19, r25
-     a2c:	49 27       	eor	r20, r25
-     a2e:	59 27       	eor	r21, r25
-     a30:	cb 2d       	mov	r28, r11
-     a32:	98 81       	ld	r25, Y
-     a34:	59 27       	eor	r21, r25
-     a36:	79 27       	eor	r23, r25
-     a38:	83 2e       	mov	r8, r19
-     a3a:	94 2e       	mov	r9, r20
-     a3c:	a5 2e       	mov	r10, r21
-     a3e:	b8 2e       	mov	r11, r24
-     a40:	ec 2d       	mov	r30, r12
-     a42:	50 81       	ld	r21, Z
-     a44:	85 2f       	mov	r24, r21
-     a46:	98 2f       	mov	r25, r24
-     a48:	cc 2d       	mov	r28, r12
-     a4a:	48 81       	ld	r20, Y
-     a4c:	94 27       	eor	r25, r20
-     a4e:	e2 2d       	mov	r30, r2
-     a50:	30 81       	ld	r19, Z
-     a52:	43 27       	eor	r20, r19
-     a54:	83 27       	eor	r24, r19
-     a56:	93 27       	eor	r25, r19
-     a58:	c2 2d       	mov	r28, r2
-     a5a:	38 81       	ld	r19, Y
-     a5c:	43 27       	eor	r20, r19
-     a5e:	53 27       	eor	r21, r19
-     a60:	e6 2d       	mov	r30, r6
-     a62:	30 81       	ld	r19, Z
-     a64:	43 27       	eor	r20, r19
-     a66:	53 27       	eor	r21, r19
-     a68:	93 27       	eor	r25, r19
-     a6a:	c6 2d       	mov	r28, r6
-     a6c:	38 81       	ld	r19, Y
-     a6e:	53 27       	eor	r21, r19
-     a70:	83 27       	eor	r24, r19
-     a72:	e7 2d       	mov	r30, r7
-     a74:	30 81       	ld	r19, Z
-     a76:	43 27       	eor	r20, r19
-     a78:	53 27       	eor	r21, r19
-     a7a:	83 27       	eor	r24, r19
-     a7c:	c7 2d       	mov	r28, r7
-     a7e:	38 81       	ld	r19, Y
-     a80:	83 27       	eor	r24, r19
-     a82:	93 27       	eor	r25, r19
-     a84:	6a 01       	movw	r12, r20
-     a86:	7c 01       	movw	r14, r24
-     a88:	18 01       	movw	r2, r16
-     a8a:	3b 01       	movw	r6, r22
-     a8c:	0d 91       	ld	r16, X+
-     a8e:	10 26       	eor	r1, r16
-     a90:	0d 91       	ld	r16, X+
-     a92:	20 26       	eor	r2, r16
-     a94:	0d 91       	ld	r16, X+
-     a96:	30 26       	eor	r3, r16
-     a98:	0d 91       	ld	r16, X+
-     a9a:	00 26       	eor	r0, r16
-     a9c:	0d 91       	ld	r16, X+
-     a9e:	40 26       	eor	r4, r16
-     aa0:	0d 91       	ld	r16, X+
-     aa2:	50 26       	eor	r5, r16
-     aa4:	0d 91       	ld	r16, X+
-     aa6:	60 26       	eor	r6, r16
-     aa8:	0d 91       	ld	r16, X+
-     aaa:	b0 26       	eor	r11, r16
-     aac:	0d 91       	ld	r16, X+
-     aae:	80 26       	eor	r8, r16
-     ab0:	0d 91       	ld	r16, X+
-     ab2:	90 26       	eor	r9, r16
-     ab4:	0d 91       	ld	r16, X+
-     ab6:	a0 26       	eor	r10, r16
-     ab8:	0d 91       	ld	r16, X+
-     aba:	70 26       	eor	r7, r16
-     abc:	0d 91       	ld	r16, X+
-     abe:	c0 26       	eor	r12, r16
-     ac0:	0d 91       	ld	r16, X+
-     ac2:	d0 26       	eor	r13, r16
-     ac4:	0d 91       	ld	r16, X+
-     ac6:	e0 26       	eor	r14, r16
-     ac8:	0d 91       	ld	r16, X+
-     aca:	f0 26       	eor	r15, r16
-     acc:	e1 2d       	mov	r30, r1
-     ace:	00 81       	ld	r16, Z
-     ad0:	10 2f       	mov	r17, r16
-     ad2:	71 2f       	mov	r23, r17
-     ad4:	c1 2d       	mov	r28, r1
-     ad6:	38 81       	ld	r19, Y
-     ad8:	73 27       	eor	r23, r19
-     ada:	e5 2d       	mov	r30, r5
-     adc:	40 81       	ld	r20, Z
-     ade:	34 27       	eor	r19, r20
-     ae0:	14 27       	eor	r17, r20
-     ae2:	74 27       	eor	r23, r20
-     ae4:	c5 2d       	mov	r28, r5
-     ae6:	48 81       	ld	r20, Y
-     ae8:	34 27       	eor	r19, r20
-     aea:	04 27       	eor	r16, r20
-     aec:	ea 2d       	mov	r30, r10
-     aee:	40 81       	ld	r20, Z
-     af0:	34 27       	eor	r19, r20
-     af2:	04 27       	eor	r16, r20
-     af4:	74 27       	eor	r23, r20
-     af6:	ca 2d       	mov	r28, r10
-     af8:	48 81       	ld	r20, Y
-     afa:	04 27       	eor	r16, r20
-     afc:	14 27       	eor	r17, r20
-     afe:	ef 2d       	mov	r30, r15
-     b00:	40 81       	ld	r20, Z
-     b02:	34 27       	eor	r19, r20
-     b04:	04 27       	eor	r16, r20
-     b06:	14 27       	eor	r17, r20
-     b08:	cf 2d       	mov	r28, r15
-     b0a:	48 81       	ld	r20, Y
-     b0c:	14 27       	eor	r17, r20
-     b0e:	74 27       	eor	r23, r20
-     b10:	13 2e       	mov	r1, r19
-     b12:	e4 2d       	mov	r30, r4
-     b14:	50 81       	ld	r21, Z
-     b16:	65 2f       	mov	r22, r21
-     b18:	86 2f       	mov	r24, r22
-     b1a:	c4 2d       	mov	r28, r4
-     b1c:	48 81       	ld	r20, Y
-     b1e:	84 27       	eor	r24, r20
-     b20:	e9 2d       	mov	r30, r9
-     b22:	30 81       	ld	r19, Z
-     b24:	43 27       	eor	r20, r19
-     b26:	63 27       	eor	r22, r19
-     b28:	83 27       	eor	r24, r19
-     b2a:	c9 2d       	mov	r28, r9
-     b2c:	38 81       	ld	r19, Y
-     b2e:	43 27       	eor	r20, r19
-     b30:	53 27       	eor	r21, r19
-     b32:	ee 2d       	mov	r30, r14
-     b34:	30 81       	ld	r19, Z
-     b36:	43 27       	eor	r20, r19
-     b38:	53 27       	eor	r21, r19
-     b3a:	83 27       	eor	r24, r19
-     b3c:	ce 2d       	mov	r28, r14
-     b3e:	38 81       	ld	r19, Y
-     b40:	53 27       	eor	r21, r19
-     b42:	63 27       	eor	r22, r19
-     b44:	e0 2d       	mov	r30, r0
-     b46:	30 81       	ld	r19, Z
-     b48:	43 27       	eor	r20, r19
-     b4a:	53 27       	eor	r21, r19
-     b4c:	63 27       	eor	r22, r19
-     b4e:	c0 2d       	mov	r28, r0
-     b50:	38 81       	ld	r19, Y
-     b52:	63 27       	eor	r22, r19
-     b54:	83 27       	eor	r24, r19
-     b56:	2a 01       	movw	r4, r20
-     b58:	07 2e       	mov	r0, r23
-     b5a:	e8 2d       	mov	r30, r8
-     b5c:	40 81       	ld	r20, Z
-     b5e:	54 2f       	mov	r21, r20
-     b60:	75 2f       	mov	r23, r21
-     b62:	c8 2d       	mov	r28, r8
-     b64:	38 81       	ld	r19, Y
-     b66:	73 27       	eor	r23, r19
-     b68:	ed 2d       	mov	r30, r13
-     b6a:	90 81       	ld	r25, Z
-     b6c:	39 27       	eor	r19, r25
-     b6e:	59 27       	eor	r21, r25
-     b70:	79 27       	eor	r23, r25
-     b72:	cd 2d       	mov	r28, r13
-     b74:	98 81       	ld	r25, Y
-     b76:	39 27       	eor	r19, r25
-     b78:	49 27       	eor	r20, r25
-     b7a:	e3 2d       	mov	r30, r3
-     b7c:	90 81       	ld	r25, Z
-     b7e:	39 27       	eor	r19, r25
-     b80:	49 27       	eor	r20, r25
-     b82:	79 27       	eor	r23, r25
-     b84:	c3 2d       	mov	r28, r3
-     b86:	98 81       	ld	r25, Y
-     b88:	49 27       	eor	r20, r25
-     b8a:	59 27       	eor	r21, r25
-     b8c:	eb 2d       	mov	r30, r11
-     b8e:	90 81       	ld	r25, Z
-     b90:	39 27       	eor	r19, r25
-     b92:	49 27       	eor	r20, r25
-     b94:	59 27       	eor	r21, r25
-     b96:	cb 2d       	mov	r28, r11
-     b98:	98 81       	ld	r25, Y
-     b9a:	59 27       	eor	r21, r25
-     b9c:	79 27       	eor	r23, r25
-     b9e:	83 2e       	mov	r8, r19
-     ba0:	94 2e       	mov	r9, r20
-     ba2:	a5 2e       	mov	r10, r21
-     ba4:	b8 2e       	mov	r11, r24
-     ba6:	ec 2d       	mov	r30, r12
-     ba8:	50 81       	ld	r21, Z
-     baa:	85 2f       	mov	r24, r21
-     bac:	98 2f       	mov	r25, r24
-     bae:	cc 2d       	mov	r28, r12
-     bb0:	48 81       	ld	r20, Y
-     bb2:	94 27       	eor	r25, r20
-     bb4:	e2 2d       	mov	r30, r2
-     bb6:	30 81       	ld	r19, Z
-     bb8:	43 27       	eor	r20, r19
-     bba:	83 27       	eor	r24, r19
-     bbc:	93 27       	eor	r25, r19
-     bbe:	c2 2d       	mov	r28, r2
-     bc0:	38 81       	ld	r19, Y
-     bc2:	43 27       	eor	r20, r19
-     bc4:	53 27       	eor	r21, r19
-     bc6:	e6 2d       	mov	r30, r6
-     bc8:	30 81       	ld	r19, Z
-     bca:	43 27       	eor	r20, r19
-     bcc:	53 27       	eor	r21, r19
-     bce:	93 27       	eor	r25, r19
-     bd0:	c6 2d       	mov	r28, r6
-     bd2:	38 81       	ld	r19, Y
-     bd4:	53 27       	eor	r21, r19
-     bd6:	83 27       	eor	r24, r19
-     bd8:	e7 2d       	mov	r30, r7
-     bda:	30 81       	ld	r19, Z
-     bdc:	43 27       	eor	r20, r19
-     bde:	53 27       	eor	r21, r19
-     be0:	83 27       	eor	r24, r19
-     be2:	c7 2d       	mov	r28, r7
-     be4:	38 81       	ld	r19, Y
-     be6:	83 27       	eor	r24, r19
-     be8:	93 27       	eor	r25, r19
-     bea:	6a 01       	movw	r12, r20
-     bec:	7c 01       	movw	r14, r24
-     bee:	18 01       	movw	r2, r16
-     bf0:	3b 01       	movw	r6, r22
-     bf2:	0d 91       	ld	r16, X+
-     bf4:	10 26       	eor	r1, r16
-     bf6:	0d 91       	ld	r16, X+
-     bf8:	20 26       	eor	r2, r16
-     bfa:	0d 91       	ld	r16, X+
-     bfc:	30 26       	eor	r3, r16
-     bfe:	0d 91       	ld	r16, X+
-     c00:	00 26       	eor	r0, r16
-     c02:	0d 91       	ld	r16, X+
-     c04:	40 26       	eor	r4, r16
-     c06:	0d 91       	ld	r16, X+
-     c08:	50 26       	eor	r5, r16
-     c0a:	0d 91       	ld	r16, X+
-     c0c:	60 26       	eor	r6, r16
-     c0e:	0d 91       	ld	r16, X+
-     c10:	b0 26       	eor	r11, r16
-     c12:	0d 91       	ld	r16, X+
-     c14:	80 26       	eor	r8, r16
-     c16:	0d 91       	ld	r16, X+
-     c18:	90 26       	eor	r9, r16
-     c1a:	0d 91       	ld	r16, X+
-     c1c:	a0 26       	eor	r10, r16
-     c1e:	0d 91       	ld	r16, X+
-     c20:	70 26       	eor	r7, r16
-     c22:	0d 91       	ld	r16, X+
-     c24:	c0 26       	eor	r12, r16
-     c26:	0d 91       	ld	r16, X+
-     c28:	d0 26       	eor	r13, r16
-     c2a:	0d 91       	ld	r16, X+
-     c2c:	e0 26       	eor	r14, r16
-     c2e:	0d 91       	ld	r16, X+
-     c30:	f0 26       	eor	r15, r16
-     c32:	e1 2d       	mov	r30, r1
-     c34:	00 81       	ld	r16, Z
-     c36:	10 2f       	mov	r17, r16
-     c38:	71 2f       	mov	r23, r17
-     c3a:	c1 2d       	mov	r28, r1
-     c3c:	38 81       	ld	r19, Y
-     c3e:	73 27       	eor	r23, r19
-     c40:	e5 2d       	mov	r30, r5
-     c42:	40 81       	ld	r20, Z
-     c44:	34 27       	eor	r19, r20
-     c46:	14 27       	eor	r17, r20
-     c48:	74 27       	eor	r23, r20
-     c4a:	c5 2d       	mov	r28, r5
-     c4c:	48 81       	ld	r20, Y
-     c4e:	34 27       	eor	r19, r20
-     c50:	04 27       	eor	r16, r20
-     c52:	ea 2d       	mov	r30, r10
-     c54:	40 81       	ld	r20, Z
-     c56:	34 27       	eor	r19, r20
-     c58:	04 27       	eor	r16, r20
-     c5a:	74 27       	eor	r23, r20
-     c5c:	ca 2d       	mov	r28, r10
-     c5e:	48 81       	ld	r20, Y
-     c60:	04 27       	eor	r16, r20
-     c62:	14 27       	eor	r17, r20
-     c64:	ef 2d       	mov	r30, r15
-     c66:	40 81       	ld	r20, Z
-     c68:	34 27       	eor	r19, r20
-     c6a:	04 27       	eor	r16, r20
-     c6c:	14 27       	eor	r17, r20
-     c6e:	cf 2d       	mov	r28, r15
-     c70:	48 81       	ld	r20, Y
-     c72:	14 27       	eor	r17, r20
-     c74:	74 27       	eor	r23, r20
-     c76:	13 2e       	mov	r1, r19
-     c78:	e4 2d       	mov	r30, r4
-     c7a:	50 81       	ld	r21, Z
-     c7c:	65 2f       	mov	r22, r21
-     c7e:	86 2f       	mov	r24, r22
-     c80:	c4 2d       	mov	r28, r4
-     c82:	48 81       	ld	r20, Y
-     c84:	84 27       	eor	r24, r20
-     c86:	e9 2d       	mov	r30, r9
-     c88:	30 81       	ld	r19, Z
-     c8a:	43 27       	eor	r20, r19
-     c8c:	63 27       	eor	r22, r19
-     c8e:	83 27       	eor	r24, r19
-     c90:	c9 2d       	mov	r28, r9
-     c92:	38 81       	ld	r19, Y
-     c94:	43 27       	eor	r20, r19
-     c96:	53 27       	eor	r21, r19
-     c98:	ee 2d       	mov	r30, r14
-     c9a:	30 81       	ld	r19, Z
-     c9c:	43 27       	eor	r20, r19
-     c9e:	53 27       	eor	r21, r19
-     ca0:	83 27       	eor	r24, r19
-     ca2:	ce 2d       	mov	r28, r14
-     ca4:	38 81       	ld	r19, Y
-     ca6:	53 27       	eor	r21, r19
-     ca8:	63 27       	eor	r22, r19
-     caa:	e0 2d       	mov	r30, r0
-     cac:	30 81       	ld	r19, Z
-     cae:	43 27       	eor	r20, r19
-     cb0:	53 27       	eor	r21, r19
-     cb2:	63 27       	eor	r22, r19
-     cb4:	c0 2d       	mov	r28, r0
-     cb6:	38 81       	ld	r19, Y
-     cb8:	63 27       	eor	r22, r19
-     cba:	83 27       	eor	r24, r19
-     cbc:	2a 01       	movw	r4, r20
-     cbe:	07 2e       	mov	r0, r23
-     cc0:	e8 2d       	mov	r30, r8
-     cc2:	40 81       	ld	r20, Z
-     cc4:	54 2f       	mov	r21, r20
-     cc6:	75 2f       	mov	r23, r21
-     cc8:	c8 2d       	mov	r28, r8
-     cca:	38 81       	ld	r19, Y
-     ccc:	73 27       	eor	r23, r19
-     cce:	ed 2d       	mov	r30, r13
-     cd0:	90 81       	ld	r25, Z
-     cd2:	39 27       	eor	r19, r25
-     cd4:	59 27       	eor	r21, r25
-     cd6:	79 27       	eor	r23, r25
-     cd8:	cd 2d       	mov	r28, r13
-     cda:	98 81       	ld	r25, Y
-     cdc:	39 27       	eor	r19, r25
-     cde:	49 27       	eor	r20, r25
-     ce0:	e3 2d       	mov	r30, r3
-     ce2:	90 81       	ld	r25, Z
-     ce4:	39 27       	eor	r19, r25
-     ce6:	49 27       	eor	r20, r25
-     ce8:	79 27       	eor	r23, r25
-     cea:	c3 2d       	mov	r28, r3
-     cec:	98 81       	ld	r25, Y
-     cee:	49 27       	eor	r20, r25
-     cf0:	59 27       	eor	r21, r25
-     cf2:	eb 2d       	mov	r30, r11
-     cf4:	90 81       	ld	r25, Z
-     cf6:	39 27       	eor	r19, r25
-     cf8:	49 27       	eor	r20, r25
-     cfa:	59 27       	eor	r21, r25
-     cfc:	cb 2d       	mov	r28, r11
-     cfe:	98 81       	ld	r25, Y
-     d00:	59 27       	eor	r21, r25
-     d02:	79 27       	eor	r23, r25
-     d04:	83 2e       	mov	r8, r19
-     d06:	94 2e       	mov	r9, r20
-     d08:	a5 2e       	mov	r10, r21
-     d0a:	b8 2e       	mov	r11, r24
-     d0c:	ec 2d       	mov	r30, r12
-     d0e:	50 81       	ld	r21, Z
-     d10:	85 2f       	mov	r24, r21
-     d12:	98 2f       	mov	r25, r24
-     d14:	cc 2d       	mov	r28, r12
-     d16:	48 81       	ld	r20, Y
-     d18:	94 27       	eor	r25, r20
-     d1a:	e2 2d       	mov	r30, r2
-     d1c:	30 81       	ld	r19, Z
-     d1e:	43 27       	eor	r20, r19
-     d20:	83 27       	eor	r24, r19
-     d22:	93 27       	eor	r25, r19
-     d24:	c2 2d       	mov	r28, r2
-     d26:	38 81       	ld	r19, Y
-     d28:	43 27       	eor	r20, r19
-     d2a:	53 27       	eor	r21, r19
-     d2c:	e6 2d       	mov	r30, r6
-     d2e:	30 81       	ld	r19, Z
-     d30:	43 27       	eor	r20, r19
-     d32:	53 27       	eor	r21, r19
-     d34:	93 27       	eor	r25, r19
-     d36:	c6 2d       	mov	r28, r6
-     d38:	38 81       	ld	r19, Y
-     d3a:	53 27       	eor	r21, r19
-     d3c:	83 27       	eor	r24, r19
-     d3e:	e7 2d       	mov	r30, r7
-     d40:	30 81       	ld	r19, Z
-     d42:	43 27       	eor	r20, r19
-     d44:	53 27       	eor	r21, r19
-     d46:	83 27       	eor	r24, r19
-     d48:	c7 2d       	mov	r28, r7
-     d4a:	38 81       	ld	r19, Y
-     d4c:	83 27       	eor	r24, r19
-     d4e:	93 27       	eor	r25, r19
-     d50:	6a 01       	movw	r12, r20
-     d52:	7c 01       	movw	r14, r24
-     d54:	18 01       	movw	r2, r16
-     d56:	3b 01       	movw	r6, r22
-     d58:	0d 91       	ld	r16, X+
-     d5a:	10 26       	eor	r1, r16
-     d5c:	0d 91       	ld	r16, X+
-     d5e:	20 26       	eor	r2, r16
-     d60:	0d 91       	ld	r16, X+
-     d62:	30 26       	eor	r3, r16
-     d64:	0d 91       	ld	r16, X+
-     d66:	00 26       	eor	r0, r16
-     d68:	0d 91       	ld	r16, X+
-     d6a:	40 26       	eor	r4, r16
-     d6c:	0d 91       	ld	r16, X+
-     d6e:	50 26       	eor	r5, r16
-     d70:	0d 91       	ld	r16, X+
-     d72:	60 26       	eor	r6, r16
-     d74:	0d 91       	ld	r16, X+
-     d76:	b0 26       	eor	r11, r16
-     d78:	0d 91       	ld	r16, X+
-     d7a:	80 26       	eor	r8, r16
-     d7c:	0d 91       	ld	r16, X+
-     d7e:	90 26       	eor	r9, r16
-     d80:	0d 91       	ld	r16, X+
-     d82:	a0 26       	eor	r10, r16
-     d84:	0d 91       	ld	r16, X+
-     d86:	70 26       	eor	r7, r16
-     d88:	0d 91       	ld	r16, X+
-     d8a:	c0 26       	eor	r12, r16
-     d8c:	0d 91       	ld	r16, X+
-     d8e:	d0 26       	eor	r13, r16
-     d90:	0d 91       	ld	r16, X+
-     d92:	e0 26       	eor	r14, r16
-     d94:	0d 91       	ld	r16, X+
-     d96:	f0 26       	eor	r15, r16
-     d98:	e1 2d       	mov	r30, r1
-     d9a:	00 81       	ld	r16, Z
-     d9c:	10 2f       	mov	r17, r16
-     d9e:	71 2f       	mov	r23, r17
-     da0:	c1 2d       	mov	r28, r1
-     da2:	38 81       	ld	r19, Y
-     da4:	73 27       	eor	r23, r19
-     da6:	e5 2d       	mov	r30, r5
-     da8:	40 81       	ld	r20, Z
-     daa:	34 27       	eor	r19, r20
-     dac:	14 27       	eor	r17, r20
-     dae:	74 27       	eor	r23, r20
-     db0:	c5 2d       	mov	r28, r5
-     db2:	48 81       	ld	r20, Y
-     db4:	34 27       	eor	r19, r20
-     db6:	04 27       	eor	r16, r20
-     db8:	ea 2d       	mov	r30, r10
-     dba:	40 81       	ld	r20, Z
-     dbc:	34 27       	eor	r19, r20
-     dbe:	04 27       	eor	r16, r20
-     dc0:	74 27       	eor	r23, r20
-     dc2:	ca 2d       	mov	r28, r10
-     dc4:	48 81       	ld	r20, Y
-     dc6:	04 27       	eor	r16, r20
-     dc8:	14 27       	eor	r17, r20
-     dca:	ef 2d       	mov	r30, r15
-     dcc:	40 81       	ld	r20, Z
-     dce:	34 27       	eor	r19, r20
-     dd0:	04 27       	eor	r16, r20
-     dd2:	14 27       	eor	r17, r20
-     dd4:	cf 2d       	mov	r28, r15
-     dd6:	48 81       	ld	r20, Y
-     dd8:	14 27       	eor	r17, r20
-     dda:	74 27       	eor	r23, r20
-     ddc:	13 2e       	mov	r1, r19
-     dde:	e4 2d       	mov	r30, r4
-     de0:	50 81       	ld	r21, Z
-     de2:	65 2f       	mov	r22, r21
-     de4:	86 2f       	mov	r24, r22
-     de6:	c4 2d       	mov	r28, r4
-     de8:	48 81       	ld	r20, Y
-     dea:	84 27       	eor	r24, r20
-     dec:	e9 2d       	mov	r30, r9
-     dee:	30 81       	ld	r19, Z
-     df0:	43 27       	eor	r20, r19
-     df2:	63 27       	eor	r22, r19
-     df4:	83 27       	eor	r24, r19
-     df6:	c9 2d       	mov	r28, r9
-     df8:	38 81       	ld	r19, Y
-     dfa:	43 27       	eor	r20, r19
-     dfc:	53 27       	eor	r21, r19
-     dfe:	ee 2d       	mov	r30, r14
-     e00:	30 81       	ld	r19, Z
-     e02:	43 27       	eor	r20, r19
-     e04:	53 27       	eor	r21, r19
-     e06:	83 27       	eor	r24, r19
-     e08:	ce 2d       	mov	r28, r14
-     e0a:	38 81       	ld	r19, Y
-     e0c:	53 27       	eor	r21, r19
-     e0e:	63 27       	eor	r22, r19
-     e10:	e0 2d       	mov	r30, r0
-     e12:	30 81       	ld	r19, Z
-     e14:	43 27       	eor	r20, r19
-     e16:	53 27       	eor	r21, r19
-     e18:	63 27       	eor	r22, r19
-     e1a:	c0 2d       	mov	r28, r0
-     e1c:	38 81       	ld	r19, Y
-     e1e:	63 27       	eor	r22, r19
-     e20:	83 27       	eor	r24, r19
-     e22:	2a 01       	movw	r4, r20
-     e24:	07 2e       	mov	r0, r23
-     e26:	e8 2d       	mov	r30, r8
-     e28:	40 81       	ld	r20, Z
-     e2a:	54 2f       	mov	r21, r20
-     e2c:	75 2f       	mov	r23, r21
-     e2e:	c8 2d       	mov	r28, r8
-     e30:	38 81       	ld	r19, Y
-     e32:	73 27       	eor	r23, r19
-     e34:	ed 2d       	mov	r30, r13
-     e36:	90 81       	ld	r25, Z
-     e38:	39 27       	eor	r19, r25
-     e3a:	59 27       	eor	r21, r25
-     e3c:	79 27       	eor	r23, r25
-     e3e:	cd 2d       	mov	r28, r13
-     e40:	98 81       	ld	r25, Y
-     e42:	39 27       	eor	r19, r25
-     e44:	49 27       	eor	r20, r25
-     e46:	e3 2d       	mov	r30, r3
-     e48:	90 81       	ld	r25, Z
-     e4a:	39 27       	eor	r19, r25
-     e4c:	49 27       	eor	r20, r25
-     e4e:	79 27       	eor	r23, r25
-     e50:	c3 2d       	mov	r28, r3
-     e52:	98 81       	ld	r25, Y
-     e54:	49 27       	eor	r20, r25
-     e56:	59 27       	eor	r21, r25
-     e58:	eb 2d       	mov	r30, r11
-     e5a:	90 81       	ld	r25, Z
-     e5c:	39 27       	eor	r19, r25
-     e5e:	49 27       	eor	r20, r25
-     e60:	59 27       	eor	r21, r25
-     e62:	cb 2d       	mov	r28, r11
-     e64:	98 81       	ld	r25, Y
-     e66:	59 27       	eor	r21, r25
-     e68:	79 27       	eor	r23, r25
-     e6a:	83 2e       	mov	r8, r19
-     e6c:	94 2e       	mov	r9, r20
-     e6e:	a5 2e       	mov	r10, r21
-     e70:	b8 2e       	mov	r11, r24
-     e72:	ec 2d       	mov	r30, r12
-     e74:	50 81       	ld	r21, Z
-     e76:	85 2f       	mov	r24, r21
-     e78:	98 2f       	mov	r25, r24
-     e7a:	cc 2d       	mov	r28, r12
-     e7c:	48 81       	ld	r20, Y
-     e7e:	94 27       	eor	r25, r20
-     e80:	e2 2d       	mov	r30, r2
-     e82:	30 81       	ld	r19, Z
-     e84:	43 27       	eor	r20, r19
-     e86:	83 27       	eor	r24, r19
-     e88:	93 27       	eor	r25, r19
-     e8a:	c2 2d       	mov	r28, r2
-     e8c:	38 81       	ld	r19, Y
-     e8e:	43 27       	eor	r20, r19
-     e90:	53 27       	eor	r21, r19
-     e92:	e6 2d       	mov	r30, r6
-     e94:	30 81       	ld	r19, Z
-     e96:	43 27       	eor	r20, r19
-     e98:	53 27       	eor	r21, r19
-     e9a:	93 27       	eor	r25, r19
-     e9c:	c6 2d       	mov	r28, r6
-     e9e:	38 81       	ld	r19, Y
-     ea0:	53 27       	eor	r21, r19
-     ea2:	83 27       	eor	r24, r19
-     ea4:	e7 2d       	mov	r30, r7
-     ea6:	30 81       	ld	r19, Z
-     ea8:	43 27       	eor	r20, r19
-     eaa:	53 27       	eor	r21, r19
-     eac:	83 27       	eor	r24, r19
-     eae:	c7 2d       	mov	r28, r7
-     eb0:	38 81       	ld	r19, Y
-     eb2:	83 27       	eor	r24, r19
-     eb4:	93 27       	eor	r25, r19
-     eb6:	6a 01       	movw	r12, r20
-     eb8:	7c 01       	movw	r14, r24
-     eba:	18 01       	movw	r2, r16
-     ebc:	3b 01       	movw	r6, r22
-     ebe:	0d 91       	ld	r16, X+
-     ec0:	10 26       	eor	r1, r16
-     ec2:	0d 91       	ld	r16, X+
-     ec4:	20 26       	eor	r2, r16
-     ec6:	0d 91       	ld	r16, X+
-     ec8:	30 26       	eor	r3, r16
-     eca:	0d 91       	ld	r16, X+
-     ecc:	00 26       	eor	r0, r16
-     ece:	0d 91       	ld	r16, X+
-     ed0:	40 26       	eor	r4, r16
-     ed2:	0d 91       	ld	r16, X+
-     ed4:	50 26       	eor	r5, r16
-     ed6:	0d 91       	ld	r16, X+
-     ed8:	60 26       	eor	r6, r16
-     eda:	0d 91       	ld	r16, X+
-     edc:	b0 26       	eor	r11, r16
-     ede:	0d 91       	ld	r16, X+
-     ee0:	80 26       	eor	r8, r16
-     ee2:	0d 91       	ld	r16, X+
-     ee4:	90 26       	eor	r9, r16
-     ee6:	0d 91       	ld	r16, X+
-     ee8:	a0 26       	eor	r10, r16
-     eea:	0d 91       	ld	r16, X+
-     eec:	70 26       	eor	r7, r16
-     eee:	0d 91       	ld	r16, X+
-     ef0:	c0 26       	eor	r12, r16
-     ef2:	0d 91       	ld	r16, X+
-     ef4:	d0 26       	eor	r13, r16
-     ef6:	0d 91       	ld	r16, X+
-     ef8:	e0 26       	eor	r14, r16
-     efa:	0d 91       	ld	r16, X+
-     efc:	f0 26       	eor	r15, r16
-     efe:	e1 2d       	mov	r30, r1
-     f00:	00 81       	ld	r16, Z
-     f02:	10 2f       	mov	r17, r16
-     f04:	71 2f       	mov	r23, r17
-     f06:	c1 2d       	mov	r28, r1
-     f08:	38 81       	ld	r19, Y
-     f0a:	73 27       	eor	r23, r19
-     f0c:	e5 2d       	mov	r30, r5
-     f0e:	40 81       	ld	r20, Z
-     f10:	34 27       	eor	r19, r20
-     f12:	14 27       	eor	r17, r20
-     f14:	74 27       	eor	r23, r20
-     f16:	c5 2d       	mov	r28, r5
-     f18:	48 81       	ld	r20, Y
-     f1a:	34 27       	eor	r19, r20
-     f1c:	04 27       	eor	r16, r20
-     f1e:	ea 2d       	mov	r30, r10
-     f20:	40 81       	ld	r20, Z
-     f22:	34 27       	eor	r19, r20
-     f24:	04 27       	eor	r16, r20
-     f26:	74 27       	eor	r23, r20
-     f28:	ca 2d       	mov	r28, r10
-     f2a:	48 81       	ld	r20, Y
-     f2c:	04 27       	eor	r16, r20
-     f2e:	14 27       	eor	r17, r20
-     f30:	ef 2d       	mov	r30, r15
-     f32:	40 81       	ld	r20, Z
-     f34:	34 27       	eor	r19, r20
-     f36:	04 27       	eor	r16, r20
-     f38:	14 27       	eor	r17, r20
-     f3a:	cf 2d       	mov	r28, r15
-     f3c:	48 81       	ld	r20, Y
-     f3e:	14 27       	eor	r17, r20
-     f40:	74 27       	eor	r23, r20
-     f42:	13 2e       	mov	r1, r19
-     f44:	e4 2d       	mov	r30, r4
-     f46:	50 81       	ld	r21, Z
-     f48:	65 2f       	mov	r22, r21
-     f4a:	86 2f       	mov	r24, r22
-     f4c:	c4 2d       	mov	r28, r4
-     f4e:	48 81       	ld	r20, Y
-     f50:	84 27       	eor	r24, r20
-     f52:	e9 2d       	mov	r30, r9
-     f54:	30 81       	ld	r19, Z
-     f56:	43 27       	eor	r20, r19
-     f58:	63 27       	eor	r22, r19
-     f5a:	83 27       	eor	r24, r19
-     f5c:	c9 2d       	mov	r28, r9
-     f5e:	38 81       	ld	r19, Y
-     f60:	43 27       	eor	r20, r19
-     f62:	53 27       	eor	r21, r19
-     f64:	ee 2d       	mov	r30, r14
-     f66:	30 81       	ld	r19, Z
-     f68:	43 27       	eor	r20, r19
-     f6a:	53 27       	eor	r21, r19
-     f6c:	83 27       	eor	r24, r19
-     f6e:	ce 2d       	mov	r28, r14
-     f70:	38 81       	ld	r19, Y
-     f72:	53 27       	eor	r21, r19
-     f74:	63 27       	eor	r22, r19
-     f76:	e0 2d       	mov	r30, r0
-     f78:	30 81       	ld	r19, Z
-     f7a:	43 27       	eor	r20, r19
-     f7c:	53 27       	eor	r21, r19
-     f7e:	63 27       	eor	r22, r19
-     f80:	c0 2d       	mov	r28, r0
-     f82:	38 81       	ld	r19, Y
-     f84:	63 27       	eor	r22, r19
-     f86:	83 27       	eor	r24, r19
-     f88:	2a 01       	movw	r4, r20
-     f8a:	07 2e       	mov	r0, r23
-     f8c:	e8 2d       	mov	r30, r8
-     f8e:	40 81       	ld	r20, Z
-     f90:	54 2f       	mov	r21, r20
-     f92:	75 2f       	mov	r23, r21
-     f94:	c8 2d       	mov	r28, r8
-     f96:	38 81       	ld	r19, Y
-     f98:	73 27       	eor	r23, r19
-     f9a:	ed 2d       	mov	r30, r13
-     f9c:	90 81       	ld	r25, Z
-     f9e:	39 27       	eor	r19, r25
-     fa0:	59 27       	eor	r21, r25
-     fa2:	79 27       	eor	r23, r25
-     fa4:	cd 2d       	mov	r28, r13
-     fa6:	98 81       	ld	r25, Y
-     fa8:	39 27       	eor	r19, r25
-     faa:	49 27       	eor	r20, r25
-     fac:	e3 2d       	mov	r30, r3
-     fae:	90 81       	ld	r25, Z
-     fb0:	39 27       	eor	r19, r25
-     fb2:	49 27       	eor	r20, r25
-     fb4:	79 27       	eor	r23, r25
-     fb6:	c3 2d       	mov	r28, r3
-     fb8:	98 81       	ld	r25, Y
-     fba:	49 27       	eor	r20, r25
-     fbc:	59 27       	eor	r21, r25
-     fbe:	eb 2d       	mov	r30, r11
-     fc0:	90 81       	ld	r25, Z
-     fc2:	39 27       	eor	r19, r25
-     fc4:	49 27       	eor	r20, r25
-     fc6:	59 27       	eor	r21, r25
-     fc8:	cb 2d       	mov	r28, r11
-     fca:	98 81       	ld	r25, Y
-     fcc:	59 27       	eor	r21, r25
-     fce:	79 27       	eor	r23, r25
-     fd0:	83 2e       	mov	r8, r19
-     fd2:	94 2e       	mov	r9, r20
-     fd4:	a5 2e       	mov	r10, r21
-     fd6:	b8 2e       	mov	r11, r24
-     fd8:	ec 2d       	mov	r30, r12
-     fda:	50 81       	ld	r21, Z
-     fdc:	85 2f       	mov	r24, r21
-     fde:	98 2f       	mov	r25, r24
-     fe0:	cc 2d       	mov	r28, r12
-     fe2:	48 81       	ld	r20, Y
-     fe4:	94 27       	eor	r25, r20
-     fe6:	e2 2d       	mov	r30, r2
-     fe8:	30 81       	ld	r19, Z
-     fea:	43 27       	eor	r20, r19
-     fec:	83 27       	eor	r24, r19
-     fee:	93 27       	eor	r25, r19
-     ff0:	c2 2d       	mov	r28, r2
-     ff2:	38 81       	ld	r19, Y
-     ff4:	43 27       	eor	r20, r19
-     ff6:	53 27       	eor	r21, r19
-     ff8:	e6 2d       	mov	r30, r6
-     ffa:	30 81       	ld	r19, Z
-     ffc:	43 27       	eor	r20, r19
-     ffe:	53 27       	eor	r21, r19
-    1000:	93 27       	eor	r25, r19
-    1002:	c6 2d       	mov	r28, r6
-    1004:	38 81       	ld	r19, Y
-    1006:	53 27       	eor	r21, r19
-    1008:	83 27       	eor	r24, r19
-    100a:	e7 2d       	mov	r30, r7
-    100c:	30 81       	ld	r19, Z
-    100e:	43 27       	eor	r20, r19
-    1010:	53 27       	eor	r21, r19
-    1012:	83 27       	eor	r24, r19
-    1014:	c7 2d       	mov	r28, r7
-    1016:	38 81       	ld	r19, Y
-    1018:	83 27       	eor	r24, r19
-    101a:	93 27       	eor	r25, r19
-    101c:	6a 01       	movw	r12, r20
-    101e:	7c 01       	movw	r14, r24
-    1020:	18 01       	movw	r2, r16
-    1022:	3b 01       	movw	r6, r22
-    1024:	0d 91       	ld	r16, X+
-    1026:	10 26       	eor	r1, r16
-    1028:	0d 91       	ld	r16, X+
-    102a:	20 26       	eor	r2, r16
-    102c:	0d 91       	ld	r16, X+
-    102e:	30 26       	eor	r3, r16
-    1030:	0d 91       	ld	r16, X+
-    1032:	00 26       	eor	r0, r16
-    1034:	0d 91       	ld	r16, X+
-    1036:	40 26       	eor	r4, r16
-    1038:	0d 91       	ld	r16, X+
-    103a:	50 26       	eor	r5, r16
-    103c:	0d 91       	ld	r16, X+
-    103e:	60 26       	eor	r6, r16
-    1040:	0d 91       	ld	r16, X+
-    1042:	b0 26       	eor	r11, r16
-    1044:	0d 91       	ld	r16, X+
-    1046:	80 26       	eor	r8, r16
-    1048:	0d 91       	ld	r16, X+
-    104a:	90 26       	eor	r9, r16
-    104c:	0d 91       	ld	r16, X+
-    104e:	a0 26       	eor	r10, r16
-    1050:	0d 91       	ld	r16, X+
-    1052:	70 26       	eor	r7, r16
-    1054:	0d 91       	ld	r16, X+
-    1056:	c0 26       	eor	r12, r16
-    1058:	0d 91       	ld	r16, X+
-    105a:	d0 26       	eor	r13, r16
-    105c:	0d 91       	ld	r16, X+
-    105e:	e0 26       	eor	r14, r16
-    1060:	0d 91       	ld	r16, X+
-    1062:	f0 26       	eor	r15, r16
-    1064:	e1 2d       	mov	r30, r1
-    1066:	10 80       	ld	r1, Z
-    1068:	e4 2d       	mov	r30, r4
-    106a:	40 80       	ld	r4, Z
-    106c:	e8 2d       	mov	r30, r8
-    106e:	80 80       	ld	r8, Z
-    1070:	ec 2d       	mov	r30, r12
-    1072:	c0 80       	ld	r12, Z
-    1074:	e2 2d       	mov	r30, r2
-    1076:	40 81       	ld	r20, Z
-    1078:	e5 2d       	mov	r30, r5
-    107a:	20 80       	ld	r2, Z
-    107c:	e9 2d       	mov	r30, r9
-    107e:	50 80       	ld	r5, Z
-    1080:	ed 2d       	mov	r30, r13
-    1082:	90 80       	ld	r9, Z
-    1084:	d4 2e       	mov	r13, r20
-    1086:	e3 2d       	mov	r30, r3
-    1088:	40 81       	ld	r20, Z
-    108a:	e6 2d       	mov	r30, r6
-    108c:	50 81       	ld	r21, Z
-    108e:	ea 2d       	mov	r30, r10
-    1090:	30 80       	ld	r3, Z
-    1092:	ee 2d       	mov	r30, r14
-    1094:	60 80       	ld	r6, Z
-    1096:	a4 2e       	mov	r10, r20
-    1098:	e5 2e       	mov	r14, r21
-    109a:	e0 2d       	mov	r30, r0
-    109c:	40 81       	ld	r20, Z
-    109e:	ef 2d       	mov	r30, r15
-    10a0:	00 80       	ld	r0, Z
-    10a2:	e7 2d       	mov	r30, r7
-    10a4:	f0 80       	ld	r15, Z
-    10a6:	eb 2d       	mov	r30, r11
-    10a8:	70 80       	ld	r7, Z
-    10aa:	b4 2e       	mov	r11, r20
-    10ac:	0d 91       	ld	r16, X+
-    10ae:	10 26       	eor	r1, r16
-    10b0:	0d 91       	ld	r16, X+
-    10b2:	20 26       	eor	r2, r16
-    10b4:	0d 91       	ld	r16, X+
-    10b6:	30 26       	eor	r3, r16
-    10b8:	0d 91       	ld	r16, X+
-    10ba:	00 26       	eor	r0, r16
-    10bc:	0d 91       	ld	r16, X+
-    10be:	40 26       	eor	r4, r16
-    10c0:	0d 91       	ld	r16, X+
-    10c2:	50 26       	eor	r5, r16
-    10c4:	0d 91       	ld	r16, X+
-    10c6:	60 26       	eor	r6, r16
-    10c8:	0d 91       	ld	r16, X+
-    10ca:	b0 26       	eor	r11, r16
-    10cc:	0d 91       	ld	r16, X+
-    10ce:	80 26       	eor	r8, r16
-    10d0:	0d 91       	ld	r16, X+
-    10d2:	90 26       	eor	r9, r16
-    10d4:	0d 91       	ld	r16, X+
-    10d6:	a0 26       	eor	r10, r16
-    10d8:	0d 91       	ld	r16, X+
-    10da:	70 26       	eor	r7, r16
-    10dc:	0d 91       	ld	r16, X+
-    10de:	c0 26       	eor	r12, r16
-    10e0:	0d 91       	ld	r16, X+
-    10e2:	d0 26       	eor	r13, r16
-    10e4:	0d 91       	ld	r16, X+
-    10e6:	e0 26       	eor	r14, r16
-    10e8:	0d 91       	ld	r16, X+
-    10ea:	f0 26       	eor	r15, r16
-    10ec:	ff 91       	pop	r31
-    10ee:	ef 91       	pop	r30
-    10f0:	11 92       	st	Z+, r1
-    10f2:	21 92       	st	Z+, r2
-    10f4:	31 92       	st	Z+, r3
-    10f6:	01 92       	st	Z+, r0
-    10f8:	41 92       	st	Z+, r4
-    10fa:	51 92       	st	Z+, r5
-    10fc:	61 92       	st	Z+, r6
-    10fe:	b1 92       	st	Z+, r11
-    1100:	81 92       	st	Z+, r8
-    1102:	91 92       	st	Z+, r9
-    1104:	a1 92       	st	Z+, r10
-    1106:	71 92       	st	Z+, r7
-    1108:	c1 92       	st	Z+, r12
-    110a:	d1 92       	st	Z+, r13
-    110c:	e1 92       	st	Z+, r14
-    110e:	f1 92       	st	Z+, r15
-    1110:	df 91       	pop	r29
-    1112:	cf 91       	pop	r28
-    1114:	08 95       	ret
-
-00001116 <main>:
+0000038e <main>:
 void aes192_enc_nobr(void *buffer, aes128_ctx_t *ctx);
 void aes256_enc_nobr(void *buffer, aes128_ctx_t *ctx);
 
 
 int main(void)
 {
-    1116:	cf 93       	push	r28
-    1118:	df 93       	push	r29
-    111a:	cd b7       	in	r28, 0x3d	; 61
-    111c:	de b7       	in	r29, 0x3e	; 62
-    111e:	c0 5e       	subi	r28, 0xE0	; 224
-    1120:	d1 09       	sbc	r29, r1
-    1122:	0f b6       	in	r0, 0x3f	; 63
-    1124:	f8 94       	cli
-    1126:	de bf       	out	0x3e, r29	; 62
-    1128:	0f be       	out	0x3f, r0	; 63
-    112a:	cd bf       	out	0x3d, r28	; 61
+ 38e:	cf 93       	push	r28
+ 390:	df 93       	push	r29
+ 392:	cd b7       	in	r28, 0x3d	; 61
+ 394:	de b7       	in	r29, 0x3e	; 62
+ 396:	c0 5e       	subi	r28, 0xE0	; 224
+ 398:	d1 09       	sbc	r29, r1
+ 39a:	0f b6       	in	r0, 0x3f	; 63
+ 39c:	f8 94       	cli
+ 39e:	de bf       	out	0x3e, r29	; 62
+ 3a0:	0f be       	out	0x3f, r0	; 63
+ 3a2:	cd bf       	out	0x3d, r28	; 61
 	/* Replace with your application code */
 
 	u8 key[16] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
-    112c:	20 e1       	ldi	r18, 0x10	; 16
-    112e:	e0 e0       	ldi	r30, 0x00	; 0
-    1130:	f6 e0       	ldi	r31, 0x06	; 6
-    1132:	ce 01       	movw	r24, r28
-    1134:	01 96       	adiw	r24, 0x01	; 1
-    1136:	dc 01       	movw	r26, r24
-    1138:	01 90       	ld	r0, Z+
-    113a:	0d 92       	st	X+, r0
-    113c:	2a 95       	dec	r18
-    113e:	e1 f7       	brne	.-8      	; 0x1138 <main+0x22>
+ 3a4:	20 e1       	ldi	r18, 0x10	; 16
+ 3a6:	e0 e0       	ldi	r30, 0x00	; 0
+ 3a8:	f4 e0       	ldi	r31, 0x04	; 4
+ 3aa:	ce 01       	movw	r24, r28
+ 3ac:	01 96       	adiw	r24, 0x01	; 1
+ 3ae:	dc 01       	movw	r26, r24
+ 3b0:	01 90       	ld	r0, Z+
+ 3b2:	0d 92       	st	X+, r0
+ 3b4:	2a 95       	dec	r18
+ 3b6:	e1 f7       	brne	.-8      	; 0x3b0 <main+0x22>
 	u8 IV[16] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
-    1140:	20 e1       	ldi	r18, 0x10	; 16
-    1142:	ce 01       	movw	r24, r28
-    1144:	41 96       	adiw	r24, 0x11	; 17
-    1146:	fc 01       	movw	r30, r24
-    1148:	32 2f       	mov	r19, r18
-    114a:	11 92       	st	Z+, r1
-    114c:	3a 95       	dec	r19
-    114e:	e9 f7       	brne	.-6      	; 0x114a <main+0x34>
-    1150:	81 e0       	ldi	r24, 0x01	; 1
-    1152:	8a 8b       	std	Y+18, r24	; 0x12
-    1154:	82 e0       	ldi	r24, 0x02	; 2
-    1156:	8b 8b       	std	Y+19, r24	; 0x13
-    1158:	83 e0       	ldi	r24, 0x03	; 3
-    115a:	8c 8b       	std	Y+20, r24	; 0x14
-    115c:	84 e0       	ldi	r24, 0x04	; 4
-    115e:	8d 8b       	std	Y+21, r24	; 0x15
-    1160:	85 e0       	ldi	r24, 0x05	; 5
-    1162:	8e 8b       	std	Y+22, r24	; 0x16
-    1164:	86 e0       	ldi	r24, 0x06	; 6
-    1166:	8f 8b       	std	Y+23, r24	; 0x17
-    1168:	87 e0       	ldi	r24, 0x07	; 7
-    116a:	88 8f       	std	Y+24, r24	; 0x18
-    116c:	88 e0       	ldi	r24, 0x08	; 8
-    116e:	89 8f       	std	Y+25, r24	; 0x19
-    1170:	89 e0       	ldi	r24, 0x09	; 9
-    1172:	8a 8f       	std	Y+26, r24	; 0x1a
-    1174:	8a e0       	ldi	r24, 0x0A	; 10
-    1176:	8b 8f       	std	Y+27, r24	; 0x1b
-    1178:	8b e0       	ldi	r24, 0x0B	; 11
-    117a:	8c 8f       	std	Y+28, r24	; 0x1c
-    117c:	8c e0       	ldi	r24, 0x0C	; 12
-    117e:	8d 8f       	std	Y+29, r24	; 0x1d
-    1180:	8d e0       	ldi	r24, 0x0D	; 13
-    1182:	8e 8f       	std	Y+30, r24	; 0x1e
+ 3b8:	20 e1       	ldi	r18, 0x10	; 16
+ 3ba:	ce 01       	movw	r24, r28
+ 3bc:	41 96       	adiw	r24, 0x11	; 17
+ 3be:	fc 01       	movw	r30, r24
+ 3c0:	32 2f       	mov	r19, r18
+ 3c2:	11 92       	st	Z+, r1
+ 3c4:	3a 95       	dec	r19
+ 3c6:	e9 f7       	brne	.-6      	; 0x3c2 <main+0x34>
+ 3c8:	81 e0       	ldi	r24, 0x01	; 1
+ 3ca:	8a 8b       	std	Y+18, r24	; 0x12
+ 3cc:	82 e0       	ldi	r24, 0x02	; 2
+ 3ce:	8b 8b       	std	Y+19, r24	; 0x13
+ 3d0:	83 e0       	ldi	r24, 0x03	; 3
+ 3d2:	8c 8b       	std	Y+20, r24	; 0x14
+ 3d4:	84 e0       	ldi	r24, 0x04	; 4
+ 3d6:	8d 8b       	std	Y+21, r24	; 0x15
+ 3d8:	85 e0       	ldi	r24, 0x05	; 5
+ 3da:	8e 8b       	std	Y+22, r24	; 0x16
+ 3dc:	86 e0       	ldi	r24, 0x06	; 6
+ 3de:	8f 8b       	std	Y+23, r24	; 0x17
+ 3e0:	87 e0       	ldi	r24, 0x07	; 7
+ 3e2:	88 8f       	std	Y+24, r24	; 0x18
+ 3e4:	88 e0       	ldi	r24, 0x08	; 8
+ 3e6:	89 8f       	std	Y+25, r24	; 0x19
+ 3e8:	89 e0       	ldi	r24, 0x09	; 9
+ 3ea:	8a 8f       	std	Y+26, r24	; 0x1a
+ 3ec:	8a e0       	ldi	r24, 0x0A	; 10
+ 3ee:	8b 8f       	std	Y+27, r24	; 0x1b
+ 3f0:	8b e0       	ldi	r24, 0x0B	; 11
+ 3f2:	8c 8f       	std	Y+28, r24	; 0x1c
+ 3f4:	8c e0       	ldi	r24, 0x0C	; 12
+ 3f6:	8d 8f       	std	Y+29, r24	; 0x1d
+ 3f8:	8d e0       	ldi	r24, 0x0D	; 13
+ 3fa:	8e 8f       	std	Y+30, r24	; 0x1e
 	u8 IV2[16]  = {0,};
-    1184:	20 e1       	ldi	r18, 0x10	; 16
-    1186:	ce 01       	movw	r24, r28
-    1188:	81 96       	adiw	r24, 0x21	; 33
-    118a:	fc 01       	movw	r30, r24
-    118c:	32 2f       	mov	r19, r18
-    118e:	11 92       	st	Z+, r1
-    1190:	3a 95       	dec	r19
-    1192:	e9 f7       	brne	.-6      	; 0x118e <main+0x78>
+ 3fc:	20 e1       	ldi	r18, 0x10	; 16
+ 3fe:	ce 01       	movw	r24, r28
+ 400:	81 96       	adiw	r24, 0x21	; 33
+ 402:	fc 01       	movw	r30, r24
+ 404:	32 2f       	mov	r19, r18
+ 406:	11 92       	st	Z+, r1
+ 408:	3a 95       	dec	r19
+ 40a:	e9 f7       	brne	.-6      	; 0x406 <__LOCK_REGION_LENGTH__+0x6>
 	//u8 key[16] = {0x2b,0x7e,0x15,0x16,0x28,0xae,0xd2,0xa6,0xab,0xf7,0x15,0x88,0x09,0xcf,0x4f,0x3c};
 	//u8 IV[16] = {0x32,0x43,0xf6,0xa8,0x88,0x5a,0x30,0x8d,0x31,0x31,0x98,0xa2,0xe0,0x37,0x07,0x34};
 	aes128_ctx_t aes_test;
 	aes128_init(key, &aes_test);
-    1194:	ce 01       	movw	r24, r28
-    1196:	c1 96       	adiw	r24, 0x31	; 49
-    1198:	bc 01       	movw	r22, r24
-    119a:	ce 01       	movw	r24, r28
-    119c:	01 96       	adiw	r24, 0x01	; 1
-    119e:	99 d8       	rcall	.-3790   	; 0x2d2 <aes128_init>
+ 40c:	ce 01       	movw	r24, r28
+ 40e:	c1 96       	adiw	r24, 0x31	; 49
+ 410:	bc 01       	movw	r22, r24
+ 412:	ce 01       	movw	r24, r28
+ 414:	01 96       	adiw	r24, 0x01	; 1
+ 416:	5b df       	rcall	.-330    	; 0x2ce <aes128_init>
 	aes128_enc(IV,&aes_test);
-    11a0:	9e 01       	movw	r18, r28
-    11a2:	2f 5c       	subi	r18, 0xCF	; 207
-    11a4:	3f 4f       	sbci	r19, 0xFF	; 255
-    11a6:	ce 01       	movw	r24, r28
-    11a8:	41 96       	adiw	r24, 0x11	; 17
-    11aa:	b9 01       	movw	r22, r18
-    11ac:	0e 94 4e 00 	call	0x9c	; 0x9c <aes128_enc>
-	aes128_enc_nobr(IV,&aes_test);
-    11b0:	9e 01       	movw	r18, r28
-    11b2:	2f 5c       	subi	r18, 0xCF	; 207
-    11b4:	3f 4f       	sbci	r19, 0xFF	; 255
-    11b6:	ce 01       	movw	r24, r28
-    11b8:	41 96       	adiw	r24, 0x11	; 17
-    11ba:	b9 01       	movw	r22, r18
-    11bc:	ea d8       	rcall	.-3628   	; 0x392 <aes128_enc_nobr>
-    11be:	80 e0       	ldi	r24, 0x00	; 0
-    11c0:	90 e0       	ldi	r25, 0x00	; 0
+ 418:	9e 01       	movw	r18, r28
+ 41a:	2f 5c       	subi	r18, 0xCF	; 207
+ 41c:	3f 4f       	sbci	r19, 0xFF	; 255
+ 41e:	ce 01       	movw	r24, r28
+ 420:	41 96       	adiw	r24, 0x11	; 17
+ 422:	b9 01       	movw	r22, r18
+ 424:	39 de       	rcall	.-910    	; 0x98 <aes128_enc>
+ 426:	80 e0       	ldi	r24, 0x00	; 0
+ 428:	90 e0       	ldi	r25, 0x00	; 0
 	//aes256_enc(IV2,&aes_test);
 	//aes256_enc_nobr(IV,&aes_test);
 	//aes256_enc_origin(IV,&aes_test);
 
 	
 }
-    11c2:	c0 52       	subi	r28, 0x20	; 32
-    11c4:	df 4f       	sbci	r29, 0xFF	; 255
-    11c6:	0f b6       	in	r0, 0x3f	; 63
-    11c8:	f8 94       	cli
-    11ca:	de bf       	out	0x3e, r29	; 62
-    11cc:	0f be       	out	0x3f, r0	; 63
-    11ce:	cd bf       	out	0x3d, r28	; 61
-    11d0:	df 91       	pop	r29
-    11d2:	cf 91       	pop	r28
-    11d4:	08 95       	ret
+ 42a:	c0 52       	subi	r28, 0x20	; 32
+ 42c:	df 4f       	sbci	r29, 0xFF	; 255
+ 42e:	0f b6       	in	r0, 0x3f	; 63
+ 430:	f8 94       	cli
+ 432:	de bf       	out	0x3e, r29	; 62
+ 434:	0f be       	out	0x3f, r0	; 63
+ 436:	cd bf       	out	0x3d, r28	; 61
+ 438:	df 91       	pop	r29
+ 43a:	cf 91       	pop	r28
+ 43c:	08 95       	ret
 
-000011d6 <_exit>:
-    11d6:	f8 94       	cli
+0000043e <_exit>:
+ 43e:	f8 94       	cli
 
-000011d8 <__stop_program>:
-    11d8:	ff cf       	rjmp	.-2      	; 0x11d8 <__stop_program>
+00000440 <__stop_program>:
+ 440:	ff cf       	rjmp	.-2      	; 0x440 <__stop_program>
