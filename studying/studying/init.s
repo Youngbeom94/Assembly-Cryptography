@@ -42,6 +42,7 @@
 	init:
 		push r17
 		push r18
+		push r0
 
 		movw rZ,	r24
 		movw rY,	r22
@@ -68,6 +69,7 @@
 		ldi r18,	0x80
 		st	Y,		r18
 
+		pop r0
 		pop r18
 		pop r17
 

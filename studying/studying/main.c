@@ -9,29 +9,27 @@
 
 #define LEN 200
 
+typedef unsigned char u8;
 
-typedef volatile unsigned char u8;
 
-
-void init(u8 *in, u8 * state, u8* temp);
+void init(u8* in, u8* state, u8* temp);
 
 void test(u8 *state);
-void test2();
-void keccack_first(u8* in, u8* temp);
+void keccack(u8* in,u8* state, u8* temp);
 
 
 
 int main(void)
 {
-	u8 in[25][8] = {0x00,};
-	u8 state[25][8] = {0x00,};
-	u8 temp[5][8] = {0x00,};
+	u8 in[200] = {0x00,};
+	u8 state[100] = {0x00,};
+	u8 temp[80] = {0x00,};
 	
 	init(in, state, temp);
-	keccack_first(in, temp);
+	keccack(in,state,temp);
 	
 	
-	//test();
+	//test(state);
 
 	//final(state, in);
 	

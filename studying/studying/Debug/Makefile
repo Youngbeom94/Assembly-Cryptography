@@ -43,9 +43,8 @@ C_SRCS +=  \
 PREPROCESSING_SRCS +=  \
 ../final.s \
 ../init.s \
-../keccack_first.s \
 ../macro.s \
-../keccack.s
+../keccack1600.s
 
 
 ASM_SRCS += 
@@ -54,34 +53,30 @@ ASM_SRCS +=
 OBJS +=  \
 final.o \
 init.o \
-keccack_first.o \
 main.o \
 macro.o \
-keccack.o
+keccack1600.o
 
 OBJS_AS_ARGS +=  \
 final.o \
 init.o \
-keccack_first.o \
 main.o \
 macro.o \
-keccack.o
+keccack1600.o
 
 C_DEPS +=  \
 final.d \
 init.d \
-keccack_first.d \
 main.d \
 macro.d \
-keccack.d
+keccack1600.d
 
 C_DEPS_AS_ARGS +=  \
 final.d \
 init.d \
-keccack_first.d \
 main.d \
 macro.d \
-keccack.d
+keccack1600.d
 
 OUTPUT_FILE_PATH +=studying.elf
 
@@ -126,13 +121,6 @@ LINKER_SCRIPT_DEP+=
 	@echo Finished building: $<
 	
 
-./keccack_first.o: .././keccack_first.s
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU Assembler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mmcu=atmega1284 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega1284" -I "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -mrelax -Wa,-g   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
 ./macro.o: .././macro.s
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU Assembler : 5.4.0
@@ -140,7 +128,7 @@ LINKER_SCRIPT_DEP+=
 	@echo Finished building: $<
 	
 
-./keccack.o: .././keccack.s
+./keccack1600.o: .././keccack1600.s
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU Assembler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mmcu=atmega1284 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega1284" -I "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -mrelax -Wa,-g   -o "$@" "$<" 

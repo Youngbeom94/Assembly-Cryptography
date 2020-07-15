@@ -6,11 +6,9 @@ final.s
 
 init.s
 
-keccack_first.s
-
 main.c
 
 macro.s
 
-keccack.s
+keccack1600.s
 

@@ -144,16 +144,13 @@
     <Compile Include="init.s">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="keccack_first.s">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="macro.s">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="keccack.s">
+    <Compile Include="keccack1600.s">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
