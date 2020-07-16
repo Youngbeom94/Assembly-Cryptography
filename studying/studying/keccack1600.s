@@ -8,6 +8,7 @@
 
 .balign 256
 PHI_TABLE_12:
+
 .byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, \
 	  0x00, 0x06, 0x0c, 0x12, 0x18, 0x03, 0x09, 0x0a, 0x10, 0x16, 0x01, 0x07, 0x0d, 0x13, 0x14, 0x04, 0x05, 0x0b, 0x11, 0x17, 0x02, 0x08, 0x0e, 0x0f, 0x15, \
 	  0x00, 0x09, 0x0d, 0x11, 0x15, 0x12, 0x16, 0x01, 0x05, 0x0e, 0x06, 0x0a, 0x13, 0x17, 0x02, 0x18, 0x03, 0x07, 0x0b, 0x0f, 0x0c, 0x10, 0x14, 0x04, 0x08, \
@@ -24,6 +25,7 @@ PHI_TABLE_12:
 
 .balign 256
 PHI_TABLE_24:
+
 .byte 0x00, 0x18, 0x12, 0x0c, 0x06, 0x02, 0x15, 0x0f, 0x0e, 0x08, 0x04, 0x17, 0x11, 0x0b, 0x05, 0x01, 0x14, 0x13, 0x0d, 0x07, 0x03, 0x16, 0x10, 0x0a, 0x09, \
 	  0x00, 0x15, 0x11, 0x0d, 0x09, 0x0c, 0x08, 0x04, 0x14, 0x10, 0x18, 0x0f, 0x0b, 0x07, 0x03, 0x06, 0x02, 0x17, 0x13, 0x0a, 0x12, 0x0e, 0x05, 0x01, 0x16, \
 	  0x00, 0x08, 0x0b, 0x13, 0x16, 0x0d, 0x10, 0x18, 0x02, 0x05, 0x15, 0x04, 0x07, 0x0a, 0x12, 0x09, 0x0c, 0x0f, 0x17, 0x01, 0x11, 0x14, 0x03, 0x06, 0x0e, \
@@ -36,6 +38,43 @@ PHI_TABLE_24:
 	  0x00, 0x07, 0x0e, 0x10, 0x17, 0x08, 0x0a, 0x11, 0x18, 0x01, 0x0b, 0x12, 0x14, 0x02, 0x09, 0x13, 0x15, 0x03, 0x05, 0x0c, 0x16, 0x04, 0x06, 0x0d, 0x0f, \
 	  0x00, 0x0a, 0x14, 0x05, 0x0f, 0x10, 0x01, 0x0b, 0x15, 0x06, 0x07, 0x11, 0x02, 0x0c, 0x16, 0x17, 0x08, 0x12, 0x03, 0x0d, 0x0e, 0x18, 0x09, 0x13, 0x04, \
 	  0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18
+
+
+.balign 256
+KeccakP1600_RoundConstants_24:
+
+    .BYTE   0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    .BYTE   0x82, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    .BYTE   0x8a, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80
+    .BYTE   0x00, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80
+    .BYTE   0x8b, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    .BYTE   0x01, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00
+    .BYTE   0x81, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80
+    .BYTE   0x09, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80
+    .BYTE   0x8a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    .BYTE   0x88, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    .BYTE   0x09, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00
+    .BYTE   0x0a, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00
+
+.balign 256
+KeccakP1600_RoundConstants_12:
+
+    .BYTE   0x8b, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00
+    .BYTE   0x8b, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80
+    .BYTE   0x89, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80
+    .BYTE   0x03, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80
+    .BYTE   0x02, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80
+    .BYTE   0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80
+    .BYTE   0x0a, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    .BYTE   0x0a, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80
+    .BYTE   0x81, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80
+    .BYTE   0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80
+    .BYTE   0x01, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00
+    .BYTE   0x08, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80
+
+KeccakP1600_RoundConstants_0:
+    .BYTE   0xFF, 0        ; terminator
+
 .text
 
 
@@ -45,6 +84,10 @@ PHI_TABLE_24:
 #define zero    1
 #define therz	2
 #define therz2	3
+#define	therx	4
+#define	therx2	5
+#define	count2	6
+#define	count3	7
 #define rState0  8
 #define rState1  9
 #define rState2  10
@@ -90,15 +133,31 @@ keccack:
 
 		movw rX,	r24 ; in   --> X
 		movw rY,	r20 ; temp --> Y
-		ldi main_count,		 25
+		ldi main_count,		 24
+		ldi		r31,	hi8(PHI_TABLE_12)
+		ldi		r30,	lo8(PHI_TABLE_12)
+		movw	therz,	rZ
 
 start:
-		ldi  r31,	hi8(PHI_TABLE_12)
-		ldi	 r30,	lo8(PHI_TABLE_12)
-		ldi count,	5
-		movw therz,	X
+		ldi		count,	5
+		mov		count2,	count
+		movw	rZ,		therz
+		movw	therx,	X
+
+		ldi		count,	12
+		cp		count,	main_count
+		brge	startafter
+		rjmp	Theta_init_Loop
+
+startafter:
+		ldi		r31,	hi8(PHI_TABLE_24)
+		ldi		r30,	lo8(PHI_TABLE_24)
+		movw	therz,	rZ
+
+
 
 Theta_init_Loop:
+
 	lpm		rX,		Z
     ld      rTemp0, X+     ; state[x]
     ld      rTemp1, X+
@@ -193,21 +252,19 @@ Theta_init_Loop:
     st      Y+, rTemp5
     st      Y+, rTemp6
     st      Y+, rTemp7
-	dec		count
-	breq	2f
+	dec		count2
+	breq	END_Theta
 	sbiw	Z,	 20
 	rjmp	Theta_init_Loop
 
-2:
+END_Theta:
 	adiw	Z,	 20
 	sbiw	Y,	 25
-	movw	X,	 therz ; X inital 
+	movw	X,	 therx ; X inital 
 	movw	therz,	Z  ; thetha Z -----> r2, r3
 
-	ldi  r31,	hi8(PHI_TABLE_12)
-	ldi	 r30,	lo8(PHI_TABLE_12)
-
 Theta_update_1:
+
 	ld       rTemp0, Y   ;0 저장
     ldd      rTemp1, Y+1
     ldd      rTemp2, Y+2
@@ -427,21 +484,382 @@ Theta_update_3:
 	st		Y+,	rState5
 	st		Y+,	rState6
 	st		Y+,	rState7;-------------------------------------------------24 ->3
+	sbiw	Y,	28	
+	
+	ldi		count,	25
+	mov		count2,	count
+	ldi		count,	8
+	mov		count3,	count
+	eor		zero,	zero
+
+Thetha_Rho_loop:
+
+	ldi		count,	40
+	rcall	first_load_EOR
+	rcall	rotate64_1bit_right
+	rcall	rotate64_4byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_1bit_left
+	rcall	rotate64_3byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_3bit_right
+	rcall	rotate64_0byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_2bit_right
+	rcall	rotate64_7byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_3bit_right
+	rcall	rotate64_3byte_left ; fist Row
+
 	sub		rY,		count
-	sbiw	Y,		8
+;-------------------------------------------
+	rcall	first_load_EOR
+	rcall	rotate64_1bit_left
+	rcall	rotate64_1byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_4bit_left
+	rcall	rotate64_4byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_4bit_left
+	rcall	rotate64_3byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_4bit_left
+	rcall	rotate64_2byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_1bit_left
+	rcall	rotate64_0byte_left  ; fist Row
+
+	sub		rY,		count	
+
+;-------------------------------------------
+
+	rcall	first_load_EOR
+	rcall	rotate64_4bit_left
+	rcall	rotate64_3byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_3bit_left
+	rcall	rotate64_4byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_0byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_1bit_right
+	rcall	rotate64_0byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_2bit_left
+	rcall	rotate64_0byte_left	;Third Row
+
+	sub		rY,		count	
+
+;-------------------------------------------
+
+	rcall	first_load_EOR
+	rcall	rotate64_1byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_2bit_left
+	rcall	rotate64_6byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_2bit_right
+	rcall	rotate64_6byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_2bit_right
+	rcall	rotate64_0byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_3bit_left
+	rcall	rotate64_0byte_left	 ;Firth Row
+	
+	sub		rY,		count
+
+;-------------------------------------------
+
+	rcall	first_load_EOR
+	rcall	rotate64_3bit_left
+	rcall	rotate64_5byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_7byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_1bit_right
+	rcall	rotate64_3byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_3bit_left
+	rcall	rotate64_2byte_left
+
+	rcall	first_load_EOR
+	rcall	rotate64_1bit_left
+	rcall	rotate64_6byte_left	 ;Fifth Row
+	
+	sub		rY,		count
+	movw	rX,		therx
 
 
 
+#define	
 
 
-Theta_END:
+
+Chi_Lota:
+
+	
+	
+
+	
+END_Condtion:
 	dec	main_count
-	breq 99f
+	breq Keccack_END
 	rjmp start
-99:
+
+Keccack_END:
 	pop r22
 	pop r23
 	pop_range 0, 31
 	ret
-   
- 
+
+first_load_EOR:
+
+	ld	   rState0,		X+
+    ld     rState1,		X+
+    ld     rState2,		X+
+    ld     rState3,		X+
+    ld     rState4,		X+
+    ld     rState5,		X+
+    ld     rState6,		X+
+    ld     rState7,		X+
+	sub		rX,		count3
+
+	ld	   rTemp0,		Y+
+    ld     rTemp1,		Y+
+    ld     rTemp2,		Y+
+    ld     rTemp3,		Y+
+    ld     rTemp4,		Y+
+    ld     rTemp5,		Y+
+    ld     rTemp6,		Y+
+    ld     rTemp7,		Y+
+
+	eor	  rState0,	rTemp0
+	eor	  rState1,	rTemp1
+	eor	  rState2,	rTemp2
+	eor	  rState3,	rTemp3
+	eor	  rState4,	rTemp4
+	eor	  rState5,	rTemp5
+	eor	  rState6,	rTemp6
+	eor	  rState7,	rTemp7
+
+	
+	ret
+
+ rotate64_4bit_left:
+
+    lsl		rState0
+    rol     rState1
+    rol     rState2
+    rol     rState3
+    rol     rState4
+    rol     rState5
+    rol     rState6
+    rol     rState7
+    adc     rState0, zero
+
+rotate64_3bit_left:
+
+    lsl		rState0
+    rol     rState1
+    rol     rState2
+    rol     rState3
+    rol     rState4
+    rol     rState5
+    rol     rState6
+    rol     rState7
+    adc     rState0, zero
+
+rotate64_2bit_left:
+
+    lsl		rState0
+    rol     rState1
+    rol     rState2
+    rol     rState3
+    rol     rState4
+    rol     rState5
+    rol     rState6
+    rol     rState7
+    adc     rState0, zero
+
+rotate64_1bit_left:
+
+    lsl		rState0
+    rol     rState1
+    rol     rState2
+    rol     rState3
+    rol     rState4
+    rol     rState5
+    rol     rState6
+    rol     rState7
+    adc     rState0, zero
+
+	ret
+
+;----------------------------------------------------------------------------------------------------
+
+rotate64_3bit_right:
+
+    bst     rState0, 0
+    ror     rState7
+    ror     rState6
+    ror     rState5
+    ror     rState4
+    ror     rState3
+    ror     rState2
+    ror     rState1
+    ror     rState0
+    bld     rState7, 7
+
+rotate64_2bit_right:
+
+    bst     rState0, 0
+    ror     rState7
+    ror     rState6
+    ror     rState5
+    ror     rState4
+    ror     rState3
+    ror     rState2
+    ror     rState1
+    ror     rState0
+    bld     rState7, 7
+
+rotate64_1bit_right:
+
+    bst     rState0, 0
+    ror     rState7
+    ror     rState6
+    ror     rState5
+    ror     rState4
+    ror     rState3
+    ror     rState2
+    ror     rState1
+    ror     rState0
+    bld     rState7, 7
+
+	ret
+
+;----------------------------------------------------------------------------------------------------
+
+rotate64_0byte_left:
+
+    st      X+,	rState0
+    st      X+,	rState1
+    st      X+,	rState2
+	st      X+,	rState3
+	st      X+,	rState4
+	st      X+,	rState5
+	st      X+,	rState6
+	st      X+,	rState7
+
+    ret
+
+rotate64_1byte_left:
+	
+	st      X+,	rState1
+    st      X+,	rState2
+    st      X+,	rState3
+	st      X+,	rState4
+	st      X+,	rState5
+	st      X+,	rState6
+	st      X+,	rState7
+	st      X+,	rState0
+
+    ret   
+
+rotate64_2byte_left:
+
+	st      X+,	rState2
+    st      X+,	rState3
+    st      X+,	rState4
+	st      X+,	rState5
+	st      X+,	rState6
+	st      X+,	rState7
+	st      X+,	rState0
+	st      X+,	rState1
+
+    ret   
+
+rotate64_3byte_left:
+
+	st      X+,	rState3
+    st      X+,	rState4
+    st      X+,	rState5
+	st      X+,	rState6
+	st      X+,	rState7
+	st      X+,	rState0
+	st      X+,	rState1
+	st      X+,	rState2
+
+    ret    
+
+rotate64_4byte_left:
+
+	st      X+,	rState4
+    st      X+,	rState5
+    st      X+,	rState6
+	st      X+,	rState7
+	st      X+,	rState0
+	st      X+,	rState1
+	st      X+,	rState2
+	st      X+,	rState3
+
+    ret    
+
+rotate64_5byte_left:
+
+	st      X+,	rState5
+    st      X+,	rState6
+    st      X+,	rState7
+	st      X+,	rState0
+	st      X+,	rState1
+	st      X+,	rState2
+	st      X+,	rState3
+	st      X+,	rState4
+
+    ret    
+
+rotate64_6byte_left:
+
+	st      X+,	rState6
+    st      X+,	rState7
+    st      X+,	rState0
+	st      X+,	rState1
+	st      X+,	rState2
+	st      X+,	rState3
+	st      X+,	rState4
+	st      X+,	rState5
+
+    ret    
+
+rotate64_7byte_left:
+
+	st      X+,	rState7
+    st      X+,	rState0
+    st      X+,	rState1
+	st      X+,	rState2
+	st      X+,	rState3
+	st      X+,	rState4
+	st      X+,	rState5
+	st      X+,	rState6
+
+    ret    

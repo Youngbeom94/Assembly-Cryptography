@@ -817,6 +817,7 @@ KeccakChiIotaPrepareTheta_yLoop:
     ldd     CIPTa4, Y+32
 
     ;*p = t = a0 ^ ((~a1) & a2); c0 ^= t;
+
     mov     r0, CIPTa1
     com     r0
     and     r0, CIPTa2
@@ -825,6 +826,7 @@ KeccakChiIotaPrepareTheta_yLoop:
     st      Y, r0
 
     ;*(p+8) = t = a1 ^ ((~a2) & a3); c1 ^= t;
+
     mov     r0, CIPTa2
     com     r0
     and     r0, CIPTa3
@@ -833,6 +835,7 @@ KeccakChiIotaPrepareTheta_yLoop:
     std     Y+8, r0
 
     ;*(p+16) = a2 ^= ((~a3) & a4); c2 ^= a2;
+
     mov     r0, CIPTa3
     com     r0
     and     r0, CIPTa4
@@ -841,6 +844,7 @@ KeccakChiIotaPrepareTheta_yLoop:
     std     Y+16, r0
 
     ;*(p+24) = a3 ^= ((~a4) & a0); c3 ^= a3;
+
     mov     r0, CIPTa4
     com     r0
     and     r0, CIPTa0
@@ -849,6 +853,7 @@ KeccakChiIotaPrepareTheta_yLoop:
     std     Y+24, r0
 
     ;*(p+32) = a4 ^= ((~a0) & a1); c4 ^= a4;
+
     com     CIPTa0
     and     CIPTa0, CIPTa1
     eor     CIPTa0, CIPTa4
