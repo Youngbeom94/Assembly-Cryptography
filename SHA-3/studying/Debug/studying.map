@@ -20,7 +20,7 @@ Discarded input sections
  .bss           0x00000000        0x0 macro.o
  .data          0x00000000        0x0 keccack1600.o
  .bss           0x00000000        0x0 keccack1600.o
- .avr.prop      0x00000000       0x31 keccack1600.o
+ .avr.prop      0x00000000       0x28 keccack1600.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
@@ -262,7 +262,7 @@ END GROUP
                 0x0000009e                init
  *fill*         0x000000d4       0x2c 
  .text          0x00000100      0xb00 keccack1600.o
-                0x00000662                keccack
+                0x000005c0                keccack
                 0x00000c00                . = ALIGN (0x2)
  *(.text.*)
  .text.main     0x00000c00       0x8c main.o
@@ -410,12 +410,12 @@ END GROUP
  .debug_abbrev  0x0000073d       0xbb main.o
  .debug_abbrev  0x000007f8       0x14 keccack1600.o
 
-.debug_line     0x00000000     0x101a
+.debug_line     0x00000000     0x1278
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x169 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284/avr51/crtatmega1284.o
  .debug_line    0x00000169       0xd5 init.o
  .debug_line    0x0000023e       0x5d main.o
- .debug_line    0x0000029b      0xd7f keccack1600.o
+ .debug_line    0x0000029b      0xfdd keccack1600.o
 
 .debug_frame    0x00000000       0x54
  *(.debug_frame)

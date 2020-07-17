@@ -26,7 +26,7 @@ int main(void)
 	u8 temp[80] = {0x00,};
 	
 	init(in, state, temp);
-	keccack(in,state,temp);
+	keccack(in, state,temp);
 	
 	
 	//test(state);

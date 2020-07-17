@@ -41,24 +41,7 @@ PHI_TABLE_24:
 
 
 .balign 256
-KeccakP1600_RoundConstants_24:
-
-    .BYTE   0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-    .BYTE   0x82, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-    .BYTE   0x8a, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80
-    .BYTE   0x00, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80
-    .BYTE   0x8b, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-    .BYTE   0x01, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00
-    .BYTE   0x81, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80
-    .BYTE   0x09, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80
-    .BYTE   0x8a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-    .BYTE   0x88, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-    .BYTE   0x09, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00
-    .BYTE   0x0a, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00
-
-.balign 256
-KeccakP1600_RoundConstants_12:
-
+RoundConstants_24:
     .BYTE   0x8b, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00
     .BYTE   0x8b, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80
     .BYTE   0x89, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80
@@ -71,9 +54,19 @@ KeccakP1600_RoundConstants_12:
     .BYTE   0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80
     .BYTE   0x01, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00
     .BYTE   0x08, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80
+	.BYTE   0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    .BYTE   0x82, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    .BYTE   0x8a, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80
+    .BYTE   0x00, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80
+    .BYTE   0x8b, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    .BYTE   0x01, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00
+    .BYTE   0x81, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80
+    .BYTE   0x09, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80
+    .BYTE   0x8a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    .BYTE   0x88, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    .BYTE   0x09, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00
+    .BYTE   0x0a, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00
 
-KeccakP1600_RoundConstants_0:
-    .BYTE   0xFF, 0        ; terminator
 
 .text
 
@@ -134,6 +127,12 @@ keccack:
 		movw rX,	r24 ; in   --> X
 		movw rY,	r20 ; temp --> Y
 		ldi main_count,		 24
+
+		ldi		r31,	hi8(RoundConstants_24)
+		ldi		r30,	lo8(RoundConstants_24)
+		push	r30
+		push	r31
+
 		ldi		r31,	hi8(PHI_TABLE_12)
 		ldi		r30,	lo8(PHI_TABLE_12)
 		movw	therz,	rZ
@@ -444,7 +443,8 @@ Theta_update_3:
 	sub		rY,		count
 	sbiw	Y,		8
 
-	Theta_update_5:
+
+Theta_update_5:
 						  ; rstate 4 저장
 	ldd      rTemp0, Y+16  ;2 저장
     ldd      rTemp1, Y+17
@@ -495,6 +495,7 @@ Theta_update_3:
 Thetha_Rho_loop:
 
 	ldi		count,	40
+
 	rcall	first_load_EOR
 	rcall	rotate64_1bit_right
 	rcall	rotate64_4byte_left
@@ -538,7 +539,6 @@ Thetha_Rho_loop:
 	rcall	rotate64_0byte_left  ; fist Row
 
 	sub		rY,		count	
-
 ;-------------------------------------------
 
 	rcall	first_load_EOR
@@ -561,7 +561,6 @@ Thetha_Rho_loop:
 	rcall	rotate64_0byte_left	;Third Row
 
 	sub		rY,		count	
-
 ;-------------------------------------------
 
 	rcall	first_load_EOR
@@ -607,19 +606,141 @@ Thetha_Rho_loop:
 	rcall	rotate64_6byte_left	 ;Fifth Row
 	
 	sub		rY,		count
+
+	movw	rX,		therx
+	movw	therx,	rY
+	movw	rY,		rX
 	movw	rX,		therx
 
 
+	ldi		count,	5
+	mov		count2,	count
+	eor		zero,	zero
 
-#define	
-
-
+Chi_Lota_Setting:
+	ldi		count,	8	
 
 Chi_Lota:
 
+	ld      rTemp0, Y
+    ldd     rTemp1, Y+8
+    ldd     rTemp2, Y+16
+    ldd     rTemp3, Y+24
+    ldd     rTemp4, Y+32
 	
-	
+	;*p = t = a0 ^ ((~a1) & a2); c0 ^= t;
 
+	mov     load, rTemp1
+    com     load
+    and     load, rTemp2
+    eor     load, rTemp0
+    eor     rTemp0, load
+    st      Y, load
+
+    ;*(p+8) = t = a1 ^ ((~a2) & a3); c1 ^= t;
+
+    mov     load, rTemp2
+    com     load
+    and     load, rTemp3
+    eor     load, rTemp1
+    eor     rTemp1, load
+    std     Y+8, r0
+
+    ;*(p+16) = a2 ^= ((~a3) & a4); c2 ^= a2;
+
+    mov     load, rTemp3
+    com     load
+    and     load, rTemp4
+    eor     load, rTemp2
+    eor     rTemp2, load
+    std     Y+16, load
+
+    ;*(p+24) = a3 ^= ((~a4) & a0); c3 ^= a3;
+
+    mov     load, rTemp4
+    com     load
+    and     load, rTemp0
+    eor     load, rTemp3
+    eor     rTemp3, load
+    std     Y+24, load
+
+    ;*(p+32) = a4 ^= ((~a0) & a1); c4 ^= a4;
+
+    com     rTemp0
+    and     rTemp0, rTemp1
+    eor     rTemp0, rTemp4
+    eor     rTemp4, rTemp0
+    std     Y+32, rTemp0
+
+Chi_Condition:
+
+	adiw    rY, 8
+	adc		rY+1,	zero
+    dec     count
+    brne    Chi_Lota
+
+	adiw	rY,32
+	adc		rY+1,	zero
+	dec		count2
+	brne	Chi_Lota_Setting
+
+	movw	rX,		rY
+	movw	rY,		therx
+
+	movw	therx,	rZ
+
+Lota:
+
+	pop		r31
+	pop		r30
+	
+	ldi		count,	96
+	adiw	rY,		count
+	adc		rY,		zero
+
+	ld		rState0,	Y
+	ldd		rState1,	Y+1
+	ldd		rState2,	Y+2
+	ldd		rState3,	Y+3
+	ldd		rState4,	Y+4
+	ldd		rState5,	Y+5
+	ldd		rState6,	Y+6
+	ldd		rState7,	Y+7
+
+	lpm		rTemp0,		Z+
+	lpm		rTemp1,		Z+
+	lpm		rTemp2,		Z+
+	lpm		rTemp3,		Z+
+	lpm		rTemp4,		Z+
+	lpm		rTemp5,		Z+
+	lpm		rTemp6,		Z+
+	lpm		rTemp7,		Z+
+
+	eor		rState0,	rTemp0
+	eor		rState1,	rTemp1
+	eor		rState2,	rTemp2
+	eor		rState3,	rTemp3
+	eor		rState4,	rTemp4
+	eor		rState5,	rTemp5
+	eor		rState6,	rTemp6
+	eor		rState7,	rTemp7
+
+	st		Y,			rState0
+	std		Y+1,		rState1
+	std		Y+2,		rState2
+	std		Y+3,		rState3
+	std		Y+4,		rState4
+	std		Y+5,		rState5
+	std		Y+6,		rState6
+	std		Y+7,		rState7
+
+	sbiw	rY,		count
+	sbc		rY+1,	zero
+	push	r30
+	push	r31
+
+	movw	rZ,		therx
+	movw	therx,	rX
 	
 END_Condtion:
 	dec	main_count
@@ -627,6 +748,8 @@ END_Condtion:
 	rjmp start
 
 Keccack_END:
+	pop	r31
+	pop	r30
 	pop r22
 	pop r23
 	pop_range 0, 31

@@ -17,15 +17,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   6 .debug_abbrev 0000080c  00000000  00000000  00001812  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   0000101a  00000000  00000000  0000201e  2**0
+  7 .debug_line   00001278  00000000  00000000  0000201e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000054  00000000  00000000  00003038  2**2
+  8 .debug_frame  00000054  00000000  00000000  00003298  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000003d9  00000000  00000000  0000308c  2**0
+  9 .debug_str    000003d9  00000000  00000000  000032ec  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000096  00000000  00000000  00003465  2**0
+ 10 .debug_loc    00000096  00000000  00000000  000036c5  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000010  00000000  00000000  000034fb  2**0
+ 11 .debug_ranges 00000010  00000000  00000000  0000375b  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -492,1307 +492,1501 @@ Disassembly of section .text:
  42a:	17 18       	sub	r1, r7
 	...
 
-00000500 <KeccakP1600_RoundConstants_24>:
- 500:	01 00       	.word	0x0001	; ????
- 502:	00 00       	nop
+00000500 <RoundConstants_24>:
+ 500:	8b 80       	ldd	r8, Y+3	; 0x03
+ 502:	00 80       	ld	r0, Z
  504:	00 00       	nop
  506:	00 00       	nop
- 508:	82 80       	ldd	r8, Z+2	; 0x02
+ 508:	8b 00       	.word	0x008b	; ????
  50a:	00 00       	nop
  50c:	00 00       	nop
- 50e:	00 00       	nop
- 510:	8a 80       	ldd	r8, Y+2	; 0x02
+ 50e:	00 80       	ld	r0, Z
+ 510:	89 80       	ldd	r8, Y+1	; 0x01
  512:	00 00       	nop
  514:	00 00       	nop
  516:	00 80       	ld	r0, Z
- 518:	00 80       	ld	r0, Z
- 51a:	00 80       	ld	r0, Z
+ 518:	03 80       	ldd	r0, Z+3	; 0x03
+ 51a:	00 00       	nop
  51c:	00 00       	nop
  51e:	00 80       	ld	r0, Z
- 520:	8b 80       	ldd	r8, Y+3	; 0x03
+ 520:	02 80       	ldd	r0, Z+2	; 0x02
  522:	00 00       	nop
  524:	00 00       	nop
- 526:	00 00       	nop
- 528:	01 00       	.word	0x0001	; ????
- 52a:	00 80       	ld	r0, Z
+ 526:	00 80       	ld	r0, Z
+ 528:	80 00       	.word	0x0080	; ????
+ 52a:	00 00       	nop
  52c:	00 00       	nop
- 52e:	00 00       	nop
- 530:	81 80       	ldd	r8, Z+1	; 0x01
- 532:	00 80       	ld	r0, Z
+ 52e:	00 80       	ld	r0, Z
+ 530:	0a 80       	ldd	r0, Y+2	; 0x02
+ 532:	00 00       	nop
  534:	00 00       	nop
- 536:	00 80       	ld	r0, Z
- 538:	09 80       	ldd	r0, Y+1	; 0x01
- 53a:	00 00       	nop
+ 536:	00 00       	nop
+ 538:	0a 00       	.word	0x000a	; ????
+ 53a:	00 80       	ld	r0, Z
  53c:	00 00       	nop
  53e:	00 80       	ld	r0, Z
- 540:	8a 00       	.word	0x008a	; ????
- 542:	00 00       	nop
+ 540:	81 80       	ldd	r8, Z+1	; 0x01
+ 542:	00 80       	ld	r0, Z
  544:	00 00       	nop
- 546:	00 00       	nop
- 548:	88 00       	.word	0x0088	; ????
+ 546:	00 80       	ld	r0, Z
+ 548:	80 80       	ld	r8, Z
  54a:	00 00       	nop
  54c:	00 00       	nop
- 54e:	00 00       	nop
- 550:	09 80       	ldd	r0, Y+1	; 0x01
+ 54e:	00 80       	ld	r0, Z
+ 550:	01 00       	.word	0x0001	; ????
  552:	00 80       	ld	r0, Z
  554:	00 00       	nop
  556:	00 00       	nop
- 558:	0a 00       	.word	0x000a	; ????
+ 558:	08 80       	ld	r0, Y
  55a:	00 80       	ld	r0, Z
+ 55c:	00 00       	nop
+ 55e:	00 80       	ld	r0, Z
+ 560:	01 00       	.word	0x0001	; ????
+ 562:	00 00       	nop
+ 564:	00 00       	nop
+ 566:	00 00       	nop
+ 568:	82 80       	ldd	r8, Z+2	; 0x02
+ 56a:	00 00       	nop
+ 56c:	00 00       	nop
+ 56e:	00 00       	nop
+ 570:	8a 80       	ldd	r8, Y+2	; 0x02
+ 572:	00 00       	nop
+ 574:	00 00       	nop
+ 576:	00 80       	ld	r0, Z
+ 578:	00 80       	ld	r0, Z
+ 57a:	00 80       	ld	r0, Z
+ 57c:	00 00       	nop
+ 57e:	00 80       	ld	r0, Z
+ 580:	8b 80       	ldd	r8, Y+3	; 0x03
+ 582:	00 00       	nop
+ 584:	00 00       	nop
+ 586:	00 00       	nop
+ 588:	01 00       	.word	0x0001	; ????
+ 58a:	00 80       	ld	r0, Z
+ 58c:	00 00       	nop
+ 58e:	00 00       	nop
+ 590:	81 80       	ldd	r8, Z+1	; 0x01
+ 592:	00 80       	ld	r0, Z
+ 594:	00 00       	nop
+ 596:	00 80       	ld	r0, Z
+ 598:	09 80       	ldd	r0, Y+1	; 0x01
+ 59a:	00 00       	nop
+ 59c:	00 00       	nop
+ 59e:	00 80       	ld	r0, Z
+ 5a0:	8a 00       	.word	0x008a	; ????
+ 5a2:	00 00       	nop
+ 5a4:	00 00       	nop
+ 5a6:	00 00       	nop
+ 5a8:	88 00       	.word	0x0088	; ????
+ 5aa:	00 00       	nop
+ 5ac:	00 00       	nop
+ 5ae:	00 00       	nop
+ 5b0:	09 80       	ldd	r0, Y+1	; 0x01
+ 5b2:	00 80       	ld	r0, Z
+ 5b4:	00 00       	nop
+ 5b6:	00 00       	nop
+ 5b8:	0a 00       	.word	0x000a	; ????
+ 5ba:	00 80       	ld	r0, Z
+ 5bc:	00 00       	nop
 	...
 
-00000600 <KeccakP1600_RoundConstants_12>:
- 600:	8b 80       	ldd	r8, Y+3	; 0x03
- 602:	00 80       	ld	r0, Z
- 604:	00 00       	nop
- 606:	00 00       	nop
- 608:	8b 00       	.word	0x008b	; ????
- 60a:	00 00       	nop
- 60c:	00 00       	nop
- 60e:	00 80       	ld	r0, Z
- 610:	89 80       	ldd	r8, Y+1	; 0x01
- 612:	00 00       	nop
- 614:	00 00       	nop
- 616:	00 80       	ld	r0, Z
- 618:	03 80       	ldd	r0, Z+3	; 0x03
- 61a:	00 00       	nop
- 61c:	00 00       	nop
- 61e:	00 80       	ld	r0, Z
- 620:	02 80       	ldd	r0, Z+2	; 0x02
- 622:	00 00       	nop
- 624:	00 00       	nop
- 626:	00 80       	ld	r0, Z
- 628:	80 00       	.word	0x0080	; ????
- 62a:	00 00       	nop
- 62c:	00 00       	nop
- 62e:	00 80       	ld	r0, Z
- 630:	0a 80       	ldd	r0, Y+2	; 0x02
- 632:	00 00       	nop
- 634:	00 00       	nop
- 636:	00 00       	nop
- 638:	0a 00       	.word	0x000a	; ????
- 63a:	00 80       	ld	r0, Z
- 63c:	00 00       	nop
- 63e:	00 80       	ld	r0, Z
- 640:	81 80       	ldd	r8, Z+1	; 0x01
- 642:	00 80       	ld	r0, Z
- 644:	00 00       	nop
- 646:	00 80       	ld	r0, Z
- 648:	80 80       	ld	r8, Z
- 64a:	00 00       	nop
- 64c:	00 00       	nop
- 64e:	00 80       	ld	r0, Z
- 650:	01 00       	.word	0x0001	; ????
- 652:	00 80       	ld	r0, Z
- 654:	00 00       	nop
- 656:	00 00       	nop
- 658:	08 80       	ld	r0, Y
- 65a:	00 80       	ld	r0, Z
- 65c:	00 00       	nop
- 65e:	00 80       	ld	r0, Z
-
-00000660 <KeccakP1600_RoundConstants_0>:
- 660:	ff 00       	.word	0x00ff	; ????
-
-00000662 <keccack>:
+000005c0 <keccack>:
  *			  'state' <- r22:r23
  *			  'temp'  <- r20:r21
  */			  
 .global keccack
 keccack:
 		push_range 0, 31
- 662:	0f 92       	push	r0
- 664:	1f 92       	push	r1
- 666:	2f 92       	push	r2
- 668:	3f 92       	push	r3
- 66a:	4f 92       	push	r4
- 66c:	5f 92       	push	r5
- 66e:	6f 92       	push	r6
- 670:	7f 92       	push	r7
- 672:	8f 92       	push	r8
- 674:	9f 92       	push	r9
- 676:	af 92       	push	r10
- 678:	bf 92       	push	r11
- 67a:	cf 92       	push	r12
- 67c:	df 92       	push	r13
- 67e:	ef 92       	push	r14
- 680:	ff 92       	push	r15
- 682:	0f 93       	push	r16
- 684:	1f 93       	push	r17
- 686:	2f 93       	push	r18
- 688:	3f 93       	push	r19
- 68a:	4f 93       	push	r20
- 68c:	5f 93       	push	r21
- 68e:	6f 93       	push	r22
- 690:	7f 93       	push	r23
- 692:	8f 93       	push	r24
- 694:	9f 93       	push	r25
- 696:	af 93       	push	r26
- 698:	bf 93       	push	r27
- 69a:	cf 93       	push	r28
- 69c:	df 93       	push	r29
- 69e:	ef 93       	push	r30
- 6a0:	ff 93       	push	r31
+ 5c0:	0f 92       	push	r0
+ 5c2:	1f 92       	push	r1
+ 5c4:	2f 92       	push	r2
+ 5c6:	3f 92       	push	r3
+ 5c8:	4f 92       	push	r4
+ 5ca:	5f 92       	push	r5
+ 5cc:	6f 92       	push	r6
+ 5ce:	7f 92       	push	r7
+ 5d0:	8f 92       	push	r8
+ 5d2:	9f 92       	push	r9
+ 5d4:	af 92       	push	r10
+ 5d6:	bf 92       	push	r11
+ 5d8:	cf 92       	push	r12
+ 5da:	df 92       	push	r13
+ 5dc:	ef 92       	push	r14
+ 5de:	ff 92       	push	r15
+ 5e0:	0f 93       	push	r16
+ 5e2:	1f 93       	push	r17
+ 5e4:	2f 93       	push	r18
+ 5e6:	3f 93       	push	r19
+ 5e8:	4f 93       	push	r20
+ 5ea:	5f 93       	push	r21
+ 5ec:	6f 93       	push	r22
+ 5ee:	7f 93       	push	r23
+ 5f0:	8f 93       	push	r24
+ 5f2:	9f 93       	push	r25
+ 5f4:	af 93       	push	r26
+ 5f6:	bf 93       	push	r27
+ 5f8:	cf 93       	push	r28
+ 5fa:	df 93       	push	r29
+ 5fc:	ef 93       	push	r30
+ 5fe:	ff 93       	push	r31
 		push r23
- 6a2:	7f 93       	push	r23
+ 600:	7f 93       	push	r23
 		push r22;  state --> stack
- 6a4:	6f 93       	push	r22
+ 602:	6f 93       	push	r22
 
 		movw rX,	r24 ; in   --> X
- 6a6:	dc 01       	movw	r26, r24
+ 604:	dc 01       	movw	r26, r24
 		movw rY,	r20 ; temp --> Y
- 6a8:	ea 01       	movw	r28, r20
+ 606:	ea 01       	movw	r28, r20
 		ldi main_count,		 24
- 6aa:	98 e1       	ldi	r25, 0x18	; 24
-		ldi		r31,	hi8(PHI_TABLE_12)
- 6ac:	f1 e0       	ldi	r31, 0x01	; 1
-		ldi		r30,	lo8(PHI_TABLE_12)
- 6ae:	e0 e0       	ldi	r30, 0x00	; 0
-		movw	therz,	rZ
- 6b0:	1f 01       	movw	r2, r30
+ 608:	98 e1       	ldi	r25, 0x18	; 24
 
-000006b2 <start>:
+		ldi		r31,	hi8(RoundConstants_24)
+ 60a:	f5 e0       	ldi	r31, 0x05	; 5
+		ldi		r30,	lo8(RoundConstants_24)
+ 60c:	e0 e0       	ldi	r30, 0x00	; 0
+		push	r30
+ 60e:	ef 93       	push	r30
+		push	r31
+ 610:	ff 93       	push	r31
+
+		ldi		r31,	hi8(PHI_TABLE_12)
+ 612:	f1 e0       	ldi	r31, 0x01	; 1
+		ldi		r30,	lo8(PHI_TABLE_12)
+ 614:	e0 e0       	ldi	r30, 0x00	; 0
+		movw	therz,	rZ
+ 616:	1f 01       	movw	r2, r30
+
+00000618 <start>:
 
 start:
 		ldi		count,	5
- 6b2:	85 e0       	ldi	r24, 0x05	; 5
+ 618:	85 e0       	ldi	r24, 0x05	; 5
 		mov		count2,	count
- 6b4:	68 2e       	mov	r6, r24
+ 61a:	68 2e       	mov	r6, r24
 		movw	rZ,		therz
- 6b6:	f1 01       	movw	r30, r2
+ 61c:	f1 01       	movw	r30, r2
 		movw	therx,	X
- 6b8:	2d 01       	movw	r4, r26
+ 61e:	2d 01       	movw	r4, r26
 
 		ldi		count,	12
- 6ba:	8c e0       	ldi	r24, 0x0C	; 12
+ 620:	8c e0       	ldi	r24, 0x0C	; 12
 		cp		count,	main_count
- 6bc:	89 17       	cp	r24, r25
+ 622:	89 17       	cp	r24, r25
 		brge	startafter
- 6be:	0c f4       	brge	.+2      	; 0x6c2 <startafter>
+ 624:	0c f4       	brge	.+2      	; 0x628 <startafter>
 		rjmp	Theta_init_Loop
- 6c0:	03 c0       	rjmp	.+6      	; 0x6c8 <Theta_init_Loop>
+ 626:	03 c0       	rjmp	.+6      	; 0x62e <Theta_init_Loop>
 
-000006c2 <startafter>:
+00000628 <startafter>:
 
 startafter:
 		ldi		r31,	hi8(PHI_TABLE_24)
- 6c2:	f3 e0       	ldi	r31, 0x03	; 3
+ 628:	f3 e0       	ldi	r31, 0x03	; 3
 		ldi		r30,	lo8(PHI_TABLE_24)
- 6c4:	e0 e0       	ldi	r30, 0x00	; 0
+ 62a:	e0 e0       	ldi	r30, 0x00	; 0
 		movw	therz,	rZ
- 6c6:	1f 01       	movw	r2, r30
+ 62c:	1f 01       	movw	r2, r30
 
-000006c8 <Theta_init_Loop>:
+0000062e <Theta_init_Loop>:
 
 
 
 Theta_init_Loop:
 
 	lpm		rX,		Z
- 6c8:	a4 91       	lpm	r26, Z
+ 62e:	a4 91       	lpm	r26, Z
     ld      rTemp0, X+     ; state[x]
- 6ca:	0d 91       	ld	r16, X+
+ 630:	0d 91       	ld	r16, X+
     ld      rTemp1, X+
- 6cc:	1d 91       	ld	r17, X+
+ 632:	1d 91       	ld	r17, X+
     ld      rTemp2, X+
- 6ce:	2d 91       	ld	r18, X+
+ 634:	2d 91       	ld	r18, X+
     ld      rTemp3, X+
- 6d0:	3d 91       	ld	r19, X+
+ 636:	3d 91       	ld	r19, X+
     ld      rTemp4, X+
- 6d2:	4d 91       	ld	r20, X+
+ 638:	4d 91       	ld	r20, X+
     ld      rTemp5, X+
- 6d4:	5d 91       	ld	r21, X+
+ 63a:	5d 91       	ld	r21, X+
     ld      rTemp6, X+
- 6d6:	6d 91       	ld	r22, X+
+ 63c:	6d 91       	ld	r22, X+
     ld      rTemp7, X+
- 6d8:	7d 91       	ld	r23, X+
+ 63e:	7d 91       	ld	r23, X+
 
 	adiw	Z,		5    ; state[x+5]
- 6da:	35 96       	adiw	r30, 0x05	; 5
+ 640:	35 96       	adiw	r30, 0x05	; 5
 	lpm		rX,		Z
- 6dc:	a4 91       	lpm	r26, Z
+ 642:	a4 91       	lpm	r26, Z
     ld		load,	X+
- 6de:	0d 90       	ld	r0, X+
+ 644:	0d 90       	ld	r0, X+
 	eor		rTemp0,	load
- 6e0:	00 25       	eor	r16, r0
+ 646:	00 25       	eor	r16, r0
 	ld		load,	X+
- 6e2:	0d 90       	ld	r0, X+
+ 648:	0d 90       	ld	r0, X+
 	eor		rTemp1,	load
- 6e4:	10 25       	eor	r17, r0
+ 64a:	10 25       	eor	r17, r0
 	ld		load,	X+
- 6e6:	0d 90       	ld	r0, X+
+ 64c:	0d 90       	ld	r0, X+
 	eor		rTemp2,	load
- 6e8:	20 25       	eor	r18, r0
+ 64e:	20 25       	eor	r18, r0
 	ld		load,	X+
- 6ea:	0d 90       	ld	r0, X+
+ 650:	0d 90       	ld	r0, X+
 	eor		rTemp3,	load
- 6ec:	30 25       	eor	r19, r0
+ 652:	30 25       	eor	r19, r0
 	ld		load,	X+
- 6ee:	0d 90       	ld	r0, X+
+ 654:	0d 90       	ld	r0, X+
 	eor		rTemp4,	load
- 6f0:	40 25       	eor	r20, r0
+ 656:	40 25       	eor	r20, r0
 	ld		load,	X+
- 6f2:	0d 90       	ld	r0, X+
+ 658:	0d 90       	ld	r0, X+
 	eor		rTemp5,	load
- 6f4:	50 25       	eor	r21, r0
+ 65a:	50 25       	eor	r21, r0
 	ld		load,	X+
- 6f6:	0d 90       	ld	r0, X+
+ 65c:	0d 90       	ld	r0, X+
 	eor		rTemp6,	load
- 6f8:	60 25       	eor	r22, r0
+ 65e:	60 25       	eor	r22, r0
 	ld		load,	X+
- 6fa:	0d 90       	ld	r0, X+
+ 660:	0d 90       	ld	r0, X+
 	eor		rTemp7,	load
- 6fc:	70 25       	eor	r23, r0
+ 662:	70 25       	eor	r23, r0
 
 	adiw	Z,		5    ; state[x+10]
- 6fe:	35 96       	adiw	r30, 0x05	; 5
+ 664:	35 96       	adiw	r30, 0x05	; 5
 	lpm		rX,		Z
- 700:	a4 91       	lpm	r26, Z
+ 666:	a4 91       	lpm	r26, Z
     ld		load,	X+
- 702:	0d 90       	ld	r0, X+
+ 668:	0d 90       	ld	r0, X+
 	eor		rTemp0,	load
- 704:	00 25       	eor	r16, r0
+ 66a:	00 25       	eor	r16, r0
 	ld		load,	X+
- 706:	0d 90       	ld	r0, X+
+ 66c:	0d 90       	ld	r0, X+
 	eor		rTemp1,	load
- 708:	10 25       	eor	r17, r0
+ 66e:	10 25       	eor	r17, r0
 	ld		load,	X+
- 70a:	0d 90       	ld	r0, X+
+ 670:	0d 90       	ld	r0, X+
 	eor		rTemp2,	load
- 70c:	20 25       	eor	r18, r0
+ 672:	20 25       	eor	r18, r0
 	ld		load,	X+
- 70e:	0d 90       	ld	r0, X+
+ 674:	0d 90       	ld	r0, X+
 	eor		rTemp3,	load
- 710:	30 25       	eor	r19, r0
+ 676:	30 25       	eor	r19, r0
 	ld		load,	X+
- 712:	0d 90       	ld	r0, X+
+ 678:	0d 90       	ld	r0, X+
 	eor		rTemp4,	load
- 714:	40 25       	eor	r20, r0
+ 67a:	40 25       	eor	r20, r0
 	ld		load,	X+
- 716:	0d 90       	ld	r0, X+
+ 67c:	0d 90       	ld	r0, X+
 	eor		rTemp5,	load
- 718:	50 25       	eor	r21, r0
+ 67e:	50 25       	eor	r21, r0
 	ld		load,	X+
- 71a:	0d 90       	ld	r0, X+
+ 680:	0d 90       	ld	r0, X+
 	eor		rTemp6,	load
- 71c:	60 25       	eor	r22, r0
+ 682:	60 25       	eor	r22, r0
 	ld		load,	X+
- 71e:	0d 90       	ld	r0, X+
+ 684:	0d 90       	ld	r0, X+
 	eor		rTemp7,	load
- 720:	70 25       	eor	r23, r0
+ 686:	70 25       	eor	r23, r0
 
 	adiw	Z,		5    ; state[x+15]
- 722:	35 96       	adiw	r30, 0x05	; 5
+ 688:	35 96       	adiw	r30, 0x05	; 5
 	lpm		rX,		Z
- 724:	a4 91       	lpm	r26, Z
+ 68a:	a4 91       	lpm	r26, Z
     ld		load,	X+
- 726:	0d 90       	ld	r0, X+
+ 68c:	0d 90       	ld	r0, X+
 	eor		rTemp0,	load
- 728:	00 25       	eor	r16, r0
+ 68e:	00 25       	eor	r16, r0
 	ld		load,	X+
- 72a:	0d 90       	ld	r0, X+
+ 690:	0d 90       	ld	r0, X+
 	eor		rTemp1,	load
- 72c:	10 25       	eor	r17, r0
+ 692:	10 25       	eor	r17, r0
 	ld		load,	X+
- 72e:	0d 90       	ld	r0, X+
+ 694:	0d 90       	ld	r0, X+
 	eor		rTemp2,	load
- 730:	20 25       	eor	r18, r0
+ 696:	20 25       	eor	r18, r0
 	ld		load,	X+
- 732:	0d 90       	ld	r0, X+
+ 698:	0d 90       	ld	r0, X+
 	eor		rTemp3,	load
- 734:	30 25       	eor	r19, r0
+ 69a:	30 25       	eor	r19, r0
 	ld		load,	X+
- 736:	0d 90       	ld	r0, X+
+ 69c:	0d 90       	ld	r0, X+
 	eor		rTemp4,	load
- 738:	40 25       	eor	r20, r0
+ 69e:	40 25       	eor	r20, r0
 	ld		load,	X+
- 73a:	0d 90       	ld	r0, X+
+ 6a0:	0d 90       	ld	r0, X+
 	eor		rTemp5,	load
- 73c:	50 25       	eor	r21, r0
+ 6a2:	50 25       	eor	r21, r0
 	ld		load,	X+
- 73e:	0d 90       	ld	r0, X+
+ 6a4:	0d 90       	ld	r0, X+
 	eor		rTemp6,	load
- 740:	60 25       	eor	r22, r0
+ 6a6:	60 25       	eor	r22, r0
 	ld		load,	X+
- 742:	0d 90       	ld	r0, X+
+ 6a8:	0d 90       	ld	r0, X+
 	eor		rTemp7,	load
- 744:	70 25       	eor	r23, r0
+ 6aa:	70 25       	eor	r23, r0
 
 	adiw	Z,		5    ; state[x+20]
- 746:	35 96       	adiw	r30, 0x05	; 5
+ 6ac:	35 96       	adiw	r30, 0x05	; 5
 	lpm		rX,		Z+
- 748:	a5 91       	lpm	r26, Z+
+ 6ae:	a5 91       	lpm	r26, Z+
     ld		load,	X+
- 74a:	0d 90       	ld	r0, X+
+ 6b0:	0d 90       	ld	r0, X+
 	eor		rTemp0,	load
- 74c:	00 25       	eor	r16, r0
+ 6b2:	00 25       	eor	r16, r0
 	ld		load,	X+
- 74e:	0d 90       	ld	r0, X+
+ 6b4:	0d 90       	ld	r0, X+
 	eor		rTemp1,	load
- 750:	10 25       	eor	r17, r0
+ 6b6:	10 25       	eor	r17, r0
 	ld		load,	X+
- 752:	0d 90       	ld	r0, X+
+ 6b8:	0d 90       	ld	r0, X+
 	eor		rTemp2,	load
- 754:	20 25       	eor	r18, r0
+ 6ba:	20 25       	eor	r18, r0
 	ld		load,	X+
- 756:	0d 90       	ld	r0, X+
+ 6bc:	0d 90       	ld	r0, X+
 	eor		rTemp3,	load
- 758:	30 25       	eor	r19, r0
+ 6be:	30 25       	eor	r19, r0
 	ld		load,	X+
- 75a:	0d 90       	ld	r0, X+
+ 6c0:	0d 90       	ld	r0, X+
 	eor		rTemp4,	load
- 75c:	40 25       	eor	r20, r0
+ 6c2:	40 25       	eor	r20, r0
 	ld		load,	X+
- 75e:	0d 90       	ld	r0, X+
+ 6c4:	0d 90       	ld	r0, X+
 	eor		rTemp5,	load
- 760:	50 25       	eor	r21, r0
+ 6c6:	50 25       	eor	r21, r0
 	ld		load,	X+
- 762:	0d 90       	ld	r0, X+
+ 6c8:	0d 90       	ld	r0, X+
 	eor		rTemp6,	load
- 764:	60 25       	eor	r22, r0
+ 6ca:	60 25       	eor	r22, r0
 	ld		load,	X+
- 766:	0d 90       	ld	r0, X+
+ 6cc:	0d 90       	ld	r0, X+
 	eor		rTemp7,	load
- 768:	70 25       	eor	r23, r0
+ 6ce:	70 25       	eor	r23, r0
 
 	st      Y+, rTemp0
- 76a:	09 93       	st	Y+, r16
+ 6d0:	09 93       	st	Y+, r16
     st      Y+, rTemp1
- 76c:	19 93       	st	Y+, r17
+ 6d2:	19 93       	st	Y+, r17
     st      Y+, rTemp2
- 76e:	29 93       	st	Y+, r18
+ 6d4:	29 93       	st	Y+, r18
     st      Y+, rTemp3
- 770:	39 93       	st	Y+, r19
+ 6d6:	39 93       	st	Y+, r19
     st      Y+, rTemp4
- 772:	49 93       	st	Y+, r20
+ 6d8:	49 93       	st	Y+, r20
     st      Y+, rTemp5
- 774:	59 93       	st	Y+, r21
+ 6da:	59 93       	st	Y+, r21
     st      Y+, rTemp6
- 776:	69 93       	st	Y+, r22
+ 6dc:	69 93       	st	Y+, r22
     st      Y+, rTemp7
- 778:	79 93       	st	Y+, r23
+ 6de:	79 93       	st	Y+, r23
 	dec		count2
- 77a:	6a 94       	dec	r6
+ 6e0:	6a 94       	dec	r6
 	breq	END_Theta
- 77c:	11 f0       	breq	.+4      	; 0x782 <END_Theta>
+ 6e2:	11 f0       	breq	.+4      	; 0x6e8 <END_Theta>
 	sbiw	Z,	 20
- 77e:	74 97       	sbiw	r30, 0x14	; 20
+ 6e4:	74 97       	sbiw	r30, 0x14	; 20
 	rjmp	Theta_init_Loop
- 780:	a3 cf       	rjmp	.-186    	; 0x6c8 <Theta_init_Loop>
+ 6e6:	a3 cf       	rjmp	.-186    	; 0x62e <Theta_init_Loop>
 
-00000782 <END_Theta>:
+000006e8 <END_Theta>:
 
 END_Theta:
 	adiw	Z,	 20
- 782:	74 96       	adiw	r30, 0x14	; 20
+ 6e8:	74 96       	adiw	r30, 0x14	; 20
 	sbiw	Y,	 25
- 784:	69 97       	sbiw	r28, 0x19	; 25
+ 6ea:	69 97       	sbiw	r28, 0x19	; 25
 	movw	X,	 therx ; X inital 
- 786:	d2 01       	movw	r26, r4
+ 6ec:	d2 01       	movw	r26, r4
 	movw	therz,	Z  ; thetha Z -----> r2, r3
- 788:	1f 01       	movw	r2, r30
+ 6ee:	1f 01       	movw	r2, r30
 
-0000078a <Theta_update_1>:
+000006f0 <Theta_update_1>:
 
 Theta_update_1:
 
 	ld       rTemp0, Y   ;0 저장
- 78a:	08 81       	ld	r16, Y
+ 6f0:	08 81       	ld	r16, Y
     ldd      rTemp1, Y+1
- 78c:	19 81       	ldd	r17, Y+1	; 0x01
+ 6f2:	19 81       	ldd	r17, Y+1	; 0x01
     ldd      rTemp2, Y+2
- 78e:	2a 81       	ldd	r18, Y+2	; 0x02
+ 6f4:	2a 81       	ldd	r18, Y+2	; 0x02
     ldd      rTemp3, Y+3
- 790:	3b 81       	ldd	r19, Y+3	; 0x03
+ 6f6:	3b 81       	ldd	r19, Y+3	; 0x03
     ldd      rTemp4, Y+4
- 792:	4c 81       	ldd	r20, Y+4	; 0x04
+ 6f8:	4c 81       	ldd	r20, Y+4	; 0x04
     ldd      rTemp5, Y+5
- 794:	5d 81       	ldd	r21, Y+5	; 0x05
+ 6fa:	5d 81       	ldd	r21, Y+5	; 0x05
     ldd      rTemp6, Y+6
- 796:	6e 81       	ldd	r22, Y+6	; 0x06
+ 6fc:	6e 81       	ldd	r22, Y+6	; 0x06
     ldd      rTemp7, Y+7
- 798:	7f 81       	ldd	r23, Y+7	; 0x07
+ 6fe:	7f 81       	ldd	r23, Y+7	; 0x07
 
 	ldd      rState0, Y+16   ; 2저장
- 79a:	88 88       	ldd	r8, Y+16	; 0x10
+ 700:	88 88       	ldd	r8, Y+16	; 0x10
     ldd      rState1, Y+17
- 79c:	99 88       	ldd	r9, Y+17	; 0x11
+ 702:	99 88       	ldd	r9, Y+17	; 0x11
     ldd      rState2, Y+18
- 79e:	aa 88       	ldd	r10, Y+18	; 0x12
+ 704:	aa 88       	ldd	r10, Y+18	; 0x12
     ldd      rState3, Y+19
- 7a0:	bb 88       	ldd	r11, Y+19	; 0x13
+ 706:	bb 88       	ldd	r11, Y+19	; 0x13
     ldd      rState4, Y+20
- 7a2:	cc 88       	ldd	r12, Y+20	; 0x14
+ 708:	cc 88       	ldd	r12, Y+20	; 0x14
     ldd      rState5, Y+21
- 7a4:	dd 88       	ldd	r13, Y+21	; 0x15
+ 70a:	dd 88       	ldd	r13, Y+21	; 0x15
     ldd      rState6, Y+22
- 7a6:	ee 88       	ldd	r14, Y+22	; 0x16
+ 70c:	ee 88       	ldd	r14, Y+22	; 0x16
     ldd      rState7, Y+23
- 7a8:	ff 88       	ldd	r15, Y+23	; 0x17
+ 70e:	ff 88       	ldd	r15, Y+23	; 0x17
 
 	lsl     rState0 ;2 로테이트
- 7aa:	88 0c       	add	r8, r8
+ 710:	88 0c       	add	r8, r8
     rol     rState1
- 7ac:	99 1c       	adc	r9, r9
+ 712:	99 1c       	adc	r9, r9
     rol     rState2
- 7ae:	aa 1c       	adc	r10, r10
+ 714:	aa 1c       	adc	r10, r10
     rol     rState3
- 7b0:	bb 1c       	adc	r11, r11
+ 716:	bb 1c       	adc	r11, r11
     rol     rState4
- 7b2:	cc 1c       	adc	r12, r12
+ 718:	cc 1c       	adc	r12, r12
     rol     rState5
- 7b4:	dd 1c       	adc	r13, r13
+ 71a:	dd 1c       	adc	r13, r13
     rol     rState6
- 7b6:	ee 1c       	adc	r14, r14
+ 71c:	ee 1c       	adc	r14, r14
     rol     rState7
- 7b8:	ff 1c       	adc	r15, r15
+ 71e:	ff 1c       	adc	r15, r15
     adc     rState0, zero
- 7ba:	81 1c       	adc	r8, r1
+ 720:	81 1c       	adc	r8, r1
 
 	eor		rState0, rTemp0 ;저장값 1 만들기
- 7bc:	80 26       	eor	r8, r16
+ 722:	80 26       	eor	r8, r16
 	eor		rState1, rTemp1
- 7be:	91 26       	eor	r9, r17
+ 724:	91 26       	eor	r9, r17
 	eor		rState2, rTemp2
- 7c0:	a2 26       	eor	r10, r18
+ 726:	a2 26       	eor	r10, r18
 	eor		rState3, rTemp3
- 7c2:	b3 26       	eor	r11, r19
+ 728:	b3 26       	eor	r11, r19
 	eor		rState4, rTemp4
- 7c4:	c4 26       	eor	r12, r20
+ 72a:	c4 26       	eor	r12, r20
 	eor		rState5, rTemp5
- 7c6:	d5 26       	eor	r13, r21
+ 72c:	d5 26       	eor	r13, r21
 	eor		rState6, rTemp6
- 7c8:	e6 26       	eor	r14, r22
+ 72e:	e6 26       	eor	r14, r22
 	eor		rState7, rTemp7
- 7ca:	f7 26       	eor	r15, r23
+ 730:	f7 26       	eor	r15, r23
 	
 	ldi		count,	48
- 7cc:	80 e3       	ldi	r24, 0x30	; 48
+ 732:	80 e3       	ldi	r24, 0x30	; 48
 	add		rY,		count
- 7ce:	c8 0f       	add	r28, r24
+ 734:	c8 0f       	add	r28, r24
 	st		Y+,	rState0
- 7d0:	89 92       	st	Y+, r8
+ 736:	89 92       	st	Y+, r8
 	st		Y+,	rState1
- 7d2:	99 92       	st	Y+, r9
+ 738:	99 92       	st	Y+, r9
 	st		Y+,	rState2
- 7d4:	a9 92       	st	Y+, r10
+ 73a:	a9 92       	st	Y+, r10
 	st		Y+,	rState3
- 7d6:	b9 92       	st	Y+, r11
+ 73c:	b9 92       	st	Y+, r11
 	st		Y+,	rState4
- 7d8:	c9 92       	st	Y+, r12
+ 73e:	c9 92       	st	Y+, r12
 	st		Y+,	rState5
- 7da:	d9 92       	st	Y+, r13
+ 740:	d9 92       	st	Y+, r13
 	st		Y+,	rState6
- 7dc:	e9 92       	st	Y+, r14
+ 742:	e9 92       	st	Y+, r14
 	st		Y+,	rState7;-------------------------------------------------02 ->1
- 7de:	f9 92       	st	Y+, r15
+ 744:	f9 92       	st	Y+, r15
 	sub		rY,		count
- 7e0:	c8 1b       	sub	r28, r24
+ 746:	c8 1b       	sub	r28, r24
 	sbiw	Y,		8
- 7e2:	28 97       	sbiw	r28, 0x08	; 8
+ 748:	28 97       	sbiw	r28, 0x08	; 8
 
-000007e4 <Theta_update_2>:
+0000074a <Theta_update_2>:
 
 Theta_update_2:
 							 ;rTemp <-- 0저장
 	ldd      rState0, Y+24   ; 3저장
- 7e4:	88 8c       	ldd	r8, Y+24	; 0x18
+ 74a:	88 8c       	ldd	r8, Y+24	; 0x18
     ldd      rState1, Y+25
- 7e6:	99 8c       	ldd	r9, Y+25	; 0x19
+ 74c:	99 8c       	ldd	r9, Y+25	; 0x19
     ldd      rState2, Y+26
- 7e8:	aa 8c       	ldd	r10, Y+26	; 0x1a
+ 74e:	aa 8c       	ldd	r10, Y+26	; 0x1a
     ldd      rState3, Y+27
- 7ea:	bb 8c       	ldd	r11, Y+27	; 0x1b
+ 750:	bb 8c       	ldd	r11, Y+27	; 0x1b
     ldd      rState4, Y+28
- 7ec:	cc 8c       	ldd	r12, Y+28	; 0x1c
+ 752:	cc 8c       	ldd	r12, Y+28	; 0x1c
     ldd      rState5, Y+29
- 7ee:	dd 8c       	ldd	r13, Y+29	; 0x1d
+ 754:	dd 8c       	ldd	r13, Y+29	; 0x1d
     ldd      rState6, Y+30
- 7f0:	ee 8c       	ldd	r14, Y+30	; 0x1e
+ 756:	ee 8c       	ldd	r14, Y+30	; 0x1e
     ldd      rState7, Y+31
- 7f2:	ff 8c       	ldd	r15, Y+31	; 0x1f
+ 758:	ff 8c       	ldd	r15, Y+31	; 0x1f
 
 	lsl     rTemp0 ;0 로테이트
- 7f4:	00 0f       	add	r16, r16
+ 75a:	00 0f       	add	r16, r16
     rol     rTemp1
- 7f6:	11 1f       	adc	r17, r17
+ 75c:	11 1f       	adc	r17, r17
     rol     rTemp2
- 7f8:	22 1f       	adc	r18, r18
+ 75e:	22 1f       	adc	r18, r18
     rol     rTemp3
- 7fa:	33 1f       	adc	r19, r19
+ 760:	33 1f       	adc	r19, r19
     rol     rTemp4
- 7fc:	44 1f       	adc	r20, r20
+ 762:	44 1f       	adc	r20, r20
     rol     rTemp5
- 7fe:	55 1f       	adc	r21, r21
+ 764:	55 1f       	adc	r21, r21
     rol     rTemp6
- 800:	66 1f       	adc	r22, r22
+ 766:	66 1f       	adc	r22, r22
     rol     rTemp7
- 802:	77 1f       	adc	r23, r23
+ 768:	77 1f       	adc	r23, r23
     adc     rTemp0, zero
- 804:	01 1d       	adc	r16, r1
+ 76a:	01 1d       	adc	r16, r1
 
 	eor		rTemp0,	rState0 ;저장값 4 만들기
- 806:	08 25       	eor	r16, r8
+ 76c:	08 25       	eor	r16, r8
 	eor		rTemp1,	rState1
- 808:	19 25       	eor	r17, r9
+ 76e:	19 25       	eor	r17, r9
 	eor		rTemp2,	rState2
- 80a:	2a 25       	eor	r18, r10
+ 770:	2a 25       	eor	r18, r10
 	eor		rTemp3,	rState3
- 80c:	3b 25       	eor	r19, r11
+ 772:	3b 25       	eor	r19, r11
 	eor		rTemp4,	rState4
- 80e:	4c 25       	eor	r20, r12
+ 774:	4c 25       	eor	r20, r12
 	eor		rTemp5,	rState5
- 810:	5d 25       	eor	r21, r13
+ 776:	5d 25       	eor	r21, r13
 	eor		rTemp6,	rState6
- 812:	6e 25       	eor	r22, r14
+ 778:	6e 25       	eor	r22, r14
 	eor		rTemp7,	rState7
- 814:	7f 25       	eor	r23, r15
+ 77a:	7f 25       	eor	r23, r15
 	
 	ldi		count,	72
- 816:	88 e4       	ldi	r24, 0x48	; 72
+ 77c:	88 e4       	ldi	r24, 0x48	; 72
 	add		rY,		count
- 818:	c8 0f       	add	r28, r24
+ 77e:	c8 0f       	add	r28, r24
 	st		Y+,	rTemp0
- 81a:	09 93       	st	Y+, r16
+ 780:	09 93       	st	Y+, r16
 	st		Y+,	rTemp1
- 81c:	19 93       	st	Y+, r17
+ 782:	19 93       	st	Y+, r17
 	st		Y+,	rTemp2
- 81e:	29 93       	st	Y+, r18
+ 784:	29 93       	st	Y+, r18
 	st		Y+,	rTemp3
- 820:	39 93       	st	Y+, r19
+ 786:	39 93       	st	Y+, r19
 	st		Y+,	rTemp4
- 822:	49 93       	st	Y+, r20
+ 788:	49 93       	st	Y+, r20
 	st		Y+,	rTemp5
- 824:	59 93       	st	Y+, r21
+ 78a:	59 93       	st	Y+, r21
 	st		Y+,	rTemp6
- 826:	69 93       	st	Y+, r22
+ 78c:	69 93       	st	Y+, r22
 	st		Y+,	rTemp7	;-------------------------------------------------30 ->4
- 828:	79 93       	st	Y+, r23
+ 78e:	79 93       	st	Y+, r23
 	sub		rY,		count
- 82a:	c8 1b       	sub	r28, r24
+ 790:	c8 1b       	sub	r28, r24
 	sbiw	Y,		8
- 82c:	28 97       	sbiw	r28, 0x08	; 8
+ 792:	28 97       	sbiw	r28, 0x08	; 8
 
-0000082e <Theta_update_3>:
+00000794 <Theta_update_3>:
 
 Theta_update_3:
 						  ; rstate 3 저장
 	ldd      rTemp0, Y+8  ;1 저장
- 82e:	08 85       	ldd	r16, Y+8	; 0x08
+ 794:	08 85       	ldd	r16, Y+8	; 0x08
     ldd      rTemp1, Y+9
- 830:	19 85       	ldd	r17, Y+9	; 0x09
+ 796:	19 85       	ldd	r17, Y+9	; 0x09
     ldd      rTemp2, Y+10
- 832:	2a 85       	ldd	r18, Y+10	; 0x0a
+ 798:	2a 85       	ldd	r18, Y+10	; 0x0a
     ldd      rTemp3, Y+11
- 834:	3b 85       	ldd	r19, Y+11	; 0x0b
+ 79a:	3b 85       	ldd	r19, Y+11	; 0x0b
     ldd      rTemp4, Y+12
- 836:	4c 85       	ldd	r20, Y+12	; 0x0c
+ 79c:	4c 85       	ldd	r20, Y+12	; 0x0c
     ldd      rTemp5, Y+13
- 838:	5d 85       	ldd	r21, Y+13	; 0x0d
+ 79e:	5d 85       	ldd	r21, Y+13	; 0x0d
     ldd      rTemp6, Y+14
- 83a:	6e 85       	ldd	r22, Y+14	; 0x0e
+ 7a0:	6e 85       	ldd	r22, Y+14	; 0x0e
     ldd      rTemp7, Y+15
- 83c:	7f 85       	ldd	r23, Y+15	; 0x0f
+ 7a2:	7f 85       	ldd	r23, Y+15	; 0x0f
 					
 	lsl     rState0 ;3 로테이트
- 83e:	88 0c       	add	r8, r8
+ 7a4:	88 0c       	add	r8, r8
     rol     rState1
- 840:	99 1c       	adc	r9, r9
+ 7a6:	99 1c       	adc	r9, r9
     rol     rState2
- 842:	aa 1c       	adc	r10, r10
+ 7a8:	aa 1c       	adc	r10, r10
     rol     rState3
- 844:	bb 1c       	adc	r11, r11
+ 7aa:	bb 1c       	adc	r11, r11
     rol     rState4
- 846:	cc 1c       	adc	r12, r12
+ 7ac:	cc 1c       	adc	r12, r12
     rol     rState5
- 848:	dd 1c       	adc	r13, r13
+ 7ae:	dd 1c       	adc	r13, r13
     rol     rState6
- 84a:	ee 1c       	adc	r14, r14
+ 7b0:	ee 1c       	adc	r14, r14
     rol     rState7
- 84c:	ff 1c       	adc	r15, r15
+ 7b2:	ff 1c       	adc	r15, r15
     adc     rState0, zero
- 84e:	81 1c       	adc	r8, r1
+ 7b4:	81 1c       	adc	r8, r1
 
 	eor		rState0, rTemp0 ;저장값 1 만들기
- 850:	80 26       	eor	r8, r16
+ 7b6:	80 26       	eor	r8, r16
 	eor		rState1, rTemp1
- 852:	91 26       	eor	r9, r17
+ 7b8:	91 26       	eor	r9, r17
 	eor		rState2, rTemp2
- 854:	a2 26       	eor	r10, r18
+ 7ba:	a2 26       	eor	r10, r18
 	eor		rState3, rTemp3
- 856:	b3 26       	eor	r11, r19
+ 7bc:	b3 26       	eor	r11, r19
 	eor		rState4, rTemp4
- 858:	c4 26       	eor	r12, r20
+ 7be:	c4 26       	eor	r12, r20
 	eor		rState5, rTemp5
- 85a:	d5 26       	eor	r13, r21
+ 7c0:	d5 26       	eor	r13, r21
 	eor		rState6, rTemp6
- 85c:	e6 26       	eor	r14, r22
+ 7c2:	e6 26       	eor	r14, r22
 	eor		rState7, rTemp7
- 85e:	f7 26       	eor	r15, r23
+ 7c4:	f7 26       	eor	r15, r23
 	
 	ldi		count,	56
- 860:	88 e3       	ldi	r24, 0x38	; 56
+ 7c6:	88 e3       	ldi	r24, 0x38	; 56
 	add		rY,		count
- 862:	c8 0f       	add	r28, r24
+ 7c8:	c8 0f       	add	r28, r24
 	st		Y+,	rState0
- 864:	89 92       	st	Y+, r8
+ 7ca:	89 92       	st	Y+, r8
 	st		Y+,	rState1
- 866:	99 92       	st	Y+, r9
+ 7cc:	99 92       	st	Y+, r9
 	st		Y+,	rState2
- 868:	a9 92       	st	Y+, r10
+ 7ce:	a9 92       	st	Y+, r10
 	st		Y+,	rState3
- 86a:	b9 92       	st	Y+, r11
+ 7d0:	b9 92       	st	Y+, r11
 	st		Y+,	rState4
- 86c:	c9 92       	st	Y+, r12
+ 7d2:	c9 92       	st	Y+, r12
 	st		Y+,	rState5
- 86e:	d9 92       	st	Y+, r13
+ 7d4:	d9 92       	st	Y+, r13
 	st		Y+,	rState6
- 870:	e9 92       	st	Y+, r14
+ 7d6:	e9 92       	st	Y+, r14
 	st		Y+,	rState7;-------------------------------------------------13 ->2
- 872:	f9 92       	st	Y+, r15
+ 7d8:	f9 92       	st	Y+, r15
 	sub		rY,		count
- 874:	c8 1b       	sub	r28, r24
+ 7da:	c8 1b       	sub	r28, r24
 	sbiw	Y,		8
- 876:	28 97       	sbiw	r28, 0x08	; 8
+ 7dc:	28 97       	sbiw	r28, 0x08	; 8
 
-00000878 <Theta_update_4>:
+000007de <Theta_update_4>:
 
 	Theta_update_4:
 							 ;rTemp <-- 1저장
 	ldd      rState0, Y+32   ; 4저장
- 878:	88 a0       	ldd	r8, Y+32	; 0x20
+ 7de:	88 a0       	ldd	r8, Y+32	; 0x20
     ldd      rState1, Y+33
- 87a:	99 a0       	ldd	r9, Y+33	; 0x21
+ 7e0:	99 a0       	ldd	r9, Y+33	; 0x21
     ldd      rState2, Y+34
- 87c:	aa a0       	ldd	r10, Y+34	; 0x22
+ 7e2:	aa a0       	ldd	r10, Y+34	; 0x22
     ldd      rState3, Y+35
- 87e:	bb a0       	ldd	r11, Y+35	; 0x23
+ 7e4:	bb a0       	ldd	r11, Y+35	; 0x23
     ldd      rState4, Y+36
- 880:	cc a0       	ldd	r12, Y+36	; 0x24
+ 7e6:	cc a0       	ldd	r12, Y+36	; 0x24
     ldd      rState5, Y+37
- 882:	dd a0       	ldd	r13, Y+37	; 0x25
+ 7e8:	dd a0       	ldd	r13, Y+37	; 0x25
     ldd      rState6, Y+38
- 884:	ee a0       	ldd	r14, Y+38	; 0x26
+ 7ea:	ee a0       	ldd	r14, Y+38	; 0x26
     ldd      rState7, Y+39
- 886:	ff a0       	ldd	r15, Y+39	; 0x27
+ 7ec:	ff a0       	ldd	r15, Y+39	; 0x27
 
 	lsl     rTemp0 ;0 로테이트
- 888:	00 0f       	add	r16, r16
+ 7ee:	00 0f       	add	r16, r16
     rol     rTemp1
- 88a:	11 1f       	adc	r17, r17
+ 7f0:	11 1f       	adc	r17, r17
     rol     rTemp2
- 88c:	22 1f       	adc	r18, r18
+ 7f2:	22 1f       	adc	r18, r18
     rol     rTemp3
- 88e:	33 1f       	adc	r19, r19
+ 7f4:	33 1f       	adc	r19, r19
     rol     rTemp4
- 890:	44 1f       	adc	r20, r20
+ 7f6:	44 1f       	adc	r20, r20
     rol     rTemp5
- 892:	55 1f       	adc	r21, r21
+ 7f8:	55 1f       	adc	r21, r21
     rol     rTemp6
- 894:	66 1f       	adc	r22, r22
+ 7fa:	66 1f       	adc	r22, r22
     rol     rTemp7
- 896:	77 1f       	adc	r23, r23
+ 7fc:	77 1f       	adc	r23, r23
     adc     rTemp0, zero
- 898:	01 1d       	adc	r16, r1
+ 7fe:	01 1d       	adc	r16, r1
 
 	eor		rTemp0,	rState0 ;저장값 4 만들기
- 89a:	08 25       	eor	r16, r8
+ 800:	08 25       	eor	r16, r8
 	eor		rTemp1,	rState1
- 89c:	19 25       	eor	r17, r9
+ 802:	19 25       	eor	r17, r9
 	eor		rTemp2,	rState2
- 89e:	2a 25       	eor	r18, r10
+ 804:	2a 25       	eor	r18, r10
 	eor		rTemp3,	rState3
- 8a0:	3b 25       	eor	r19, r11
+ 806:	3b 25       	eor	r19, r11
 	eor		rTemp4,	rState4
- 8a2:	4c 25       	eor	r20, r12
+ 808:	4c 25       	eor	r20, r12
 	eor		rTemp5,	rState5
- 8a4:	5d 25       	eor	r21, r13
+ 80a:	5d 25       	eor	r21, r13
 	eor		rTemp6,	rState6
- 8a6:	6e 25       	eor	r22, r14
+ 80c:	6e 25       	eor	r22, r14
 	eor		rTemp7,	rState7
- 8a8:	7f 25       	eor	r23, r15
+ 80e:	7f 25       	eor	r23, r15
 	
 	ldi		count,	40
- 8aa:	88 e2       	ldi	r24, 0x28	; 40
+ 810:	88 e2       	ldi	r24, 0x28	; 40
 	add		rY,		count
- 8ac:	c8 0f       	add	r28, r24
+ 812:	c8 0f       	add	r28, r24
 	st		Y+,	rTemp0
- 8ae:	09 93       	st	Y+, r16
+ 814:	09 93       	st	Y+, r16
 	st		Y+,	rTemp1
- 8b0:	19 93       	st	Y+, r17
+ 816:	19 93       	st	Y+, r17
 	st		Y+,	rTemp2
- 8b2:	29 93       	st	Y+, r18
+ 818:	29 93       	st	Y+, r18
 	st		Y+,	rTemp3
- 8b4:	39 93       	st	Y+, r19
+ 81a:	39 93       	st	Y+, r19
 	st		Y+,	rTemp4
- 8b6:	49 93       	st	Y+, r20
+ 81c:	49 93       	st	Y+, r20
 	st		Y+,	rTemp5
- 8b8:	59 93       	st	Y+, r21
+ 81e:	59 93       	st	Y+, r21
 	st		Y+,	rTemp6
- 8ba:	69 93       	st	Y+, r22
+ 820:	69 93       	st	Y+, r22
 	st		Y+,	rTemp7;-------------------------------------------------41 ->0
- 8bc:	79 93       	st	Y+, r23
+ 822:	79 93       	st	Y+, r23
 	sub		rY,		count
- 8be:	c8 1b       	sub	r28, r24
+ 824:	c8 1b       	sub	r28, r24
 	sbiw	Y,		8
- 8c0:	28 97       	sbiw	r28, 0x08	; 8
+ 826:	28 97       	sbiw	r28, 0x08	; 8
 
-000008c2 <Theta_update_5>:
+00000828 <Theta_update_5>:
 
-	Theta_update_5:
+
+Theta_update_5:
 						  ; rstate 4 저장
 	ldd      rTemp0, Y+16  ;2 저장
- 8c2:	08 89       	ldd	r16, Y+16	; 0x10
+ 828:	08 89       	ldd	r16, Y+16	; 0x10
     ldd      rTemp1, Y+17
- 8c4:	19 89       	ldd	r17, Y+17	; 0x11
+ 82a:	19 89       	ldd	r17, Y+17	; 0x11
     ldd      rTemp2, Y+18
- 8c6:	2a 89       	ldd	r18, Y+18	; 0x12
+ 82c:	2a 89       	ldd	r18, Y+18	; 0x12
     ldd      rTemp3, Y+19
- 8c8:	3b 89       	ldd	r19, Y+19	; 0x13
+ 82e:	3b 89       	ldd	r19, Y+19	; 0x13
     ldd      rTemp4, Y+20
- 8ca:	4c 89       	ldd	r20, Y+20	; 0x14
+ 830:	4c 89       	ldd	r20, Y+20	; 0x14
     ldd      rTemp5, Y+21
- 8cc:	5d 89       	ldd	r21, Y+21	; 0x15
+ 832:	5d 89       	ldd	r21, Y+21	; 0x15
     ldd      rTemp6, Y+22
- 8ce:	6e 89       	ldd	r22, Y+22	; 0x16
+ 834:	6e 89       	ldd	r22, Y+22	; 0x16
     ldd      rTemp7, Y+23
- 8d0:	7f 89       	ldd	r23, Y+23	; 0x17
+ 836:	7f 89       	ldd	r23, Y+23	; 0x17
 					
 	lsl     rState0 ;4 로테이트
- 8d2:	88 0c       	add	r8, r8
+ 838:	88 0c       	add	r8, r8
     rol     rState1
- 8d4:	99 1c       	adc	r9, r9
+ 83a:	99 1c       	adc	r9, r9
     rol     rState2
- 8d6:	aa 1c       	adc	r10, r10
+ 83c:	aa 1c       	adc	r10, r10
     rol     rState3
- 8d8:	bb 1c       	adc	r11, r11
+ 83e:	bb 1c       	adc	r11, r11
     rol     rState4
- 8da:	cc 1c       	adc	r12, r12
+ 840:	cc 1c       	adc	r12, r12
     rol     rState5
- 8dc:	dd 1c       	adc	r13, r13
+ 842:	dd 1c       	adc	r13, r13
     rol     rState6
- 8de:	ee 1c       	adc	r14, r14
+ 844:	ee 1c       	adc	r14, r14
     rol     rState7
- 8e0:	ff 1c       	adc	r15, r15
+ 846:	ff 1c       	adc	r15, r15
     adc     rState0, zero
- 8e2:	81 1c       	adc	r8, r1
+ 848:	81 1c       	adc	r8, r1
 
 	eor		rState0, rTemp0 ;저장값 3 만들기
- 8e4:	80 26       	eor	r8, r16
+ 84a:	80 26       	eor	r8, r16
 	eor		rState1, rTemp1
- 8e6:	91 26       	eor	r9, r17
+ 84c:	91 26       	eor	r9, r17
 	eor		rState2, rTemp2
- 8e8:	a2 26       	eor	r10, r18
+ 84e:	a2 26       	eor	r10, r18
 	eor		rState3, rTemp3
- 8ea:	b3 26       	eor	r11, r19
+ 850:	b3 26       	eor	r11, r19
 	eor		rState4, rTemp4
- 8ec:	c4 26       	eor	r12, r20
+ 852:	c4 26       	eor	r12, r20
 	eor		rState5, rTemp5
- 8ee:	d5 26       	eor	r13, r21
+ 854:	d5 26       	eor	r13, r21
 	eor		rState6, rTemp6
- 8f0:	e6 26       	eor	r14, r22
+ 856:	e6 26       	eor	r14, r22
 	eor		rState7, rTemp7
- 8f2:	f7 26       	eor	r15, r23
+ 858:	f7 26       	eor	r15, r23
 	
 	ldi		count,	64
- 8f4:	80 e4       	ldi	r24, 0x40	; 64
+ 85a:	80 e4       	ldi	r24, 0x40	; 64
 	add		rY,		count
- 8f6:	c8 0f       	add	r28, r24
+ 85c:	c8 0f       	add	r28, r24
 	st		Y+,	rState0
- 8f8:	89 92       	st	Y+, r8
+ 85e:	89 92       	st	Y+, r8
 	st		Y+,	rState1
- 8fa:	99 92       	st	Y+, r9
+ 860:	99 92       	st	Y+, r9
 	st		Y+,	rState2
- 8fc:	a9 92       	st	Y+, r10
+ 862:	a9 92       	st	Y+, r10
 	st		Y+,	rState3
- 8fe:	b9 92       	st	Y+, r11
+ 864:	b9 92       	st	Y+, r11
 	st		Y+,	rState4
- 900:	c9 92       	st	Y+, r12
+ 866:	c9 92       	st	Y+, r12
 	st		Y+,	rState5
- 902:	d9 92       	st	Y+, r13
+ 868:	d9 92       	st	Y+, r13
 	st		Y+,	rState6
- 904:	e9 92       	st	Y+, r14
+ 86a:	e9 92       	st	Y+, r14
 	st		Y+,	rState7;-------------------------------------------------24 ->3
- 906:	f9 92       	st	Y+, r15
+ 86c:	f9 92       	st	Y+, r15
 	sbiw	Y,	28	
- 908:	6c 97       	sbiw	r28, 0x1c	; 28
+ 86e:	6c 97       	sbiw	r28, 0x1c	; 28
 	
 	ldi		count,	25
- 90a:	89 e1       	ldi	r24, 0x19	; 25
+ 870:	89 e1       	ldi	r24, 0x19	; 25
 	mov		count2,	count
- 90c:	68 2e       	mov	r6, r24
+ 872:	68 2e       	mov	r6, r24
 	ldi		count,	8
- 90e:	88 e0       	ldi	r24, 0x08	; 8
+ 874:	88 e0       	ldi	r24, 0x08	; 8
 	mov		count3,	count
- 910:	78 2e       	mov	r7, r24
+ 876:	78 2e       	mov	r7, r24
 	eor		zero,	zero
- 912:	11 24       	eor	r1, r1
+ 878:	11 24       	eor	r1, r1
 
-00000914 <Thetha_Rho_loop>:
+0000087a <Thetha_Rho_loop>:
 
 Thetha_Rho_loop:
 
 	ldi		count,	40
- 914:	88 e2       	ldi	r24, 0x28	; 40
+ 87a:	88 e2       	ldi	r24, 0x28	; 40
+
 	rcall	first_load_EOR
- 916:	73 d0       	rcall	.+230    	; 0x9fe <first_load_EOR>
+ 87c:	d4 d0       	rcall	.+424    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_1bit_right
- 918:	c5 d0       	rcall	.+394    	; 0xaa4 <rotate64_1bit_right>
+ 87e:	26 d1       	rcall	.+588    	; 0xacc <rotate64_1bit_right>
 	rcall	rotate64_4byte_left
- 91a:	f3 d0       	rcall	.+486    	; 0xb02 <rotate64_4byte_left>
+ 880:	54 d1       	rcall	.+680    	; 0xb2a <rotate64_4byte_left>
 
 	rcall	first_load_EOR
- 91c:	70 d0       	rcall	.+224    	; 0x9fe <first_load_EOR>
+ 882:	d1 d0       	rcall	.+418    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_1bit_left
- 91e:	a4 d0       	rcall	.+328    	; 0xa68 <rotate64_1bit_left>
+ 884:	05 d1       	rcall	.+522    	; 0xa90 <rotate64_1bit_left>
 	rcall	rotate64_3byte_left
- 920:	e7 d0       	rcall	.+462    	; 0xaf0 <rotate64_3byte_left>
+ 886:	48 d1       	rcall	.+656    	; 0xb18 <rotate64_3byte_left>
 
 	rcall	first_load_EOR
- 922:	6d d0       	rcall	.+218    	; 0x9fe <first_load_EOR>
+ 888:	ce d0       	rcall	.+412    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_3bit_right
- 924:	ab d0       	rcall	.+342    	; 0xa7c <rotate64_3bit_right>
+ 88a:	0c d1       	rcall	.+536    	; 0xaa4 <rotate64_3bit_right>
 	rcall	rotate64_0byte_left
- 926:	c9 d0       	rcall	.+402    	; 0xaba <rotate64_0byte_left>
+ 88c:	2a d1       	rcall	.+596    	; 0xae2 <rotate64_0byte_left>
 
 	rcall	first_load_EOR
- 928:	6a d0       	rcall	.+212    	; 0x9fe <first_load_EOR>
+ 88e:	cb d0       	rcall	.+406    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_2bit_right
- 92a:	b2 d0       	rcall	.+356    	; 0xa90 <rotate64_2bit_right>
+ 890:	13 d1       	rcall	.+550    	; 0xab8 <rotate64_2bit_right>
 	rcall	rotate64_7byte_left
- 92c:	05 d1       	rcall	.+522    	; 0xb38 <rotate64_7byte_left>
+ 892:	66 d1       	rcall	.+716    	; 0xb60 <rotate64_7byte_left>
 
 	rcall	first_load_EOR
- 92e:	67 d0       	rcall	.+206    	; 0x9fe <first_load_EOR>
+ 894:	c8 d0       	rcall	.+400    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_3bit_right
- 930:	a5 d0       	rcall	.+330    	; 0xa7c <rotate64_3bit_right>
+ 896:	06 d1       	rcall	.+524    	; 0xaa4 <rotate64_3bit_right>
 	rcall	rotate64_3byte_left ; fist Row
- 932:	de d0       	rcall	.+444    	; 0xaf0 <rotate64_3byte_left>
+ 898:	3f d1       	rcall	.+638    	; 0xb18 <rotate64_3byte_left>
 
 	sub		rY,		count
- 934:	c8 1b       	sub	r28, r24
+ 89a:	c8 1b       	sub	r28, r24
 ;-------------------------------------------
 	rcall	first_load_EOR
- 936:	63 d0       	rcall	.+198    	; 0x9fe <first_load_EOR>
+ 89c:	c4 d0       	rcall	.+392    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_1bit_left
- 938:	97 d0       	rcall	.+302    	; 0xa68 <rotate64_1bit_left>
+ 89e:	f8 d0       	rcall	.+496    	; 0xa90 <rotate64_1bit_left>
 	rcall	rotate64_1byte_left
- 93a:	c8 d0       	rcall	.+400    	; 0xacc <rotate64_1byte_left>
+ 8a0:	29 d1       	rcall	.+594    	; 0xaf4 <rotate64_1byte_left>
 
 	rcall	first_load_EOR
- 93c:	60 d0       	rcall	.+192    	; 0x9fe <first_load_EOR>
+ 8a2:	c1 d0       	rcall	.+386    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_4bit_left
- 93e:	79 d0       	rcall	.+242    	; 0xa32 <rotate64_4bit_left>
+ 8a4:	da d0       	rcall	.+436    	; 0xa5a <rotate64_4bit_left>
 	rcall	rotate64_4byte_left
- 940:	e0 d0       	rcall	.+448    	; 0xb02 <rotate64_4byte_left>
+ 8a6:	41 d1       	rcall	.+642    	; 0xb2a <rotate64_4byte_left>
 
 	rcall	first_load_EOR
- 942:	5d d0       	rcall	.+186    	; 0x9fe <first_load_EOR>
+ 8a8:	be d0       	rcall	.+380    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_4bit_left
- 944:	76 d0       	rcall	.+236    	; 0xa32 <rotate64_4bit_left>
+ 8aa:	d7 d0       	rcall	.+430    	; 0xa5a <rotate64_4bit_left>
 	rcall	rotate64_3byte_left
- 946:	d4 d0       	rcall	.+424    	; 0xaf0 <rotate64_3byte_left>
+ 8ac:	35 d1       	rcall	.+618    	; 0xb18 <rotate64_3byte_left>
 
 	rcall	first_load_EOR
- 948:	5a d0       	rcall	.+180    	; 0x9fe <first_load_EOR>
+ 8ae:	bb d0       	rcall	.+374    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_4bit_left
- 94a:	73 d0       	rcall	.+230    	; 0xa32 <rotate64_4bit_left>
+ 8b0:	d4 d0       	rcall	.+424    	; 0xa5a <rotate64_4bit_left>
 	rcall	rotate64_2byte_left
- 94c:	c8 d0       	rcall	.+400    	; 0xade <rotate64_2byte_left>
+ 8b2:	29 d1       	rcall	.+594    	; 0xb06 <rotate64_2byte_left>
 
 	rcall	first_load_EOR
- 94e:	57 d0       	rcall	.+174    	; 0x9fe <first_load_EOR>
+ 8b4:	b8 d0       	rcall	.+368    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_1bit_left
- 950:	8b d0       	rcall	.+278    	; 0xa68 <rotate64_1bit_left>
+ 8b6:	ec d0       	rcall	.+472    	; 0xa90 <rotate64_1bit_left>
 	rcall	rotate64_0byte_left  ; fist Row
- 952:	b3 d0       	rcall	.+358    	; 0xaba <rotate64_0byte_left>
+ 8b8:	14 d1       	rcall	.+552    	; 0xae2 <rotate64_0byte_left>
 
 	sub		rY,		count	
- 954:	c8 1b       	sub	r28, r24
-
+ 8ba:	c8 1b       	sub	r28, r24
 ;-------------------------------------------
 
 	rcall	first_load_EOR
- 956:	53 d0       	rcall	.+166    	; 0x9fe <first_load_EOR>
+ 8bc:	b4 d0       	rcall	.+360    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_4bit_left
- 958:	6c d0       	rcall	.+216    	; 0xa32 <rotate64_4bit_left>
+ 8be:	cd d0       	rcall	.+410    	; 0xa5a <rotate64_4bit_left>
 	rcall	rotate64_3byte_left
- 95a:	ca d0       	rcall	.+404    	; 0xaf0 <rotate64_3byte_left>
+ 8c0:	2b d1       	rcall	.+598    	; 0xb18 <rotate64_3byte_left>
 
 	rcall	first_load_EOR
- 95c:	50 d0       	rcall	.+160    	; 0x9fe <first_load_EOR>
+ 8c2:	b1 d0       	rcall	.+354    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_3bit_left
- 95e:	72 d0       	rcall	.+228    	; 0xa44 <rotate64_3bit_left>
+ 8c4:	d3 d0       	rcall	.+422    	; 0xa6c <rotate64_3bit_left>
 	rcall	rotate64_4byte_left
- 960:	d0 d0       	rcall	.+416    	; 0xb02 <rotate64_4byte_left>
+ 8c6:	31 d1       	rcall	.+610    	; 0xb2a <rotate64_4byte_left>
 
 	rcall	first_load_EOR
- 962:	4d d0       	rcall	.+154    	; 0x9fe <first_load_EOR>
+ 8c8:	ae d0       	rcall	.+348    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_0byte_left
- 964:	aa d0       	rcall	.+340    	; 0xaba <rotate64_0byte_left>
+ 8ca:	0b d1       	rcall	.+534    	; 0xae2 <rotate64_0byte_left>
 
 	rcall	first_load_EOR
- 966:	4b d0       	rcall	.+150    	; 0x9fe <first_load_EOR>
+ 8cc:	ac d0       	rcall	.+344    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_1bit_right
- 968:	9d d0       	rcall	.+314    	; 0xaa4 <rotate64_1bit_right>
+ 8ce:	fe d0       	rcall	.+508    	; 0xacc <rotate64_1bit_right>
 	rcall	rotate64_0byte_left
- 96a:	a7 d0       	rcall	.+334    	; 0xaba <rotate64_0byte_left>
+ 8d0:	08 d1       	rcall	.+528    	; 0xae2 <rotate64_0byte_left>
 
 	rcall	first_load_EOR
- 96c:	48 d0       	rcall	.+144    	; 0x9fe <first_load_EOR>
+ 8d2:	a9 d0       	rcall	.+338    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_2bit_left
- 96e:	73 d0       	rcall	.+230    	; 0xa56 <rotate64_2bit_left>
+ 8d4:	d4 d0       	rcall	.+424    	; 0xa7e <rotate64_2bit_left>
 	rcall	rotate64_0byte_left	;Third Row
- 970:	a4 d0       	rcall	.+328    	; 0xaba <rotate64_0byte_left>
+ 8d6:	05 d1       	rcall	.+522    	; 0xae2 <rotate64_0byte_left>
 
 	sub		rY,		count	
- 972:	c8 1b       	sub	r28, r24
-
+ 8d8:	c8 1b       	sub	r28, r24
 ;-------------------------------------------
 
 	rcall	first_load_EOR
- 974:	44 d0       	rcall	.+136    	; 0x9fe <first_load_EOR>
+ 8da:	a5 d0       	rcall	.+330    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_1byte_left
- 976:	aa d0       	rcall	.+340    	; 0xacc <rotate64_1byte_left>
+ 8dc:	0b d1       	rcall	.+534    	; 0xaf4 <rotate64_1byte_left>
 
 	rcall	first_load_EOR
- 978:	42 d0       	rcall	.+132    	; 0x9fe <first_load_EOR>
+ 8de:	a3 d0       	rcall	.+326    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_2bit_left
- 97a:	6d d0       	rcall	.+218    	; 0xa56 <rotate64_2bit_left>
+ 8e0:	ce d0       	rcall	.+412    	; 0xa7e <rotate64_2bit_left>
 	rcall	rotate64_6byte_left
- 97c:	d4 d0       	rcall	.+424    	; 0xb26 <rotate64_6byte_left>
+ 8e2:	35 d1       	rcall	.+618    	; 0xb4e <rotate64_6byte_left>
 
 	rcall	first_load_EOR
- 97e:	3f d0       	rcall	.+126    	; 0x9fe <first_load_EOR>
+ 8e4:	a0 d0       	rcall	.+320    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_2bit_right
- 980:	87 d0       	rcall	.+270    	; 0xa90 <rotate64_2bit_right>
+ 8e6:	e8 d0       	rcall	.+464    	; 0xab8 <rotate64_2bit_right>
 	rcall	rotate64_6byte_left
- 982:	d1 d0       	rcall	.+418    	; 0xb26 <rotate64_6byte_left>
+ 8e8:	32 d1       	rcall	.+612    	; 0xb4e <rotate64_6byte_left>
 
 	rcall	first_load_EOR
- 984:	3c d0       	rcall	.+120    	; 0x9fe <first_load_EOR>
+ 8ea:	9d d0       	rcall	.+314    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_2bit_right
- 986:	84 d0       	rcall	.+264    	; 0xa90 <rotate64_2bit_right>
+ 8ec:	e5 d0       	rcall	.+458    	; 0xab8 <rotate64_2bit_right>
 	rcall	rotate64_0byte_left
- 988:	98 d0       	rcall	.+304    	; 0xaba <rotate64_0byte_left>
+ 8ee:	f9 d0       	rcall	.+498    	; 0xae2 <rotate64_0byte_left>
 
 	rcall	first_load_EOR
- 98a:	39 d0       	rcall	.+114    	; 0x9fe <first_load_EOR>
+ 8f0:	9a d0       	rcall	.+308    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_3bit_left
- 98c:	5b d0       	rcall	.+182    	; 0xa44 <rotate64_3bit_left>
+ 8f2:	bc d0       	rcall	.+376    	; 0xa6c <rotate64_3bit_left>
 	rcall	rotate64_0byte_left	 ;Firth Row
- 98e:	95 d0       	rcall	.+298    	; 0xaba <rotate64_0byte_left>
+ 8f4:	f6 d0       	rcall	.+492    	; 0xae2 <rotate64_0byte_left>
 	
 	sub		rY,		count
- 990:	c8 1b       	sub	r28, r24
+ 8f6:	c8 1b       	sub	r28, r24
 
 ;-------------------------------------------
 
 	rcall	first_load_EOR
- 992:	35 d0       	rcall	.+106    	; 0x9fe <first_load_EOR>
+ 8f8:	96 d0       	rcall	.+300    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_3bit_left
- 994:	57 d0       	rcall	.+174    	; 0xa44 <rotate64_3bit_left>
+ 8fa:	b8 d0       	rcall	.+368    	; 0xa6c <rotate64_3bit_left>
 	rcall	rotate64_5byte_left
- 996:	be d0       	rcall	.+380    	; 0xb14 <rotate64_5byte_left>
+ 8fc:	1f d1       	rcall	.+574    	; 0xb3c <rotate64_5byte_left>
 
 	rcall	first_load_EOR
- 998:	32 d0       	rcall	.+100    	; 0x9fe <first_load_EOR>
+ 8fe:	93 d0       	rcall	.+294    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_7byte_left
- 99a:	ce d0       	rcall	.+412    	; 0xb38 <rotate64_7byte_left>
+ 900:	2f d1       	rcall	.+606    	; 0xb60 <rotate64_7byte_left>
 
 	rcall	first_load_EOR
- 99c:	30 d0       	rcall	.+96     	; 0x9fe <first_load_EOR>
+ 902:	91 d0       	rcall	.+290    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_1bit_right
- 99e:	82 d0       	rcall	.+260    	; 0xaa4 <rotate64_1bit_right>
+ 904:	e3 d0       	rcall	.+454    	; 0xacc <rotate64_1bit_right>
 	rcall	rotate64_3byte_left
- 9a0:	a7 d0       	rcall	.+334    	; 0xaf0 <rotate64_3byte_left>
+ 906:	08 d1       	rcall	.+528    	; 0xb18 <rotate64_3byte_left>
 
 	rcall	first_load_EOR
- 9a2:	2d d0       	rcall	.+90     	; 0x9fe <first_load_EOR>
+ 908:	8e d0       	rcall	.+284    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_3bit_left
- 9a4:	4f d0       	rcall	.+158    	; 0xa44 <rotate64_3bit_left>
+ 90a:	b0 d0       	rcall	.+352    	; 0xa6c <rotate64_3bit_left>
 	rcall	rotate64_2byte_left
- 9a6:	9b d0       	rcall	.+310    	; 0xade <rotate64_2byte_left>
+ 90c:	fc d0       	rcall	.+504    	; 0xb06 <rotate64_2byte_left>
 
 	rcall	first_load_EOR
- 9a8:	2a d0       	rcall	.+84     	; 0x9fe <first_load_EOR>
+ 90e:	8b d0       	rcall	.+278    	; 0xa26 <first_load_EOR>
 	rcall	rotate64_1bit_left
- 9aa:	5e d0       	rcall	.+188    	; 0xa68 <rotate64_1bit_left>
+ 910:	bf d0       	rcall	.+382    	; 0xa90 <rotate64_1bit_left>
 	rcall	rotate64_6byte_left	 ;Fifth Row
- 9ac:	bc d0       	rcall	.+376    	; 0xb26 <rotate64_6byte_left>
+ 912:	1d d1       	rcall	.+570    	; 0xb4e <rotate64_6byte_left>
 	
 	sub		rY,		count
- 9ae:	c8 1b       	sub	r28, r24
-	movw	rX,		therx
- 9b0:	d2 01       	movw	r26, r4
+ 914:	c8 1b       	sub	r28, r24
 
-000009b2 <Chi_Lota>:
+	movw	rX,		therx
+ 916:	d2 01       	movw	r26, r4
+	movw	therx,	rY
+ 918:	2e 01       	movw	r4, r28
+	movw	rY,		rX
+ 91a:	ed 01       	movw	r28, r26
+	movw	rX,		therx
+ 91c:	d2 01       	movw	r26, r4
+
+
+	ldi		count,	5
+ 91e:	85 e0       	ldi	r24, 0x05	; 5
+	mov		count2,	count
+ 920:	68 2e       	mov	r6, r24
+	eor		zero,	zero
+ 922:	11 24       	eor	r1, r1
+
+00000924 <Chi_Lota_Setting>:
+
+Chi_Lota_Setting:
+	ldi		count,	8	
+ 924:	88 e0       	ldi	r24, 0x08	; 8
+
+00000926 <Chi_Lota>:
 
 Chi_Lota:
 
+	ld      rTemp0, Y
+ 926:	08 81       	ld	r16, Y
+    ldd     rTemp1, Y+8
+ 928:	18 85       	ldd	r17, Y+8	; 0x08
+    ldd     rTemp2, Y+16
+ 92a:	28 89       	ldd	r18, Y+16	; 0x10
+    ldd     rTemp3, Y+24
+ 92c:	38 8d       	ldd	r19, Y+24	; 0x18
+    ldd     rTemp4, Y+32
+ 92e:	48 a1       	ldd	r20, Y+32	; 0x20
+	
+	;*p = t = a0 ^ ((~a1) & a2); c0 ^= t;
+
+	mov     load, rTemp1
+ 930:	01 2e       	mov	r0, r17
+    com     load
+ 932:	00 94       	com	r0
+    and     load, rTemp2
+ 934:	02 22       	and	r0, r18
+    eor     load, rTemp0
+ 936:	00 26       	eor	r0, r16
+    eor     rTemp0, load
+ 938:	00 25       	eor	r16, r0
+    st      Y, load
+ 93a:	08 82       	st	Y, r0
+
+    ;*(p+8) = t = a1 ^ ((~a2) & a3); c1 ^= t;
+
+    mov     load, rTemp2
+ 93c:	02 2e       	mov	r0, r18
+    com     load
+ 93e:	00 94       	com	r0
+    and     load, rTemp3
+ 940:	03 22       	and	r0, r19
+    eor     load, rTemp1
+ 942:	01 26       	eor	r0, r17
+    eor     rTemp1, load
+ 944:	10 25       	eor	r17, r0
+    std     Y+8, r0
+ 946:	08 86       	std	Y+8, r0	; 0x08
+
+    ;*(p+16) = a2 ^= ((~a3) & a4); c2 ^= a2;
+
+    mov     load, rTemp3
+ 948:	03 2e       	mov	r0, r19
+    com     load
+ 94a:	00 94       	com	r0
+    and     load, rTemp4
+ 94c:	04 22       	and	r0, r20
+    eor     load, rTemp2
+ 94e:	02 26       	eor	r0, r18
+    eor     rTemp2, load
+ 950:	20 25       	eor	r18, r0
+    std     Y+16, load
+ 952:	08 8a       	std	Y+16, r0	; 0x10
+
+    ;*(p+24) = a3 ^= ((~a4) & a0); c3 ^= a3;
+
+    mov     load, rTemp4
+ 954:	04 2e       	mov	r0, r20
+    com     load
+ 956:	00 94       	com	r0
+    and     load, rTemp0
+ 958:	00 22       	and	r0, r16
+    eor     load, rTemp3
+ 95a:	03 26       	eor	r0, r19
+    eor     rTemp3, load
+ 95c:	30 25       	eor	r19, r0
+    std     Y+24, load
+ 95e:	08 8e       	std	Y+24, r0	; 0x18
+
+    ;*(p+32) = a4 ^= ((~a0) & a1); c4 ^= a4;
+
+    com     rTemp0
+ 960:	00 95       	com	r16
+    and     rTemp0, rTemp1
+ 962:	01 23       	and	r16, r17
+    eor     rTemp0, rTemp4
+ 964:	04 27       	eor	r16, r20
+    eor     rTemp4, rTemp0
+ 966:	40 27       	eor	r20, r16
+    std     Y+32, rTemp0
+ 968:	08 a3       	std	Y+32, r16	; 0x20
+
+0000096a <Chi_Condition>:
+
+Chi_Condition:
+
+	adiw    rY, 8
+ 96a:	28 96       	adiw	r28, 0x08	; 8
+	adc		rY+1,	zero
+ 96c:	d1 1d       	adc	r29, r1
+    dec     count
+ 96e:	8a 95       	dec	r24
+    brne    Chi_Lota
+ 970:	d1 f6       	brne	.-76     	; 0x926 <Chi_Lota>
+
+	adiw	rY,32
+ 972:	a0 96       	adiw	r28, 0x20	; 32
+	adc		rY+1,	zero
+ 974:	d1 1d       	adc	r29, r1
+	dec		count2
+ 976:	6a 94       	dec	r6
+	brne	Chi_Lota_Setting
+ 978:	a9 f6       	brne	.-86     	; 0x924 <Chi_Lota_Setting>
+
+	movw	rX,		rY
+ 97a:	de 01       	movw	r26, r28
+	movw	rY,		therx
+ 97c:	e2 01       	movw	r28, r4
+
+	movw	therx,	rZ
+ 97e:	2f 01       	movw	r4, r30
+
+00000980 <Lota>:
+
+Lota:
+
+	pop		r31
+ 980:	ff 91       	pop	r31
+	pop		r30
+ 982:	ef 91       	pop	r30
+	
+	ldi		count,	96
+ 984:	80 e6       	ldi	r24, 0x60	; 96
+	adiw	rY,		count
+ 986:	68 96       	adiw	r28, 0x18	; 24
+	adc		rY,		zero
+ 988:	c1 1d       	adc	r28, r1
+
+	ld		rState0,	Y
+ 98a:	88 80       	ld	r8, Y
+	ldd		rState1,	Y+1
+ 98c:	99 80       	ldd	r9, Y+1	; 0x01
+	ldd		rState2,	Y+2
+ 98e:	aa 80       	ldd	r10, Y+2	; 0x02
+	ldd		rState3,	Y+3
+ 990:	bb 80       	ldd	r11, Y+3	; 0x03
+	ldd		rState4,	Y+4
+ 992:	cc 80       	ldd	r12, Y+4	; 0x04
+	ldd		rState5,	Y+5
+ 994:	dd 80       	ldd	r13, Y+5	; 0x05
+	ldd		rState6,	Y+6
+ 996:	ee 80       	ldd	r14, Y+6	; 0x06
+	ldd		rState7,	Y+7
+ 998:	ff 80       	ldd	r15, Y+7	; 0x07
+
+	lpm		rTemp0,		Z+
+ 99a:	05 91       	lpm	r16, Z+
+	lpm		rTemp1,		Z+
+ 99c:	15 91       	lpm	r17, Z+
+	lpm		rTemp2,		Z+
+ 99e:	25 91       	lpm	r18, Z+
+	lpm		rTemp3,		Z+
+ 9a0:	35 91       	lpm	r19, Z+
+	lpm		rTemp4,		Z+
+ 9a2:	45 91       	lpm	r20, Z+
+	lpm		rTemp5,		Z+
+ 9a4:	55 91       	lpm	r21, Z+
+	lpm		rTemp6,		Z+
+ 9a6:	65 91       	lpm	r22, Z+
+	lpm		rTemp7,		Z+
+ 9a8:	75 91       	lpm	r23, Z+
+
+	eor		rState0,	rTemp0
+ 9aa:	80 26       	eor	r8, r16
+	eor		rState1,	rTemp1
+ 9ac:	91 26       	eor	r9, r17
+	eor		rState2,	rTemp2
+ 9ae:	a2 26       	eor	r10, r18
+	eor		rState3,	rTemp3
+ 9b0:	b3 26       	eor	r11, r19
+	eor		rState4,	rTemp4
+ 9b2:	c4 26       	eor	r12, r20
+	eor		rState5,	rTemp5
+ 9b4:	d5 26       	eor	r13, r21
+	eor		rState6,	rTemp6
+ 9b6:	e6 26       	eor	r14, r22
+	eor		rState7,	rTemp7
+ 9b8:	f7 26       	eor	r15, r23
+
+	st		Y,			rState0
+ 9ba:	88 82       	st	Y, r8
+	std		Y+1,		rState1
+ 9bc:	99 82       	std	Y+1, r9	; 0x01
+	std		Y+2,		rState2
+ 9be:	aa 82       	std	Y+2, r10	; 0x02
+	std		Y+3,		rState3
+ 9c0:	bb 82       	std	Y+3, r11	; 0x03
+	std		Y+4,		rState4
+ 9c2:	cc 82       	std	Y+4, r12	; 0x04
+	std		Y+5,		rState5
+ 9c4:	dd 82       	std	Y+5, r13	; 0x05
+	std		Y+6,		rState6
+ 9c6:	ee 82       	std	Y+6, r14	; 0x06
+	std		Y+7,		rState7
+ 9c8:	ff 82       	std	Y+7, r15	; 0x07
+
+	sbiw	rY,		count
+ 9ca:	68 97       	sbiw	r28, 0x18	; 24
+	sbc		rY+1,	zero
+ 9cc:	d1 09       	sbc	r29, r1
+	push	r30
+ 9ce:	ef 93       	push	r30
+	push	r31
+ 9d0:	ff 93       	push	r31
+
+	movw	rZ,		therx
+ 9d2:	f2 01       	movw	r30, r4
+	movw	therx,	rX
+ 9d4:	2d 01       	movw	r4, r26
+
+000009d6 <END_Condtion>:
 	
 END_Condtion:
 	dec	main_count
- 9b2:	9a 95       	dec	r25
+ 9d6:	9a 95       	dec	r25
 	breq Keccack_END
- 9b4:	09 f0       	breq	.+2      	; 0x9b8 <Keccack_END>
+ 9d8:	09 f0       	breq	.+2      	; 0x9dc <Keccack_END>
 	rjmp start
- 9b6:	7d ce       	rjmp	.-774    	; 0x6b2 <start>
+ 9da:	1e ce       	rjmp	.-964    	; 0x618 <start>
 
-000009b8 <Keccack_END>:
+000009dc <Keccack_END>:
 
 Keccack_END:
+	pop	r31
+ 9dc:	ff 91       	pop	r31
+	pop	r30
+ 9de:	ef 91       	pop	r30
 	pop r22
- 9b8:	6f 91       	pop	r22
+ 9e0:	6f 91       	pop	r22
 	pop r23
- 9ba:	7f 91       	pop	r23
+ 9e2:	7f 91       	pop	r23
 	pop_range 0, 31
- 9bc:	ff 91       	pop	r31
- 9be:	ef 91       	pop	r30
- 9c0:	df 91       	pop	r29
- 9c2:	cf 91       	pop	r28
- 9c4:	bf 91       	pop	r27
- 9c6:	af 91       	pop	r26
- 9c8:	9f 91       	pop	r25
- 9ca:	8f 91       	pop	r24
- 9cc:	7f 91       	pop	r23
- 9ce:	6f 91       	pop	r22
- 9d0:	5f 91       	pop	r21
- 9d2:	4f 91       	pop	r20
- 9d4:	3f 91       	pop	r19
- 9d6:	2f 91       	pop	r18
- 9d8:	1f 91       	pop	r17
- 9da:	0f 91       	pop	r16
- 9dc:	ff 90       	pop	r15
- 9de:	ef 90       	pop	r14
- 9e0:	df 90       	pop	r13
- 9e2:	cf 90       	pop	r12
- 9e4:	bf 90       	pop	r11
- 9e6:	af 90       	pop	r10
- 9e8:	9f 90       	pop	r9
- 9ea:	8f 90       	pop	r8
- 9ec:	7f 90       	pop	r7
- 9ee:	6f 90       	pop	r6
- 9f0:	5f 90       	pop	r5
- 9f2:	4f 90       	pop	r4
- 9f4:	3f 90       	pop	r3
- 9f6:	2f 90       	pop	r2
- 9f8:	1f 90       	pop	r1
- 9fa:	0f 90       	pop	r0
+ 9e4:	ff 91       	pop	r31
+ 9e6:	ef 91       	pop	r30
+ 9e8:	df 91       	pop	r29
+ 9ea:	cf 91       	pop	r28
+ 9ec:	bf 91       	pop	r27
+ 9ee:	af 91       	pop	r26
+ 9f0:	9f 91       	pop	r25
+ 9f2:	8f 91       	pop	r24
+ 9f4:	7f 91       	pop	r23
+ 9f6:	6f 91       	pop	r22
+ 9f8:	5f 91       	pop	r21
+ 9fa:	4f 91       	pop	r20
+ 9fc:	3f 91       	pop	r19
+ 9fe:	2f 91       	pop	r18
+ a00:	1f 91       	pop	r17
+ a02:	0f 91       	pop	r16
+ a04:	ff 90       	pop	r15
+ a06:	ef 90       	pop	r14
+ a08:	df 90       	pop	r13
+ a0a:	cf 90       	pop	r12
+ a0c:	bf 90       	pop	r11
+ a0e:	af 90       	pop	r10
+ a10:	9f 90       	pop	r9
+ a12:	8f 90       	pop	r8
+ a14:	7f 90       	pop	r7
+ a16:	6f 90       	pop	r6
+ a18:	5f 90       	pop	r5
+ a1a:	4f 90       	pop	r4
+ a1c:	3f 90       	pop	r3
+ a1e:	2f 90       	pop	r2
+ a20:	1f 90       	pop	r1
+ a22:	0f 90       	pop	r0
 	ret
- 9fc:	08 95       	ret
+ a24:	08 95       	ret
 
-000009fe <first_load_EOR>:
+00000a26 <first_load_EOR>:
 
 first_load_EOR:
 
 	ld	   rState0,		X+
- 9fe:	8d 90       	ld	r8, X+
+ a26:	8d 90       	ld	r8, X+
     ld     rState1,		X+
- a00:	9d 90       	ld	r9, X+
+ a28:	9d 90       	ld	r9, X+
     ld     rState2,		X+
- a02:	ad 90       	ld	r10, X+
+ a2a:	ad 90       	ld	r10, X+
     ld     rState3,		X+
- a04:	bd 90       	ld	r11, X+
+ a2c:	bd 90       	ld	r11, X+
     ld     rState4,		X+
- a06:	cd 90       	ld	r12, X+
+ a2e:	cd 90       	ld	r12, X+
     ld     rState5,		X+
- a08:	dd 90       	ld	r13, X+
+ a30:	dd 90       	ld	r13, X+
     ld     rState6,		X+
- a0a:	ed 90       	ld	r14, X+
+ a32:	ed 90       	ld	r14, X+
     ld     rState7,		X+
- a0c:	fd 90       	ld	r15, X+
+ a34:	fd 90       	ld	r15, X+
 	sub		rX,		count3
- a0e:	a7 19       	sub	r26, r7
+ a36:	a7 19       	sub	r26, r7
 
 	ld	   rTemp0,		Y+
- a10:	09 91       	ld	r16, Y+
+ a38:	09 91       	ld	r16, Y+
     ld     rTemp1,		Y+
- a12:	19 91       	ld	r17, Y+
+ a3a:	19 91       	ld	r17, Y+
     ld     rTemp2,		Y+
- a14:	29 91       	ld	r18, Y+
+ a3c:	29 91       	ld	r18, Y+
     ld     rTemp3,		Y+
- a16:	39 91       	ld	r19, Y+
+ a3e:	39 91       	ld	r19, Y+
     ld     rTemp4,		Y+
- a18:	49 91       	ld	r20, Y+
+ a40:	49 91       	ld	r20, Y+
     ld     rTemp5,		Y+
- a1a:	59 91       	ld	r21, Y+
+ a42:	59 91       	ld	r21, Y+
     ld     rTemp6,		Y+
- a1c:	69 91       	ld	r22, Y+
+ a44:	69 91       	ld	r22, Y+
     ld     rTemp7,		Y+
- a1e:	79 91       	ld	r23, Y+
+ a46:	79 91       	ld	r23, Y+
 
 	eor	  rState0,	rTemp0
- a20:	80 26       	eor	r8, r16
+ a48:	80 26       	eor	r8, r16
 	eor	  rState1,	rTemp1
- a22:	91 26       	eor	r9, r17
+ a4a:	91 26       	eor	r9, r17
 	eor	  rState2,	rTemp2
- a24:	a2 26       	eor	r10, r18
+ a4c:	a2 26       	eor	r10, r18
 	eor	  rState3,	rTemp3
- a26:	b3 26       	eor	r11, r19
+ a4e:	b3 26       	eor	r11, r19
 	eor	  rState4,	rTemp4
- a28:	c4 26       	eor	r12, r20
+ a50:	c4 26       	eor	r12, r20
 	eor	  rState5,	rTemp5
- a2a:	d5 26       	eor	r13, r21
+ a52:	d5 26       	eor	r13, r21
 	eor	  rState6,	rTemp6
- a2c:	e6 26       	eor	r14, r22
+ a54:	e6 26       	eor	r14, r22
 	eor	  rState7,	rTemp7
- a2e:	f7 26       	eor	r15, r23
+ a56:	f7 26       	eor	r15, r23
 
 	
 	ret
- a30:	08 95       	ret
+ a58:	08 95       	ret
 
-00000a32 <rotate64_4bit_left>:
+00000a5a <rotate64_4bit_left>:
 
  rotate64_4bit_left:
 
     lsl		rState0
- a32:	88 0c       	add	r8, r8
+ a5a:	88 0c       	add	r8, r8
     rol     rState1
- a34:	99 1c       	adc	r9, r9
+ a5c:	99 1c       	adc	r9, r9
     rol     rState2
- a36:	aa 1c       	adc	r10, r10
+ a5e:	aa 1c       	adc	r10, r10
     rol     rState3
- a38:	bb 1c       	adc	r11, r11
+ a60:	bb 1c       	adc	r11, r11
     rol     rState4
- a3a:	cc 1c       	adc	r12, r12
+ a62:	cc 1c       	adc	r12, r12
     rol     rState5
- a3c:	dd 1c       	adc	r13, r13
+ a64:	dd 1c       	adc	r13, r13
     rol     rState6
- a3e:	ee 1c       	adc	r14, r14
+ a66:	ee 1c       	adc	r14, r14
     rol     rState7
- a40:	ff 1c       	adc	r15, r15
+ a68:	ff 1c       	adc	r15, r15
     adc     rState0, zero
- a42:	81 1c       	adc	r8, r1
+ a6a:	81 1c       	adc	r8, r1
 
-00000a44 <rotate64_3bit_left>:
+00000a6c <rotate64_3bit_left>:
 
 rotate64_3bit_left:
 
     lsl		rState0
- a44:	88 0c       	add	r8, r8
+ a6c:	88 0c       	add	r8, r8
     rol     rState1
- a46:	99 1c       	adc	r9, r9
+ a6e:	99 1c       	adc	r9, r9
     rol     rState2
- a48:	aa 1c       	adc	r10, r10
+ a70:	aa 1c       	adc	r10, r10
     rol     rState3
- a4a:	bb 1c       	adc	r11, r11
+ a72:	bb 1c       	adc	r11, r11
     rol     rState4
- a4c:	cc 1c       	adc	r12, r12
+ a74:	cc 1c       	adc	r12, r12
     rol     rState5
- a4e:	dd 1c       	adc	r13, r13
+ a76:	dd 1c       	adc	r13, r13
     rol     rState6
- a50:	ee 1c       	adc	r14, r14
+ a78:	ee 1c       	adc	r14, r14
     rol     rState7
- a52:	ff 1c       	adc	r15, r15
+ a7a:	ff 1c       	adc	r15, r15
     adc     rState0, zero
- a54:	81 1c       	adc	r8, r1
+ a7c:	81 1c       	adc	r8, r1
 
-00000a56 <rotate64_2bit_left>:
+00000a7e <rotate64_2bit_left>:
 
 rotate64_2bit_left:
 
     lsl		rState0
- a56:	88 0c       	add	r8, r8
+ a7e:	88 0c       	add	r8, r8
     rol     rState1
- a58:	99 1c       	adc	r9, r9
+ a80:	99 1c       	adc	r9, r9
     rol     rState2
- a5a:	aa 1c       	adc	r10, r10
+ a82:	aa 1c       	adc	r10, r10
     rol     rState3
- a5c:	bb 1c       	adc	r11, r11
+ a84:	bb 1c       	adc	r11, r11
     rol     rState4
- a5e:	cc 1c       	adc	r12, r12
+ a86:	cc 1c       	adc	r12, r12
     rol     rState5
- a60:	dd 1c       	adc	r13, r13
+ a88:	dd 1c       	adc	r13, r13
     rol     rState6
- a62:	ee 1c       	adc	r14, r14
+ a8a:	ee 1c       	adc	r14, r14
     rol     rState7
- a64:	ff 1c       	adc	r15, r15
+ a8c:	ff 1c       	adc	r15, r15
     adc     rState0, zero
- a66:	81 1c       	adc	r8, r1
+ a8e:	81 1c       	adc	r8, r1
 
-00000a68 <rotate64_1bit_left>:
+00000a90 <rotate64_1bit_left>:
 
 rotate64_1bit_left:
 
     lsl		rState0
- a68:	88 0c       	add	r8, r8
+ a90:	88 0c       	add	r8, r8
     rol     rState1
- a6a:	99 1c       	adc	r9, r9
+ a92:	99 1c       	adc	r9, r9
     rol     rState2
- a6c:	aa 1c       	adc	r10, r10
+ a94:	aa 1c       	adc	r10, r10
     rol     rState3
- a6e:	bb 1c       	adc	r11, r11
+ a96:	bb 1c       	adc	r11, r11
     rol     rState4
- a70:	cc 1c       	adc	r12, r12
+ a98:	cc 1c       	adc	r12, r12
     rol     rState5
- a72:	dd 1c       	adc	r13, r13
+ a9a:	dd 1c       	adc	r13, r13
     rol     rState6
- a74:	ee 1c       	adc	r14, r14
+ a9c:	ee 1c       	adc	r14, r14
     rol     rState7
- a76:	ff 1c       	adc	r15, r15
+ a9e:	ff 1c       	adc	r15, r15
     adc     rState0, zero
- a78:	81 1c       	adc	r8, r1
+ aa0:	81 1c       	adc	r8, r1
 
 	ret
- a7a:	08 95       	ret
+ aa2:	08 95       	ret
 
-00000a7c <rotate64_3bit_right>:
+00000aa4 <rotate64_3bit_right>:
 
 ;----------------------------------------------------------------------------------------------------
 
 rotate64_3bit_right:
-
-    bst     rState0, 0
- a7c:	80 fa       	bst	r8, 0
-    ror     rState7
- a7e:	f7 94       	ror	r15
-    ror     rState6
- a80:	e7 94       	ror	r14
-    ror     rState5
- a82:	d7 94       	ror	r13
-    ror     rState4
- a84:	c7 94       	ror	r12
-    ror     rState3
- a86:	b7 94       	ror	r11
-    ror     rState2
- a88:	a7 94       	ror	r10
-    ror     rState1
- a8a:	97 94       	ror	r9
-    ror     rState0
- a8c:	87 94       	ror	r8
-    bld     rState7, 7
- a8e:	f7 f8       	bld	r15, 7
-
-00000a90 <rotate64_2bit_right>:
-
-rotate64_2bit_right:
-
-    bst     rState0, 0
- a90:	80 fa       	bst	r8, 0
-    ror     rState7
- a92:	f7 94       	ror	r15
-    ror     rState6
- a94:	e7 94       	ror	r14
-    ror     rState5
- a96:	d7 94       	ror	r13
-    ror     rState4
- a98:	c7 94       	ror	r12
-    ror     rState3
- a9a:	b7 94       	ror	r11
-    ror     rState2
- a9c:	a7 94       	ror	r10
-    ror     rState1
- a9e:	97 94       	ror	r9
-    ror     rState0
- aa0:	87 94       	ror	r8
-    bld     rState7, 7
- aa2:	f7 f8       	bld	r15, 7
-
-00000aa4 <rotate64_1bit_right>:
-
-rotate64_1bit_right:
 
     bst     rState0, 0
  aa4:	80 fa       	bst	r8, 0
@@ -1815,201 +2009,251 @@ rotate64_1bit_right:
     bld     rState7, 7
  ab6:	f7 f8       	bld	r15, 7
 
-	ret
- ab8:	08 95       	ret
+00000ab8 <rotate64_2bit_right>:
 
-00000aba <rotate64_0byte_left>:
+rotate64_2bit_right:
+
+    bst     rState0, 0
+ ab8:	80 fa       	bst	r8, 0
+    ror     rState7
+ aba:	f7 94       	ror	r15
+    ror     rState6
+ abc:	e7 94       	ror	r14
+    ror     rState5
+ abe:	d7 94       	ror	r13
+    ror     rState4
+ ac0:	c7 94       	ror	r12
+    ror     rState3
+ ac2:	b7 94       	ror	r11
+    ror     rState2
+ ac4:	a7 94       	ror	r10
+    ror     rState1
+ ac6:	97 94       	ror	r9
+    ror     rState0
+ ac8:	87 94       	ror	r8
+    bld     rState7, 7
+ aca:	f7 f8       	bld	r15, 7
+
+00000acc <rotate64_1bit_right>:
+
+rotate64_1bit_right:
+
+    bst     rState0, 0
+ acc:	80 fa       	bst	r8, 0
+    ror     rState7
+ ace:	f7 94       	ror	r15
+    ror     rState6
+ ad0:	e7 94       	ror	r14
+    ror     rState5
+ ad2:	d7 94       	ror	r13
+    ror     rState4
+ ad4:	c7 94       	ror	r12
+    ror     rState3
+ ad6:	b7 94       	ror	r11
+    ror     rState2
+ ad8:	a7 94       	ror	r10
+    ror     rState1
+ ada:	97 94       	ror	r9
+    ror     rState0
+ adc:	87 94       	ror	r8
+    bld     rState7, 7
+ ade:	f7 f8       	bld	r15, 7
+
+	ret
+ ae0:	08 95       	ret
+
+00000ae2 <rotate64_0byte_left>:
 
 ;----------------------------------------------------------------------------------------------------
 
 rotate64_0byte_left:
 
     st      X+,	rState0
- aba:	8d 92       	st	X+, r8
+ ae2:	8d 92       	st	X+, r8
     st      X+,	rState1
- abc:	9d 92       	st	X+, r9
+ ae4:	9d 92       	st	X+, r9
     st      X+,	rState2
- abe:	ad 92       	st	X+, r10
+ ae6:	ad 92       	st	X+, r10
 	st      X+,	rState3
- ac0:	bd 92       	st	X+, r11
+ ae8:	bd 92       	st	X+, r11
 	st      X+,	rState4
- ac2:	cd 92       	st	X+, r12
+ aea:	cd 92       	st	X+, r12
 	st      X+,	rState5
- ac4:	dd 92       	st	X+, r13
+ aec:	dd 92       	st	X+, r13
 	st      X+,	rState6
- ac6:	ed 92       	st	X+, r14
+ aee:	ed 92       	st	X+, r14
 	st      X+,	rState7
- ac8:	fd 92       	st	X+, r15
+ af0:	fd 92       	st	X+, r15
 
     ret
- aca:	08 95       	ret
+ af2:	08 95       	ret
 
-00000acc <rotate64_1byte_left>:
+00000af4 <rotate64_1byte_left>:
 
 rotate64_1byte_left:
 	
 	st      X+,	rState1
- acc:	9d 92       	st	X+, r9
+ af4:	9d 92       	st	X+, r9
     st      X+,	rState2
- ace:	ad 92       	st	X+, r10
+ af6:	ad 92       	st	X+, r10
     st      X+,	rState3
- ad0:	bd 92       	st	X+, r11
+ af8:	bd 92       	st	X+, r11
 	st      X+,	rState4
- ad2:	cd 92       	st	X+, r12
+ afa:	cd 92       	st	X+, r12
 	st      X+,	rState5
- ad4:	dd 92       	st	X+, r13
+ afc:	dd 92       	st	X+, r13
 	st      X+,	rState6
- ad6:	ed 92       	st	X+, r14
+ afe:	ed 92       	st	X+, r14
 	st      X+,	rState7
- ad8:	fd 92       	st	X+, r15
+ b00:	fd 92       	st	X+, r15
 	st      X+,	rState0
- ada:	8d 92       	st	X+, r8
+ b02:	8d 92       	st	X+, r8
 
     ret   
- adc:	08 95       	ret
+ b04:	08 95       	ret
 
-00000ade <rotate64_2byte_left>:
+00000b06 <rotate64_2byte_left>:
 
 rotate64_2byte_left:
 
 	st      X+,	rState2
- ade:	ad 92       	st	X+, r10
+ b06:	ad 92       	st	X+, r10
     st      X+,	rState3
- ae0:	bd 92       	st	X+, r11
+ b08:	bd 92       	st	X+, r11
     st      X+,	rState4
- ae2:	cd 92       	st	X+, r12
+ b0a:	cd 92       	st	X+, r12
 	st      X+,	rState5
- ae4:	dd 92       	st	X+, r13
+ b0c:	dd 92       	st	X+, r13
 	st      X+,	rState6
- ae6:	ed 92       	st	X+, r14
+ b0e:	ed 92       	st	X+, r14
 	st      X+,	rState7
- ae8:	fd 92       	st	X+, r15
+ b10:	fd 92       	st	X+, r15
 	st      X+,	rState0
- aea:	8d 92       	st	X+, r8
+ b12:	8d 92       	st	X+, r8
 	st      X+,	rState1
- aec:	9d 92       	st	X+, r9
+ b14:	9d 92       	st	X+, r9
 
     ret   
- aee:	08 95       	ret
+ b16:	08 95       	ret
 
-00000af0 <rotate64_3byte_left>:
+00000b18 <rotate64_3byte_left>:
 
 rotate64_3byte_left:
 
 	st      X+,	rState3
- af0:	bd 92       	st	X+, r11
+ b18:	bd 92       	st	X+, r11
     st      X+,	rState4
- af2:	cd 92       	st	X+, r12
+ b1a:	cd 92       	st	X+, r12
     st      X+,	rState5
- af4:	dd 92       	st	X+, r13
+ b1c:	dd 92       	st	X+, r13
 	st      X+,	rState6
- af6:	ed 92       	st	X+, r14
+ b1e:	ed 92       	st	X+, r14
 	st      X+,	rState7
- af8:	fd 92       	st	X+, r15
+ b20:	fd 92       	st	X+, r15
 	st      X+,	rState0
- afa:	8d 92       	st	X+, r8
+ b22:	8d 92       	st	X+, r8
 	st      X+,	rState1
- afc:	9d 92       	st	X+, r9
+ b24:	9d 92       	st	X+, r9
 	st      X+,	rState2
- afe:	ad 92       	st	X+, r10
+ b26:	ad 92       	st	X+, r10
 
     ret    
- b00:	08 95       	ret
+ b28:	08 95       	ret
 
-00000b02 <rotate64_4byte_left>:
+00000b2a <rotate64_4byte_left>:
 
 rotate64_4byte_left:
 
 	st      X+,	rState4
- b02:	cd 92       	st	X+, r12
+ b2a:	cd 92       	st	X+, r12
     st      X+,	rState5
- b04:	dd 92       	st	X+, r13
+ b2c:	dd 92       	st	X+, r13
     st      X+,	rState6
- b06:	ed 92       	st	X+, r14
+ b2e:	ed 92       	st	X+, r14
 	st      X+,	rState7
- b08:	fd 92       	st	X+, r15
+ b30:	fd 92       	st	X+, r15
 	st      X+,	rState0
- b0a:	8d 92       	st	X+, r8
+ b32:	8d 92       	st	X+, r8
 	st      X+,	rState1
- b0c:	9d 92       	st	X+, r9
+ b34:	9d 92       	st	X+, r9
 	st      X+,	rState2
- b0e:	ad 92       	st	X+, r10
+ b36:	ad 92       	st	X+, r10
 	st      X+,	rState3
- b10:	bd 92       	st	X+, r11
+ b38:	bd 92       	st	X+, r11
 
     ret    
- b12:	08 95       	ret
+ b3a:	08 95       	ret
 
-00000b14 <rotate64_5byte_left>:
+00000b3c <rotate64_5byte_left>:
 
 rotate64_5byte_left:
 
 	st      X+,	rState5
- b14:	dd 92       	st	X+, r13
+ b3c:	dd 92       	st	X+, r13
     st      X+,	rState6
- b16:	ed 92       	st	X+, r14
+ b3e:	ed 92       	st	X+, r14
     st      X+,	rState7
- b18:	fd 92       	st	X+, r15
+ b40:	fd 92       	st	X+, r15
 	st      X+,	rState0
- b1a:	8d 92       	st	X+, r8
+ b42:	8d 92       	st	X+, r8
 	st      X+,	rState1
- b1c:	9d 92       	st	X+, r9
+ b44:	9d 92       	st	X+, r9
 	st      X+,	rState2
- b1e:	ad 92       	st	X+, r10
+ b46:	ad 92       	st	X+, r10
 	st      X+,	rState3
- b20:	bd 92       	st	X+, r11
+ b48:	bd 92       	st	X+, r11
 	st      X+,	rState4
- b22:	cd 92       	st	X+, r12
+ b4a:	cd 92       	st	X+, r12
 
     ret    
- b24:	08 95       	ret
+ b4c:	08 95       	ret
 
-00000b26 <rotate64_6byte_left>:
+00000b4e <rotate64_6byte_left>:
 
 rotate64_6byte_left:
 
 	st      X+,	rState6
- b26:	ed 92       	st	X+, r14
+ b4e:	ed 92       	st	X+, r14
     st      X+,	rState7
- b28:	fd 92       	st	X+, r15
+ b50:	fd 92       	st	X+, r15
     st      X+,	rState0
- b2a:	8d 92       	st	X+, r8
+ b52:	8d 92       	st	X+, r8
 	st      X+,	rState1
- b2c:	9d 92       	st	X+, r9
+ b54:	9d 92       	st	X+, r9
 	st      X+,	rState2
- b2e:	ad 92       	st	X+, r10
+ b56:	ad 92       	st	X+, r10
 	st      X+,	rState3
- b30:	bd 92       	st	X+, r11
+ b58:	bd 92       	st	X+, r11
 	st      X+,	rState4
- b32:	cd 92       	st	X+, r12
+ b5a:	cd 92       	st	X+, r12
 	st      X+,	rState5
- b34:	dd 92       	st	X+, r13
+ b5c:	dd 92       	st	X+, r13
 
     ret    
- b36:	08 95       	ret
+ b5e:	08 95       	ret
 
-00000b38 <rotate64_7byte_left>:
+00000b60 <rotate64_7byte_left>:
 
 rotate64_7byte_left:
 
 	st      X+,	rState7
- b38:	fd 92       	st	X+, r15
+ b60:	fd 92       	st	X+, r15
     st      X+,	rState0
- b3a:	8d 92       	st	X+, r8
+ b62:	8d 92       	st	X+, r8
     st      X+,	rState1
- b3c:	9d 92       	st	X+, r9
+ b64:	9d 92       	st	X+, r9
 	st      X+,	rState2
- b3e:	ad 92       	st	X+, r10
+ b66:	ad 92       	st	X+, r10
 	st      X+,	rState3
- b40:	bd 92       	st	X+, r11
+ b68:	bd 92       	st	X+, r11
 	st      X+,	rState4
- b42:	cd 92       	st	X+, r12
+ b6a:	cd 92       	st	X+, r12
 	st      X+,	rState5
- b44:	dd 92       	st	X+, r13
+ b6c:	dd 92       	st	X+, r13
 	st      X+,	rState6
- b46:	ed 92       	st	X+, r14
+ b6e:	ed 92       	st	X+, r14
 
- b48:	08 95       	ret
+ b70:	08 95       	ret
 	...
 
 00000c00 <main>:
@@ -2072,11 +2316,11 @@ int main(void)
  c5a:	b7 01       	movw	r22, r14
  c5c:	c8 01       	movw	r24, r16
  c5e:	1f da       	rcall	.-3010   	; 0x9e <init>
-	keccack(in,state,temp);
+	keccack(in, state,temp);
  c60:	a6 01       	movw	r20, r12
  c62:	b7 01       	movw	r22, r14
  c64:	c8 01       	movw	r24, r16
- c66:	fd dc       	rcall	.-1542   	; 0x662 <keccack>
+ c66:	ac dc       	rcall	.-1704   	; 0x5c0 <keccack>
 	
 	//test(state);
 
