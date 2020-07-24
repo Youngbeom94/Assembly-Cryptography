@@ -41,7 +41,6 @@ C_SRCS +=  \
 
 
 PREPROCESSING_SRCS +=  \
-../final.s \
 ../init.s \
 ../keccack1600.s \
 ../macro.s
@@ -51,28 +50,24 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-final.o \
 init.o \
 keccack1600.o \
 macro.o \
 main.o
 
 OBJS_AS_ARGS +=  \
-final.o \
 init.o \
 keccack1600.o \
 macro.o \
 main.o
 
 C_DEPS +=  \
-final.d \
 init.d \
 keccack1600.d \
 macro.d \
 main.d
 
 C_DEPS_AS_ARGS +=  \
-final.d \
 init.d \
 keccack1600.d \
 macro.d \
@@ -107,13 +102,6 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU Assembler
-./final.o: .././final.s
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU Assembler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mmcu=atmega1284p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega1284p" -I "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -mrelax -Wa,-g   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
 ./init.o: .././init.s
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU Assembler : 5.4.0

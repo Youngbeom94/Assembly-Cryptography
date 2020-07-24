@@ -103,24 +103,6 @@ RoundConstants_24:
 #define rY       28
 #define rZ       30
 
-
-
-
-/*.global test
-test:
-	ldi r31, hi8(SBOX_TABLE) // Z : r31:r30
-	eor r30, r30
-	lpm r24, Z+
-	lpm r25, Z+
-	lpm r26, Z+
-
-	ret*/
-
-
- /*		param 'in'    <- r24:r25
- *			  'state' <- r22:r23
- *			  'temp'  <- r20:r21
- */			  
 .global keccack
 keccack:
 		push_range 0, 31

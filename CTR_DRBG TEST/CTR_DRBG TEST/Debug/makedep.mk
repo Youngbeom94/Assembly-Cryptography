@@ -2,11 +2,13 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-init.s
+aria.c
 
-keccack1600.s
+Function.c
 
-macro.s
+HIGHT_CTR_enc.s
+
+key_gen.s
 
 main.c
 

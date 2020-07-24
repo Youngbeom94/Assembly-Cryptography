@@ -7,9 +7,6 @@ Discarded input sections
 
  .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284p/avr51/crtatmega1284p.o
  .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284p/avr51/crtatmega1284p.o
- .text          0x00000000        0x0 final.o
- .data          0x00000000        0x0 final.o
- .bss           0x00000000        0x0 final.o
  .data          0x00000000        0x0 init.o
  .bss           0x00000000        0x0 init.o
  .data          0x00000000        0x0 keccack1600.o
@@ -54,7 +51,6 @@ Linker script and memory map
 
 Address of section .data set to 0x800100
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega1284p/avr51/crtatmega1284p.o
-LOAD final.o
 LOAD init.o
 LOAD keccack1600.o
 LOAD macro.o
