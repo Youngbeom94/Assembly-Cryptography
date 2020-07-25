@@ -22,7 +22,7 @@ void keccack(u8* in,u8* state, u8* temp);
 int main(void)
 {
 	u8 in[200] = {0x00,};
-	u8 state[100] = {0x00,};
+	u8 state[1] = {0x00,};
 	u8 temp[80] = {0x00,};
 	
 	init(in, state, temp);

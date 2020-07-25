@@ -7,38 +7,9 @@
  */
 
 .balign 256
-PHI_TABLE_12:
+PHI_TABLE:
 
-.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, \
-	  0x00, 0x06, 0x0c, 0x12, 0x18, 0x03, 0x09, 0x0a, 0x10, 0x16, 0x01, 0x07, 0x0d, 0x13, 0x14, 0x04, 0x05, 0x0b, 0x11, 0x17, 0x02, 0x08, 0x0e, 0x0f, 0x15, \
-	  0x00, 0x09, 0x0d, 0x11, 0x15, 0x12, 0x16, 0x01, 0x05, 0x0e, 0x06, 0x0a, 0x13, 0x17, 0x02, 0x18, 0x03, 0x07, 0x0b, 0x0f, 0x0c, 0x10, 0x14, 0x04, 0x08, \
-	  0x00, 0x16, 0x13, 0x0b, 0x08, 0x11, 0x0e, 0x06, 0x03, 0x14, 0x09, 0x01, 0x17, 0x0f, 0x0c, 0x15, 0x12, 0x0a, 0x07, 0x04, 0x0d, 0x05, 0x02, 0x18, 0x10, \
-	  0x00, 0x0e, 0x17, 0x07, 0x10, 0x0b, 0x14, 0x09, 0x12, 0x02, 0x16, 0x06, 0x0f, 0x04, 0x0d, 0x08, 0x11, 0x01, 0x0a, 0x18, 0x13, 0x03, 0x0c, 0x15, 0x05, \
-	  0x00, 0x14, 0x0f, 0x0a, 0x05, 0x07, 0x02, 0x16, 0x11, 0x0c, 0x0e, 0x09, 0x04, 0x18, 0x13, 0x10, 0x0b, 0x06, 0x01, 0x15, 0x17, 0x12, 0x0d, 0x08, 0x03, \
-	  0x00, 0x02, 0x04, 0x01, 0x03, 0x0a, 0x0c, 0x0e, 0x0b, 0x0d, 0x14, 0x16, 0x18, 0x15, 0x17, 0x05, 0x07, 0x09, 0x06, 0x08, 0x0f, 0x11, 0x13, 0x10, 0x12, \
-	  0x00, 0x0c, 0x18, 0x06, 0x12, 0x01, 0x0d, 0x14, 0x07, 0x13, 0x02, 0x0e, 0x15, 0x08, 0x0f, 0x03, 0x0a, 0x16, 0x09, 0x10, 0x04, 0x0b, 0x17, 0x05, 0x11, \
-	  0x00, 0x0d, 0x15, 0x09, 0x11, 0x06, 0x13, 0x02, 0x0a, 0x17, 0x0c, 0x14, 0x08, 0x10, 0x04, 0x12, 0x01, 0x0e, 0x16, 0x05, 0x18, 0x07, 0x0f, 0x03, 0x0b, \
-	  0x00, 0x13, 0x08, 0x16, 0x0b, 0x09, 0x17, 0x0c, 0x01, 0x0f, 0x0d, 0x02, 0x10, 0x05, 0x18, 0x11, 0x06, 0x14, 0x0e, 0x03, 0x15, 0x0a, 0x04, 0x12, 0x07, \
-	  0x00, 0x17, 0x10, 0x0e, 0x07, 0x16, 0x0f, 0x0d, 0x06, 0x04, 0x13, 0x0c, 0x05, 0x03, 0x15, 0x0b, 0x09, 0x02, 0x14, 0x12, 0x08, 0x01, 0x18, 0x11, 0x0a, \
-	  0x00, 0x0f, 0x05, 0x14, 0x0a, 0x0e, 0x04, 0x13, 0x09, 0x18, 0x17, 0x0d, 0x03, 0x12, 0x08, 0x07, 0x16, 0x0c, 0x02, 0x11, 0x10, 0x06, 0x15, 0x0b, 0x01, \
-	  0x00, 0x04, 0x03, 0x02, 0x01, 0x14, 0x18, 0x17, 0x16, 0x15, 0x0f, 0x13, 0x12, 0x11, 0x10, 0x0a, 0x0e, 0x0d, 0x0c, 0x0b, 0x05, 0x09, 0x08, 0x07, 0x06
-
-.balign 256
-PHI_TABLE_24:
-
-.byte 0x00, 0x18, 0x12, 0x0c, 0x06, 0x02, 0x15, 0x0f, 0x0e, 0x08, 0x04, 0x17, 0x11, 0x0b, 0x05, 0x01, 0x14, 0x13, 0x0d, 0x07, 0x03, 0x16, 0x10, 0x0a, 0x09, \
-	  0x00, 0x15, 0x11, 0x0d, 0x09, 0x0c, 0x08, 0x04, 0x14, 0x10, 0x18, 0x0f, 0x0b, 0x07, 0x03, 0x06, 0x02, 0x17, 0x13, 0x0a, 0x12, 0x0e, 0x05, 0x01, 0x16, \
-	  0x00, 0x08, 0x0b, 0x13, 0x16, 0x0d, 0x10, 0x18, 0x02, 0x05, 0x15, 0x04, 0x07, 0x0a, 0x12, 0x09, 0x0c, 0x0f, 0x17, 0x01, 0x11, 0x14, 0x03, 0x06, 0x0e, \
-	  0x00, 0x10, 0x07, 0x17, 0x0e, 0x13, 0x05, 0x15, 0x0c, 0x03, 0x08, 0x18, 0x0a, 0x01, 0x11, 0x16, 0x0d, 0x04, 0x0f, 0x06, 0x0b, 0x02, 0x12, 0x09, 0x14, \
-	  0x00, 0x05, 0x0a, 0x0f, 0x14, 0x17, 0x03, 0x08, 0x0d, 0x12, 0x10, 0x15, 0x01, 0x06, 0x0b, 0x0e, 0x13, 0x18, 0x04, 0x09, 0x07, 0x0c, 0x11, 0x16, 0x02, \
-	  0x00, 0x03, 0x01, 0x04, 0x02, 0x0f, 0x12, 0x10, 0x13, 0x11, 0x05, 0x08, 0x06, 0x09, 0x07, 0x14, 0x17, 0x15, 0x18, 0x16, 0x0a, 0x0d, 0x0b, 0x0e, 0x0c, \
-	  0x00, 0x12, 0x06, 0x18, 0x0c, 0x04, 0x11, 0x05, 0x17, 0x0b, 0x03, 0x10, 0x09, 0x16, 0x0a, 0x02, 0x0f, 0x08, 0x15, 0x0e, 0x01, 0x13, 0x07, 0x14, 0x0d, \
-	  0x00, 0x11, 0x09, 0x15, 0x0d, 0x18, 0x0b, 0x03, 0x0f, 0x07, 0x12, 0x05, 0x16, 0x0e, 0x01, 0x0c, 0x04, 0x10, 0x08, 0x14, 0x06, 0x17, 0x0a, 0x02, 0x13, \
-	  0x00, 0x0b, 0x16, 0x08, 0x13, 0x15, 0x07, 0x12, 0x04, 0x0a, 0x11, 0x03, 0x0e, 0x14, 0x06, 0x0d, 0x18, 0x05, 0x10, 0x02, 0x09, 0x0f, 0x01, 0x0c, 0x17, \
-	  0x00, 0x07, 0x0e, 0x10, 0x17, 0x08, 0x0a, 0x11, 0x18, 0x01, 0x0b, 0x12, 0x14, 0x02, 0x09, 0x13, 0x15, 0x03, 0x05, 0x0c, 0x16, 0x04, 0x06, 0x0d, 0x0f, \
-	  0x00, 0x0a, 0x14, 0x05, 0x0f, 0x10, 0x01, 0x0b, 0x15, 0x06, 0x07, 0x11, 0x02, 0x0c, 0x16, 0x17, 0x08, 0x12, 0x03, 0x0d, 0x0e, 0x18, 0x09, 0x13, 0x04, \
-	  0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18
-
+.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
 .balign 256
 RoundConstants_24:
@@ -79,8 +50,8 @@ RoundConstants_24:
 #define therz2	 3
 #define	therx	 4
 #define	therx2	 5
-#define	count2	 6
-#define	count3	 7
+#define	count3	 6
+#define	main_count	 7
 #define rState0  8
 #define rState1  9
 #define rState2  10
@@ -98,7 +69,7 @@ RoundConstants_24:
 #define rTemp6   22
 #define rTemp7   23
 #define count    24
-#define	main_count 25
+#define	count2	 25
 #define rX       26
 #define rY       28
 #define rZ       30
@@ -111,145 +82,49 @@ keccack:
 
 		movw 		rX,	r24 ; in   --> X
 		movw 		rY,	r20 ; temp --> Y
-		ldi 		main_count,		 24
+		ldi			count,		24
+		mov 		main_count,		 count
 
 		ldi		r31,	hi8(RoundConstants_24)
 		ldi		r30,	lo8(RoundConstants_24)
 		push		r30
 		push		r31
 
-		ldi		r31,	hi8(PHI_TABLE_12)
-		ldi		r30,	lo8(PHI_TABLE_12)
 		movw		therz,	rZ
+		eor		zero,	zero
 
 start:
-		ldi		count,	5
-		mov		count2,	count
+		ldi		count2,	5		;//main count:o : count:x, count2:o, count3:x
 		movw		rZ,	therz
 		movw		therx,	X
 
-		ldi		count,	12
-		cp		count,	main_count
-		brge		startafter
-		rjmp		Theta_init_Loop
-
-startafter:
-		ldi		r31,	hi8(PHI_TABLE_24)
-		ldi		r30,	lo8(PHI_TABLE_24)
-		movw		therz,	rZ
-
+		ldi		count,	160		;//main count:o : count:160, count2:5, count3:32
 
 
 Theta_init_Loop:
 
-		lpm		rX,	Z
-    		ld      	rTemp0,	X+     ; state[x]
-    		ld      	rTemp1, X+
-    		ld      	rTemp2, X+
-    		ld      	rTemp3, X+
-    		ld      	rTemp4, X+
-    		ld      	rTemp5, X+
-    		ld      	rTemp6, X+
-    		ld      	rTemp7, X+
+		load_from_temp_to_X	; state[x]
 
-		adiw		Z,	5    ; state[x+5]
-		lpm		rX,	Z
-   		ld		load,	X+
-		eor		rTemp0,	load
-		ld		load,	X+
-		eor		rTemp1,	load
-		ld		load,	X+
-		eor		rTemp2,	load
-		ld		load,	X+
-		eor		rTemp3,	load
-		ld		load,	X+
-		eor		rTemp4,	load
-		ld		load,	X+
-		eor		rTemp5,	load
-		ld		load,	X+
-		eor		rTemp6,	load
-		ld		load,	X+
-		eor		rTemp7,	load
+		theta_initial_help	; state[x+5]
+		theta_initial_help	; state[x+10]
+		theta_initial_help	; state[x+15]
+		theta_initial_help	; state[x+20]
 
-		adiw		Z,	5    ; state[x+10]
-		lpm		rX,	Z
-  		ld		load,	X+
-		eor		rTemp0,	load
-		ld		load,	X+
-		eor		rTemp1,	load
-		ld		load,	X+
-		eor		rTemp2,	load
-		ld		load,	X+
-		eor		rTemp3,	load
-		ld		load,	X+
-		eor		rTemp4,	load
-		ld		load,	X+
-		eor		rTemp5,	load
-		ld		load,	X+
-		eor		rTemp6,	load
-		ld		load,	X+
-		eor		rTemp7,	load
-
-		adiw		Z,	5    ; state[x+15]
-		lpm		rX,	Z
-    		ld		load,	X+
-		eor		rTemp0,	load
-		ld		load,	X+
-		eor		rTemp1,	load
-		ld		load,	X+
-		eor		rTemp2,	load
-		ld		load,	X+
-		eor		rTemp3,	load
-		ld		load,	X+
-		eor		rTemp4,	load
-		ld		load,	X+
-		eor		rTemp5,	load
-		ld		load,	X+
-		eor		rTemp6,	load
-		ld		load,	X+
-		eor		rTemp7,	load
-
-		adiw		Z,	5    ; state[x+20]
-		lpm		rX,	Z+
-    		ld		load,	X+
-		eor		rTemp0,	load
-		ld		load,	X+
-		eor		rTemp1,	load
-		ld		load,	X+
-		eor		rTemp2,	load
-		ld		load,	X+
-		eor		rTemp3,	load
-		ld		load,	X+
-		eor		rTemp4,	load
-		ld		load,	X+
-		eor		rTemp5,	load
-		ld		load,	X+
-		eor		rTemp6,	load
-		ld		load,	X+
-		eor		rTemp7,	load
-
-		st     		Y+, rTemp0
-    		st     		Y+, rTemp1
-    		st      	Y+, rTemp2
-    		st      	Y+, rTemp3
-    		st      	Y+, rTemp4
-    		st      	Y+, rTemp5
-    		st      	Y+, rTemp6
-    		st      	Y+, rTemp7
+		store_from_Y_to_temp
+		sub		rX,		count
+		sbc		rX+1,	zero	;//main count:o : count:160, count2:5, count3:32
 		dec		count2
 		breq		END_Theta
-		sbiw		Z,	 20
-		rjmp		Theta_init_Loop
+		rjmp		Theta_init_Loop		
 
-END_Theta:
-		adiw		Z,	 20
-		sbiw		Y,	 25
+END_Theta:						;//main count:o : count:x, count2:x, count3:x			
+		sbiw		rY,	 40
+		sbc			rY+1,	zero
 		movw		X,	 therx ; X inital 
-		movw		therz,	Z  ; thetha Z -----> r2, r3
 
-Theta_update_1:
+Theta_update_1:					;//main count:o : count:o, count2:x, count3:x
 
-		ld       	rTemp0, Y   ;0 저장
+			ld       	rTemp0, Y   ;0 저장
     		ldd      	rTemp1, Y+1
     		ldd      	rTemp2, Y+2
     		ldd      	rTemp3, Y+3
@@ -258,7 +133,7 @@ Theta_update_1:
     		ldd      	rTemp6, Y+6
     		ldd      	rTemp7, Y+7
 
-		ldd      	rState0, Y+16   ; 2저장
+			ldd      	rState0, Y+16   ; 2저장
     		ldd      	rState1, Y+17
     		ldd      	rState2, Y+18
     		ldd      	rState3, Y+19
@@ -267,37 +142,18 @@ Theta_update_1:
     		ldd     	rState6, Y+22
     		ldd      	rState7, Y+23
 
-		lsl     	rState0 ;2 로테이트
-    		rol     	rState1
-    		rol     	rState2
-    		rol     	rState3
-    		rol     	rState4
-   		rol     	rState5
-    		rol     	rState6
-    		rol     	rState7
-    		adc     	rState0, zero
-
-		eor		rState0, rTemp0 ;저장값 1 만들기
-		eor		rState1, rTemp1
-		eor		rState2, rTemp2
-		eor		rState3, rTemp3
-		eor		rState4, rTemp4
-		eor		rState5, rTemp5
-		eor		rState6, rTemp6
-		eor		rState7, rTemp7
+		initial_theta_rotate_state ;2 -rotate
+		initial_theta_eor_form_temp_to_state;저장값 1 만들기
 	
 		ldi		count,	48
 		add		rY,		count
-		st		Y+,	rState0
-		st		Y+,	rState1
-		st		Y+,	rState2
-		st		Y+,	rState3
-		st		Y+,	rState4
-		st		Y+,	rState5
-		st		Y+,	rState6
-		st		Y+,	rState7;-------------------------------------------------02 ->1
+		adc		rY+1,	zero
+		store_from_Y_to_state	;-------------------------------------------------02 ->1
 		sub		rY,	count
+		sbc		rY+1,zero
 		sbiw		Y,	8
+		sbc		rY+1,zero
+
 
 Theta_update_2:
 							 ;rTemp <-- 0저장
@@ -310,37 +166,18 @@ Theta_update_2:
 		ldd      	rState6, Y+30
 		ldd      	rState7, Y+31
 
-		lsl     	rTemp0 ;0 로테이트
-    		rol     	rTemp1
-   		rol     	rTemp2
-	   	rol     	rTemp3
-	    	rol     	rTemp4
-	    	rol     	rTemp5
-	    	rol     	rTemp6
-	    	rol    		rTemp7
-	    	adc    		rTemp0, zero
+		initial_theta_rotate_temp ;0 -rotate
+		initial_theta_eor_form_state_to_temp;저장값 4 만들기
 
-		eor		rTemp0,	rState0 ;저장값 4 만들기
-		eor		rTemp1,	rState1
-		eor		rTemp2,	rState2
-		eor		rTemp3,	rState3
-		eor		rTemp4,	rState4
-		eor		rTemp5,	rState5
-		eor		rTemp6,	rState6
-		eor		rTemp7,	rState7
 	
 		ldi		count,	72
 		add		rY,	count
-		st		Y+,	rTemp0
-		st		Y+,	rTemp1
-		st		Y+,	rTemp2
-		st		Y+,	rTemp3
-		st		Y+,	rTemp4
-		st		Y+,	rTemp5
-		st		Y+,	rTemp6
-		st		Y+,	rTemp7	;-------------------------------------------------30 ->4
+		adc		rY+1,	zero
+		store_from_Y_to_temp	;-------------------------------------------------30 ->4
 		sub		rY,	count
+		sbc		rY+1,zero
 		sbiw		Y,	8
+		sbc		rY+1,zero
 
 Theta_update_3:
 						  ; rstate 3 저장
@@ -352,38 +189,18 @@ Theta_update_3:
 		ldd      	rTemp5, Y+13
 		ldd      	rTemp6, Y+14
 		ldd      	rTemp7, Y+15
-					
-		lsl     	rState0 ;3 로테이트
-		rol     	rState1
-		rol     	rState2
-		rol     	rState3
-		rol     	rState4
-		rol     	rState5
-		rol     	rState6
-		rol     	rState7
-		adc     	rState0, zero
 
-		eor		rState0, rTemp0 ;저장값 1 만들기
-		eor		rState1, rTemp1
-		eor		rState2, rTemp2
-		eor		rState3, rTemp3
-		eor		rState4, rTemp4
-		eor		rState5, rTemp5
-		eor		rState6, rTemp6
-		eor		rState7, rTemp7
+		initial_theta_rotate_state ; 3-rotate
+		initial_theta_eor_form_temp_to_state;저장값 2 만들기
 
 		ldi		count,	56
 		add		rY,	count
-		st		Y+,	rState0
-		st		Y+,	rState1
-		st		Y+,	rState2
-		st		Y+,	rState3
-		st		Y+,	rState4
-		st		Y+,	rState5
-		st		Y+,	rState6
-		st		Y+,	rState7;-------------------------------------------------13 ->2
+		adc		rY+1,	zero
+		store_from_Y_to_state;-------------------------------------------------13 ->2
 		sub		rY,		count
-		sbiw		Y,		8
+		sbc		rY+1,zero
+		sbiw		Y,	8
+		sbc		rY+1,zero
 
 Theta_update_4:
 						;rTemp <-- 1저장	 
@@ -396,42 +213,22 @@ Theta_update_4:
     		ldd      	rState6, Y+38
     		ldd      	rState7, Y+39
 
-		lsl     	rTemp0 ;0 로테이트
-    		rol     	rTemp1
-    		rol     	rTemp2
-    		rol     	rTemp3
-    		rol     	rTemp4
-    		rol     	rTemp5
-    		rol     	rTemp6
-    		rol     	rTemp7
-    		adc     	rTemp0, zero
-
-		eor		rTemp0,	rState0 ;저장값 4 만들기
-		eor		rTemp1,	rState1
-		eor		rTemp2,	rState2
-		eor		rTemp3,	rState3
-		eor		rTemp4,	rState4
-		eor		rTemp5,	rState5
-		eor		rTemp6,	rState6
-		eor		rTemp7,	rState7
+		initial_theta_rotate_temp ;0 -rotate
+		initial_theta_eor_form_state_to_temp;저장값 0 만들기
 
 		ldi		count,	40
 		add		rY,	count
-		st		Y+,	rTemp0
-		st		Y+,	rTemp1
-		st		Y+,	rTemp2
-		st		Y+,	rTemp3
-		st		Y+,	rTemp4
-		st		Y+,	rTemp5
-		st		Y+,	rTemp6
-		st		Y+,	rTemp7;-------------------------------------------------41 ->0
+		adc		rY+1,	zero
+		store_from_Y_to_temp	;-------------------------------------------------31 ->0
 		sub		rY,	count
+		sbc		rY+1,zero
 		sbiw		Y,	8
+		sbc		rY+1,zero		;Y 저장값에 주소 fix
 
 
 Theta_update_5:
 						  ; rstate 4 저장
-		ldd      	rTemp0, Y+16  ;2 저장
+			ldd      	rTemp0, Y+16  ;2 저장
     		ldd      	rTemp1, Y+17
     		ldd      	rTemp2, Y+18
     		ldd      	rTemp3, Y+19
@@ -439,168 +236,194 @@ Theta_update_5:
     		ldd      	rTemp5, Y+21
     		ldd      	rTemp6, Y+22
     		ldd      	rTemp7, Y+23
+
+		initial_theta_rotate_state ; 4-rotate
+		initial_theta_eor_form_temp_to_state;저장값 3 만들기
 					
-		lsl     	rState0 ;4 로테이트
-    		rol     	rState1
-    		rol     	rState2
-    		rol     	rState3
-    		rol     	rState4
-    		rol     	rState5
-    		rol     	rState6
-    		rol     	rState7
-    		adc     	rState0, zero
-
-		eor		rState0, rTemp0 ;저장값 3 만들기
-		eor		rState1, rTemp1
-		eor		rState2, rTemp2
-		eor		rState3, rTemp3
-		eor		rState4, rTemp4
-		eor		rState5, rTemp5
-		eor		rState6, rTemp6
-		eor		rState7, rTemp7
-
 		ldi		count,	64
 		add		rY,	count
-		st		Y+,	rState0
-		st		Y+,	rState1
-		st		Y+,	rState2
-		st		Y+,	rState3
-		st		Y+,	rState4
-		st		Y+,	rState5
-		st		Y+,	rState6
-		st		Y+,	rState7;-------------------------------------------------24 ->3
-		sbiw		Y,	28	
+		adc		rY+1,	zero
+		store_from_Y_to_state;-------------------------------------------------24 ->3
+		sbiw	Y,	32
+		sbc		rY+1,zero	
 
-		ldi		count,	25
-		mov		count2,	count
-		ldi		count,	8
+		ldi		count,	8	;//main count:o : ld:count:x, ld:count2:x, count3:8
 		mov		count3,	count
-		eor		zero,	zero
+		
 
 Thetha_Rho_loop:
+		
+		eor		count,		count
+		eor		count2,		count2
+		first_load_state; s[0]
+		//no rotate
+		ldi		count,		32 ; s[0] ->s[4]
+		ldi		count2,		32 ; 4번째 Temp
+		first_load_temp; s[4]
+		ldi		count,		32 ; s[0] ->s[4]
+		rotate64_1byte_right_state ; s[0] ->s[4] clear
 
-		ldi		count,	40
+		rotate64_1bit_right_temp
+		ldi		count,		72; s[4]->s[9]
+		ldi		count2,		32;
+		first_load_state;	s[9]
+		ldi		count,		72; s[4]->s[9]
+		rotate64_3byte_right_temp ; s[4] ->s[9] clear
 
-		rcall		first_load_EOR
-		rcall		rotate64_1bit_right
-		rcall		rotate64_4byte_left
+		rotate64_3bit_right_state 
+		ldi		count,		24; s[9]->s[3]
+		ldi		count2,		24;
+		first_load_temp;	s[3]
+		ldi		count,		24; s[9]->s[3]
+		rotate64_5byte_right_state ; s[9] ->s[3] clear
 
-		rcall		first_load_EOR
-		rcall		rotate64_1bit_left
-		rcall		rotate64_3byte_left
+		rotate64_2bit_left_temp
+		ldi		count,		192; s[3]->s[24]
+		ldi		count2,		32;
+		first_load_state;	s[24]
+		ldi		count,		192; s[3]->s[24]
+		rotate64_0byte_right_temp ; s[3] ->s[24] clear
 
-		rcall		first_load_EOR
-		rcall		rotate64_3bit_right
-		rcall		rotate64_0byte_left
+		rotate64_2bit_right_state 
+		ldi		count,		160; s[24]->s[20]
+		eor		count2,		count2;
+		first_load_temp;	s[20]
+		ldi		count,		160; s[24]->s[20]
+		rotate64_1byte_right_state ; s[24] ->s[20] clear
 
-		rcall		first_load_EOR
-		rcall		rotate64_2bit_right
-		rcall		rotate64_7byte_left
+		rotate64_1bit_left_temp
+		ldi		count,		80; s[20]->s[10]
+		eor		count2,		count2;
+		first_load_state;	s[10]
+		ldi		count,		80; s[20]->s[10]
+		rotate64_2byte_right_temp ; s[20] ->s[10] clear
 
-		rcall		first_load_EOR
-		rcall		rotate64_3bit_right
-		rcall		rotate64_3byte_left ; fist Row
+		rotate64_3bit_left_state 
+		ldi		count,		56; s[10]->s[7]
+		ldi		count2,		16;
+		first_load_temp;	s[7]
+		ldi		count,		56; s[10]->s[7]
+		rotate64_3byte_right_state ; s[10] ->s[7] clear
 
-		sub		rY,	count
-;-------------------------------------------
-		rcall		first_load_EOR
-		rcall		rotate64_1bit_left
-		rcall		rotate64_1byte_left
+		rotate64_4bit_left_temp
+		ldi		count,		184; s[7]->s[23]
+		ldi		count2,		24;
+		first_load_state;	s[23]
+		ldi		count,		184; s[7]->s[23]
+		rotate64_4byte_right_temp ; s[7] ->s[23] clear
 
-		rcall		first_load_EOR
-		rcall		rotate64_4bit_left
-		rcall		rotate64_4byte_left
+		rotate64_4bit_left_state 
+		ldi		count,		40; s[23]->s[5]
+		eor		count2,		count2;
+		first_load_temp;	s[5]
+		ldi		count,		40; s[23]->s[5]
+		rotate64_4byte_right_state ; s[23] ->s[5] clear
 
-		rcall		first_load_EOR
-		rcall		rotate64_4bit_left
-		rcall		rotate64_3byte_left
+		rotate64_3bit_left_temp
+		ldi		count,		144; s[5]->s[18]
+		ldi		count2,		24;
+		first_load_state;	s[5]
+		ldi		count,		144; s[5]->s[18]
+		rotate64_6byte_right_temp ; s[5] ->s[18] clear
 
-		rcall		first_load_EOR
-		rcall		rotate64_4bit_left
-		rcall		rotate64_2byte_left
-	
-		rcall		first_load_EOR
-		rcall		rotate64_1bit_left
-		rcall		rotate64_0byte_left  ; fist Row
+		rotate64_1bit_left_state 
+		ldi		count,		128; s[18]->s[16]
+		ldi		count2,		8;
+		first_load_temp;	s[16]
+		ldi		count,		128; s[18]->s[16]
+		rotate64_7byte_right_state ; s[18] ->s[16] clear
 
-		sub		rY,		count	
-;-------------------------------------------
+		
+		rotate64_2bit_right_temp
+		ldi		count,		88; s[16]->s[11]
+		ldi		count2,		8;
+		first_load_state;	s[11]
+		ldi		count,		88; s[16]->s[11]
+		rotate64_0byte_right_temp ; s[16] ->s[11] clear
 
-		rcall		first_load_EOR
-		rcall		rotate64_4bit_left
-		rcall		rotate64_3byte_left
+		rotate64_2bit_left_state 
+		ldi		count,		176; s[11]->s[22]
+		ldi		count2,		16;
+		first_load_temp;	s[22]
+		ldi		count,		176; s[11]->s[22]
+		rotate64_2byte_right_state ; s[11] ->s[22] clear
 
-		rcall		first_load_EOR
-		rcall		rotate64_3bit_left
-		rcall		rotate64_4byte_left
+		rotate64_3bit_right_temp 
+		ldi		count,		120; s[22]->s[15]
+		eor		count2,		count2;
+		first_load_state;	s[15]
+		ldi		count,		120; s[22]->s[15]
+		rotate64_3byte_right_temp ; s[22] ->s[15] clear
 
-		rcall		first_load_EOR
-		rcall		rotate64_0byte_left
+		rotate64_1bit_right_state 
+		ldi		count,		168; s[15]->s[21]
+		ldi		count2,		8;
+		first_load_temp;	s[21]
+		ldi		count,		168; s[15]->s[21]
+		rotate64_5byte_right_state ; s[15] ->s[21] clear
 
-		rcall		first_load_EOR
-		rcall		rotate64_1bit_right
-		rcall		rotate64_0byte_left
+		rotate64_1bit_right_temp   ;  s[21] -> s[0] ;-> s[0] is already Empty
+		rotate64_3byte_right_temp  ;  s[21] -> s[0] clear////////-new start---------------------------------------
 
-		rcall		first_load_EOR
-		rcall		rotate64_2bit_left
-		rcall		rotate64_0byte_left	;Third Row
 
-		sub		rY,	count	
-;-------------------------------------------
+		ldi		count,		8
+		ldi		count2,		8
+		first_load_state; s[1]
 
-		rcall		first_load_EOR
-		rcall		rotate64_1byte_left
+		rotate64_2bit_right_state
+		ldi		count,		152; s[1] ->s[19]
+		ldi		count2,		32 ;
+		first_load_temp; 
+		ldi		count,		152 ; s[1] ->s[19]
+		rotate64_2byte_right_state ; s[1] ->s[19] clear
 
-		rcall		first_load_EOR
-		rcall		rotate64_2bit_left
-		rcall		rotate64_6byte_left
+		rotate64_1bit_left_temp 
+		ldi		count,		18; s[19]->s[6]
+		ldi		count2,		8 ;
+		first_load_state;	s[6]
+		ldi		count,		8; s[19]->s[6]
+		rotate64_5byte_right_temp ; s[19] ->s[6] clear
 
-		rcall		first_load_EOR
-		rcall		rotate64_2bit_right
-		rcall		rotate64_6byte_left
+		rotate64_3bit_left_state
+		ldi		count,		64; s[6] ->s[8]
+		ldi		count2,		24 ;
+		first_load_temp; s[8]
+		ldi		count,		64 ; s[6] ->s[8]
+		rotate64_0byte_right_state ; s[6] ->s[8] clear
 
-		rcall		first_load_EOR
-		rcall		rotate64_2bit_right
-		rcall		rotate64_0byte_left
+		rotate64_4bit_left_temp 
+		ldi		count,		104; s[8]->s[13]
+		ldi		count2,		24 ;
+		first_load_state;	s[13]
+		ldi		count,		104; s[8]->s[13]
+		rotate64_3byte_right_temp ; s[8] ->s[13] clear
 
-		rcall		first_load_EOR
-		rcall		rotate64_3bit_left
-		rcall		rotate64_0byte_left	 ;Firth Row
+		rotate64_4bit_left_state
+		ldi		count,		16; s[13] ->s[2]
+		ldi		count2,		16 ;
+		first_load_temp; s[2]
+		ldi		count,		16 ; s[13] ->s[2]
+		rotate64_6byte_right_state ; s[13] ->s[2] clear
 
-		sub		rY,	count
+		rotate64_1bit_right_temp 
+		ldi		count,		112   ; s[2]->s[14]
+		ldi		count2,		32  ;
+		first_load_state;	s[14]
+		ldi		count,		112   ; s[2]->s[14]
+		rotate64_0byte_right_temp ; s[2] ->s[14] clear
 
-;-------------------------------------------
+		rcall last_Rho_Process
 
-		rcall		first_load_EOR
-		rcall		rotate64_3bit_left
-		rcall		rotate64_5byte_left
 
-		rcall		first_load_EOR
-		rcall		rotate64_7byte_left
 
-		rcall		first_load_EOR
-		rcall		rotate64_1bit_right
-		rcall		rotate64_3byte_left
-
-		rcall		first_load_EOR
-		rcall		rotate64_3bit_left
-		rcall		rotate64_2byte_left
-
-		rcall		first_load_EOR
-		rcall		rotate64_1bit_left
-		rcall		rotate64_6byte_left	 ;Fifth Row
-
-		sub		rY,		count
-
+		//--------Chi setting
 		movw		rX,		therx
 		movw		therx,	rY
 		movw		rY,		rX
 		movw		rX,		therx
 
 
-		ldi		count,	5
-		mov		count2,	count
-		eor		zero,	zero
+		ldi		count2,	5
 
 Chi_Lota_Setting:
 	
@@ -702,14 +525,7 @@ Lota:
 		lpm		rTemp6,		Z+
 		lpm		rTemp7,		Z+
 
-		eor		rState0,	rTemp0
-		eor		rState1,	rTemp1
-		eor		rState2,	rTemp2
-		eor		rState3,	rTemp3
-		eor		rState4,	rTemp4
-		eor		rState5,	rTemp5
-		eor		rState6,	rTemp6
-		eor		rState7,	rTemp7
+		initial_theta_eor_form_temp_to_state
 
 		st		Y,			rState0
 		std		Y+1,		rState1
@@ -742,234 +558,24 @@ Keccack_END:
 		
 		ret
 
-first_load_EOR:
 
-		ld	   	rState0,	X+
-    		ld     		rState1,	X+
-    		ld     		rState2,	X+
-    		ld     		rState3,	X+
-    		ld     		rState4,	X+
-    		ld     		rState5,	X+
-    		ld     		rState6,	X+
-    		ld     		rState7,	X+
-		sub		rX,		count3
+last_Rho_Process:
 
-		ld	   	rTemp0,		Y+
-    		ld     		rTemp1,		Y+
-    		ld     		rTemp2,		Y+
-    		ld     		rTemp3,		Y+
-    		ld     		rTemp4,		Y+
-    		ld     		rTemp5,		Y+
-    		ld     		rTemp6,		Y+
-    		ld     		rTemp7,		Y+
+		rotate64_1bit_right_state
+		ldi		count,		136; s[14] ->s[17]
+		ldi		count2,		16 ;
+		first_load_temp; s[17]
+		ldi		count,		136 ; s[14] ->s[17]
+		rotate64_0byte_right_state ; s[14] ->s[17] clear
 
-		eor	  	rState0,	rTemp0
-		eor	  	rState1,	rTemp1
-		eor	  	rState2,	rTemp2
-		eor	  	rState3,	rTemp3
-		eor	  	rState4,	rTemp4
-		eor	  	rState5,	rTemp5
-		eor	  	rState6,	rTemp6
-		eor	  	rState7,	rTemp7
-	
+		rotate64_2bit_left_temp
+		ldi		count,	8;	s[17]->S[1]
+		rotate64_0byte_right_temp; s[17]->S[1] clear
+
+
+		ldi		count,	96; S[12]
+		first_load_temp
+		ldi		count,	96; S[12]
+		rotate64_0byte_right_temp ; S[12] clear
+		
 		ret
-
- rotate64_4bit_left:
-
-    		lsl		rState0
-    		rol     	rState1
-    		rol     	rState2
-    		rol     	rState3
-    		rol     	rState4
-    		rol     	rState5
-    		rol     	rState6
-    		rol     	rState7
-    		adc     	rState0, zero
-
-rotate64_3bit_left:
-
-	    	lsl		rState0
-	    	rol     	rState1
-	    	rol     	rState2
-	    	rol     	rState3
-	    	rol     	rState4
-	    	rol     	rState5
-	    	rol     	rState6
-	    	rol     	rState7
-	    	adc     	rState0, zero
-
-rotate64_2bit_left:
-
-	    	lsl		rState0
-	    	rol     	rState1
-	    	rol     	rState2
-	    	rol     	rState3
-	    	rol     	rState4
-	    	rol     	rState5
-	    	rol     	rState6
-	    	rol     	rState7
-	    	adc     	rState0, zero
-
-rotate64_1bit_left:
-
-	    	lsl		rState0
-	    	rol     	rState1
-	    	rol     	rState2
-	    	rol     	rState3
-	    	rol     	rState4
-	    	rol     	rState5
-	    	rol     	rState6
-	    	rol     	rState7
-	    	adc     	rState0, zero
-
-		ret
-
-;----------------------------------------------------------------------------------------------------
-
-rotate64_3bit_right:
-
-    		bst     	rState0, 0
-    		ror     	rState7
-    		ror     	rState6
-    		ror     	rState5
-    		ror     	rState4
-    		ror     	rState3
-    		ror     	rState2
-    		ror     	rState1
-    		ror     	rState0
-   	 	bld     	rState7, 7
-
-rotate64_2bit_right:
-
-    		bst     	rState0, 0
-    		ror    		rState7
-    		ror     	rState6
-    		ror     	rState5
-    		ror     	rState4
-    		ror     	rState3
-    		ror     	rState2
-    		ror     	rState1
-    		ror     	rState0
-    		bld     	rState7, 7
-
-rotate64_1bit_right:
-
-    		bst     	rState0, 0
-    		ror     	rState7
-    		ror     	rState6
-    		ror     	rState5
-    		ror     	rState4
-	    	ror     	rState3
-    		ror     	rState2
-    		ror     	rState1
-    		ror     	rState0
-    		bld     	rState7, 7
-
-		ret
-
-;----------------------------------------------------------------------------------------------------
-
-rotate64_0byte_left:
-
-    		st      	X+,	rState0
-    		st      	X+,	rState1
-    		st      	X+,	rState2
-		st      	X+,	rState3
-		st      	X+,	rState4
-		st      	X+,	rState5
-		st      	X+,	rState6
-		st      	X+,	rState7
-
-    		ret
-
-rotate64_1byte_left:
-	
-		st      	X+,	rState1
-		st      	X+,	rState2
-		st      	X+,	rState3
-		st      	X+,	rState4
-		st      	X+,	rState5
-		st      	X+,	rState6
-		st      	X+,	rState7
-		st      	X+,	rState0
-
-    		ret   
-
-rotate64_2byte_left:
-
-		st      	X+,	rState2
-		st      	X+,	rState3
-		st      	X+,	rState4
-		st      	X+,	rState5
-		st      	X+,	rState6
-		st      	X+,	rState7
-		st      	X+,	rState0
-		st      	X+,	rState1
-
-    		ret   
-
-rotate64_3byte_left:
-
-		st     		X+,	rState3
-		st      	X+,	rState4
-		st     		X+,	rState5
-		st      	X+,	rState6
-		st      	X+,	rState7
-		st      	X+,	rState0
-		st      	X+,	rState1
-		st      	X+,	rState2
-
-    		ret    
-
-rotate64_4byte_left:
-
-		st      	X+,	rState4
-		st      	X+,	rState5
-		st      	X+,	rState6
-		st      	X+,	rState7
-		st      	X+,	rState0
-		st      	X+,	rState1
-		st      	X+,	rState2
-		st      	X+,	rState3
-
-    		ret    
-
-rotate64_5byte_left:
-
-		st      	X+,	rState5
-		st      	X+,	rState6
-		st      	X+,	rState7
-		st      	X+,	rState0
-		st      	X+,	rState1
-		st      	X+,	rState2
-		st      	X+,	rState3
-		st      	X+,	rState4
-
-    		ret    
-
-rotate64_6byte_left:
-
-		st      	X+,	rState6
-		st      	X+,	rState7
-		st      	X+,	rState0
-		st      	X+,	rState1
-		st      	X+,	rState2
-		st      	X+,	rState3
-		st      	X+,	rState4
-		st      	X+,	rState5
-
-    		ret    
-
-rotate64_7byte_left:
-
-		st      	X+,	rState7
-		st      	X+,	rState0
-		st      	X+,	rState1
-		st      	X+,	rState2
-		st     		X+,	rState3
-		st      	X+,	rState4
-		st      	X+,	rState5
-		st      	X+,	rState6
-
-    		ret    
-;Code End
