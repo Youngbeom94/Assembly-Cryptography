@@ -144,7 +144,7 @@
 	EOR		\X5,	\TM0 ; X[5] = (X[7] & X[6])
 
 	MOV		\TM0,	\X3 ; TM0 = X[3]
-	AND		\TM0,	\X5 ; T369M0 = (X[3] & X[5])
+	AND		\TM0,	\X5 ; TM0 = (X[3] & X[5])
 	EOR		\X4,	\TM0 ; X[5] = (X[7] & X[6])
 
 	EOR		\X7,	\X4 ; X[7] ^= X[4]
@@ -269,24 +269,6 @@
 	ADC		\X7,	\zero
 .endm
 
-.macro S_LAYER_LUT X0, X1, X2, X3, X4, X5, X6, X7 
-	MOV		R30,	\X0
-	LPM		\X0,	Z
-	MOV		R30,	\X1
-	LPM		\X1,	Z
-	MOV		R30,	\X2
-	LPM		\X2,	Z
-	MOV		R30,	\X3
-	LPM		\X3,	Z
-	MOV		R30,	\X4
-	LPM		\X4,	Z
-	MOV		R30,	\X5
-	LPM		\X5,	Z
-	MOV		R30,	\X6
-	LPM		\X6,	Z
-	MOV		R30,	\X7
-	LPM		\X7,	Z
-.endm
 
 .macro KEYADD X0, X1, X2, X3, X4, X5, X6, X7, K0, K1, K2, K3, K4, K5, K6, K7, RCON
 	EOR		\X0,	\RCON

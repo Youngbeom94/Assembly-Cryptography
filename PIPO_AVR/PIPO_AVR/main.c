@@ -20,4 +20,4 @@ int main(void)
 //CC : 1393
 //CPB : 174.12
 //RAM : 24 bytes (0.6% Full of ATmega128)
-//Code_Size : 1044 bytes (0.8% Full of ATmega128)
+//Code_Size : 1020 bytes (0.8% Full of ATmega128)
