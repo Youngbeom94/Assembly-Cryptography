@@ -44,28 +44,28 @@
 .macro PUSH_REGS 
 	PUSH R0
 	PUSH R1
-    PUSH R2
-    PUSH R3
-    PUSH R4
-    PUSH R5
-    PUSH R6
-    PUSH R7
-    PUSH R8
-    PUSH R9
-    PUSH R10
-    PUSH R11
-    PUSH R12
-    PUSH R13
-    PUSH R14
-    PUSH R15
-    PUSH R16
-    PUSH R17
+   	PUSH R2
+    	PUSH R3
+    	PUSH R4
+    	PUSH R5
+    	PUSH R6
+    	PUSH R7
+    	PUSH R8
+    	PUSH R9
+    	PUSH R10
+    	PUSH R11
+    	PUSH R12
+    	PUSH R13
+    	PUSH R14
+    	PUSH R15
+    	PUSH R16
+    	PUSH R17
 	PUSH R18
 	PUSH R19
 	PUSH R20
 	PUSH R21
-    PUSH R28
-    PUSH R29
+    	PUSH R28
+    	PUSH R29
 .endm
 
 .macro POP_REGS
@@ -91,7 +91,7 @@
 	POP R4
 	POP R3
 	POP R2
-	POP	R1
+	POP R1
 	POP R0
 .endm
 
